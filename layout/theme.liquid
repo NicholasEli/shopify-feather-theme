@@ -17,6 +17,7 @@
     {%- endunless -%}
 
     {{ 'style.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'script.js' | asset_url }}" defer="defer"></script>
 
     <title>
       {{ page_title }}

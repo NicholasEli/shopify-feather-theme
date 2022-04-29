@@ -5,7 +5,8 @@
   "main": "./scripts/index.js",
   "scripts": {
     "test": "cypress open",
-    "sass": "sass --watch ./styles/_style.scss ./assets/style.css"
+    "sass": "sass --watch ./styles/_style.scss ./assets/style.css",
+    "js": "rollup scripts/index.js --file ./assets/script.js --format iife --watch"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/NicholasEli/shopify-feather-theme/issues"
   },
-  "homepage": "https://github.com/NicholasEli/shopify-feather-theme#readme"
+  "homepage": "https://github.com/NicholasEli/shopify-feather-theme#readme",
+  "devDependencies": {}
 }
