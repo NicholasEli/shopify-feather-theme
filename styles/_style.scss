@@ -1,0 +1,17 @@
+@import '_reset.scss';
+@import '_skeleton.scss';
+@import '_variables.scss';
+@import '_classes.scss';
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	overflow-x: hidden;
+
+	main {
+		width: 100%;
+	}
+}

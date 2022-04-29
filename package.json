@@ -1,0 +1,20 @@
+{
+  "name": "feather",
+  "version": "1.0.0",
+  "description": "Theme for Shopify 2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open",
+    "sass": "sass --watch ./styles/_style.scss ./styles/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicholasEli/shopify-feather-theme.git"
+  },
+  "author": "NicholasByDesign",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicholasEli/shopify-feather-theme/issues"
+  },
+  "homepage": "https://github.com/NicholasEli/shopify-feather-theme#readme"
+}
