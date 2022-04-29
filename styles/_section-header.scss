@@ -15,11 +15,52 @@ header {
 				}
 			}
 
+			ul {
+				li {
+					margin: 0;
+					list-style: none;
+
+					a {
+						text-decoration: none;
+						text-transform: uppercase;
+						color: #000;
+						font-size: 14px;
+						letter-spacing: 1px;
+					}
+				}
+			}
+
 			&__links {
 				display: none;
+				margin: 0 0 0 auto;
 
 				@media (min-width: #{$lg} ) {
 					display: flex;
+				}
+
+				> li {
+					position: relative;
+					&::after {
+						content: '';
+						width: 0%;
+						height: 2px;
+						position: absolute;
+						bottom: -2px;
+						left: 0;
+						background-color: $yellow;
+						transition: 200ms ease-out;
+					}
+
+					&:hover {
+						&::after {
+							width: 100%;
+							transition: 200ms ease-in;
+						}
+					}
+
+					& + li {
+						margin-left: $padding;
+					}
 				}
 			}
 
@@ -28,6 +69,10 @@ header {
 				height: 20px;
 				margin-left: auto;
 				cursor: pointer;
+
+				@media (min-width: #{$lg} ) {
+					display: none;
+				}
 
 				.icon {
 					&-hamburger {

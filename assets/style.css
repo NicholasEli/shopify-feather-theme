@@ -718,6 +718,8 @@ there.
 /* Larger than Desktop HD */
 :root {
   --max-width: 1000px;
+  --black: #111;
+  --yellow: #fcb900;
 }
 
 .container--fluid {
@@ -739,19 +741,56 @@ header .container .nav__logo a {
   text-decoration: none;
   letter-spacing: 1px;
 }
+header .container .nav ul li {
+  margin: 0;
+  list-style: none;
+}
+header .container .nav ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
 header .container .nav__links {
   display: none;
+  margin: 0 0 0 auto;
 }
 @media (min-width: 1000px) {
   header .container .nav__links {
     display: flex;
   }
 }
+header .container .nav__links > li {
+  position: relative;
+}
+header .container .nav__links > li::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  background-color: #fcb900;
+  transition: 200ms ease-out;
+}
+header .container .nav__links > li:hover::after {
+  width: 100%;
+  transition: 200ms ease-in;
+}
+header .container .nav__links > li + li {
+  margin-left: 20px;
+}
 header .container .nav__mobile-menu-btn {
   width: 20px;
   height: 20px;
   margin-left: auto;
   cursor: pointer;
+}
+@media (min-width: 1000px) {
+  header .container .nav__mobile-menu-btn {
+    display: none;
+  }
 }
 header .container .nav__mobile-menu-btn .icon-close {
   display: none;

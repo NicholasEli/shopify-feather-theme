@@ -6,6 +6,11 @@ $xl: 1200px;
 
 $padding: 20px;
 
+$black: #111;
+$yellow: #fcb900;
+
 :root {
 	--max-width: #{$lg};
+	--black: #{$black};
+	--yellow: #{$yellow};
 }
