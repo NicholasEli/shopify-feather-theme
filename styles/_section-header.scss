@@ -16,8 +16,11 @@ header {
 			}
 
 			&__links {
-				opacity: 0;
-				pointer-events: none;
+				display: none;
+
+				@media (min-width: #{$lg} ) {
+					display: flex;
+				}
 			}
 
 			&__mobile-menu-btn {

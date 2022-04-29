@@ -740,8 +740,12 @@ header .container .nav__logo a {
   letter-spacing: 1px;
 }
 header .container .nav__links {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
+}
+@media (min-width: 1000px) {
+  header .container .nav__links {
+    display: flex;
+  }
 }
 header .container .nav__mobile-menu-btn {
   width: 20px;

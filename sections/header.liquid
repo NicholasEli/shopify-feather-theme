@@ -1,4 +1,5 @@
 <header>
+	<script>console.log({{ section | json }});</script>
 	<div class="container container--fluid">
 		<nav class="nav">
 			<div id="logo" class="nav__logo">
@@ -13,7 +14,13 @@
 	        {%- endif -%}
 	      </a>
 			</div>
-			<ul class="nav__links"></ul>
+			<ul class="nav__links">
+				{%- for link in linklists.main-menu.links -%}
+					<li>
+						<a href="{{ link.url }}">{{ link.title }}</a>
+					</li>
+				{%- endfor -%}
+			</ul>
 			<a class="nav__mobile-menu-btn">
 				{% render 'icon-hamburger' %}
 				{% render 'icon-close' %}
