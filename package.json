@@ -2,7 +2,7 @@
   "name": "feather",
   "version": "1.0.0",
   "description": "Theme for Shopify 2.0",
-  "main": "index.js",
+  "main": "./scripts/index.js",
   "scripts": {
     "test": "cypress open",
     "sass": "sass --watch ./styles/_style.scss ./assets/style.css"
