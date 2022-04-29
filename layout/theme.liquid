@@ -42,7 +42,11 @@
 
   <body class="gradient">
     {% section 'header' %}
-    {% section 'main' %}
+    <main>
+      <div class="container">
+        {{ content_for_layout }}
+      </div>
+    </main>
     {% section 'footer' %}
     <script>
       window.shopUrl = '{{ request.origin }}';

@@ -1,11 +1,17 @@
 header {
 	.container {
-		min-height: 80px;
-
 		.nav {
+			width: 100%;
+			min-height: 80px;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			flex-wrap: wrap;
+
 			&__logo {
 				a {
 					text-decoration: none;
+					letter-spacing: 1px;
 				}
 			}
 
@@ -17,6 +23,7 @@ header {
 			&__mobile-menu-btn {
 				width: 20px;
 				height: 20px;
+				margin-left: auto;
 
 				.icon {
 					&-hamburger {
