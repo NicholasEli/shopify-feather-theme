@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "sass": "sass --watch ./styles/_style.scss ./styles/style.css"
+    "sass": "sass --watch ./styles/_style.scss ./assets/style.css"
   },
   "repository": {
     "type": "git",
