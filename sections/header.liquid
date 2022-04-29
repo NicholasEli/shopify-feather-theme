@@ -15,7 +15,7 @@
 			</div>
 			<ul class="nav__links">
 				{%- for link in linklists.main-menu.links -%}
-					<li>
+					<li class="nav__item {% if link.current %}nav__item--active{% endif %}">
 						<a href="{{ link.url }}">{{ link.title }}</a>
 						{% if link.links.size > 0 %}
 							<ul>

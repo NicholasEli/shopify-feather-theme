@@ -12,6 +12,8 @@ header {
 				a {
 					text-decoration: none;
 					letter-spacing: 1px;
+					font-size: 24px;
+					color: #000;
 				}
 			}
 
@@ -51,6 +53,7 @@ header {
 						transition: 200ms ease-out;
 					}
 
+					&.nav__item--active,
 					&:hover {
 						&::after {
 							width: 100%;

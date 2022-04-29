@@ -740,6 +740,8 @@ header .container .nav {
 header .container .nav__logo a {
   text-decoration: none;
   letter-spacing: 1px;
+  font-size: 24px;
+  color: #000;
 }
 header .container .nav ul li {
   margin: 0;
@@ -774,7 +776,7 @@ header .container .nav__links > li::after {
   background-color: #fcb900;
   transition: 200ms ease-out;
 }
-header .container .nav__links > li:hover::after {
+header .container .nav__links > li.nav__item--active::after, header .container .nav__links > li:hover::after {
   width: 100%;
   transition: 200ms ease-in;
 }
