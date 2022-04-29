@@ -50,14 +50,14 @@ header {
 						bottom: -2px;
 						left: 0;
 						background-color: $yellow;
-						transition: 200ms ease-out;
+						transition: 200ms all ease-out;
 					}
 
 					&.nav__item--active,
 					&:hover {
 						&::after {
 							width: 100%;
-							transition: 200ms ease-in;
+							transition: 200ms all ease-in;
 						}
 					}
 
@@ -84,6 +84,20 @@ header {
 
 					&-close {
 						display: none;
+					}
+
+					* {
+						fill: $black;
+						transition: 200ms all ease-out;
+					}
+				}
+
+				&:hover {
+					.icon {
+						* {
+							fill: $yellow;
+							transition: 200ms all ease-in;
+						}
 					}
 				}
 			}
