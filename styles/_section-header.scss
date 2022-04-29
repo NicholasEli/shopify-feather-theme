@@ -36,7 +36,7 @@ header {
 				display: none;
 				margin: 0 0 0 auto;
 
-				@media (min-width: #{$lg} ) {
+				@media (min-width: #{$md} ) {
 					display: flex;
 				}
 
@@ -73,7 +73,7 @@ header {
 				margin-left: auto;
 				cursor: pointer;
 
-				@media (min-width: #{$lg} ) {
+				@media (min-width: #{$md} ) {
 					display: none;
 				}
 

@@ -5,8 +5,6 @@
 		return getComputedStyle(document.body).getPropertyValue(variable);
 	};
 
-	let isOpen = false;
-
 	const setMenuBtnActive = function (active) {
 		if (active) {
 			document.body.classList.add('mobile-menu-active');
@@ -18,25 +16,15 @@
 
 	const MobileMenu = function () {
 		console.log('--Init MobileMenu');
-		const menuBtn = document.querySelector('nav .nav__mobile-menu-btn');
+		const headerMenuBtn = document.querySelector('header .nav__mobile-menu-btn');
+		const menuBtn = document.querySelector('#mobile-menu .nav__mobile-menu-btn');
 
-		menuBtn.addEventListener('click', () => {
-			if (!isOpen) {
-				isOpen = true;
-				setMenuBtnActive(isOpen);
-				return;
-			}
-
-			isOpen = false;
-			setMenuBtnActive(isOpen);
-		});
+		menuBtn.addEventListener('click', () => setMenuBtnActive(false));
+		headerMenuBtn.addEventListener('click', () => setMenuBtnActive(true));
 
 		window.addEventListener('resize', () => {
 			const maxWidth = parseInt(getCSSVariable('--max-width'));
-			if (window.innerWidth >= maxWidth) {
-				isOpen = false;
-				setMenuBtnActive(isOpen);
-			}
+			if (window.innerWidth >= maxWidth) setMenuBtnActive(false);
 		});
 	};
 
