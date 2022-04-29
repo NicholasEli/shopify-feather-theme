@@ -743,6 +743,7 @@ header .container .nav__mobile-menu-btn {
   width: 20px;
   height: 20px;
   margin-left: auto;
+  cursor: pointer;
 }
 header .container .nav__mobile-menu-btn .icon-close {
   display: none;
