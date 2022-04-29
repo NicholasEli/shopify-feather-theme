@@ -1,3 +1,7 @@
+import { getCSSVariable } from './utils.js';
+
+let isOpen = false;
+
 export const setMenuBtnActive = function (active) {
 	if (active) {
 		document.body.classList.add('mobile-menu-active');
@@ -9,8 +13,6 @@ export const setMenuBtnActive = function (active) {
 
 export const MobileMenu = function () {
 	console.log('--Init MobileMenu');
-	let isOpen = false;
-
 	const menuBtn = document.querySelector('nav .nav__mobile-menu-btn');
 
 	menuBtn.addEventListener('click', () => {
@@ -22,5 +24,13 @@ export const MobileMenu = function () {
 
 		isOpen = false;
 		setMenuBtnActive(isOpen);
+	});
+
+	window.addEventListener('resize', () => {
+		const maxWidth = parseInt(getCSSVariable('--max-width'));
+		if (window.innerWidth >= maxWidth) {
+			isOpen = false;
+			setMenuBtnActive(isOpen);
+		}
 	});
 };

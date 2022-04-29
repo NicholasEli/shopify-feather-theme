@@ -716,6 +716,10 @@ there.
 /* Larger than tablet */
 /* Larger than desktop */
 /* Larger than Desktop HD */
+:root {
+  --max-width: 1000px;
+}
+
 .container--fluid {
   width: 100%;
   max-width: 100%;
