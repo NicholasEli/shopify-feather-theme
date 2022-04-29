@@ -1,7 +1,19 @@
 <header>
 	<div class="container">
-		<nav>
-			<ul>Nav</ul>
+		<nav class="row">
+			<div id="logo" class="column one">
+				<a href="/">
+					{%- if section.settings.logo != blank -%}
+						<img
+							srcset="{{ section.settings.logo | image_url: width: section.settings.logo_width }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
+							alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+						/>
+	        {%- else -%}
+	        	<span class="h2">{{ shop.name }}</span>
+	        {%- endif -%}
+	      </a>
+			</div>
+			<ul class="column eleven"></ul>
 		</nav>
 	</div>
 </header>

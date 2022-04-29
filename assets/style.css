@@ -716,6 +716,10 @@ there.
 /* Larger than tablet */
 /* Larger than desktop */
 /* Larger than Desktop HD */
+header .container {
+  min-height: 80px;
+}
+
 * {
   box-sizing: border-box;
 }
