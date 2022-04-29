@@ -6,4 +6,58 @@
 	left: 0;
 	padding: $padding;
 	background-color: #fff;
+	opacity: 0;
+	pointer-events: none;
+	z-index: -1;
+
+	.nav {
+		ul {
+			li {
+				margin: 0;
+				list-style: none;
+
+				a {
+					text-decoration: none;
+					color: #000;
+					font-size: 24px;
+					font-weight: 600;
+					letter-spacing: 1px;
+				}
+
+				ul {
+					li {
+						a {
+							font-size: 16px;
+						}
+					}
+				}
+			}
+		}
+
+		.nav__mobile-menu-btn {
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			top: 30px;
+			right: 20px;
+			z-index: 2;
+			cursor: pointer;
+
+			.icon {
+				* {
+					fill: $black;
+					transition: 200ms all ease-out;
+				}
+			}
+
+			&:hover {
+				.icon {
+					* {
+						fill: $yellow;
+						transition: 200ms all ease-in;
+					}
+				}
+			}
+		}
+	}
 }

@@ -78,14 +78,6 @@ header {
 				}
 
 				.icon {
-					&-hamburger {
-						//
-					}
-
-					&-close {
-						display: none;
-					}
-
 					* {
 						fill: $black;
 						transition: 200ms all ease-out;
