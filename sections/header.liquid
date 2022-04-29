@@ -1,5 +1,4 @@
 <header>
-	<script>console.log({{ section | json }});</script>
 	<div class="container container--fluid">
 		<nav class="nav">
 			<div id="logo" class="nav__logo">
@@ -18,6 +17,24 @@
 				{%- for link in linklists.main-menu.links -%}
 					<li>
 						<a href="{{ link.url }}">{{ link.title }}</a>
+						{% if link.links.size > 0 %}
+							<ul>
+								{%- for child_link in link.links -%}
+									<li>
+										<a href="{{ child_link.url }}">{{ child_link.title }}</a>
+											{% if child_link.links.size > 0 %}
+												<ul>
+													{%- for grandchild_link in child_link.links -%}
+														<li>
+															<a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+														</li>
+													{%- endfor -%}
+												</ul>
+											{%- endif -%}
+									</li>
+								{%- endfor -%}
+							</ul>
+						{%- endif -%}		
 					</li>
 				{%- endfor -%}
 			</ul>
