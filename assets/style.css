@@ -719,6 +719,20 @@ there.
 header .container {
   min-height: 80px;
 }
+header .container .nav__logo a {
+  text-decoration: none;
+}
+header .container .nav__links {
+  opacity: 0;
+  pointer-events: none;
+}
+header .container .nav__mobile-menu-btn {
+  width: 20px;
+  height: 20px;
+}
+header .container .nav__mobile-menu-btn .icon-close {
+  display: none;
+}
 
 * {
   box-sizing: border-box;

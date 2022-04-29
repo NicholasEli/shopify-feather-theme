@@ -1,19 +1,23 @@
 <header>
 	<div class="container">
-		<nav class="row">
-			<div id="logo" class="column one">
-				<a href="/">
+		<nav class="nav row">
+			<div class="eleven columns">
+				<a id="logo" class="nav__logo" href="/">
 					{%- if section.settings.logo != blank -%}
 						<img
 							srcset="{{ section.settings.logo | image_url: width: section.settings.logo_width }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
 							alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
 						/>
 	        {%- else -%}
-	        	<span class="h2">{{ shop.name }}</span>
+	        	<span>{{ shop.name }}</span>
 	        {%- endif -%}
 	      </a>
+	      <ul class="nav__links columns ten"></ul>
 			</div>
-			<ul class="column eleven"></ul>
+			<div class="nav__mobile-menu-btn column one">
+				{% render 'icon-hamburger' %}
+				{% render 'icon-close' %}
+			</div>
 		</nav>
 	</div>
 </header>

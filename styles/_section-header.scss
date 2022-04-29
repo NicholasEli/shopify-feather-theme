@@ -1,5 +1,33 @@
 header {
 	.container {
 		min-height: 80px;
+
+		.nav {
+			&__logo {
+				a {
+					text-decoration: none;
+				}
+			}
+
+			&__links {
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			&__mobile-menu-btn {
+				width: 20px;
+				height: 20px;
+
+				.icon {
+					&-hamburger {
+						//
+					}
+
+					&-close {
+						display: none;
+					}
+				}
+			}
+		}
 	}
 }
