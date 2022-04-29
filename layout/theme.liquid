@@ -40,10 +40,8 @@
 
   <body class="gradient">
     {% section 'header' %}
-    <main>
-      {{ content_for_layout }}
-    </main>
-
+    {% section 'main' %}
+    {% section 'footer' %}
     <script>
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
