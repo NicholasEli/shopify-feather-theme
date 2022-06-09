@@ -43,11 +43,7 @@
 
   <body class="gradient">
     {% section 'header' %}
-    <main>
-      <div class="container">
-        {{ content_for_layout }}
-      </div>
-    </main>
+    {% section 'main' %}
     {% section 'footer' %}
     {% section 'mobile-menu' %}
     <script>
