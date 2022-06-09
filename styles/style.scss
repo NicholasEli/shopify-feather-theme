@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@700&display=swap');
 @import '_reset.scss';
 @import '_skeleton.scss';
 @import '_variables.scss';
@@ -5,6 +6,7 @@
 
 @import '_section-header.scss';
 @import '_section-mobile-menu.scss';
+@import '_section-banner.scss';
 
 * {
 	box-sizing: border-box;
