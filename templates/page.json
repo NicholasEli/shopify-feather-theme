@@ -1,14 +1,16 @@
 {
   "sections": {
+    "banner": {
+      "type": "banner-content",
+      "settings": {}
+    },
     "main": {
-      "type": "main-page",
+      "type": "main-content",
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["banner", "main"]
 }
