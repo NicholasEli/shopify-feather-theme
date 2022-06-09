@@ -5,7 +5,7 @@
   "main": "./scripts/index.js",
   "scripts": {
     "test": "cypress open",
-    "sass": "sass --watch ./styles/_style.scss ./assets/style.css",
+    "sass": "sass --watch ./styles/style.scss ./assets/style.css",
     "js": "rollup scripts/index.js --file ./assets/script.js --format iife --watch",
     "dev": "concurrently --kill-others \"sass --watch ./styles/style.scss ./assets/style.css\" \"rollup scripts/index.js --file ./assets/script.js --format iife --watch\""
   },

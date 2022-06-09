@@ -799,6 +799,9 @@ header .container .nav__links > li ul li a {
   color: #fff;
   background-color: #111;
 }
+header .container .nav__links > li:last-of-type ul {
+  left: calc(50% - 20px);
+}
 header .container .nav__links > li.nav__item--active::after, header .container .nav__links > li:hover::after {
   width: 100%;
   transition: 200ms all ease-in;

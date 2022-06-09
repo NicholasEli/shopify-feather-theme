@@ -82,6 +82,12 @@ header {
 						}
 					}
 
+					&:last-of-type {
+						ul {
+							left: calc(50% - $padding);
+						}
+					}
+
 					&.nav__item--active,
 					&:hover {
 						&::after {
