@@ -892,6 +892,15 @@ header .container .nav__mobile-menu-btn:hover .icon * {
   width: 100%;
   position: relative;
 }
+.feather-banner__overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
 .feather-banner h2 {
   position: absolute;
   top: 50%;
@@ -901,10 +910,21 @@ header .container .nav__mobile-menu-btn:hover .icon * {
   font-family: "Yanone Kaffeesatz", sans-serif;
   color: #fff;
   white-space: nowrap;
+  z-index: 2;
 }
 @media (min-width: 750px) {
   .feather-banner h2 {
     font-size: 100px;
+  }
+}
+@media (min-width: 1000px) {
+  .feather-banner h2 {
+    font-size: 125px;
+  }
+}
+@media (min-width: 1200px) {
+  .feather-banner h2 {
+    font-size: 150px;
   }
 }
 .feather-banner img {
