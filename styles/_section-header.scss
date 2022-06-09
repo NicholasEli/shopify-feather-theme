@@ -25,7 +25,6 @@ header {
 					a {
 						text-decoration: none;
 						text-transform: uppercase;
-						color: #000;
 						font-size: 14px;
 						letter-spacing: 1px;
 					}
@@ -33,6 +32,7 @@ header {
 			}
 
 			&__links {
+				position: relative;
 				display: none;
 				margin: 0 0 0 auto;
 
@@ -53,16 +53,48 @@ header {
 						transition: 200ms all ease-out;
 					}
 
+					& + li {
+						margin-left: $padding;
+					}
+
+					a {
+						color: #000;
+					}
+
+					ul {
+						position: absolute;
+						top: 100%;
+						left: 50%;
+						transform: translate(-50%, -10px);
+						margin: 0;
+						padding-top: $padding;
+						opacity: 0;
+						pointer-events: none;
+						transition: all 200ms ease-out;
+
+						li {
+							a {
+								display: block;
+								padding: 10px;
+								color: #fff;
+								background-color: $black;
+							}
+						}
+					}
+
 					&.nav__item--active,
 					&:hover {
 						&::after {
 							width: 100%;
 							transition: 200ms all ease-in;
 						}
-					}
 
-					& + li {
-						margin-left: $padding;
+						ul {
+							transform: translate(-50%, 0px);
+							opacity: 1;
+							pointer-events: all;
+							transition: all 200ms ease-in;
+						}
 					}
 				}
 			}

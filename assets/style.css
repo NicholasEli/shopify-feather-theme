@@ -750,11 +750,11 @@ header .container .nav ul li {
 header .container .nav ul li a {
   text-decoration: none;
   text-transform: uppercase;
-  color: #000;
   font-size: 14px;
   letter-spacing: 1px;
 }
 header .container .nav__links {
+  position: relative;
   display: none;
   margin: 0 0 0 auto;
 }
@@ -776,12 +776,38 @@ header .container .nav__links > li::after {
   background-color: #fcb900;
   transition: 200ms all ease-out;
 }
+header .container .nav__links > li + li {
+  margin-left: 20px;
+}
+header .container .nav__links > li a {
+  color: #000;
+}
+header .container .nav__links > li ul {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -10px);
+  margin: 0;
+  padding-top: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 200ms ease-out;
+}
+header .container .nav__links > li ul li a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  background-color: #111;
+}
 header .container .nav__links > li.nav__item--active::after, header .container .nav__links > li:hover::after {
   width: 100%;
   transition: 200ms all ease-in;
 }
-header .container .nav__links > li + li {
-  margin-left: 20px;
+header .container .nav__links > li.nav__item--active ul, header .container .nav__links > li:hover ul {
+  transform: translate(-50%, 0px);
+  opacity: 1;
+  pointer-events: all;
+  transition: all 200ms ease-in;
 }
 header .container .nav__mobile-menu-btn {
   width: 20px;
@@ -813,7 +839,6 @@ header .container .nav__mobile-menu-btn:hover .icon * {
   background-color: #fff;
   opacity: 0;
   pointer-events: none;
-  z-index: -1;
   transition: 200ms opacity ease-out;
 }
 #mobile-menu .nav ul li {
@@ -864,8 +889,7 @@ body.mobile-menu-active {
 body.mobile-menu-active #mobile-menu {
   opacity: 1;
   pointer-events: all;
-  z-index: 99;
-  transition: 200ms opacity ease-in z-index 0ms linear 300ms;
+  transition: 200ms opacity ease-in;
 }
 body main {
   width: 100%;
