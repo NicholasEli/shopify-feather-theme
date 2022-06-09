@@ -18,6 +18,8 @@ header {
 			}
 
 			ul {
+				z-index: 2;
+
 				li {
 					margin: 0;
 					list-style: none;
@@ -67,7 +69,6 @@ header {
 						left: 50%;
 						transform: translate(-50%, -10px);
 						margin: 0;
-						padding-top: $padding;
 						opacity: 0;
 						pointer-events: none;
 						transition: all 200ms ease-out;
@@ -78,6 +79,22 @@ header {
 								padding: 10px;
 								color: #fff;
 								background-color: $black;
+
+								&:hover {
+									color: $yellow;
+								}
+							}
+
+							&:first-of-type {
+								a {
+									padding-top: $padding;
+								}
+							}
+
+							&:last-of-type {
+								a {
+									padding-bottom: $padding;
+								}
 							}
 						}
 					}

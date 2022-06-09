@@ -11,6 +11,10 @@
 		font-family: 'Yanone Kaffeesatz', sans-serif;
 		color: #fff;
 		white-space: nowrap;
+
+		@media (min-width: #{$md}) {
+			font-size: 100px;
+		}
 	}
 
 	img {
