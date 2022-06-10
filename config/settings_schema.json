@@ -6,5 +6,16 @@
     "theme_author": "None",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
+  },
+  {
+    "name": "Navigation Bar Color Settings",
+    "settings": [
+      {
+        "type": "color",
+        "id": "navbar color",
+        "label": "NavBar Background Color",
+        "default": "#000"
+      }
+    ]
   }
 ]

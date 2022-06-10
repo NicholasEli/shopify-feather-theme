@@ -1,9 +1,0 @@
-{
-  "sections": {
-    "banner": {
-      "type": "banner",
-      "settings": {}
-    }
-  },
-  "order": ["banner"]
-}
