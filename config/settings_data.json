@@ -1,6 +1,35 @@
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Screen_Shot_2022-06-15_at_3.15.19_PM.png"
+        }
+      },
+      "banner": {
+        "type": "banner",
+        "settings": {
+          "text": "Shop Style"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+        }
+      },
+      "mobile-menu": {
+        "type": "mobile-menu",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
-    "Default": {}
+    "Default": {
+    }
   }
 }
