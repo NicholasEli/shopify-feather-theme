@@ -757,10 +757,12 @@ header .container .nav ul li a {
   font-size: 14px;
   letter-spacing: 1px;
 }
+header .container .nav ul + ul {
+  margin-left: 40px;
+}
 header .container .nav__links {
   position: relative;
   display: none;
-  margin: 0 0 0 auto;
 }
 @media (min-width: 750px) {
   header .container .nav__links {
@@ -779,12 +781,6 @@ header .container .nav__links > li::after {
   left: 0;
   background-color: #fcb900;
   transition: 200ms all ease-out;
-}
-header .container .nav__links > li + li {
-  margin-left: 20px;
-}
-header .container .nav__links > li a {
-  color: #000;
 }
 header .container .nav__links > li ul {
   position: absolute;
@@ -824,22 +820,35 @@ header .container .nav__links > li.nav__item--active ul, header .container .nav_
   pointer-events: all;
   transition: all 200ms ease-in;
 }
-header .container .nav__links > li.nav__item + .nav__item-account, header .container .nav__links > li.nav__item + .nav__item-cart {
-  margin-left: 40px;
+header .container .nav__actions {
+  display: flex;
 }
-header .container .nav__links > li.nav__item-account a svg, header .container .nav__links > li.nav__item-cart a svg {
+header .container .nav__actions li,
+header .container .nav__actions a {
+  line-height: 1;
+}
+header .container .nav__actions li a {
   width: 20px;
-  height: auto;
-  display: block;
+  display: inline-block;
 }
-header .container .nav__links > li.nav__item-account a svg *, header .container .nav__links > li.nav__item-cart a svg * {
+header .container .nav__actions li a svg {
+  width: 100%;
+}
+header .container .nav__actions li a svg * {
+  fill: #000;
   transition: all 200ms;
 }
-header .container .nav__links > li.nav__item-account:hover svg *, header .container .nav__links > li.nav__item-cart:hover svg * {
+header .container .nav__actions li:hover a svg * {
   fill: #fcb900;
 }
-header .container .nav__links > li.nav__item-account:hover::after, header .container .nav__links > li.nav__item-cart:hover::after {
-  width: 0%;
+header .container .nav__links, header .container .nav__actions {
+  margin: 0 0 0 auto;
+}
+header .container .nav__links > li + li, header .container .nav__actions > li + li {
+  margin-left: 20px;
+}
+header .container .nav__links > li a, header .container .nav__actions > li a {
+  color: #000;
 }
 header .container .nav__mobile-menu-btn {
   width: 20px;

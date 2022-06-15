@@ -31,12 +31,15 @@ header {
 						letter-spacing: 1px;
 					}
 				}
+
+				& + ul {
+					margin-left: calc($padding * 2);
+				}
 			}
 
 			&__links {
 				position: relative;
 				display: none;
-				margin: 0 0 0 auto;
 
 				@media (min-width: #{$md} ) {
 					display: flex;
@@ -54,14 +57,6 @@ header {
 						left: 0;
 						background-color: $yellow;
 						transition: 200ms all ease-out;
-					}
-
-					& + li {
-						margin-left: $padding;
-					}
-
-					a {
-						color: #000;
 					}
 
 					ul {
@@ -120,37 +115,53 @@ header {
 							transition: all 200ms ease-in;
 						}
 					}
+				}
+			}
 
-					&.nav__item + .nav__item-account,
-					&.nav__item + .nav__item-cart {
-						margin-left: calc($padding * 2);
+			&__actions {
+				display: flex;
+
+				li,
+				a {
+					line-height: 1;
+				}
+
+				li {
+					a {
+						width: $padding;
+						display: inline-block;
+
+						svg {
+							width: 100%;
+
+							* {
+								fill: #000;
+								transition: all 200ms;
+							}
+						}
 					}
 
-					&.nav__item-account,
-					&.nav__item-cart {
-						a {
-							svg {
-								width: $padding;
-								height: auto;
-								display: block;
-
-								* {
-									transition: all 200ms;
-								}
+					&:hover {
+						a svg {
+							* {
+								fill: $yellow;
 							}
 						}
+					}
+				}
+			}
 
-						&:hover {
-							svg {
-								* {
-									fill: $yellow;
-								}
-							}
+			&__links,
+			&__actions {
+				margin: 0 0 0 auto;
 
-							&::after {
-								width: 0%;
-							}
-						}
+				> li {
+					& + li {
+						margin-left: $padding;
+					}
+
+					a {
+						color: #000;
 					}
 				}
 			}
