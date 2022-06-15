@@ -959,7 +959,9 @@ header .container .nav__mobile-menu-btn:hover .icon * {
     font-size: 150px;
   }
 }
-.feather-banner img {
+.feather-banner img,
+.feather-banner picture,
+.feather-banner video {
   width: 100%;
   max-width: 100%;
   height: auto;
