@@ -44,6 +44,7 @@ header {
 
 				> li {
 					position: relative;
+
 					&::after {
 						content: '';
 						width: 0%;
@@ -117,6 +118,38 @@ header {
 							opacity: 1;
 							pointer-events: all;
 							transition: all 200ms ease-in;
+						}
+					}
+
+					&.nav__item + .nav__item-account,
+					&.nav__item + .nav__item-cart {
+						margin-left: calc($padding * 2);
+					}
+
+					&.nav__item-account,
+					&.nav__item-cart {
+						a {
+							svg {
+								width: $padding;
+								height: auto;
+								display: block;
+
+								* {
+									transition: all 200ms;
+								}
+							}
+						}
+
+						&:hover {
+							svg {
+								* {
+									fill: $yellow;
+								}
+							}
+
+							&::after {
+								width: 0%;
+							}
 						}
 					}
 				}

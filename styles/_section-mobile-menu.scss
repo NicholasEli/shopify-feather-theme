@@ -9,6 +9,7 @@
 	opacity: 0;
 	pointer-events: none;
 	transition: 200ms opacity ease-out;
+	z-index: 10;
 
 	.nav {
 		ul {
@@ -28,6 +29,33 @@
 					li {
 						a {
 							font-size: 16px;
+						}
+					}
+				}
+
+				&.nav__item-account,
+				&.nav__item-cart {
+					a {
+						svg {
+							width: $padding;
+							height: auto;
+							display: inline-block;
+
+							* {
+								transition: all 200ms;
+							}
+						}
+					}
+
+					&:hover {
+						svg {
+							* {
+								fill: $yellow;
+							}
+						}
+
+						&::after {
+							width: 0%;
 						}
 					}
 				}

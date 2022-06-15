@@ -33,24 +33,22 @@
 											{%- endif -%}
 									</li>
 								{%- endfor -%}
-								{%- if shop.customer_accounts_enabled -%}
-									<li>
-                    <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
-                      {% render 'icon-account' %}
-                      {%- liquid
-                        if customer
-                          echo 'customer.account_fallback' | t
-                        else
-                          echo 'customer.log_in' | t
-                        endif
-                      -%}
-                    </a>
-                  </li>
-                {%- endif -%}
 							</ul>
 						{%- endif -%}		
 					</li>
 				{%- endfor -%}
+				{%- if shop.customer_accounts_enabled -%}
+					<li class="nav__item nav__item-account">
+            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+              {% render 'icon-account' %}
+              {%- if customer -%}
+                  {{ customer.account_fallback }}
+               {%- else -%}
+               	{{ customer.log_in }}
+               {%- endif -%}
+            </a>
+          </li>
+        {%- endif -%}
 			</ul>
 			<a class="nav__mobile-menu-btn">
 				{% render 'icon-hamburger' %}
