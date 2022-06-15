@@ -1,8 +1,23 @@
 <div class="feather-banner">
-	<h2>Shop Style</h2>
+	<h2>{{ schema.text }}</h2>
 	<div class="feather-banner__overlay"></div>
 	<img
 		src="{{ 'feather-banner-bg-1200-800.jpg' | asset_img_url: '300x' }}"
 		alt="{{ page_title }}"
 	/>
 </div>
+
+{% schema %}
+	{
+		"name": "Banner",
+		"class": "section__banner",
+		"settings": [
+			{
+				"id": "text",
+				"type": "text",
+				"default": "Shop Style",
+				"label": "Banner Text"
+			}
+		]
+	}
+{% endschema %}
