@@ -1,88 +1,87 @@
-<header>
-	<div class="container container--fluid">
-		<nav class="nav">
-			<div id="logo" class="nav__logo">
-				<a  href="/">
-					{%- if section.settings.logo != blank -%}
-						<img
-							srcset="{{ section.settings.logo | image_url: width: section.settings.logo_width }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
-							alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
-						/>
+<div class="container container--fluid">
+	<nav class="nav">
+		<div id="logo" class="nav__logo">
+			<a  href="/">
+				{%- if section.settings.logo != blank -%}
+					<img
+						srcset="{{ section.settings.logo | image_url: width: section.settings.logo_width }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
+						alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+					/>
+        {%- else -%}
+        	<span>{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+		</div>
+		<ul class="nav__links">
+			{%- for link in linklists.main-menu.links -%}
+				<li class="nav__item {% if link.current %}nav__item--active{% endif %}">
+					<a href="{{ link.url }}">{{ link.title }}</a>
+					{% if link.links.size > 0 %}
+						<ul>
+							{%- for child_link in link.links -%}
+								<li>
+									<a href="{{ child_link.url }}">{{ child_link.title }}</a>
+										{% if child_link.links.size > 0 %}
+											<ul>
+												{%- for grandchild_link in child_link.links -%}
+													<li>
+														<a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+													</li>
+												{%- endfor -%}
+											</ul>
+										{%- endif -%}
+								</li>
+							{%- endfor -%}
+						</ul>
+					{%- endif -%}		
+				</li>
+			{%- endfor -%}
+		</ul>
+		<ul class="nav__actions">
+			{%- if shop.customer_accounts_enabled -%}
+				<li class="nav__item">
+          <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+            {% render 'icon-account' %}
+            {%- if customer -%}
+                {{ customer.account_fallback }}
+             {%- else -%}
+             	{{ customer.log_in }}
+             {%- endif -%}
+          </a>
+        </li>
+      {%- endif -%}
+      <li class="nav__item">
+      	<a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+	        {%- if cart == empty -%}
+	        	{% render 'icon-cart-empty' %}
 	        {%- else -%}
-	        	<span>{{ shop.name }}</span>
+	        	{% render 'icon-cart' %}
+	        {%- endif -%}
+	        {%- if cart != empty -%}
+	          <div class="cart-count-bubble">
+	            {%- if cart.item_count < 100 -%}
+	              <span aria-hidden="true">{{ cart.item_count }}</span>
+	            {%- endif -%}
+	            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+	          </div>
 	        {%- endif -%}
 	      </a>
-			</div>
-			<ul class="nav__links">
-				{%- for link in linklists.main-menu.links -%}
-					<li class="nav__item {% if link.current %}nav__item--active{% endif %}">
-						<a href="{{ link.url }}">{{ link.title }}</a>
-						{% if link.links.size > 0 %}
-							<ul>
-								{%- for child_link in link.links -%}
-									<li>
-										<a href="{{ child_link.url }}">{{ child_link.title }}</a>
-											{% if child_link.links.size > 0 %}
-												<ul>
-													{%- for grandchild_link in child_link.links -%}
-														<li>
-															<a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
-														</li>
-													{%- endfor -%}
-												</ul>
-											{%- endif -%}
-									</li>
-								{%- endfor -%}
-							</ul>
-						{%- endif -%}		
-					</li>
-				{%- endfor -%}
-			</ul>
-			<ul class="nav__actions">
-				{%- if shop.customer_accounts_enabled -%}
-					<li class="nav__item">
-            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
-              {% render 'icon-account' %}
-              {%- if customer -%}
-                  {{ customer.account_fallback }}
-               {%- else -%}
-               	{{ customer.log_in }}
-               {%- endif -%}
-            </a>
-          </li>
-        {%- endif -%}
-        <li class="nav__item">
-        	<a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-		        {%- if cart == empty -%}
-		        	{% render 'icon-cart-empty' %}
-		        {%- else -%}
-		        	{% render 'icon-cart' %}
-		        {%- endif -%}
-		        {%- if cart != empty -%}
-		          <div class="cart-count-bubble">
-		            {%- if cart.item_count < 100 -%}
-		              <span aria-hidden="true">{{ cart.item_count }}</span>
-		            {%- endif -%}
-		            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-		          </div>
-		        {%- endif -%}
-		      </a>
-        </li>
-			</ul>
-			<a class="nav__mobile-menu-btn" data-btn="mobile-menu-btn">
-				<div class="nav__mobile-menu-btn-bar"></div>
-				<div class="nav__mobile-menu-btn-bar"></div>
-				<div class="nav__mobile-menu-btn-bar"></div>
-			</a>
-		</nav>
-	</div>
-</header>
+      </li>
+		</ul>
+		<a class="nav__mobile-menu-btn" data-btn="mobile-menu-btn">
+			<div class="nav__mobile-menu-btn-bar"></div>
+			<div class="nav__mobile-menu-btn-bar"></div>
+			<div class="nav__mobile-menu-btn-bar"></div>
+		</a>
+	</nav>
+</div>
 
 
 {% schema %}
 {
   "name": "Header",
   "class": "section-header",
+  "tag": "header",
   "settings": [
     {
     	"id": "logo",
