@@ -33,7 +33,11 @@ header {
 				}
 
 				& + ul {
-					margin-left: calc($padding * 2);
+					margin-left: auto;
+
+					@media (min-width: #{$md} ) {
+						margin-left: calc($padding * 2);
+					}
 				}
 			}
 
@@ -120,6 +124,7 @@ header {
 
 			&__actions {
 				display: flex;
+				align-items: center;
 
 				li,
 				a {
@@ -128,11 +133,11 @@ header {
 
 				li {
 					a {
-						width: $padding;
 						display: inline-block;
 
 						svg {
-							width: 100%;
+							width: auto;
+							height: $padding;
 
 							* {
 								fill: #000;
@@ -169,8 +174,8 @@ header {
 			&__mobile-menu-btn {
 				width: $padding;
 				height: $padding;
+				margin-left: calc($padding * 2);
 				position: relative;
-				margin-left: auto;
 				cursor: pointer;
 
 				@media (min-width: #{$md} ) {
@@ -216,6 +221,7 @@ body.mobile-menu-active {
 			&:last-of-type {
 				top: 50%;
 				background-color: $yellow;
+				transform-origin: center center;
 
 				& + div {
 					opacity: 0;

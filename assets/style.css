@@ -758,7 +758,12 @@ header .container .nav ul li a {
   letter-spacing: 1px;
 }
 header .container .nav ul + ul {
-  margin-left: 40px;
+  margin-left: auto;
+}
+@media (min-width: 750px) {
+  header .container .nav ul + ul {
+    margin-left: 40px;
+  }
 }
 header .container .nav__links {
   position: relative;
@@ -822,17 +827,18 @@ header .container .nav__links > li.nav__item--active ul, header .container .nav_
 }
 header .container .nav__actions {
   display: flex;
+  align-items: center;
 }
 header .container .nav__actions li,
 header .container .nav__actions a {
   line-height: 1;
 }
 header .container .nav__actions li a {
-  width: 20px;
   display: inline-block;
 }
 header .container .nav__actions li a svg {
-  width: 100%;
+  width: auto;
+  height: 20px;
 }
 header .container .nav__actions li a svg * {
   fill: #000;
@@ -853,8 +859,8 @@ header .container .nav__links > li a, header .container .nav__actions > li a {
 header .container .nav__mobile-menu-btn {
   width: 20px;
   height: 20px;
+  margin-left: 40px;
   position: relative;
-  margin-left: auto;
   cursor: pointer;
 }
 @media (min-width: 750px) {
@@ -887,6 +893,7 @@ header .container .nav__mobile-menu-btn:hover .nav__mobile-menu-btn-bar {
 body.mobile-menu-active .nav__mobile-menu-btn-bar:first-of-type, body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type {
   top: 50%;
   background-color: #fcb900;
+  transform-origin: center center;
 }
 body.mobile-menu-active .nav__mobile-menu-btn-bar:first-of-type + div, body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type + div {
   opacity: 0;
