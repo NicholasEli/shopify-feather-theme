@@ -24,18 +24,6 @@
 					{%- endif -%}		
 				</li>
 			{%- endfor -%}
-			{%- if shop.customer_accounts_enabled -%}
-					<li class="nav__item nav__item-account">
-            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
-              {% render 'icon-account' %}
-              {%- if customer -%}
-                  {{ customer.account_fallback }}
-               {%- else -%}
-               	{{ customer.log_in }} <span>Login</span>
-               {%- endif -%}
-            </a>
-          </li>
-        {%- endif -%}
 		</ul>
 	</nav>
 </div>

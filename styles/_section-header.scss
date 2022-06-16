@@ -59,7 +59,7 @@ header {
 						position: absolute;
 						bottom: -2px;
 						left: 0;
-						background-color: $yellow;
+						background-color: $blue;
 						transition: 200ms all ease-out;
 					}
 
@@ -81,7 +81,7 @@ header {
 								background-color: $black;
 
 								&:hover {
-									color: $yellow;
+									color: $blue;
 								}
 							}
 
@@ -149,7 +149,7 @@ header {
 					&:hover {
 						a svg {
 							* {
-								fill: $yellow;
+								fill: $blue;
 							}
 						}
 					}
@@ -173,7 +173,7 @@ header {
 
 			&__mobile-menu-btn {
 				width: $padding;
-				height: $padding;
+				height: 15px;
 				margin-left: calc($padding * 2);
 				position: relative;
 				cursor: pointer;
@@ -206,7 +206,7 @@ header {
 
 				&:hover {
 					.nav__mobile-menu-btn-bar {
-						background-color: $yellow;
+						background-color: $blue;
 					}
 				}
 			}
@@ -220,7 +220,7 @@ body.mobile-menu-active {
 			&:first-of-type,
 			&:last-of-type {
 				top: 50%;
-				background-color: $yellow;
+				background-color: $blue;
 				transform-origin: center center;
 
 				& + div {

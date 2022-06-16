@@ -1,5 +1,7 @@
 .feather-banner {
 	width: 100%;
+	max-height: 100vh;
+	overflow: hidden;
 	position: relative;
 
 	&__overlay {

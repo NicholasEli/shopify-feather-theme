@@ -131,6 +131,12 @@ table {
   border-spacing: 0;
 }
 
+:root {
+  --max-width: 750px;
+  --black: #111;
+  --yellow: #fcb900;
+}
+
 /*
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache
@@ -160,7 +166,7 @@ table {
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -174,7 +180,7 @@ table {
 }
 
 /* For devices larger than 400px */
-@media (min-width: 400px) {
+@media (min-width: 550px) {
   .container {
     width: 85%;
     padding: 0;
@@ -349,7 +355,12 @@ body {
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: 300;
@@ -424,11 +435,11 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1EAEDB;
+  color: #1eaedb;
 }
 
 a:hover {
-  color: #0FA0CE;
+  color: #0fa0ce;
 }
 
 /* Buttons
@@ -477,9 +488,9 @@ button.button-primary,
 input[type=submit].button-primary,
 input[type=reset].button-primary,
 input[type=button].button-primary {
-  color: #FFF;
-  background-color: #33C3F0;
-  border-color: #33C3F0;
+  color: #fff;
+  background-color: #33c3f0;
+  border-color: #33c3f0;
 }
 
 .button.button-primary:hover,
@@ -492,9 +503,9 @@ button.button-primary:focus,
 input[type=submit].button-primary:focus,
 input[type=reset].button-primary:focus,
 input[type=button].button-primary:focus {
-  color: #FFF;
-  background-color: #1EAEDB;
-  border-color: #1EAEDB;
+  color: #fff;
+  background-color: #1eaedb;
+  border-color: #1eaedb;
 }
 
 /* Forms
@@ -512,7 +523,7 @@ select {
   padding: 6px 10px;
   /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
-  border: 1px solid #D1D1D1;
+  border: 1px solid #d1d1d1;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -547,7 +558,7 @@ input[type=url]:focus,
 input[type=password]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid #33c3f0;
   outline: 0;
 }
 
@@ -584,7 +595,8 @@ ol {
   list-style: decimal inside;
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 0;
   margin-top: 0;
 }
@@ -608,8 +620,8 @@ code {
   margin: 0 0.2rem;
   font-size: 90%;
   white-space: nowrap;
-  background: #F1F1F1;
-  border: 1px solid #E1E1E1;
+  background: #f1f1f1;
+  border: 1px solid #e1e1e1;
   border-radius: 4px;
 }
 
@@ -625,7 +637,7 @@ th,
 td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #E1E1E1;
+  border-bottom: 1px solid #e1e1e1;
 }
 
 th:first-child,
@@ -690,7 +702,7 @@ hr {
   margin-top: 3rem;
   margin-bottom: 3.5rem;
   border-width: 0;
-  border-top: 1px solid #E1E1E1;
+  border-top: 1px solid #e1e1e1;
 }
 
 /* Clearing
@@ -702,25 +714,6 @@ hr {
   content: "";
   display: table;
   clear: both;
-}
-
-/* Media Queries
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/*
-Note: The best way to structure the use of media queries is to create the queries
-near the relevant code. For example, if you wanted to change the styles for buttons
-on small devices, paste the mobile query code up in the buttons section and style it
-there.
-*/
-/* Larger than mobile */
-/* Larger than phablet (also point when grid becomes active) */
-/* Larger than tablet */
-/* Larger than desktop */
-/* Larger than Desktop HD */
-:root {
-  --max-width: 750px;
-  --black: #111;
-  --yellow: #fcb900;
 }
 
 .container--fluid {
@@ -784,7 +777,7 @@ header .container .nav__links > li::after {
   position: absolute;
   bottom: -2px;
   left: 0;
-  background-color: #fcb900;
+  background-color: #33c3f0;
   transition: 200ms all ease-out;
 }
 header .container .nav__links > li ul {
@@ -804,7 +797,7 @@ header .container .nav__links > li ul li a {
   background-color: #111;
 }
 header .container .nav__links > li ul li a:hover {
-  color: #fcb900;
+  color: #33c3f0;
 }
 header .container .nav__links > li ul li:first-of-type a {
   padding-top: 20px;
@@ -845,7 +838,7 @@ header .container .nav__actions li a svg * {
   transition: all 200ms;
 }
 header .container .nav__actions li:hover a svg * {
-  fill: #fcb900;
+  fill: #33c3f0;
 }
 header .container .nav__links, header .container .nav__actions {
   margin: 0 0 0 auto;
@@ -858,7 +851,7 @@ header .container .nav__links > li a, header .container .nav__actions > li a {
 }
 header .container .nav__mobile-menu-btn {
   width: 20px;
-  height: 20px;
+  height: 15px;
   margin-left: 40px;
   position: relative;
   cursor: pointer;
@@ -887,12 +880,12 @@ header .container .nav__mobile-menu-btn-bar:last-of-type {
   bottom: 0;
 }
 header .container .nav__mobile-menu-btn:hover .nav__mobile-menu-btn-bar {
-  background-color: #fcb900;
+  background-color: #33c3f0;
 }
 
 body.mobile-menu-active .nav__mobile-menu-btn-bar:first-of-type, body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type {
   top: 50%;
-  background-color: #fcb900;
+  background-color: #33c3f0;
   transform-origin: center center;
 }
 body.mobile-menu-active .nav__mobile-menu-btn-bar:first-of-type + div, body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type + div {
@@ -949,6 +942,8 @@ body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type {
 
 .feather-banner {
   width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
   position: relative;
 }
 .feather-banner__overlay {
