@@ -61,31 +61,5 @@
 				}
 			}
 		}
-
-		.nav__mobile-menu-btn {
-			width: 20px;
-			height: 20px;
-			position: absolute;
-			top: 30px;
-			right: 20px;
-			z-index: 2;
-			cursor: pointer;
-
-			.icon {
-				* {
-					fill: $black;
-					transition: 200ms all ease-out;
-				}
-			}
-
-			&:hover {
-				.icon {
-					* {
-						fill: $yellow;
-						transition: 200ms all ease-in;
-					}
-				}
-			}
-		}
 	}
 }

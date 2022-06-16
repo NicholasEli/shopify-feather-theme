@@ -1,4 +1,4 @@
-<div id="mobile-menu">
+<div id="mobile-menu" data-el="mobile-menu">
 	<nav class="nav">
 		<ul class="nav__links">
 			{%- for link in linklists.main-menu.links -%}
@@ -37,8 +37,5 @@
           </li>
         {%- endif -%}
 		</ul>
-		<a class="nav__mobile-menu-btn">
-			{% render 'icon-close' %}
-		</a>
 	</nav>
 </div>
