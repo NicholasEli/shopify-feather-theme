@@ -2,7 +2,12 @@
 	<h2>{{ section.settings.text }}</h2>
 	<div class="feather-banner__overlay"></div>
 	{%- if section.settings.image -%}
-		<img alt="{{ page_title }}" src="{{ section.settings.image | img_url: '1200x800' }}"/>		
+		<picture alt="{{ page_title }}">
+	    <source media="(max-width: 768px)" srcset="{{ section.settings.image | img_url: '600x853' }}"/>
+	    <source media="(min-width: 768px)" srcset="{{ section.settings.image | img_url: '768x521' }}"/>
+	    <source media="(min-width: 2400px)" srcset="{{ section.settings.image | img_url: '1200x800' }}"/>
+	    <img alt="{{ page_title }}" src="{{ section.settings.image | img_url: '1200x800' }}"/>
+	  </picture>	
   {%- else -%}
   	<picture alt="{{ page_title }}">
 	    <source media="(max-width: 768px)" srcset="{{ 'feather-banner-bg-600-853.jpg' | asset_img_url: '600x853' }}"/>
