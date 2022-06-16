@@ -4,13 +4,15 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/Screen_Shot_2022-06-15_at_3.15.19_PM.png"
+          "logo": "shopify:\/\/shop_images\/Screen_Shot_2022-06-15_at_3.15.19_PM.png",
+          "logo_width": 100
         }
       },
       "banner": {
         "type": "banner",
         "settings": {
-          "text": "Shop Style"
+          "text": "Shop Style",
+          "image": "shopify:\/\/shop_images\/image_1.jpg"
         }
       },
       "footer": {
