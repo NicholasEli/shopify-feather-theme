@@ -735,7 +735,7 @@ header .container .nav__logo a {
   text-decoration: none;
   letter-spacing: 1px;
   font-size: 24px;
-  color: #000;
+  color: #111;
 }
 header .container .nav ul {
   z-index: 2;
@@ -789,12 +789,12 @@ header .container .nav__links > li ul {
   opacity: 0;
   pointer-events: none;
   transition: all 200ms ease-out;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 header .container .nav__links > li ul li a {
   display: block;
-  padding: 10px;
+  padding: 15px;
   color: #fff;
-  background-color: #111;
 }
 header .container .nav__links > li ul li a:hover {
   color: #33c3f0;
@@ -834,7 +834,7 @@ header .container .nav__actions li a svg {
   height: 20px;
 }
 header .container .nav__actions li a svg * {
-  fill: #000;
+  fill: #111;
   transition: all 200ms;
 }
 header .container .nav__actions li:hover a svg * {
@@ -847,7 +847,7 @@ header .container .nav__links > li + li, header .container .nav__actions > li + 
   margin-left: 20px;
 }
 header .container .nav__links > li a, header .container .nav__actions > li a {
-  color: #000;
+  color: #111;
 }
 header .container .nav__mobile-menu-btn {
   width: 20px;
@@ -866,7 +866,7 @@ header .container .nav__mobile-menu-btn-bar {
   height: 2px;
   position: absolute;
   left: 0;
-  background-color: #000;
+  background-color: #111;
   transition: all 200ms;
 }
 header .container .nav__mobile-menu-btn-bar:first-of-type {
@@ -917,7 +917,7 @@ body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type {
 }
 #mobile-menu .nav ul li a {
   text-decoration: none;
-  color: #000;
+  color: #111;
   font-size: 24px;
   font-weight: 600;
   letter-spacing: 1px;

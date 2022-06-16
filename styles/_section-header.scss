@@ -13,7 +13,7 @@ header {
 					text-decoration: none;
 					letter-spacing: 1px;
 					font-size: 24px;
-					color: #000;
+					color: $black;
 				}
 			}
 
@@ -72,13 +72,13 @@ header {
 						opacity: 0;
 						pointer-events: none;
 						transition: all 200ms ease-out;
+						background-color: rgba(0, 0, 0, 0.9);
 
 						li {
 							a {
 								display: block;
-								padding: 10px;
+								padding: 15px;
 								color: #fff;
-								background-color: $black;
 
 								&:hover {
 									color: $blue;
@@ -140,7 +140,7 @@ header {
 							height: $padding;
 
 							* {
-								fill: #000;
+								fill: $black;
 								transition: all 200ms;
 							}
 						}
@@ -166,7 +166,7 @@ header {
 					}
 
 					a {
-						color: #000;
+						color: $black;
 					}
 				}
 			}
@@ -187,7 +187,7 @@ header {
 					height: 2px;
 					position: absolute;
 					left: 0;
-					background-color: #000;
+					background-color: $black;
 					transition: all 200ms;
 
 					&:first-of-type {
