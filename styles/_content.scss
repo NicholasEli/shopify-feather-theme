@@ -1,0 +1,14 @@
+.feather-page-content {
+	.container {
+		padding-top: $padding * 3;
+		padding-bottom: $padding * 3;
+	}
+	&__title {
+		margin-top: 0;
+		margin-bottom: 2rem;
+		font-weight: 300;
+		font-size: 4rem;
+		line-height: 1.2;
+		letter-spacing: -0.1rem;
+	}
+}

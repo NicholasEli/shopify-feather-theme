@@ -8,6 +8,8 @@
 @import '_section-mobile-menu.scss';
 @import '_section-banner.scss';
 
+@import '_content.scss';
+
 * {
 	box-sizing: border-box;
 }
@@ -29,5 +31,15 @@ body {
 
 	main {
 		width: 100%;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p {
+		color: $black;
 	}
 }

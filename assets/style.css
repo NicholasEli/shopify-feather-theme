@@ -998,6 +998,19 @@ body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type {
   display: block;
 }
 
+.feather-page-content .container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.feather-page-content__title {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 4rem;
+  line-height: 1.2;
+  letter-spacing: -0.1rem;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -1017,6 +1030,15 @@ body.mobile-menu-active #mobile-menu {
 }
 body main {
   width: 100%;
+}
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body p {
+  color: #111;
 }
 
 /*# sourceMappingURL=style.css.map */
