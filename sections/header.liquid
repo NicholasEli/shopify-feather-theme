@@ -14,9 +14,15 @@
 		</div>
 		<ul class="nav__links">
 			{%- for link in linklists.main-menu.links -%}
-				<li class="nav__item {% if link.current %}nav__item--active{% endif %}">
-					<a href="{{ link.url }}">{{ link.title }}</a>
+				<li
+					class="
+					nav__item 
+					{% if link.links.size > 0 %} nav__item-dropdown {% endif %}
+					{% if link.current %}nav__item--active{% endif %} 
+					"
+				>
 					{% if link.links.size > 0 %}
+						<span>{{ link.title }}</span>
 						<ul>
 							{%- for child_link in link.links -%}
 								<li>
@@ -33,6 +39,8 @@
 								</li>
 							{%- endfor -%}
 						</ul>
+					{%- else -%}
+						<a href="{{ link.url }}">{{ link.title }}</a>
 					{%- endif -%}		
 				</li>
 			{%- endfor -%}

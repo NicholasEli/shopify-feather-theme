@@ -756,7 +756,8 @@ header .container .nav ul li {
   margin: 0;
   list-style: none;
 }
-header .container .nav ul li a {
+header .container .nav ul li a,
+header .container .nav ul li span {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 14px;
@@ -1050,11 +1051,11 @@ footer .footer__right {
   order: 3;
 }
 
-.feather-page-content .container {
+.feather-content .container {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-.feather-page-content__title {
+.feather-content__title {
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: 300;
