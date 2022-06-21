@@ -40,6 +40,14 @@ header {
 					}
 				}
 
+				span {
+					svg {
+						width: 10px;
+						display: inline-block;
+						vertical-align: middle;
+					}
+				}
+
 				& + ul {
 					margin-left: auto;
 

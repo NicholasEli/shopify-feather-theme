@@ -763,6 +763,11 @@ header .container .nav ul li span {
   font-size: 14px;
   letter-spacing: 1px;
 }
+header .container .nav ul span svg {
+  width: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
 header .container .nav ul + ul {
   margin-left: auto;
 }

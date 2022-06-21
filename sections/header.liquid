@@ -22,7 +22,7 @@
 					"
 				>
 					{% if link.links.size > 0 %}
-						<span>{{ link.title }}</span>
+						<span>{{ link.title }} {% render 'icon-caret' %}</span>
 						<ul>
 							{%- for child_link in link.links -%}
 								<li>
