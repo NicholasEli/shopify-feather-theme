@@ -1,3 +1,19 @@
 <footer>
-	<div class="container">Footer</div>
-</footer>
+	<div class="container container--padded">
+		<div class="footer__left">
+			<nav>
+				<ul class="nav__links">
+					{%- for link in linklists.main-menu.links -%}
+						<li class="nav__item {% if link.current %}nav__item--active{% endif %}">
+							<a href="{{ link.url }}">{{ link.title }}</a>	
+						</li>
+					{%- endfor -%}
+				</ul>
+			</nav>
+		</div>
+		<div class="footer__center">
+			<h6>{{ shop.name }}</h6>
+		</div>
+		<div class="footer__bottom"></div>
+	</div>
+<footer>

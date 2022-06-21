@@ -1,27 +1,27 @@
-<div class="feather-banner">
-	<h2>{{ section.settings.text }}</h2>
-	<div class="feather-banner__overlay"></div>
-	{%- if section.settings.image -%}
-		<picture alt="{{ page_title }}">
-	    <source media="(max-width: 768px)" srcset="{{ section.settings.image | img_url: '600x853' }}"/>
-	    <source media="(min-width: 768px)" srcset="{{ section.settings.image | img_url: '768x521' }}"/>
-	    <source media="(min-width: 2400px)" srcset="{{ section.settings.image | img_url: '1200x800' }}"/>
-	    <img alt="{{ page_title }}" src="{{ section.settings.image | img_url: '1200x800' }}"/>
-	  </picture>	
-  {%- else -%}
-  	<picture alt="{{ page_title }}">
-	    <source media="(max-width: 768px)" srcset="{{ 'feather-banner-bg-600-853.jpg' | asset_img_url: '600x853' }}"/>
-	    <source media="(min-width: 768px)" srcset="{{ 'feather-banner-bg-768-512.jpg' | asset_img_url: '768x521' }}"/>
-	    <source media="(min-width: 2400px)" srcset="{{ 'feather-banner-bg-1200-800.jpg' | asset_img_url: '1200x800' }}"/>
-	    <img alt="{{ page_title }}" src="{{ 'feather-banner-bg-1200-800.jpg' | asset_img_url: '1200x800' }}"/>
-	  </picture>
-	{%- endif -%}
-</div>
+<h2>{{ section.settings.text }}</h2>
+<div class="feather-banner__overlay"></div>
+{%- if section.settings.image -%}
+	<picture alt="{{ page_title }}">
+    <source media="(max-width: 768px)" srcset="{{ section.settings.image | img_url: '600x853' }}"/>
+    <source media="(min-width: 768px)" srcset="{{ section.settings.image | img_url: '768x521' }}"/>
+    <source media="(min-width: 2400px)" srcset="{{ section.settings.image | img_url: '1200x800' }}"/>
+    <img alt="{{ page_title }}" src="{{ section.settings.image | img_url: '1200x800' }}"/>
+  </picture>	
+{%- else -%}
+	<picture alt="{{ page_title }}">
+    <source media="(max-width: 768px)" srcset="{{ 'feather-banner-bg-600-853.jpg' | asset_img_url: '600x853' }}"/>
+    <source media="(min-width: 768px)" srcset="{{ 'feather-banner-bg-768-512.jpg' | asset_img_url: '768x521' }}"/>
+    <source media="(min-width: 2400px)" srcset="{{ 'feather-banner-bg-1200-800.jpg' | asset_img_url: '1200x800' }}"/>
+    <img alt="{{ page_title }}" src="{{ 'feather-banner-bg-1200-800.jpg' | asset_img_url: '1200x800' }}"/>
+  </picture>
+{%- endif -%}
+
 
 {% schema %}
 	{
 		"name": "Banner",
-		"class": "section__banner",
+		"class": "feather-banner",
+		"tag": "section",
 		"settings": [
 			{
 				"id": "text",
