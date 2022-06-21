@@ -13,52 +13,53 @@
 
 	.nav {
 		ul {
+			margin: 0;
+
 			li {
 				margin: 0;
 				list-style: none;
 
-				a {
+				a,
+				span {
+					color: #000;
 					text-decoration: none;
-					color: $black;
-					font-size: 24px;
-					font-weight: 600;
+					text-transform: uppercase;
+					font-size: 14px;
 					letter-spacing: 1px;
 				}
 
-				ul {
-					li {
-						a {
-							font-size: 16px;
-						}
-					}
-				}
-
-				&.nav__item-account,
-				&.nav__item-cart {
-					a {
-						svg {
-							width: $padding;
-							height: auto;
-							display: inline-block;
-
-							* {
-								transition: all 200ms;
-							}
-						}
-					}
-
+				a {
 					&:hover {
-						svg {
-							* {
-								fill: $yellow;
-							}
-						}
-
-						&::after {
-							width: 0%;
-						}
+						color: $blue;
 					}
 				}
+			}
+
+			span {
+				svg {
+					width: 10px;
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+
+			& + ul {
+				margin-top: calc($padding * 2);
+			}
+		}
+
+		&__links {
+			> .nav__item + .nav__item,
+			> .nav__item + .nav__item-dropdown,
+			> .nav__item-dropdown + .nav__item,
+			> .nav__item-dropdown + .nav__item-dropdown {
+				margin-top: 20px;
+			}
+		}
+
+		&__item-dropdown {
+			span {
+				font-weight: bold;
 			}
 		}
 	}

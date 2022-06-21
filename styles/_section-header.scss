@@ -64,75 +64,73 @@ header {
 				@media (min-width: #{$md} ) {
 					display: flex;
 				}
+			}
 
-				.nav {
-					&__item,
-					&__item-dropdown {
-						position: relative;
+			&__item,
+			&__item-dropdown {
+				position: relative;
 
-						&::after {
-							content: '';
-							width: 0%;
-							height: 2px;
-							position: absolute;
-							bottom: -2px;
-							left: 0;
-							background-color: $blue;
-							transition: 200ms all ease-out;
-						}
+				&::after {
+					content: '';
+					width: 0%;
+					height: 2px;
+					position: absolute;
+					bottom: -2px;
+					left: 0;
+					background-color: $blue;
+					transition: 200ms all ease-out;
+				}
 
-						&:hover {
-							&::after {
-								width: 100%;
-								transition: 200ms all ease-in;
-							}
-
-							.nav__child {
-								transform: translate(-50%, 0px);
-								opacity: 1;
-								pointer-events: all;
-								transition: all 200ms ease-in;
-							}
-						}
+				&:hover {
+					&::after {
+						width: 100%;
+						transition: 200ms all ease-in;
 					}
 
-					&__child,
-					&__grandchild {
-						margin: 0;
-
-						li {
-							width: auto;
-						}
-
-						a {
-							width: 100%;
-							display: block;
-							padding: 15px;
-							color: #fff;
-
-							&:hover {
-								color: $blue;
-							}
-						}
-					}
-
-					&__child {
-						position: absolute;
-						top: 100%;
-						left: 50%;
-						transform: translate(-50%, -10px);
-						padding-top: 20px;
-						padding-bottom: 20px;
-						opacity: 0;
-						transition: all 200ms ease-out;
-						pointer-events: none;
-						background-color: rgba(0, 0, 0, 0.9);
-					}
-
-					&__grandchild {
-						width: max-content;
+					.nav__child {
+						transform: translate(-50%, 0px);
+						opacity: 1;
+						pointer-events: all;
+						transition: all 200ms ease-in;
 					}
 				}
+			}
+
+			&__child,
+			&__grandchild {
+				margin: 0;
+
+				li {
+					width: auto;
+				}
+
+				a {
+					width: 100%;
+					display: block;
+					padding: 15px;
+					color: #fff;
+
+					&:hover {
+						color: $blue;
+					}
+				}
+			}
+
+			&__child {
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				transform: translate(-50%, -10px);
+				padding-top: 20px;
+				padding-bottom: 20px;
+				opacity: 0;
+				transition: all 200ms ease-out;
+				pointer-events: none;
+				background-color: rgba(0, 0, 0, 0.9);
+			}
+
+			&__grandchild {
+				width: max-content;
 			}
 
 			&__actions {

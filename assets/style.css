@@ -785,10 +785,10 @@ header .container .nav__links {
     display: flex;
   }
 }
-header .container .nav__links .nav__item, header .container .nav__links .nav__item-dropdown {
+header .container .nav__item, header .container .nav__item-dropdown {
   position: relative;
 }
-header .container .nav__links .nav__item::after, header .container .nav__links .nav__item-dropdown::after {
+header .container .nav__item::after, header .container .nav__item-dropdown::after {
   content: "";
   width: 0%;
   height: 2px;
@@ -798,32 +798,32 @@ header .container .nav__links .nav__item::after, header .container .nav__links .
   background-color: #33c3f0;
   transition: 200ms all ease-out;
 }
-header .container .nav__links .nav__item:hover::after, header .container .nav__links .nav__item-dropdown:hover::after {
+header .container .nav__item:hover::after, header .container .nav__item-dropdown:hover::after {
   width: 100%;
   transition: 200ms all ease-in;
 }
-header .container .nav__links .nav__item:hover .nav__child, header .container .nav__links .nav__item-dropdown:hover .nav__child {
+header .container .nav__item:hover .nav__child, header .container .nav__item-dropdown:hover .nav__child {
   transform: translate(-50%, 0px);
   opacity: 1;
   pointer-events: all;
   transition: all 200ms ease-in;
 }
-header .container .nav__links .nav__child, header .container .nav__links .nav__grandchild {
+header .container .nav__child, header .container .nav__grandchild {
   margin: 0;
 }
-header .container .nav__links .nav__child li, header .container .nav__links .nav__grandchild li {
+header .container .nav__child li, header .container .nav__grandchild li {
   width: auto;
 }
-header .container .nav__links .nav__child a, header .container .nav__links .nav__grandchild a {
+header .container .nav__child a, header .container .nav__grandchild a {
   width: 100%;
   display: block;
   padding: 15px;
   color: #fff;
 }
-header .container .nav__links .nav__child a:hover, header .container .nav__links .nav__grandchild a:hover {
+header .container .nav__child a:hover, header .container .nav__grandchild a:hover {
   color: #33c3f0;
 }
-header .container .nav__links .nav__child {
+header .container .nav__child {
   position: absolute;
   top: 100%;
   left: 50%;
@@ -835,7 +835,7 @@ header .container .nav__links .nav__child {
   pointer-events: none;
   background-color: rgba(0, 0, 0, 0.9);
 }
-header .container .nav__links .nav__grandchild {
+header .container .nav__grandchild {
   width: max-content;
 }
 header .container .nav__actions {
@@ -932,33 +932,40 @@ body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type {
   transition: 200ms opacity ease-out;
   z-index: 10;
 }
+#mobile-menu .nav ul {
+  margin: 0;
+}
 #mobile-menu .nav ul li {
   margin: 0;
   list-style: none;
 }
-#mobile-menu .nav ul li a {
+#mobile-menu .nav ul li a,
+#mobile-menu .nav ul li span {
+  color: #000;
   text-decoration: none;
-  color: #111;
-  font-size: 24px;
-  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
   letter-spacing: 1px;
 }
-#mobile-menu .nav ul li ul li a {
-  font-size: 16px;
+#mobile-menu .nav ul li a:hover {
+  color: #33c3f0;
 }
-#mobile-menu .nav ul li.nav__item-account a svg, #mobile-menu .nav ul li.nav__item-cart a svg {
-  width: 20px;
-  height: auto;
+#mobile-menu .nav ul span svg {
+  width: 10px;
   display: inline-block;
+  vertical-align: middle;
 }
-#mobile-menu .nav ul li.nav__item-account a svg *, #mobile-menu .nav ul li.nav__item-cart a svg * {
-  transition: all 200ms;
+#mobile-menu .nav ul + ul {
+  margin-top: 40px;
 }
-#mobile-menu .nav ul li.nav__item-account:hover svg *, #mobile-menu .nav ul li.nav__item-cart:hover svg * {
-  fill: #fcb900;
+#mobile-menu .nav__links > .nav__item + .nav__item,
+#mobile-menu .nav__links > .nav__item + .nav__item-dropdown,
+#mobile-menu .nav__links > .nav__item-dropdown + .nav__item,
+#mobile-menu .nav__links > .nav__item-dropdown + .nav__item-dropdown {
+  margin-top: 20px;
 }
-#mobile-menu .nav ul li.nav__item-account:hover::after, #mobile-menu .nav ul li.nav__item-cart:hover::after {
-  width: 0%;
+#mobile-menu .nav__item-dropdown span {
+  font-weight: bold;
 }
 
 .feather-banner {
