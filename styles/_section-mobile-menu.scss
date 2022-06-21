@@ -12,54 +12,46 @@
 	z-index: 10;
 
 	.nav {
-		ul {
+		&__links {
+			margin: 0;
+			list-style: none;
+
+			& + .nav__links {
+				margin-top: 20px;
+				padding-top: 20px;
+				border-top: 1px solid $black;
+			}
+		}
+
+		&__item {
 			margin: 0;
 
-			li {
-				margin: 0;
-				list-style: none;
-
-				a,
-				span {
-					color: #000;
-					text-decoration: none;
-					text-transform: uppercase;
-					font-size: 14px;
-					letter-spacing: 1px;
-				}
-
-				a {
-					&:hover {
-						color: $blue;
-					}
-				}
+			& + .nav__item {
+				margin-top: 10px;
 			}
 
+			a,
 			span {
-				svg {
-					width: 10px;
-					display: inline-block;
-					vertical-align: middle;
-				}
+				color: $black;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-size: 14px;
+				letter-spacing: 1px;
 			}
 
-			& + ul {
-				margin-top: calc($padding * 2);
+			a {
+				transition: all 200ms;
 			}
-		}
 
-		&__links {
-			> .nav__item + .nav__item,
-			> .nav__item + .nav__item-dropdown,
-			> .nav__item-dropdown + .nav__item,
-			> .nav__item-dropdown + .nav__item-dropdown {
-				margin-top: 20px;
-			}
-		}
-
-		&__item-dropdown {
 			span {
 				font-weight: bold;
+			}
+
+			&--active,
+			&:hover {
+				a {
+					color: $blue;
+				}
 			}
 		}
 	}

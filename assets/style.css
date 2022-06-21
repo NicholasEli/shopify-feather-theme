@@ -766,13 +766,14 @@ header .container .nav ul li span {
 header .container .nav ul span svg {
   width: 10px;
   display: inline-block;
+  margin-left: 5px;
   vertical-align: middle;
 }
-header .container .nav ul + ul {
+header .container .nav > ul + ul {
   margin-left: auto;
 }
 @media (min-width: 750px) {
-  header .container .nav ul + ul {
+  header .container .nav > ul + ul {
     margin-left: 40px;
   }
 }
@@ -785,10 +786,10 @@ header .container .nav__links {
     display: flex;
   }
 }
-header .container .nav__item, header .container .nav__item-dropdown {
+header .container .nav__item {
   position: relative;
 }
-header .container .nav__item::after, header .container .nav__item-dropdown::after {
+header .container .nav__item::after {
   content: "";
   width: 0%;
   height: 2px;
@@ -798,45 +799,62 @@ header .container .nav__item::after, header .container .nav__item-dropdown::afte
   background-color: #33c3f0;
   transition: 200ms all ease-out;
 }
-header .container .nav__item:hover::after, header .container .nav__item-dropdown:hover::after {
+header .container .nav__item--active::after, header .container .nav__item:hover::after {
   width: 100%;
   transition: 200ms all ease-in;
 }
-header .container .nav__item:hover .nav__child, header .container .nav__item-dropdown:hover .nav__child {
+header .container .nav__item:hover .nav__dropdown {
   transform: translate(-50%, 0px);
   opacity: 1;
   pointer-events: all;
   transition: all 200ms ease-in;
 }
-header .container .nav__child, header .container .nav__grandchild {
-  margin: 0;
+header .container .nav__item a {
+  color: #111;
 }
-header .container .nav__child li, header .container .nav__grandchild li {
-  width: auto;
-}
-header .container .nav__child a, header .container .nav__grandchild a {
-  width: 100%;
-  display: block;
-  padding: 15px;
-  color: #fff;
-}
-header .container .nav__child a:hover, header .container .nav__grandchild a:hover {
-  color: #33c3f0;
-}
-header .container .nav__child {
+header .container .nav__dropdown {
+  width: max-content;
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translate(-50%, -10px);
-  padding-top: 20px;
-  padding-bottom: 20px;
+  margin: 0;
   opacity: 0;
   transition: all 200ms ease-out;
   pointer-events: none;
   background-color: rgba(0, 0, 0, 0.9);
 }
-header .container .nav__grandchild {
-  width: max-content;
+header .container .nav__dropdown ul {
+  margin: 0;
+}
+header .container .nav__dropdown ul + ul {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #fff;
+}
+header .container .nav__dropdown ul:first-of-type li:first-of-type a {
+  padding-top: 20px;
+}
+header .container .nav__dropdown ul:last-of-type li:last-of-type a {
+  padding-bottom: 20px;
+}
+header .container .nav__dropdown ul:empty {
+  display: none;
+}
+header .container .nav__dropdown li {
+  width: auto;
+}
+header .container .nav__dropdown li::after {
+  content: none;
+}
+header .container .nav__dropdown a {
+  width: 100%;
+  display: block;
+  padding: 15px;
+  color: #fff;
+}
+header .container .nav__dropdown a:hover {
+  color: #33c3f0;
 }
 header .container .nav__actions {
   display: flex;
@@ -849,6 +867,7 @@ header .container .nav__actions a {
 header .container .nav__actions li a {
   display: inline-block;
   cursor: pointer;
+  color: #111;
 }
 header .container .nav__actions li a svg {
   width: auto;
@@ -866,9 +885,6 @@ header .container .nav__links, header .container .nav__actions {
 }
 header .container .nav__links > li + li, header .container .nav__actions > li + li {
   margin-left: 20px;
-}
-header .container .nav__links > li a, header .container .nav__actions > li a {
-  color: #111;
 }
 header .container .nav__mobile-menu-btn {
   width: 20px;
@@ -932,40 +948,37 @@ body.mobile-menu-active .nav__mobile-menu-btn-bar:last-of-type {
   transition: 200ms opacity ease-out;
   z-index: 10;
 }
-#mobile-menu .nav ul {
-  margin: 0;
-}
-#mobile-menu .nav ul li {
+#mobile-menu .nav__links {
   margin: 0;
   list-style: none;
 }
-#mobile-menu .nav ul li a,
-#mobile-menu .nav ul li span {
-  color: #000;
+#mobile-menu .nav__links + .nav__links {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #111;
+}
+#mobile-menu .nav__item {
+  margin: 0;
+}
+#mobile-menu .nav__item + .nav__item {
+  margin-top: 10px;
+}
+#mobile-menu .nav__item a,
+#mobile-menu .nav__item span {
+  color: #111;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 1px;
 }
-#mobile-menu .nav ul li a:hover {
-  color: #33c3f0;
+#mobile-menu .nav__item a {
+  transition: all 200ms;
 }
-#mobile-menu .nav ul span svg {
-  width: 10px;
-  display: inline-block;
-  vertical-align: middle;
-}
-#mobile-menu .nav ul + ul {
-  margin-top: 40px;
-}
-#mobile-menu .nav__links > .nav__item + .nav__item,
-#mobile-menu .nav__links > .nav__item + .nav__item-dropdown,
-#mobile-menu .nav__links > .nav__item-dropdown + .nav__item,
-#mobile-menu .nav__links > .nav__item-dropdown + .nav__item-dropdown {
-  margin-top: 20px;
-}
-#mobile-menu .nav__item-dropdown span {
+#mobile-menu .nav__item span {
   font-weight: bold;
+}
+#mobile-menu .nav__item--active a, #mobile-menu .nav__item:hover a {
+  color: #33c3f0;
 }
 
 .feather-banner {

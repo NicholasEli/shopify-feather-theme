@@ -14,30 +14,33 @@
 		</div>
 		<ul class="nav__links">
 			{%- for link in linklists.main-menu.links -%}
-				<li
-					class="{% if link.links.size > 0 %}nav__item-dropdown{% else %}nav__item{% endif %} {% if link.current %}nav__item--active{% endif %}"
-				>
-					{% if link.links.size > 0 %}
-						<span>{{ link.title }} {% render 'icon-caret' %}</span>
-						<ul class="nav__child">
+				<li class="nav__item {% if link.current %}nav__item--active{% endif %}">
+					<a href="{{ link.url }}">{{ link.title }}</a>
+					<ul class="nav__dropdown">
+						{% comment %}Child Row{% endcomment %}
+						<ul>
 							{%- for child_link in link.links -%}
-								<li class="nav__child-item">
+								<li class="nav__item">
 									<a href="{{ child_link.url }}">{{ child_link.title }}</a>
-										{% if child_link.links.size > 0 %}
-											<ul class="nav__grandchild">
-												{%- for grandchild_link in child_link.links -%}
-													<li class="nav__grandchild-item">
-														<a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
-													</li>
-												{%- endfor -%}
-											</ul>
-										{%- endif -%}
 								</li>
 							{%- endfor -%}
 						</ul>
-					{%- else -%}
-						<a href="{{ link.url }}">{{ link.title }}</a>
-					{%- endif -%}		
+						{% comment %}End Child Row{% endcomment %}
+
+						{% comment %}Grand Child Row{% endcomment %}
+							{%- for child_link in link.links -%}
+								<ul>
+									{%- for child_link in link.links -%}
+										{%- for grandchild_link in child_link.links -%}
+											<li class="nav__item">
+												<a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+											</li>
+										{%- endfor -%}
+									{%- endfor -%}
+								</ul>
+							{%- endfor -%}
+						{% comment %}Grand Child Row{% endcomment %}
+					</ul>	
 				</li>
 			{%- endfor -%}
 		</ul>

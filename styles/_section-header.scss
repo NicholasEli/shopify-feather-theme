@@ -44,10 +44,13 @@ header {
 					svg {
 						width: 10px;
 						display: inline-block;
+						margin-left: 5px;
 						vertical-align: middle;
 					}
 				}
+			}
 
+			> ul {
 				& + ul {
 					margin-left: auto;
 
@@ -64,10 +67,12 @@ header {
 				@media (min-width: #{$md} ) {
 					display: flex;
 				}
+
+				> .nav__item {
+				}
 			}
 
-			&__item,
-			&__item-dropdown {
+			&__item {
 				position: relative;
 
 				&::after {
@@ -81,27 +86,68 @@ header {
 					transition: 200ms all ease-out;
 				}
 
+				&--active,
 				&:hover {
 					&::after {
 						width: 100%;
 						transition: 200ms all ease-in;
 					}
+				}
 
-					.nav__child {
+				&:hover {
+					.nav__dropdown {
 						transform: translate(-50%, 0px);
 						opacity: 1;
 						pointer-events: all;
 						transition: all 200ms ease-in;
 					}
 				}
+
+				a {
+					color: $black;
+				}
 			}
 
-			&__child,
-			&__grandchild {
+			&__dropdown {
+				width: max-content;
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				transform: translate(-50%, -10px);
 				margin: 0;
+				opacity: 0;
+				transition: all 200ms ease-out;
+				pointer-events: none;
+				background-color: rgba(0, 0, 0, 0.9);
+
+				ul {
+					margin: 0;
+
+					& + ul {
+						margin-top: 10px;
+						padding-top: 10px;
+						border-top: 1px solid #fff;
+					}
+
+					&:first-of-type li:first-of-type a {
+						padding-top: 20px;
+					}
+
+					&:last-of-type li:last-of-type a {
+						padding-bottom: 20px;
+					}
+
+					&:empty {
+						display: none;
+					}
+				}
 
 				li {
 					width: auto;
+
+					&::after {
+						content: none;
+					}
 				}
 
 				a {
@@ -114,23 +160,6 @@ header {
 						color: $blue;
 					}
 				}
-			}
-
-			&__child {
-				position: absolute;
-				top: 100%;
-				left: 50%;
-				transform: translate(-50%, -10px);
-				padding-top: 20px;
-				padding-bottom: 20px;
-				opacity: 0;
-				transition: all 200ms ease-out;
-				pointer-events: none;
-				background-color: rgba(0, 0, 0, 0.9);
-			}
-
-			&__grandchild {
-				width: max-content;
 			}
 
 			&__actions {
@@ -146,6 +175,7 @@ header {
 					a {
 						display: inline-block;
 						cursor: pointer;
+						color: $black;
 
 						svg {
 							width: auto;
@@ -175,10 +205,6 @@ header {
 				> li {
 					& + li {
 						margin-left: $padding;
-					}
-
-					a {
-						color: $black;
 					}
 				}
 			}
