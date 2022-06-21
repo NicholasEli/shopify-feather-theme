@@ -785,10 +785,10 @@ header .container .nav__links {
     display: flex;
   }
 }
-header .container .nav__links > li {
+header .container .nav__links .nav__item, header .container .nav__links .nav__item-dropdown {
   position: relative;
 }
-header .container .nav__links > li::after {
+header .container .nav__links .nav__item::after, header .container .nav__links .nav__item-dropdown::after {
   content: "";
   width: 0%;
   height: 2px;
@@ -798,43 +798,45 @@ header .container .nav__links > li::after {
   background-color: #33c3f0;
   transition: 200ms all ease-out;
 }
-header .container .nav__links > li ul {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -10px);
-  margin: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 200ms ease-out;
-  background-color: rgba(0, 0, 0, 0.9);
-}
-header .container .nav__links > li ul li a {
-  display: block;
-  padding: 15px;
-  color: #fff;
-}
-header .container .nav__links > li ul li a:hover {
-  color: #33c3f0;
-}
-header .container .nav__links > li ul li:first-of-type a {
-  padding-top: 20px;
-}
-header .container .nav__links > li ul li:last-of-type a {
-  padding-bottom: 20px;
-}
-header .container .nav__links > li:last-of-type ul {
-  left: calc(50% - 20px);
-}
-header .container .nav__links > li:hover::after {
+header .container .nav__links .nav__item:hover::after, header .container .nav__links .nav__item-dropdown:hover::after {
   width: 100%;
   transition: 200ms all ease-in;
 }
-header .container .nav__links > li:hover ul {
+header .container .nav__links .nav__item:hover .nav__child, header .container .nav__links .nav__item-dropdown:hover .nav__child {
   transform: translate(-50%, 0px);
   opacity: 1;
   pointer-events: all;
   transition: all 200ms ease-in;
+}
+header .container .nav__links .nav__child, header .container .nav__links .nav__grandchild {
+  margin: 0;
+}
+header .container .nav__links .nav__child li, header .container .nav__links .nav__grandchild li {
+  width: auto;
+}
+header .container .nav__links .nav__child a, header .container .nav__links .nav__grandchild a {
+  width: 100%;
+  display: block;
+  padding: 15px;
+  color: #fff;
+}
+header .container .nav__links .nav__child a:hover, header .container .nav__links .nav__grandchild a:hover {
+  color: #33c3f0;
+}
+header .container .nav__links .nav__child {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -10px);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  opacity: 0;
+  transition: all 200ms ease-out;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+header .container .nav__links .nav__grandchild {
+  width: max-content;
 }
 header .container .nav__actions {
   display: flex;
@@ -846,6 +848,7 @@ header .container .nav__actions a {
 }
 header .container .nav__actions li a {
   display: inline-block;
+  cursor: pointer;
 }
 header .container .nav__actions li a svg {
   width: auto;

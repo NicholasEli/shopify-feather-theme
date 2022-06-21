@@ -65,74 +65,72 @@ header {
 					display: flex;
 				}
 
-				> li {
-					position: relative;
+				.nav {
+					&__item,
+					&__item-dropdown {
+						position: relative;
 
-					&::after {
-						content: '';
-						width: 0%;
-						height: 2px;
-						position: absolute;
-						bottom: -2px;
-						left: 0;
-						background-color: $blue;
-						transition: 200ms all ease-out;
+						&::after {
+							content: '';
+							width: 0%;
+							height: 2px;
+							position: absolute;
+							bottom: -2px;
+							left: 0;
+							background-color: $blue;
+							transition: 200ms all ease-out;
+						}
+
+						&:hover {
+							&::after {
+								width: 100%;
+								transition: 200ms all ease-in;
+							}
+
+							.nav__child {
+								transform: translate(-50%, 0px);
+								opacity: 1;
+								pointer-events: all;
+								transition: all 200ms ease-in;
+							}
+						}
 					}
 
-					ul {
+					&__child,
+					&__grandchild {
+						margin: 0;
+
+						li {
+							width: auto;
+						}
+
+						a {
+							width: 100%;
+							display: block;
+							padding: 15px;
+							color: #fff;
+
+							&:hover {
+								color: $blue;
+							}
+						}
+					}
+
+					&__child {
 						position: absolute;
 						top: 100%;
 						left: 50%;
 						transform: translate(-50%, -10px);
-						margin: 0;
+						padding-top: 20px;
+						padding-bottom: 20px;
 						opacity: 0;
-						pointer-events: none;
 						transition: all 200ms ease-out;
+						pointer-events: none;
 						background-color: rgba(0, 0, 0, 0.9);
-
-						li {
-							a {
-								display: block;
-								padding: 15px;
-								color: #fff;
-
-								&:hover {
-									color: $blue;
-								}
-							}
-
-							&:first-of-type {
-								a {
-									padding-top: $padding;
-								}
-							}
-
-							&:last-of-type {
-								a {
-									padding-bottom: $padding;
-								}
-							}
-						}
 					}
 
-					&:last-of-type {
-						ul {
-							left: calc(50% - $padding);
-						}
-					}
-
-					&:hover {
-						&::after {
-							width: 100%;
-							transition: 200ms all ease-in;
-						}
-
-						ul {
-							transform: translate(-50%, 0px);
-							opacity: 1;
-							pointer-events: all;
-							transition: all 200ms ease-in;
-						}
+					&__grandchild {
+						width: max-content;
 					}
 				}
 			}
@@ -149,6 +147,7 @@ header {
 				li {
 					a {
 						display: inline-block;
+						cursor: pointer;
 
 						svg {
 							width: auto;
