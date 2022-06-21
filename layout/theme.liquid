@@ -42,9 +42,9 @@
     <main>
 
       {{ content_for_layout }}
-      
+
       {%- if page.content != blank %}
-        <section class="feather-page-content">
+        <section class="feather-content">
           <div class="container">
             <h1 class="feather-page-content__title">{{ page.title }}</h1>
             {{ page.content }}

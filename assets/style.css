@@ -820,11 +820,11 @@ header .container .nav__links > li ul li:last-of-type a {
 header .container .nav__links > li:last-of-type ul {
   left: calc(50% - 20px);
 }
-header .container .nav__links > li.nav__item--active::after, header .container .nav__links > li:hover::after {
+header .container .nav__links > li:hover::after {
   width: 100%;
   transition: 200ms all ease-in;
 }
-header .container .nav__links > li.nav__item--active ul, header .container .nav__links > li:hover ul {
+header .container .nav__links > li:hover ul {
   transform: translate(-50%, 0px);
   opacity: 1;
   pointer-events: all;
