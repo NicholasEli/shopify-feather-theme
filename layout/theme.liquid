@@ -31,17 +31,25 @@
 
     {% render 'meta-tags' %}
 
+    {% style %}
+      :root {
+        --feather-stroke: #e5e5e3;
+        --feather-black: #111111;
+        --feather-primary: #33c3f0;
+      }
+    {% endstyle %}
+
     {{ content_for_header }}
   </head>
 
   <body
     id="{{ page_title | handle }}"
-    class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', '-' | replace: '/', '-' }}"
+    class="{% if customer %}customer-logged-in {% endif %} feather-{{ template | replace: '.', '-' | replace: '/', '-' }}"
   >
     {% section 'header' %}
     <main>
 
-      {{ content_for_layout }}
+      {% comment %} {{ content_for_layout }}{% endcomment %} 
 
       {%- if page.content != blank %}
         <section class="feather-content">
@@ -52,8 +60,10 @@
         </section>
       {%- endif -%}
     </main>
+    {% comment%}
     {% section 'footer' %}
     {% section 'mobile-menu' %}
+    {% endcomment %}
     {{ 'script.js' | asset_url | script_tag }}
   </body>
 </html>

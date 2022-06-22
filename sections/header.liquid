@@ -1,96 +1,62 @@
-<div class="container container--fluid">
-	<nav class="nav">
-		<div id="logo" class="nav__logo">
-			<a  href="/">
-				{%- if section.settings.logo != blank -%}
-					<img
-						srcset="{{ section.settings.logo | image_url: width: section.settings.logo_width }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
-						alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
-					/>
-        {%- else -%}
-        	<span>{{ shop.name }}</span>
-        {%- endif -%}
-      </a>
-		</div>
-		<ul class="nav__links">
-			{%- for link in linklists.main-menu.links -%}
-				<li class="nav__item {% if link.current %}nav__item--active{% endif %}">
-					<a href="{{ link.url }}">{{ link.title }}</a>
-					<ul class="nav__dropdown">
-						{% comment %}Child Row{% endcomment %}
-						<ul>
-							{%- for child_link in link.links -%}
-								<li class="nav__item">
-									<a href="{{ child_link.url }}">{{ child_link.title }}</a>
-								</li>
-							{%- endfor -%}
-						</ul>
-						{% comment %}End Child Row{% endcomment %}
+{% comment %} TOP {% endcomment %}
+<div class="feather-header__top container container--md-padding row center-xs middle-xs start-md">
+	{% comment %} LOGO {% endcomment %}
+	<a class="feather-header__logo col-md-3" href="/">
+		{%- if section.settings.logo != blank -%}
+				<img
+					srcset="{{ section.settings.logo | image_url: width: section.settings.logo_width }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
+					alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+				/>
+    {%- else -%}
+      <span>{{ shop.name }}</span>
+    {%- endif -%}
+  </a>
 
-						{% comment %}Grand Child Row{% endcomment %}
-							{%- for child_link in link.links -%}
-								<ul>
-									{%- for child_link in link.links -%}
-										{%- for grandchild_link in child_link.links -%}
-											<li class="nav__item">
-												<a href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
-											</li>
-										{%- endfor -%}
-									{%- endfor -%}
-								</ul>
-							{%- endfor -%}
-						{% comment %}Grand Child Row{% endcomment %}
-					</ul>	
-				</li>
-			{%- endfor -%}
-		</ul>
-		<ul class="nav__actions">
-				<li class="nav__item">
-					<a>{% render 'icon-search' %}</a>
-				</li>
-			{%- if shop.customer_accounts_enabled -%}
-				<li class="nav__item">
-          <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
-            {% render 'icon-account' %}
-            {%- if customer -%}
-                {{ customer.account_fallback }}
-             {%- else -%}
-             	{{ customer.log_in }}
-             {%- endif -%}
-          </a>
-        </li>
-      {%- endif -%}
-      <li class="nav__item">
-      	<a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-	        {%- if cart == empty -%}
-	        	{% render 'icon-cart-empty' %}
-	        {%- else -%}
-	        	{% render 'icon-cart' %}
+	{% comment %} SEARCh  {% endcomment %}  
+	<div class="feather-header__search col-md-6"></div>
+
+  {% comment %} USER NAV - SHOPIFY ACTIONS  {% endcomment %}
+  <div class="feather-header__user-nav row end-xs middle-xs col-md-3">
+		<a class="feather-header__user-search">{% render 'icon-search' %}</a>
+		<a class="feather-header__user-account" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+	    {% render 'icon-account' %}
+	    {%- if customer -%}
+	        {{ customer.account_fallback }}
+	     {%- else -%}
+	     	{{ customer.log_in }}
+	     {%- endif -%}
+	  </a>
+	  <a class="feather-header__user-cart" href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+	    {%- if cart == empty -%}
+	    	{% render 'icon-cart-empty' %}
+	    {%- else -%}
+	    	{% render 'icon-cart' %}
+	    {%- endif -%}
+	    {%- if cart != empty -%}
+	      <div class="cart-count-bubble">
+	        {%- if cart.item_count < 100 -%}
+	          <span aria-hidden="true">{{ cart.item_count }}</span>
 	        {%- endif -%}
-	        {%- if cart != empty -%}
-	          <div class="cart-count-bubble">
-	            {%- if cart.item_count < 100 -%}
-	              <span aria-hidden="true">{{ cart.item_count }}</span>
-	            {%- endif -%}
-	            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-	          </div>
-	        {%- endif -%}
-	      </a>
-      </li>
-		</ul>
-		<a class="nav__mobile-menu-btn" data-btn="mobile-menu-btn">
-			<div class="nav__mobile-menu-btn-bar"></div>
-			<div class="nav__mobile-menu-btn-bar"></div>
-			<div class="nav__mobile-menu-btn-bar"></div>
-		</a>
-	</nav>
+	        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+	      </div>
+	    {%- endif -%}
+	  </a>
+	</div>
+</div>
+{% comment %} BOTTOM {% endcomment %}
+<div class="feather-header__bottom container container--padding">
+	<div class="feather-header__menu-btn">
+		<div class="feather-header__menu-bar"></div>
+		<div class="feather-header__menu-bar"></div>
+		<div class="feather-header__menu-bar"></div>
+	</div>
 </div>
 
 
 {% schema %}
 {
   "name": "Header",
-  "class": "section-header",
+  "class": "feather-header",
   "tag": "header",
   "settings": [
     {

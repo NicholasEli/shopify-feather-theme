@@ -1,17 +1,10 @@
 $xs: 400px;
 $sm: 550px;
 $md: 750px;
-$lg: 1000px;
-$xl: 1200px;
+$lg: 1200px;
 
-$padding: 20px;
+$padding: 16px;
 
-$black: #111;
-$yellow: #fcb900;
-$blue: #33c3f0;
-
-:root {
-	--max-width: #{$md};
-	--black: #{$black};
-	--yellow: #{$yellow};
-}
+$stroke: var(--feather-stroke);
+$black: var(--feather-black);
+$primary: var(--feather-primary);

@@ -5,6 +5,6 @@ if (Shopify.designMode) document.documentElement.classList.add('shopify-design-m
 
 window.onload = function () {
 	console.log('--Initializing Scripts');
-	MobileMenu();
+	//MobileMenu();
 	console.log('--Scripts Loaded');
 };

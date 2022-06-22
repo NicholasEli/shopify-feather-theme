@@ -1,277 +1,115 @@
-header {
+.feather-header {
 	width: 100%;
-	position: sticky;
-	top: 0;
-	left: 0;
-	z-index: 9;
-	background-color: #fff;
+	position: relative;
 
-	.container {
-		.nav {
-			width: 100%;
-			min-height: 80px;
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
-			flex-wrap: wrap;
+	/** TOP **/
+	&__top {
+		height: 50px;
+		border-bottom: 1px solid $stroke;
 
+		@media (min-width: #{$md}) {
+			height: 100px;
+		}
+
+		.feather-header {
+			/** LOGO **/
 			&__logo {
-				a {
-					text-decoration: none;
-					letter-spacing: 1px;
-					font-size: 24px;
-					color: $black;
-				}
-			}
+				img {
+					width: auto;
+					height: 40px;
+					max-height: 100%;
+					display: block;
 
-			ul {
-				z-index: 2;
-
-				li {
-					margin: 0;
-					list-style: none;
-
-					a,
-					span {
-						text-decoration: none;
-						text-transform: uppercase;
-						font-size: 14px;
-						letter-spacing: 1px;
-					}
-				}
-
-				span {
-					svg {
-						width: 10px;
-						display: inline-block;
-						margin-left: 5px;
-						vertical-align: middle;
+					@media (min-width: #{$md}) {
+						height: 50px;
 					}
 				}
 			}
 
-			> ul {
-				& + ul {
-					margin-left: auto;
-
-					@media (min-width: #{$md} ) {
-						margin-left: calc($padding * 2);
-					}
-				}
-			}
-
-			&__links {
-				position: relative;
+			/** SEARCh **/
+			&__search {
 				display: none;
+				height: 50px;
 
-				@media (min-width: #{$md} ) {
+				@media (min-width:#{$md}) {
 					display: flex;
 				}
-
-				> .nav__item {
-				}
 			}
 
-			&__item {
-				position: relative;
-
-				&::after {
-					content: '';
-					width: 0%;
-					height: 2px;
+			/** USER NAV - SHOPIFY ACTIONS **/
+			&__user-nav {
+				@media (max-width: #{$md}) {
 					position: absolute;
-					bottom: -2px;
-					left: 0;
-					background-color: $blue;
-					transition: 200ms all ease-out;
-				}
-
-				&--active,
-				&:hover {
-					&::after {
-						width: 100%;
-						transition: 200ms all ease-in;
-					}
-				}
-
-				&:hover {
-					.nav__dropdown {
-						transform: translate(-50%, 0px);
-						opacity: 1;
-						pointer-events: all;
-						transition: all 200ms ease-in;
-					}
+					top: calc(100% - #{$padding * 2});
+					right: $padding;
 				}
 
 				a {
-					color: $black;
+					svg {
+						width: 16px;
+						height: 16px;
+						display: block;
+						* {
+							fill: $black;
+						}
+					}
+
+					& + a {
+						margin-left: 16px;
+					}
 				}
-			}
 
-			&__dropdown {
-				width: max-content;
-				position: absolute;
-				top: 100%;
-				left: 50%;
-				transform: translate(-50%, -10px);
-				margin: 0;
-				opacity: 0;
-				transition: all 200ms ease-out;
-				pointer-events: none;
-				background-color: rgba(0, 0, 0, 0.9);
-
-				ul {
-					margin: 0;
-
-					& + ul {
-						margin-top: 10px;
-						padding-top: 10px;
-						border-top: 1px solid #fff;
-					}
-
-					&:first-of-type li:first-of-type a {
-						padding-top: 20px;
-					}
-
-					&:last-of-type li:last-of-type a {
-						padding-bottom: 20px;
-					}
-
-					&:empty {
+				.feather-header__user-search {
+					@media (min-width:#{$md}) {
 						display: none;
-					}
-				}
-
-				li {
-					width: auto;
-
-					&::after {
-						content: none;
-					}
-				}
-
-				a {
-					width: 100%;
-					display: block;
-					padding: 15px;
-					color: #fff;
-
-					&:hover {
-						color: $blue;
-					}
-				}
-			}
-
-			&__actions {
-				display: flex;
-				align-items: center;
-
-				li,
-				a {
-					line-height: 1;
-				}
-
-				li {
-					a {
-						display: inline-block;
-						cursor: pointer;
-						color: $black;
-
-						svg {
-							width: auto;
-							height: $padding;
-
-							* {
-								fill: $black;
-								transition: all 200ms;
-							}
-						}
-					}
-
-					&:hover {
-						a svg {
-							* {
-								fill: $blue;
-							}
-						}
-					}
-				}
-			}
-
-			&__links,
-			&__actions {
-				margin: 0 0 0 auto;
-
-				> li {
-					& + li {
-						margin-left: $padding;
-					}
-				}
-			}
-
-			&__mobile-menu-btn {
-				width: $padding;
-				height: 15px;
-				margin-left: calc($padding * 2);
-				position: relative;
-				cursor: pointer;
-
-				@media (min-width: #{$md} ) {
-					display: none;
-				}
-
-				&-bar {
-					width: 100%;
-					height: 2px;
-					position: absolute;
-					left: 0;
-					background-color: $black;
-					transition: all 200ms;
-
-					&:first-of-type {
-						top: 0;
-
-						& + div {
-							top: 50%;
-							transform: translateY(-50%);
-						}
-					}
-
-					&:last-of-type {
-						bottom: 0;
-					}
-				}
-
-				&:hover {
-					.nav__mobile-menu-btn-bar {
-						background-color: $blue;
 					}
 				}
 			}
 		}
 	}
-}
 
-body.mobile-menu-active {
-	.nav__mobile-menu-btn {
-		&-bar {
-			&:first-of-type,
-			&:last-of-type {
-				top: 50%;
-				background-color: $blue;
-				transform-origin: center center;
+	/** BOTTOM **/
+	&__bottom {
+		.feather-header__menu {
+			&-btn {
+				width: 20px;
+				height: 16px;
+				display: none;
+				position: relative;
+				cursor: pointer;
 
-				& + div {
-					opacity: 0;
+				@media (max-width:#{$md}) {
+					display: block;
+				}
+
+				&:hover {
+					.feather-header__menu-bar {
+						background-color: $primary;
+					}
 				}
 			}
 
-			&:first-of-type {
-				transform: translateY(-50%) rotate(45deg);
-			}
+			&-bar {
+				width: 100%;
+				height: 1px;
+				position: absolute;
+				left: 0;
+				transform-origin: center center;
+				background-color: $black;
+				transition: all 200ms;
 
-			&:last-of-type {
-				transform: translateY(-50%) rotate(-45deg);
+				&:first-of-type {
+					top: 0;
+
+					& + div {
+						top: 50%;
+						transform: translateY(-50%);
+					}
+				}
+
+				&:last-of-type {
+					bottom: 0;
+				}
 			}
 		}
 	}

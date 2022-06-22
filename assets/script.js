@@ -1,33 +1,12 @@
 (function () {
 	'use strict';
 
-	const MobileMenu = function () {
-		console.log('--Init MobileMenu');
-
-		const header = document.querySelector('header');
-		const menu = document.querySelector('[data-el="mobile-menu"]');
-		const menuBtns = document.querySelectorAll('[data-btn="mobile-menu-btn"]');
-
-		for (let i = 0; i < menuBtns.length; i++) {
-			const btn = menuBtns[i];
-			btn.addEventListener('click', () => {
-				const bounds = header.getBoundingClientRect();
-				const diff = bounds.height;
-
-				menu.style.top = diff + 'px';
-				menu.style.height = window.innerHeight - diff + 'px';
-
-				document.body.classList.toggle('mobile-menu-active');
-			});
-		}
-	};
-
 	document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 	if (Shopify.designMode) document.documentElement.classList.add('shopify-design-mode');
 
 	window.onload = function () {
 		console.log('--Initializing Scripts');
-		MobileMenu();
+		//MobileMenu();
 		console.log('--Scripts Loaded');
 	};
 
