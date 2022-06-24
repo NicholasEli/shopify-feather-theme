@@ -1972,6 +1972,7 @@ hr {
 }
 .feather-header__bottom .feather-header__dropdown-item:hover, .feather-header__bottom .feather-header__dropdown-item--active {
   background-color: rgba(0, 0, 0, 0.03);
+  color: var(--feather-primary);
 }
 .feather-header__bottom .feather-header__dropdown-item a {
   width: 100%;
