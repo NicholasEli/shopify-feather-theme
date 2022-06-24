@@ -1,5 +1,5 @@
 {% comment %} TOP {% endcomment %}
-<div class="feather-header__top container container--md-padding row center-xs middle-xs start-md">
+<div class="feather-header__top container container--padding row center-xs middle-xs start-md">
 	{% comment %} LOGO {% endcomment %}
 	<a class="feather-header__logo col-md-3" href="/">
 		{%- if section.settings.logo != blank -%}
@@ -45,11 +45,57 @@
 </div>
 {% comment %} BOTTOM {% endcomment %}
 <div class="feather-header__bottom container container--padding">
-	<div class="feather-header__menu-btn">
+	{% comment %} MOBILE MENU BTN {% endcomment %}
+	<div class="feather-header__menu-btn" data-nav="nav-active">
 		<div class="feather-header__menu-bar"></div>
 		<div class="feather-header__menu-bar"></div>
 		<div class="feather-header__menu-bar"></div>
 	</div>
+	{% comment %} MAIN NAV {% endcomment %}
+	<nav class="feather-header__nav">
+		<ul class="row center-xs middle-xs">
+			{%- for link in linklists.main-menu.links -%}
+				<li class="feather-header__nav-item {% if link.current %}feather-header__nav-item--active{% endif %}">
+					<a href="{{ link.url }}">{{ link.title }}</a>
+					{% comment %} DROPDOWN NAV {% endcomment %}
+					{%- if link.links != blank -%}
+						<nav class="feather-header__dropdown">
+							<div class="row feather-header__dropdown-title">
+								<div class="container container--padding start-xs middle-xs">
+									<span>{{ link.title }}</span>
+								</div>
+							</div>
+							<div class="row feather-header__dropdown-container">
+								<div class="container container--padding">
+									<div class="row">
+										<ul class="col-xs-6">
+											{%- for childlink in link.links -%}
+												<li class="feather-header__dropdown-item start-xs" data-nav-item="{{ childlink.handle }}">
+													<a href="{{ childlink.url }}">{{ childlink.title }}</a>
+												</li>
+											{%- endfor -%}
+										</ul>
+										{%- for childlink in link.links -%}
+											{%- if childlink.links != blank -%}
+												<ul class="col-xs-6" data-nav="{{ childlink.handle }}">
+													{%- for grandchildlink in childlink.links -%}
+														<li class="feather-header__dropdown-item start-xs">
+															<a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+														</li>
+													{%- endfor -%}
+												</ul>
+											{%- endif -%}
+										{%- endfor -%}
+									</div>
+								</div>
+							</div>
+						</nav>
+					{%- endif -%}
+					{% comment %} DROPDOWN NAV {% endcomment %}
+				</li>
+			{%- endfor -%}
+		</ul>
+	</nav>
 </div>
 
 

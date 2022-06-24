@@ -1,10 +1,10 @@
 .feather-header {
 	width: 100%;
 	position: relative;
+	border-bottom: 1px solid $stroke;
 
 	/** TOP **/
 	&__top {
-		height: 50px;
 		border-bottom: 1px solid $stroke;
 
 		@media (min-width: #{$md}) {
@@ -38,10 +38,14 @@
 
 			/** USER NAV - SHOPIFY ACTIONS **/
 			&__user-nav {
-				@media (max-width: #{$md}) {
-					position: absolute;
-					top: calc(100% - #{$padding * 2});
-					right: $padding;
+				position: absolute;
+				top: calc(100% - #{$padding * 2});
+				right: $padding;
+
+				@media (min-width: #{$md}) {
+					position: relative;
+					top: unset;
+					right: unset;
 				}
 
 				a {
@@ -57,6 +61,14 @@
 					& + a {
 						margin-left: 16px;
 					}
+
+					&:hover {
+						svg {
+							* {
+								fill: $primary;
+							}
+						}
+					}
 				}
 
 				.feather-header__user-search {
@@ -70,16 +82,19 @@
 
 	/** BOTTOM **/
 	&__bottom {
+		@media (min-width:#{$md}) {
+			padding: 0;
+		}
+
 		.feather-header__menu {
 			&-btn {
 				width: 20px;
 				height: 16px;
-				display: none;
 				position: relative;
 				cursor: pointer;
 
-				@media (max-width:#{$md}) {
-					display: block;
+				@media (min-width:#{$md}) {
+					display: none;
 				}
 
 				&:hover {
@@ -109,6 +124,120 @@
 
 				&:last-of-type {
 					bottom: 0;
+				}
+			}
+		}
+
+		.feather-header__nav,
+		.feather-header__dropdown {
+			ul {
+				list-style: none;
+				margin: 0;
+
+				li {
+					margin: 0;
+				}
+			}
+
+			&-item {
+				a {
+					display: inline-block;
+					font-size: 14px;
+					text-decoration: none;
+					transition: all 200ms;
+				}
+			}
+		}
+
+		.feather-header__nav {
+			display: none;
+
+			@media (min-width:#{$md}) {
+				display: block;
+			}
+
+			&-item {
+				border-top: 2px solid transparent;
+
+				a {
+					padding: $padding;
+					text-transform: uppercase;
+				}
+
+				&--active {
+					border-color: $primary;
+
+					a {
+						color: $primary;
+					}
+				}
+
+				&:hover {
+					> a {
+						color: $primary;
+					}
+
+					.feather-header__dropdown {
+						display: block;
+					}
+				}
+			}
+		}
+
+		.feather-header__dropdown {
+			width: 100%;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			display: none;
+			background-color: $gray;
+
+			.container {
+				max-width: #{$lg};
+			}
+
+			&-title {
+				border-bottom: 1px solid $stroke;
+
+				.container {
+					padding-left: calc($padding * 2);
+					padding-right: calc($padding * 2);
+				}
+
+				span {
+					display: inline-block;
+					text-transform: uppercase;
+					font-size: 18px;
+					font-weight: bold;
+					color: $primary;
+				}
+			}
+
+			&-item {
+				transition: all 200ms;
+
+				&:hover,
+				&--active {
+					background-color: rgba(0, 0, 0, 0.03);
+				}
+
+				a {
+					width: 100%;
+					padding: 20px $padding;
+					text-transform: none;
+					border-radius: 5px;
+				}
+			}
+
+			&-container {
+				border: none;
+
+				[data-nav] {
+					display: none;
+
+					&.active {
+						display: block;
+					}
 				}
 			}
 		}

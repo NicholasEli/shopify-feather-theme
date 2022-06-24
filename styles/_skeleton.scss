@@ -345,7 +345,7 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: 'Raleway', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #222;
+  color: $text;
 }
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -419,10 +419,10 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1eaedb;
+  color: $text;
 }
 a:hover {
-  color: #0fa0ce;
+  color: $primary;
 }
 
 /* Lists
@@ -457,7 +457,7 @@ code {
   font-size: 90%;
   white-space: nowrap;
   background: #f1f1f1;
-  border: 1px solid #e1e1e1;
+  border: 1px solid $stroke;
   border-radius: 4px;
 }
 pre > code {
@@ -486,7 +486,7 @@ input[type='button'] {
   white-space: nowrap;
   background-color: transparent;
   border-radius: 4px;
-  border: 1px solid #bbb;
+  border: 1px solid $stroke;
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -501,7 +501,7 @@ input[type='submit']:focus,
 input[type='reset']:focus,
 input[type='button']:focus {
   color: #333;
-  border-color: #888;
+  border-color: $stroke;
   outline: 0;
 }
 .button.button-primary,
@@ -510,8 +510,8 @@ input[type='submit'].button-primary,
 input[type='reset'].button-primary,
 input[type='button'].button-primary {
   color: #fff;
-  background-color: #33c3f0;
-  border-color: #33c3f0;
+  background-color: $primary;
+  border-color: $primary;
 }
 .button.button-primary:hover,
 button.button-primary:hover,
@@ -524,8 +524,8 @@ input[type='submit'].button-primary:focus,
 input[type='reset'].button-primary:focus,
 input[type='button'].button-primary:focus {
   color: #fff;
-  background-color: #1eaedb;
-  border-color: #1eaedb;
+  background-color: $primary;
+  border-color: $primary;
 }
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -573,7 +573,7 @@ input[type='url']:focus,
 input[type='password']:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33c3f0;
+  border: 1px solid $primary;
   outline: 0;
 }
 label,
@@ -601,7 +601,7 @@ th,
 td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 1px solid $stroke;
 }
 th:first-child,
 td:first-child {
@@ -658,7 +658,7 @@ hr {
   margin-top: 3rem;
   margin-bottom: 3.5rem;
   border-width: 0;
-  border-top: 1px solid #e1e1e1;
+  border-top: 1px solid $stroke;
 }
 
 .container {
