@@ -16,7 +16,7 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'style.min.css' | asset_url | stylesheet_tag }}
 
     <title>
       {{ page_title }}
@@ -66,6 +66,6 @@
     {% section 'footer' %}
     {% section 'mobile-menu' %}
     {% endcomment %}
-    {{ 'script.js' | asset_url | script_tag }}
+    {{ 'script.min.js' | asset_url | script_tag }}
   </body>
 </html>
