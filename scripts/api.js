@@ -9,7 +9,11 @@ export const search = {
 				throw new Error(res.status);
 			}
 
-			return await res.text();
+			const text = await res.text();
+
+			return new DOMParser()
+				.parseFromString(text, 'text/html')
+				.querySelector('#shopify-section-predictive-search').innerHTML;
 		} catch (err) {
 			return err;
 		}

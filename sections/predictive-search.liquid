@@ -1,0 +1,33 @@
+{%- if predictive_search.performed -%}
+  {%- if predictive_search.resources.products.size == 0 -%}
+    <div class="form__search-no-results">
+      <p>No Results for <span>"{{ predictive_search.terms }}"</span></p>
+    </div>
+  {%- endif -%}
+  {%- if predictive_search.resources.products.size > 0 -%}
+    <div class="form__search-term">
+      <p>Search Results for <span>"{{ predictive_search.terms }}"</span></p>
+    </div>
+    <ul class="form__search-results-products">
+      {%- for product in predictive_search.resources.products -%}
+        <li class="form__search-results-product">
+          <a href="{{ product.url }}" class="row">
+            <div class="form__search-results-product-image col-xs-3">
+              {%- if product.featured_media != blank -%}
+                  <img
+                    src="{{ product.featured_media | img_url: '150x' }}"
+                    alt="{{ product.featured_media.alt }}"
+                    width="50"
+                    height="{{ 50 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
+                  >
+              {%- endif -%}
+            </div>
+            <div class="form__search-results-product-content  col-xs-8 col-xs-offset-1">
+              <h6>{{ product.title }}</h6>
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+{%- endif -%}

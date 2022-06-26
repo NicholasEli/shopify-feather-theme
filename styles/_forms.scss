@@ -1,6 +1,10 @@
 .form {
 	margin: 0;
 
+	@media (min-width: #{$md}) {
+		position: relative;
+	}
+
 	&__input {
 		@include flex(row, flex-start, center);
 
@@ -54,6 +58,99 @@
 
 			* {
 				fill: $black;
+			}
+		}
+	}
+
+	&__search-results {
+		width: calc(100% - #{$padding * 2});
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: #fff;
+		box-shadow: $box-shadow;
+		pointer-events: none;
+		opacity: 0;
+
+		&--active {
+			pointer-events: all;
+		}
+
+		@media (min-width: #{$md}) {
+			width: 100%;
+			left: 0;
+			transform: translateX(0);
+		}
+
+		.form__search-no-results,
+		.form__search-term {
+			margin: 0 0 $padding;
+			padding-bottom: $padding;
+			text-align: left;
+			border-bottom: 1px solid $stroke;
+
+			p {
+				margin-bottom: 0;
+				font-size: 12px;
+				color: $text;
+				letter-spacing: 1px;
+
+				span {
+					font-style: italic;
+				}
+			}
+		}
+
+		.form__search-results-products {
+			margin-bottom: 0;
+			list-style: none;
+		}
+
+		.form__search-results-product {
+			margin: 0 0 $padding;
+			padding-bottom: $padding;
+			text-align: left;
+			border-bottom: 1px solid $stroke;
+
+			&:last-of-type {
+				margin: 0;
+				padding-bottom: 0;
+				border: none;
+			}
+
+			a {
+				text-decoration: none;
+
+				.form__search-results-product-image {
+					img {
+						width: 100%;
+						height: auto;
+					}
+				}
+
+				.form__search-results-product-content {
+					p[data-mce-fragment] {
+						display: none !important;
+					}
+
+					h6,
+					p {
+						max-width: 100%;
+						margin: 0;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+						font-size: 16px;
+						font-weight: bold;
+						color: $text;
+						letter-spacing: 1px;
+					}
+
+					p {
+						font-size: 12px;
+					}
+				}
 			}
 		}
 	}
