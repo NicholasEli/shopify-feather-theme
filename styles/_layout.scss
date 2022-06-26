@@ -1,0 +1,85 @@
+.hide {
+	&-xs {
+		@media (min-width: #{$xs}) {
+			display: none;
+		}
+	}
+
+	&-sm {
+		@media (min-width: #{$sm}) {
+			display: none;
+		}
+	}
+
+	&-md {
+		@media (min-width: #{$md}) {
+			display: none;
+		}
+	}
+
+	&-lg {
+		@media (min-width: #{$lg}) {
+			display: none;
+		}
+	}
+}
+
+.show {
+	&-xs {
+		display: none;
+		@media (min-width: #{$xs}) {
+			display: block;
+		}
+	}
+
+	&-sm {
+		display: none;
+		@media (min-width: #{$sm}) {
+			display: block;
+		}
+	}
+
+	&-md {
+		display: none;
+		@media (min-width: #{$md}) {
+			display: block;
+		}
+	}
+
+	&-lg {
+		display: none;
+		@media (min-width: #{$lg}) {
+			display: block;
+		}
+	}
+}
+
+.show-flex {
+	&-xs {
+		display: none;
+		@media (min-width: #{$xs}) {
+			display: flex;
+		}
+	}
+
+	&-sm {
+		display: none;
+		@media (min-width: #{$sm}) {
+			display: flex;
+		}
+	}
+
+	&-md {
+		display: none;
+		@media (min-width: #{$md}) {
+			display: flex;
+		}
+	}
+
+	&-lg {
+		display: none;
+		@media (min-width: #{$lg}) {
+			display: flex;
+		}
+	}
+}

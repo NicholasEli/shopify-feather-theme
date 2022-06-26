@@ -13,20 +13,12 @@
   </a>
 
 	{% comment %} SEARCH  {% endcomment %}  
-	<div class="feather-header__search col-md-6 center-xs">
-		<form class="form">
-			<div class="form__input">
-				<input type="text" placeholder="Search" />
-				<div class="form__input-icon">
-					{% render 'icon-search' %}
-				</div>
-			</div>
-		</form>
+	<div class="feather-header__search col-md-6 center-xs show-flex-md">
+		{% render 'search-input' %}
 	</div>
 
   {% comment %} USER NAV - SHOPIFY ACTIONS  {% endcomment %}
   <div class="feather-header__user-nav row end-xs middle-xs col-md-3">
-		<a class="feather-header__user-search">{% render 'icon-search' %}</a>
 		<a class="feather-header__user-account" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
 	    {% render 'icon-account' %}
 	    {%- if customer -%}
@@ -53,15 +45,23 @@
 	</div>
 </div>
 {% comment %} BOTTOM {% endcomment %}
-<div class="feather-header__bottom container container--padding">
+<div class="feather-header__bottom container container--padding row">
 	{% comment %} MOBILE MENU BTN {% endcomment %}
-	<div class="feather-header__menu-btn" data-nav="nav-active">
-		<div class="feather-header__menu-bar"></div>
-		<div class="feather-header__menu-bar"></div>
-		<div class="feather-header__menu-bar"></div>
+	<div class="row col-xs-2 col-sm-3 middle-xs hide-md">
+		<div class="feather-header__menu-btn" data-nav="nav-active">
+			<div class="feather-header__menu-bar"></div>
+			<div class="feather-header__menu-bar"></div>
+			<div class="feather-header__menu-bar"></div>
+		</div>
 	</div>
+
+	{% comment %} SEARCH  {% endcomment %}  
+	<div class="feather-header__search col-xs-8 col-md-6 center-xs hide-md">
+		{% render 'search-input' %}
+	</div>
+
 	{% comment %} MAIN NAV {% endcomment %}
-	<nav class="feather-header__nav">
+	<nav class="feather-header__nav col-xs-12 show-md">
 		<ul class="row center-xs middle-xs">
 			{%- for link in linklists.main-menu.links -%}
 				<li class="feather-header__nav-item {% if link.current %}feather-header__nav-item--active{% endif %}">

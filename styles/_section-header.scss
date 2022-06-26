@@ -28,12 +28,7 @@
 
 			/** SEARCh **/
 			&__search {
-				display: none;
 				height: 50px;
-
-				@media (min-width:#{$md}) {
-					display: flex;
-				}
 
 				.form {
 					width: 100%;
@@ -48,7 +43,7 @@
 			/** USER NAV - SHOPIFY ACTIONS **/
 			&__user-nav {
 				position: absolute;
-				top: calc(100% - #{$padding * 2});
+				top: calc(100% - #{$padding * 2.5});
 				right: $padding;
 
 				@media (min-width: #{$md}) {
@@ -79,12 +74,6 @@
 						}
 					}
 				}
-
-				.feather-header__user-search {
-					@media (min-width:#{$md}) {
-						display: none;
-					}
-				}
 			}
 		}
 	}
@@ -95,16 +84,13 @@
 			padding: 0;
 		}
 
+		// MENU BTN
 		.feather-header__menu {
 			&-btn {
 				width: 20px;
 				height: 16px;
 				position: relative;
 				cursor: pointer;
-
-				@media (min-width:#{$md}) {
-					display: none;
-				}
 
 				&:hover {
 					.feather-header__menu-bar {
@@ -137,6 +123,7 @@
 			}
 		}
 
+		// NAVIGATION
 		.feather-header__nav,
 		.feather-header__dropdown {
 			ul {
@@ -159,12 +146,6 @@
 		}
 
 		.feather-header__nav {
-			display: none;
-
-			@media (min-width:#{$md}) {
-				display: block;
-			}
-
 			&-item {
 				border-top: 2px solid transparent;
 
