@@ -21,6 +21,23 @@ const searchResults = async function (term, input) {
 	container.classList.remove('animate__fadeOut');
 	container.classList.add('animate__animated');
 	container.classList.add('animate__fadeIn');
+
+	container.addEventListener('animationend', (e) => isSearching(false, input));
+};
+
+const isSearching = function (searching, input) {
+	if (!input) return;
+
+	const container = input.parentElement;
+
+	if (searching) {
+		container.classList.add('form__input--searching');
+		return;
+	}
+
+	if (!searching) {
+		container.classList.remove('form__input--searching');
+	}
 };
 
 const searchTerm = function () {
@@ -37,6 +54,7 @@ const searchTerm = function () {
 				clearResults();
 				return;
 			}
+			isSearching(true, input);
 			clearTimeout(timeout);
 			timeout = setTimeout(() => {
 				searchResults(value, input);

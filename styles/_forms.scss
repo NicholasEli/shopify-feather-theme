@@ -8,6 +8,18 @@
 	&__input {
 		@include flex(row, flex-start, center);
 
+		&--searching {
+			.form__input-icon {
+				.icon-search {
+					display: none;
+				}
+			}
+
+			span.feather-loader {
+				display: block;
+			}
+		}
+
 		input,
 		textarea {
 			width: 100%;
@@ -59,6 +71,10 @@
 			* {
 				fill: $black;
 			}
+		}
+
+		.feather-loader {
+			display: none;
 		}
 	}
 
