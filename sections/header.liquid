@@ -12,8 +12,17 @@
     {%- endif -%}
   </a>
 
-	{% comment %} SEARCh  {% endcomment %}  
-	<div class="feather-header__search col-md-6"></div>
+	{% comment %} SEARCH  {% endcomment %}  
+	<div class="feather-header__search col-md-6 center-xs">
+		<form class="form">
+			<div class="form__input">
+				<input type="text" placeholder="Search" />
+				<div class="form__input-icon">
+					{% render 'icon-search' %}
+				</div>
+			</div>
+		</form>
+	</div>
 
   {% comment %} USER NAV - SHOPIFY ACTIONS  {% endcomment %}
   <div class="feather-header__user-nav row end-xs middle-xs col-md-3">
