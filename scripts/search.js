@@ -63,6 +63,22 @@ const displayResults = function () {
 	container.innerHTML = results;
 	container.classList.remove(FADEOUT);
 	container.classList.add(FADEIN);
+
+	const _close = (e) => {
+		const { x, y, width, height } = container.getBoundingClientRect();
+		const { clientX, clientY } = e;
+
+		if (clientX < x || clientX > x + width) {
+			clearResults();
+			document.removeEventListener('click', _close);
+		}
+		if (clientY < y || clientY > y + height) {
+			clearResults();
+			document.removeEventListener('click', _close);
+		}
+	};
+
+	document.addEventListener('click', _close);
 };
 
 const clearResults = async function () {
