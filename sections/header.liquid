@@ -2,14 +2,14 @@
 <div class="feather-header__top container container--padding row center-xs middle-xs start-md">
 	{% comment %} LOGO {% endcomment %}
 	<a class="feather-header__logo col-md-3" href="/">
-		{%- if section.settings.logo != blank -%}
+		{% if section.settings.logo != blank %}
 				<img
 					srcset="{{ section.settings.logo | image_url: width: section.settings.logo_width }} 1x, {{ section.settings.logo | image_url: width: image_size_2x }} 2x"
 					alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
 				/>
-    {%- else -%}
+    {% else %}
       <span>{{ shop.name }}</span>
-    {%- endif -%}
+    {% endif %}
   </a>
 
 	{% comment %} SEARCH  {% endcomment %}  
@@ -19,28 +19,28 @@
 
   {% comment %} USER NAV - SHOPIFY ACTIONS  {% endcomment %}
   <div class="feather-header__user-nav row end-xs middle-xs col-md-3">
-		<a class="feather-header__user-account" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+		<a class="feather-header__user-account" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">
 	    {% render 'icon-account' %}
-	    {%- if customer -%}
+	    {% if customer %}
 	        {{ customer.account_fallback }}
-	     {%- else -%}
+	     {% else %}
 	     	{{ customer.log_in }}
-	     {%- endif -%}
+	     {% endif %}
 	  </a>
 	  <a class="feather-header__user-cart" href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-	    {%- if cart == empty -%}
+	    {% if cart == empty %}
 	    	{% render 'icon-cart-empty' %}
-	    {%- else -%}
+	    {% else %}
 	    	{% render 'icon-cart' %}
-	    {%- endif -%}
-	    {%- if cart != empty -%}
+	    {% endif %}
+	    {% if cart != empty %}
 	      <div class="cart-count-bubble">
-	        {%- if cart.item_count < 100 -%}
+	        {% if cart.item_count < 100 %}
 	          <span aria-hidden="true">{{ cart.item_count }}</span>
-	        {%- endif -%}
+	        {% endif %}
 	        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
 	      </div>
-	    {%- endif -%}
+	    {% endif %}
 	  </a>
 	</div>
 </div>
@@ -63,11 +63,11 @@
 	{% comment %} MAIN NAV {% endcomment %}
 	<nav class="feather-header__nav col-xs-12 show-md">
 		<ul class="row center-xs middle-xs">
-			{%- for link in linklists.main-menu.links -%}
+			{% for link in linklists.main-menu.links %}
 				<li class="feather-header__nav-item {% if link.current %}feather-header__nav-item--active{% endif %}">
 					<a href="{{ link.url }}">{{ link.title }}</a>
 					{% comment %} DROPDOWN NAV {% endcomment %}
-					{%- if link.links != blank -%}
+					{% if link.links != blank %}
 						<nav class="feather-header__dropdown">
 							<div class="row feather-header__dropdown-title">
 								<div class="container container--padding start-xs middle-xs">
@@ -78,31 +78,31 @@
 								<div class="container container--padding">
 									<div class="row">
 										<ul class="col-xs-6">
-											{%- for childlink in link.links -%}
+											{% for childlink in link.links %}
 												<li class="feather-header__dropdown-item start-xs" data-nav-item="{{ childlink.handle }}">
 													<a href="{{ childlink.url }}">{{ childlink.title }}</a>
 												</li>
-											{%- endfor -%}
+											{% endfor %}
 										</ul>
-										{%- for childlink in link.links -%}
-											{%- if childlink.links != blank -%}
+										{% for childlink in link.links %}
+											{% if childlink.links != blank %}
 												<ul class="col-xs-6" data-nav="{{ childlink.handle }}">
-													{%- for grandchildlink in childlink.links -%}
+													{% for grandchildlink in childlink.links %}
 														<li class="feather-header__dropdown-item start-xs">
 															<a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
 														</li>
-													{%- endfor -%}
+													{% endfor %}
 												</ul>
-											{%- endif -%}
-										{%- endfor -%}
+											{% endif %}
+										{% endfor %}
 									</div>
 								</div>
 							</div>
 						</nav>
-					{%- endif -%}
-					{% comment %} DROPDOWN NAV {% endcomment %}
+					{% endif %}
+					{% comment %} END DROPDOWN NAV {% endcomment %}
 				</li>
-			{%- endfor -%}
+			{% endfor %}
 		</ul>
 	</nav>
 </div>

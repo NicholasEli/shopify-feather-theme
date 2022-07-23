@@ -7,7 +7,8 @@
     "test": "cypress open",
     "sass": "sass --watch ./styles/style.scss ./assets/style.min.css --style compressed",
     "js": "rollup --config rollup.config.js --watch",
-    "dev": "concurrently --kill-others \"sass --watch ./styles/style.scss ./assets/style.min.css  --style compressed\" \"rollup --config rollup.config.js --watch\" \"shopify theme serve\""
+    "dev": "concurrently --kill-others \"sass --watch ./styles/style.scss ./assets/style.min.css  --style compressed\" \"rollup --config rollup.config.js --watch\" \"shopify theme serve\"",
+    "login": "shopify login --store nicholasbydesign.myshopify.com"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "@rollup/plugin-json": "4.1.0",
     "@rollup/plugin-node-resolve": "13.3.0",
     "rollup-plugin-terser": "7.0.2",
+    "rollup-plugin-sourcemaps": "0.6.3",
     "concurrently": "7.2.0",
     "cypress": "9.5.4",
     "cypress-real-events": "1.7.0"
