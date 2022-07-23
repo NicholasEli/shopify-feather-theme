@@ -1,5 +1,3 @@
-let isDropdownActive = false;
-
 const clearNavItems = function () {
 	const navItems = document.querySelectorAll('[data-nav-item]');
 	navItems.forEach((navItem) => navItem.classList.remove('feather-header__dropdown-item--active'));
