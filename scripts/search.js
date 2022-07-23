@@ -30,8 +30,9 @@ const state = {
 		this.forms = obj;
 	},
 	set setResults(results) {
-		if (!results) return;
 		this.results = results;
+
+		if (!results) return;
 		displayResults();
 	},
 };
@@ -85,8 +86,11 @@ const clearResults = async function () {
 	if (!state.results) return;
 
 	const { results, id } = state.results;
+	const input = state.forms[id].input;
 	const container = state.forms[id].results;
 
+	input.value = '';
+	state.setResults = null;
 	container.classList.add(FADEOUT);
 
 	await asyncTimeout(delay);
