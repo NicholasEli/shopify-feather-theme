@@ -1,5 +1,12 @@
 import { getCSSVariable } from './utils.js';
 
+const state = {
+	active: false,
+	set setActive(active) {
+		this.active = active;
+	},
+};
+
 const active = 'eather-header__dropdown-item--active';
 const md = parseInt(getCSSVariable('--md'));
 
@@ -32,10 +39,27 @@ const displayNavItems = function () {
 };
 
 const mobileNavBtn = function () {
+	const nav = document.querySelector('[data-nav]');
 	const btn = document.querySelector('[data-nav-btn]');
-	if (!btn) return;
+	if (!nav || !btn) return;
 
-	btn.addEventListener('click', () => document.body.classList.add('nav-active'));
+	btn.addEventListener('click', () => {
+		if (!state.active) {
+			nav.classList.add('animate__slideInLeft');
+			state.setActive = true;
+			return;
+		}
+
+		nav.classList.remove('animate__slideInLeft');
+		state.setActive = false;
+	});
+
+	window.addEventListener('resize', () => {
+		if (window.innerWidth > md && state.active) {
+			nav.classList.remove('animate__slideInLeft');
+			state.setActive = false;
+		}
+	});
 };
 
 export const navigation = function () {
