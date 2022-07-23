@@ -24,16 +24,29 @@
 
 body {
 	width: 100%;
+	min-height: 100vh;
+	overflow-x: hidden;
 
-	&.mobile-menu-active {
-		max-width: 100vw;
+	&.nav-active {
 		max-height: 100vh;
 		overflow: hidden;
 
-		#mobile-menu {
-			opacity: 1;
-			pointer-events: all;
-			transition: 200ms opacity ease-in;
+		.feather-header__menu-bar {
+			transform-origin: center center;
+
+			&:first-of-type {
+				top: 50%;
+				transform: translateY(-50%) rotate(-45deg);
+
+				& + .feather-header__menu-bar {
+					display: none;
+				}
+			}
+
+			&:last-of-type {
+				bottom: 50%;
+				transform: translateY(50%) rotate(45deg);
+			}
 		}
 	}
 

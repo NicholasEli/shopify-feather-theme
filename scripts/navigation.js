@@ -50,6 +50,7 @@ const mobileNavBtn = function () {
 		nav.classList.add('animate__slideOutLeft');
 
 		await asyncTimeout(duration);
+		document.body.classList.remove('nav-active');
 		nav.classList.remove('animate__slideInLeft');
 		nav.classList.remove('animate__slideOutLeft');
 		state.setActive = false;
@@ -57,6 +58,7 @@ const mobileNavBtn = function () {
 
 	btn.addEventListener('click', async () => {
 		if (!state.active) {
+			document.body.classList.add('nav-active');
 			nav.classList.add('animate__slideInLeft');
 			await asyncTimeout(duration);
 			state.setActive = true;
