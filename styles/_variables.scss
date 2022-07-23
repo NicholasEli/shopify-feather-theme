@@ -12,3 +12,10 @@ $stroke: var(--feather-stroke);
 $gray: var(--feather-gray);
 $black: var(--feather-black);
 $primary: var(--feather-primary);
+
+:root {
+	--xs: #{$xs};
+	--sm: #{$sm};
+	--md: #{$md};
+	--lg: #{$lg};
+}
