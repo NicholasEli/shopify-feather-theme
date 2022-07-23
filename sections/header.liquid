@@ -65,11 +65,17 @@
 		<ul class="row center-md middle-md">
 			{% for link in linklists.main-menu.links %}
 				<li class="feather-header__nav-item {% if link.current %}feather-header__nav-item--active{% endif %}">
-					<a href="{{ link.url }}">{{ link.title }}</a>
+					{% liquid
+						assign link-href = link.url
+						if  link.links != blank
+							assign link-href = link.handle | prepend: '#'
+						endif
+					%}
+					<a href="{{ link-href }}">{{ link.title }}</a>
 					{% comment %} DROPDOWN NAV {% endcomment %}
 					{% if link.links != blank %}
 						<nav class="feather-header__dropdown">
-							<div class="row feather-header__dropdown-title">
+							<div class="row feather-header__dropdown-title show-md">
 								<div class="container container--padding start-xs middle-xs">
 									<span>{{ link.title }}</span>
 								</div>
@@ -79,8 +85,14 @@
 									<div class="row">
 										<ul class="col-xs-6">
 											{% for childlink in link.links %}
+												{% liquid
+													assign childlink-href = link.url
+													if  childlink.links != blank
+														assign childlink-href = childlink.handle | prepend: '#'
+													endif
+												%}
 												<li class="feather-header__dropdown-item start-xs" data-nav-item="{{ childlink.handle }}">
-													<a href="{{ childlink.url }}">{{ childlink.title }}</a>
+													<a href="{{ childlink-href }}">{{ childlink.title }}</a>
 												</li>
 											{% endfor %}
 										</ul>
