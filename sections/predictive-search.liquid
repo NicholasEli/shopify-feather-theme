@@ -14,16 +14,17 @@
           <a href="{{ product.url }}" class="row">
             <div class="form__search-results-product-image col-xs-3">
               {%- if product.featured_media != blank -%}
-                  <img
-                    src="{{ product.featured_media | img_url: '150x' }}"
-                    alt="{{ product.featured_media.alt }}"
-                    width="50"
-                    height="{{ 50 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
-                  >
+                <img
+                  src="{{ product.featured_media | img_url: '150x' }}"
+                  alt="{{ product.featured_media.alt }}"
+                  width="50"
+                  height="{{ 50 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
+                />
               {%- endif -%}
             </div>
-            <div class="form__search-results-product-content  col-xs-8 col-xs-offset-1">
+            <div class="form__search-results-product-content  col-xs-8">
               <h6>{{ product.title }}</h6>
+              <p>{{ product.description }}</p>
             </div>
           </a>
         </li>

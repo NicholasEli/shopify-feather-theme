@@ -35,6 +35,16 @@
 					&__input {
 						width: 100%;
 					}
+
+					&-results-products {
+						max-height: 320px;
+						overflow: auto;
+
+						&::-webkit-scrollbar,
+						&::scrollbar {
+							display: none;
+						}
+					}
 				}
 			}
 
