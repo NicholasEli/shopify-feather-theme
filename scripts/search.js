@@ -1,69 +1,86 @@
 import { search as api } from './api.js';
-import { getCSSVariable } from './utils.js';
+import { getCSSVariable, asyncTimeout } from './utils.js';
 
-let time = 0;
+const SEARCHING = 'form__input--searching';
+const FADEIN = 'animate__fadeIn';
+const FADEOUT = 'animate__fadeOut';
 
-const clearResults = function () {
-	const results = document.querySelectorAll('.form__search-results');
-	results.forEach((container) => {
-		container.classList.add('animate__fadeOut');
-		setTimeout(() => (container.innerHTML = ''), time);
-	});
+const delay = parseInt(getCSSVariable('--animate-duration'));
+const state = {
+	forms: {},
+	results: null,
+	set initForms(forms) {
+		if (!forms) return;
+
+		const obj = {};
+		forms.forEach((form, id) => {
+			form.addEventListener('submit', (e) => e.preventDefault());
+			const input = form.querySelector('input');
+			const results = form.querySelector('.form__search-results');
+
+			obj[id] = {
+				form,
+				input,
+				results,
+			};
+
+			obj[id].input.addEventListener('keyup', doSearch.bind(input, id));
+		});
+
+		this.forms = obj;
+	},
+	set setResults(results) {
+		if (!results) return;
+		this.results = results;
+		displayResults();
+	},
 };
 
-const searchResults = async function (term, input) {
-	if (!term || !input) return;
+const doSearch = async function (id) {
+	const inputContainer = this.parentElement;
+	let timeout = null;
+	clearTimeout(timeout);
 
-	const container = input.parentElement.nextElementSibling;
-	const res = await api.get(term);
-
-	container.innerHTML = res;
-	container.classList.remove('animate__fadeOut');
-	container.classList.add('animate__animated');
-	container.classList.add('animate__fadeIn');
-
-	container.addEventListener('animationend', (e) => isSearching(false, input));
-};
-
-const isSearching = function (searching, input) {
-	if (!input) return;
-
-	const container = input.parentElement;
-
-	if (searching) {
-		container.classList.add('form__input--searching');
+	if (!this.value) {
+		timeout = null;
+		clearResults();
 		return;
 	}
 
-	if (!searching) {
-		container.classList.remove('form__input--searching');
-	}
+	inputContainer.classList.add(SEARCHING);
+	timeout = setTimeout(async () => {
+		const results = await api.get(this.value);
+		state.setResults = { id, results };
+		inputContainer.classList.remove(SEARCHING);
+	}, 500);
 };
 
-const searchTerm = function () {
-	const forms = document.querySelectorAll('.feather-header__search form');
-	const inputs = document.querySelectorAll('.feather-header__search input');
-	let timeout = null;
-	forms.forEach((form) => form.addEventListener('submit', (e) => e.preventDefault()));
-	inputs.forEach((input) => {
-		input.addEventListener('keyup', (e) => {
-			const value = e.currentTarget.value;
-			if (!value || (value && value === '')) {
-				clearTimeout(timeout);
-				timeout = null;
-				clearResults();
-				return;
-			}
-			isSearching(true, input);
-			clearTimeout(timeout);
-			timeout = setTimeout(() => {
-				searchResults(value, input);
-			}, 500);
-		});
-	});
+const displayResults = function () {
+	if (!state.results) return;
+	const { id, results } = state.results;
+
+	const container = state.forms[id].results;
+	container.innerHTML = results;
+	container.classList.remove(FADEOUT);
+	container.classList.add(FADEIN);
+};
+
+const clearResults = async function () {
+	if (!state.results) return;
+
+	const { results, id } = state.results;
+	const container = state.forms[id].results;
+
+	container.classList.add(FADEOUT);
+
+	await asyncTimeout(delay);
+
+	container.innerHTML = '';
+	container.classList.remove(FADEOUT);
+	container.classList.remove(FADEIN);
 };
 
 export const search = async function () {
-	time = parseInt(getCSSVariable('--animate-duration'));
-	searchTerm();
+	const forms = document.querySelectorAll('.feather-header__search form');
+	state.initForms = forms;
 };

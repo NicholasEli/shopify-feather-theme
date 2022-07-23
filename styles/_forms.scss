@@ -119,8 +119,22 @@
 		}
 
 		.form__search-results-products {
+			max-height: 320px;
 			margin-bottom: 0;
 			list-style: none;
+			overflow: auto;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			&::scrollbar {
+				display: none;
+			}
+
+			br {
+				display: none;
+			}
 		}
 
 		.form__search-results-product {
