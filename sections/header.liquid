@@ -61,8 +61,8 @@
 	</div>
 
 	{% comment %} MAIN NAV {% endcomment %}
-	<nav class="feather-header__nav col-xs-12 show-md">
-		<ul class="row center-xs middle-xs">
+	<nav class="feather-header__nav col-xs-12">
+		<ul class="row center-md middle-md">
 			{% for link in linklists.main-menu.links %}
 				<li class="feather-header__nav-item {% if link.current %}feather-header__nav-item--active{% endif %}">
 					<a href="{{ link.url }}">{{ link.title }}</a>
