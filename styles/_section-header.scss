@@ -153,7 +153,7 @@
 			height: 100%;
 			position: absolute;
 			top: 100%;
-			left: 0;
+			left: 100%;
 			z-index: 2;
 			background-color: #fff;
 
@@ -161,6 +161,8 @@
 				width: auto;
 				height: auto;
 				position: static;
+				top: unset;
+				right: unset;
 			}
 
 			&-item {
@@ -182,6 +184,12 @@
 				}
 
 				&:hover {
+					background-color: $gray;
+
+					@media (min-width: #{$md}) {
+						background-color: transparent;
+					}
+
 					> a {
 						color: $primary;
 					}
@@ -197,11 +205,13 @@
 			width: 100%;
 			display: none;
 			background-color: $gray;
+			border-top: 1px solid $primary;
 
 			@media (min-width: #{$md}) {
 				position: absolute;
 				top: 100%;
 				left: 0;
+				border: none;
 			}
 
 			.container {

@@ -48,7 +48,7 @@
 <div class="feather-header__bottom container container--padding row">
 	{% comment %} MOBILE MENU BTN {% endcomment %}
 	<div class="row col-xs-2 col-sm-3 middle-xs hide-md">
-		<div class="feather-header__menu-btn" data-nav="nav-active">
+		<div class="feather-header__menu-btn" data-nav-btn>
 			<div class="feather-header__menu-bar"></div>
 			<div class="feather-header__menu-bar"></div>
 			<div class="feather-header__menu-bar"></div>
@@ -74,7 +74,7 @@
 					<a href="{{ link-href }}">{{ link.title }}</a>
 					{% comment %} DROPDOWN NAV {% endcomment %}
 					{% if link.links != blank %}
-						<nav class="feather-header__dropdown">
+						<nav class="feather-header__dropdown" data-nav-dropdown>
 							<div class="row feather-header__dropdown-title show-md">
 								<div class="container container--padding start-xs middle-xs">
 									<span>{{ link.title }}</span>
