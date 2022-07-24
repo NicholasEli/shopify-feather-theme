@@ -1,15 +1,74 @@
+{% liquid 
+	assign collection_one_image = 'feather-livingroom.jpg' | asset_img_url: '1200x900'
+	assign collection_one_text = ''
+	assign collection_one_url = routes.all_products_collection_url
+
+	assign collection_two_image = 'feather-bedroom.jpg' | asset_img_url: '1200x450'
+	assign collection_two_text = ''
+	assign collection_two_url = routes.all_products_collection_url
+
+	assign collection_three_image = 'feather-dinningroom.jpg' | asset_img_url: '1200x450'
+	assign collection_three_text = ''
+	assign collection_three_url = routes.all_products_collection_url
+
+	if collections.size > 0
+		for collection in collections
+			if forloop.index == 0
+				assign collection_one_text = collection.title
+				assign collection_one_url = collection.url
+			endif
+
+			if forloop.index == 1
+				assign collection_two_text = collection.title
+				assign collection_two_url = collection.url
+			endif 
+
+			if forloop.index == 2
+				assign collection_three_text = collection.title
+				assign collection_three_url = collection.url
+			endif
+		endfor
+	endif
+
+	if section.blocks != empty
+		for item in section.blocks
+			if forloop.index == 0
+				assign collection_one_image = item.image
+				assign collection_one_text = item.title
+				assign collection_one_url = item.url
+			endif
+
+			if forloop.index == 1
+				assign collection_two_image = item.image
+				assign collection_two_text = item.title
+				assign collection_two_url = item.url
+			endif 
+
+			if forloop.index == 2
+				assign collection_three_image = item.image
+				assign collection_three_text = item.title
+				assign collection_three_url = item.url
+			endif
+		endfor
+	endif
+%}
+
 <div class="row">
 	<div class="row col-xs-12 col-md-8">
-		<a class="feather-collection-banner__item">
-			<img src="{{ 'feather-livingroom.jpg' | asset_img_url: '1200x900' }}" alt="" />
+		<a title="{{ collection_one_text }}" class="feather-collection-banner__item">
+			<img src="{{ collection_one_image }}" alt="{{ collection_one_text }}" />
 		</a>
 	</div>
 	<div class="row col-xs-12 col-md-4">
-		<a class="feather-collection-banner__item col-xs-6 col-md-12">
-			<img src="{{ 'feather-bedroom.jpg' | asset_img_url: '1200x450' }}" alt="" />
+		<a
+			title="{{ collection_two_text }}"
+			class="feather-collection-banner__item col-xs-6 col-md-12"
+			style="background-image: url('{{ collection_two_image }}')">
 		</a>
-		<a class="feather-collection-banner__item col-xs-6 col-md-12">
-			<img src="{{ 'feather-dinningroom.jpg' | asset_img_url: '1200x450' }}" alt="" />
+		<a
+			title="{{ collection_three_text }}"
+			class="feather-collection-banner__item col-xs-6 col-md-12"
+			style="background-image: url('{{ collection_three_image }}')">
 		</a>
 	</div>
 </div>
@@ -19,6 +78,30 @@
 	{
 		"name": "Collections Banner",
 		"class": "feather-collection-banner",
-		"tag": "section"
+		"tag": "section",
+		"max_blocks": 3,
+		"blocks": [
+    {
+      "type": "collections-banner",
+      "name": "Collections-banner",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Featured Image"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Text Overlay"
+        },
+        {
+          "id": "text",
+          "type": "url",
+          "label": "Collection URL"
+        }
+      ]
+    }
+  ]
 	}
 {% endschema %}
