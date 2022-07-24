@@ -31,6 +31,17 @@
 
     {% render 'meta-tags' %}
 
+    <script>
+      let debug = {
+        cart: {{ cart | json }},
+        collection: {{ collection | json }},
+        product: {{ product | json }},
+        template: {{ template | json }}
+      };
+
+      window.Feather = debug;
+    </script>
+
     {% style %}
       :root {
         --feather-text: #595958;
