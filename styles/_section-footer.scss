@@ -1,10 +1,25 @@
 footer {
 	width: 100%;
 	background-color: $gray;
+	border-top: 1px solid $stroke;
+	border-bottom: 1px solid $stroke;
+
+	.container--padding {
+		margin: 0 auto;
+		padding-top: calc(#{$padding} * 4);
+		padding-bottom: calc(#{$padding} * 4);
+	}
+
+	.row {
+		max-width: $lg;
+		margin: 0 auto;
+	}
 
 	.footer {
 		&__details {
 			&-tagline {
+				text-align: left;
+
 				h5 {
 					font-family: $josefin;
 					font-size: 28px;
@@ -12,7 +27,14 @@ footer {
 					line-height: 1.75;
 				}
 			}
+
 			&-detail {
+				text-align: left;
+
+				@media (min-width: #{$md}) {
+					text-align: right;
+				}
+
 				& + .footer__details-detail {
 					margin-top: $padding;
 				}
@@ -44,6 +66,14 @@ footer {
 					&:hover {
 						color: $primary;
 					}
+				}
+			}
+
+			&-copyright {
+				margin-top: calc(#{$padding} * 4);
+
+				p {
+					margin: 0;
 				}
 			}
 		}

@@ -1,22 +1,27 @@
 <div class="container--padding">
-	<div class="footer__details-tagline">
-		<h5>{{ section.settings.tagline }}</h5>
-	</div>
-	<div class="footer__business-details">
-		{% if shop.address.summary %}
-			<address class="footer__details-detail footer__details-address address">
-				<h6>Address</h6>
-				{% if shop.address.company %}<p class="address__company">{{ shop.address.company }}</p>{% endif %}
-				<p>{{ shop.address.summary }}</p>
-			</address>
-		{% endif %}
-		{% if shop.email or shop.phone %}
-			<div class="footer__details-detail footer__details-contact">
-				<h6>Contact</h6>
-				{% if shop.email %}<a title="Email Address {{ shop.email }}" href="mailto:{{ shop.email }}">{{ shop.email }}</a>{% endif %}
-				{% if shop.phone %}<a title="Phone Number {{ shop.phone }}" href="tel:{{ shop.phone }}">{{ shop.phone }}</a>{% endif %}
-			</div>
-		{% endif %}
+	<div class="row center-xs">
+		<div class="footer__details-tagline col-xs-12 col-md-6">
+			<h5>{{ section.settings.tagline }}</h5>
+		</div>
+		<div class="footer__business-details col-xs-12 col-md-6">
+			{% if shop.email or shop.phone %}
+				<div class="footer__details-detail footer__details-contact">
+					<h6>Contact</h6>
+					{% if shop.email %}<a title="Email Address {{ shop.email }}" href="mailto:{{ shop.email }}">{{ shop.email }}</a>{% endif %}
+					{% if shop.phone %}<a title="Phone Number {{ shop.phone }}" href="tel:{{ shop.phone }}">{{ shop.phone }}</a>{% endif %}
+				</div>
+			{% endif %}
+			{% if shop.address.summary %}
+				<address class="footer__details-detail footer__details-address address">
+					<h6>Address</h6>
+					{% if shop.address.company %}<p class="address__company">{{ shop.address.company }}</p>{% endif %}
+					<p>{{ shop.address.summary }}</p>
+				</address>
+			{% endif %}
+		</div>
+		<div class="footer__details-copyright col-xs-12">
+			<p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url }}</p>
+		</div>
 	</div>
 </div>
 
