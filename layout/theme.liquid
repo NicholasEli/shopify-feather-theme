@@ -61,7 +61,8 @@
   <body>
     {% section 'header' %}
     <main>
-      {% comment %} {{ content_for_layout }}{% endcomment %} 
+      {{ content_for_layout }}
+      {% comment %} 
       {%- if page.content != blank %}
         <section class="feather-content">
           <div class="container">
@@ -70,6 +71,7 @@
           </div>
         </section>
       {%- endif -%}
+      {% endcomment %} 
     </main>
     {% section 'footer' %}
 

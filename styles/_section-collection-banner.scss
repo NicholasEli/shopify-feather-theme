@@ -1,0 +1,28 @@
+.feather-collection-banner {
+	&__item,
+	.row {
+		padding: 0;
+		margin: 0;
+	}
+
+	&__item {
+		width: 100%;
+		display: block;
+		overflow: hidden;
+		cursor: pointer;
+
+		&:hover {
+			img {
+				transform: scale(1.1, 1.1);
+			}
+		}
+
+		picture,
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+			transition: all 200ms;
+		}
+	}
+}
