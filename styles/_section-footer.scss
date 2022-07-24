@@ -1,61 +1,22 @@
 footer {
 	width: 100%;
-	background-color: $black;
-
-	.container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+	background-color: $gray;
 
 	.footer {
-		&__left,
-		&__center,
-		&__right {
-			width: 100%;
-		}
-
-		&__left {
-			order: 2;
-			text-align: center;
-			text-transform: uppercase;
-			font-weight: 200;
-
-			ul {
-				list-style: none;
-
-				li {
-					margin-bottom: 8px;
-
-					a {
-						font-size: 12px;
-						text-decoration: none;
-						color: #fff;
-						text-align: center;
-						cursor: pointer;
-
-						&:hover {
-							color: $blue;
-						}
-					}
-				}
+		&__tagline {
+			h5 {
+				font-family: $josefin;
+				font-size: 22px;
+				font-weight: 700;
+				font-style: italic;
 			}
 		}
 
-		&__center {
-			text-align: center;
-			order: 1;
-
+		&__address {
 			h6 {
-				font-size: 18px;
-				color: #fff;
-				letter-spacing: 1px;
+				font-size: 16px;
+				font-weight: 500;
 			}
-		}
-
-		&__right {
-			order: 3;
 		}
 	}
 }

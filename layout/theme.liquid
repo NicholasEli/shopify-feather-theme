@@ -47,15 +47,10 @@
     {{ content_for_header }}
   </head>
 
-  <body
-    id="{{ page_title | handle }}"
-    class="{% if customer %}customer-logged-in {% endif %} feather-{{ template | replace: '.', '-' | replace: '/', '-' }}"
-  >
+  <body>
     {% section 'header' %}
     <main>
-
       {% comment %} {{ content_for_layout }}{% endcomment %} 
-
       {%- if page.content != blank %}
         <section class="feather-content">
           <div class="container">
@@ -65,10 +60,8 @@
         </section>
       {%- endif -%}
     </main>
-    {% comment%}
     {% section 'footer' %}
-    {% section 'mobile-menu' %}
-    {% endcomment %}
+
     {{ 'script.min.js' | asset_url | script_tag }}
   </body>
 </html>

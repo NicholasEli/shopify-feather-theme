@@ -1,19 +1,67 @@
-<footer>
-	<div class="container container--padded">
-		<div class="footer__left">
-			<nav>
-				<ul class="nav__links">
-					{%- for link in linklists.main-menu.links -%}
-						<li class="nav__item {% if link.current %}nav__item--active{% endif %}">
-							<a href="{{ link.url }}">{{ link.title }}</a>	
-						</li>
-					{%- endfor -%}
-				</ul>
-			</nav>
-		</div>
-		<div class="footer__center">
-			<h6>{{ shop.name }}</h6>
-		</div>
-		<div class="footer__bottom"></div>
+{% liquid 
+	
+	assign address = section.settings
+	assign hasAddress = false
+	if address.address or address.building or address.zip or address.state
+		assign hasAddress = true
+	endif
+%}
+
+<div class="container--padding">
+	<div class="footer__tagline">
+		<h5>{{ section.settings.tagline }}</h5>
 	</div>
-<footer>
+	<div class="footer__business-details">
+		{% if hasAddress %}
+			<address class="footer__address">
+				<h6>Address</h6>
+				{% if address.address %}<p>{{ address.address }}{% endif %}
+				{% if address.building %}<p>{{ address.building }}{% endif %}
+				{% if address.zip %}<p>{{ address.zip }}{% endif %}
+				{% if address.state %}<p>{{ address.state }}{% endif %}
+			</address>
+		{% endif %}
+		<div class="footer__contact"></div>
+		<div class="footer__hours"></div>
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "Footer",
+		"class": "feather-footer",
+		"tag": "footer",
+		"settings": [
+			{
+				"id": "tagline",
+				"type": "text",
+				"default": "Contact Us!<br/>We're here to help you find the perfect item.",
+				"label": "Tag Line"
+			},
+			{
+				"id": "address",
+				"type": "text",
+				"default": "1234 Cherry Lane",
+				"label": "Address 1"
+			},
+			{
+				"id": "building",
+				"type": "text",
+				"default": "#100",
+				"label": "Adress 2"
+			},
+			{
+				"id": "zip",
+				"type": "text",
+				"default": "99999",
+				"label": "Zip Code"
+			},
+			{
+				"id": "state",
+				"type": "text",
+				"default": "WA",
+				"label": "State/Province"
+			}
+		]
+	}
+{% endschema %}
