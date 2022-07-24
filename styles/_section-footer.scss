@@ -3,19 +3,48 @@ footer {
 	background-color: $gray;
 
 	.footer {
-		&__tagline {
-			h5 {
-				font-family: $josefin;
-				font-size: 22px;
-				font-weight: 700;
-				font-style: italic;
+		&__details {
+			&-tagline {
+				h5 {
+					font-family: $josefin;
+					font-size: 28px;
+					font-style: italic;
+					line-height: 1.75;
+				}
 			}
-		}
+			&-detail {
+				& + .footer__details-detail {
+					margin-top: $padding;
+				}
 
-		&__address {
-			h6 {
-				font-size: 16px;
-				font-weight: 500;
+				h6,
+				p,
+				a {
+					color: $text;
+				}
+
+				h6 {
+					margin-bottom: 8px;
+					font-size: 14px;
+					font-weight: 700;
+					text-transform: uppercase;
+				}
+
+				p,
+				a {
+					display: block;
+					margin: 0;
+					font-size: 16px;
+					font-weight: 300;
+				}
+
+				a {
+					text-decoration: none;
+
+					&:hover {
+						color: $primary;
+					}
+				}
 			}
 		}
 	}

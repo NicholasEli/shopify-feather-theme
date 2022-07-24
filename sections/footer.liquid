@@ -1,28 +1,60 @@
 {% liquid 
 	
 	assign address = section.settings
-	assign hasAddress = false
+	assign has_address = false
 	if address.address or address.building or address.zip or address.state
-		assign hasAddress = true
+		assign has_address = true
+	endif
+
+	assign contact = section.settings
+	assign has_contact = false
+	if contact.phone or contact.email
+		assign has_contact = true
+	endif
+
+	assign schedule = section.blocks
+	assign has_schedule = false
+	if schedule != empty
+		has_schedule = true
 	endif
 %}
 
 <div class="container--padding">
-	<div class="footer__tagline">
+	<div class="footer__details-tagline">
 		<h5>{{ section.settings.tagline }}</h5>
 	</div>
 	<div class="footer__business-details">
-		{% if hasAddress %}
-			<address class="footer__address">
+		{% if has_address %}
+			<address class="footer__details-detail footer__details-address">
 				<h6>Address</h6>
-				{% if address.address %}<p>{{ address.address }}{% endif %}
-				{% if address.building %}<p>{{ address.building }}{% endif %}
-				{% if address.zip %}<p>{{ address.zip }}{% endif %}
-				{% if address.state %}<p>{{ address.state }}{% endif %}
+				{% if address.address %}<p>{{ address.address }}</p>{% endif %}
+				{% if address.building %}<p>{{ address.building }}</p>{% endif %}
+				{% if address.zip %}<p>{{ address.zip }}</p>{% endif %}
+				{% if address.state %}<p>{{ address.state }}</p>{% endif %}
 			</address>
 		{% endif %}
-		<div class="footer__contact"></div>
-		<div class="footer__hours"></div>
+		{% if has_contact %}
+			<div class="footer__details-detail footer__details-contact">
+				<h6>Contact</h6>
+				<p>{{ shop.phone }}</p>
+				{% if contact.email %}<a href="mailto:{{ contact.email }}">{{ contact.email }}</a>{% endif %}
+				{% if contact.phone %}<a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>{% endif %}
+			</div>
+		{% endif %}
+		<div class="footer__details-detail footer__details-hours">
+			<h6>Hours</h6>
+			<p>{% if section.blocks != empty%}Not{% endif %}</p>
+			<p>{% if section.blocks == empty%}Empty{% endif %}</p>
+			{% if has_schedule %}
+				{% for item in schedule %}
+					<p>{{ item.days }} <span>{{ item.hours }}</span></p>
+				{% endfor %}
+			{% else %}
+				<p>Monday-Friday: <span>8am - 5pm</span></p>
+				<p>Saturday: <span>10am - 1pm</span></p>
+				<p>Sunday: <span>Closed</span></p>
+			{% endif %}
+		</div>
 	</div>
 </div>
 
@@ -61,7 +93,37 @@
 				"type": "text",
 				"default": "WA",
 				"label": "State/Province"
+			},
+			{
+				"id": "phone",
+				"type": "text",
+				"default": "555-555-5555",
+				"label": "Phone Number (555-555-5555)"
+			},
+			{
+				"id": "email",
+				"type": "text",
+				"default": "myshopify@gmail.com",
+				"label": "Email Address (myshopify@gmail.com)"
 			}
-		]
+		],
+		"blocks": [
+     {
+       "name": "Schedule",
+       "type": "schedule",
+       "settings": [
+         {
+           "type": "text",
+           "id": "days",
+           "label": "Days"
+         },
+         {
+           "type": "text",
+           "id": "hours",
+           "label": "Hours"
+         }
+       ]
+     }
+  ]
 	}
 {% endschema %}
