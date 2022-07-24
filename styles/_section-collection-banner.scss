@@ -7,6 +7,7 @@
 
 	&__item {
 		width: 100%;
+		min-height: 300px;
 		height: calc(50vh - 75px);
 		position: relative;
 		display: block;
@@ -14,6 +15,7 @@
 		cursor: pointer;
 
 		@media (min-width: #{$md}) {
+			min-height: 600px;
 			height: calc(100vh - 150px);
 		}
 
@@ -26,6 +28,19 @@
 			background-position: center center;
 			background-repeat: no-repeat;
 			transition: all 200ms;
+			z-index: 1;
+		}
+
+		&::before {
+			content: '';
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #fff;
+			z-index: 3;
+			transition: all 500ms ease-out 200ms;
 		}
 
 		&:hover {
@@ -33,11 +48,54 @@
 				transform: scale(1.1, 1.1);
 			}
 		}
+
+		p {
+			position: absolute;
+			bottom: $padding;
+			left: $padding;
+			z-index: 2;
+			margin: 0;
+			font-family: $josefin;
+			font-size: 26px;
+			text-transform: lowercase;
+			color: #fff;
+			text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+			transition: all 500ms;
+
+			@media (min-width: #{$md}) {
+				font-size: 32px;
+			}
+		}
 	}
 
 	.row + .row {
 		.feather-collection-banner__item {
+			min-height: 300px;
 			height: calc(50vh - 75px);
+
+			p {
+				left: unset;
+				right: calc(#{$padding} * 2);
+				bottom: 0;
+				transform: translateY(0%) rotate(90deg);
+				transform-origin: center right;
+
+				@media (min-width: #{$md}) {
+					left: $padding;
+					right: unset;
+					bottom: $padding;
+					transform: rotate(0deg);
+					transform-origin: center center;
+				}
+			}
+		}
+	}
+}
+
+html.js {
+	.feather-collection-banner__item {
+		&::before {
+			height: 0;
 		}
 	}
 }
