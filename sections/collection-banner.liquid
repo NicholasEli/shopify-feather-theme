@@ -55,20 +55,25 @@
 
 <div class="row">
 	<div class="row col-xs-12 col-md-8">
-		<a title="{{ collection_one_text }}" class="feather-collection-banner__item">
-			<img src="{{ collection_one_image }}" alt="{{ collection_one_text }}" />
+		<a
+			title="{{ collection_one_text }}"
+			class="feather-collection-banner__item"
+		>
+			<div class="feather-collection-banner__item-bg" style="background-image: url('{{ collection_one_image }}')"></div>
 		</a>
 	</div>
 	<div class="row col-xs-12 col-md-4">
 		<a
 			title="{{ collection_two_text }}"
 			class="feather-collection-banner__item col-xs-6 col-md-12"
-			style="background-image: url('{{ collection_two_image }}')">
+		>
+			<div class="feather-collection-banner__item-bg" style="background-image: url('{{ collection_two_image }}')"></div>
 		</a>
 		<a
 			title="{{ collection_three_text }}"
 			class="feather-collection-banner__item col-xs-6 col-md-12"
-			style="background-image: url('{{ collection_three_image }}')">
+		>
+			<div class="feather-collection-banner__item-bg" style="background-image: url('{{ collection_three_image }}')"></div>
 		</a>
 	</div>
 </div>
