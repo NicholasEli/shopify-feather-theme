@@ -13,17 +13,17 @@
 
 	if collections.size > 0
 		for collection in collections
-			if forloop.index == 0
+			if forloop.index == 1
 				assign collection_one_text = collection.title
 				assign collection_one_url = collection.url
 			endif
 
-			if forloop.index == 1
+			if forloop.index == 2
 				assign collection_two_text = collection.title
 				assign collection_two_url = collection.url
 			endif 
 
-			if forloop.index == 2
+			if forloop.index == 3
 				assign collection_three_text = collection.title
 				assign collection_three_url = collection.url
 			endif
@@ -32,19 +32,19 @@
 
 	if section.blocks != empty
 		for item in section.blocks
-			if forloop.index == 0
+			if forloop.index == 1
 				assign collection_one_image = item.image
 				assign collection_one_text = item.title
 				assign collection_one_url = item.url
 			endif
 
-			if forloop.index == 1
+			if forloop.index == 2
 				assign collection_two_image = item.image
 				assign collection_two_text = item.title
 				assign collection_two_url = item.url
 			endif 
 
-			if forloop.index == 2
+			if forloop.index == 3
 				assign collection_three_image = item.image
 				assign collection_three_text = item.title
 				assign collection_three_url = item.url
