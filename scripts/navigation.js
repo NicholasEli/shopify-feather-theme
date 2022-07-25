@@ -40,10 +40,12 @@ const displayNavItems = function () {
 };
 
 const mobileNavBtn = function () {
+	const header = document.querySelector('header');
 	const nav = document.querySelector('[data-nav]');
 	const btn = document.querySelector('[data-nav-btn]');
 	if (!nav || !btn) return;
 
+	const limit = header.getBoundingClientRect().bottom;
 	const bounds = nav.getBoundingClientRect();
 
 	const _close = async () => {
@@ -59,6 +61,8 @@ const mobileNavBtn = function () {
 	btn.addEventListener('click', async () => {
 		if (!state.active) {
 			document.body.classList.add('nav-active');
+			nav.style.top = limit + 'px';
+			nav.style.height = window.innerHeight - limit + 'px';
 			nav.classList.add('animate__slideInLeft');
 			await asyncTimeout(duration);
 			state.setActive = true;
@@ -66,18 +70,6 @@ const mobileNavBtn = function () {
 		}
 
 		_close();
-	});
-
-	document.body.addEventListener('click', (e) => {
-		const x = e.clientX;
-		const y = e.clientY;
-
-		if (!state.active) return;
-
-		console.log(bounds.y, bounds.bottom, y);
-		if (y < bounds.top || y > bounds.bottom) {
-			_close();
-		}
 	});
 
 	window.addEventListener('resize', () => {

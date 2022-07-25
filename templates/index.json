@@ -3,9 +3,12 @@
     "collection-banner": {
       "type": "collection-banner"
     },
+    "collection-spotlight": {
+      "type": "collection-spotlight"
+    },
     "main": {
       "type": "index"
     }
   },
-  "order": ["collection-banner", "main"]
+  "order": ["collection-banner", "collection-spotlight", "main"]
 }

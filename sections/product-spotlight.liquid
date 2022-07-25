@@ -1,0 +1,99 @@
+{% liquid 
+	assign product_one_image = 'feather-livingroom.jpg' | asset_img_url: '1200x900'
+	assign product_one_text = ''
+	assign product_one_url = routes.all_products_product_url
+
+	assign product_two_image = 'feather-bedroom.jpg' | asset_img_url: '1200x450'
+	assign product_two_text = ''
+	assign product_two_url = routes.all_products_product_url
+
+	assign product_three_image = 'feather-dinningroom.jpg' | asset_img_url: '1200x450'
+	assign product_three_text = ''
+	assign product_three_url = routes.all_products_product_url
+
+	if products.size > 0
+		for product in products
+			if forloop.index == 1
+				assign product_one_text = product.title
+				assign product_one_url = product.url
+			endif
+
+			if forloop.index == 2
+				assign product_two_text = product.title
+				assign product_two_url = product.url
+			endif 
+
+			if forloop.index == 3
+				assign product_three_text = product.title
+				assign product_three_url = product.url
+			endif
+		endfor
+	endif
+
+	if section.blocks != empty
+		for item in section.blocks
+			if forloop.index == 1
+				assign product_one_image = item.image
+				assign product_one_text = item.title
+				assign product_one_url = item.url
+			endif
+
+			if forloop.index == 2
+				assign product_two_image = item.image
+				assign product_two_text = item.title
+				assign product_two_url = item.url
+			endif 
+
+			if forloop.index == 3
+				assign product_three_image = item.image
+				assign product_three_text = item.title
+				assign product_three_url = item.url
+			endif
+		endfor
+	endif
+%}
+
+<div class="row">
+	<p>{{ section.settings.tagline}}</p>
+</div>
+
+
+{% schema %}
+	{
+		"name": "Collections Banner",
+		"class": "feather-product-spotlight	",
+		"tag": "section",
+		"max_blocks": 3,
+		"settings": [
+			{
+				"id": "tagline",
+				"type": "text",
+				"lable": "tagline",
+				"default": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love."
+			}
+		],
+		"blocks": [
+    {
+      "type": "products-banner",
+      "name": "Collections-banner",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Featured Image"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Text Overlay"
+        },
+        {
+          "id": "text",
+          "type": "url",
+          "label": "Collection URL"
+        }
+      ]
+    }
+  ]
+	}
+{% endschema %}
