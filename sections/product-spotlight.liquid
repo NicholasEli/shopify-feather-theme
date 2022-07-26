@@ -1,56 +1,5 @@
 {% liquid 
-	assign product_one_image = 'feather-livingroom.jpg' | asset_img_url: '1200x900'
-	assign product_one_text = ''
-	assign product_one_url = routes.all_products_product_url
-
-	assign product_two_image = 'feather-bedroom.jpg' | asset_img_url: '1200x450'
-	assign product_two_text = ''
-	assign product_two_url = routes.all_products_product_url
-
-	assign product_three_image = 'feather-dinningroom.jpg' | asset_img_url: '1200x450'
-	assign product_three_text = ''
-	assign product_three_url = routes.all_products_product_url
-
-	if products.size > 0
-		for product in products
-			if forloop.index == 1
-				assign product_one_text = product.title
-				assign product_one_url = product.url
-			endif
-
-			if forloop.index == 2
-				assign product_two_text = product.title
-				assign product_two_url = product.url
-			endif 
-
-			if forloop.index == 3
-				assign product_three_text = product.title
-				assign product_three_url = product.url
-			endif
-		endfor
-	endif
-
-	if section.blocks != empty
-		for item in section.blocks
-			if forloop.index == 1
-				assign product_one_image = item.image
-				assign product_one_text = item.title
-				assign product_one_url = item.url
-			endif
-
-			if forloop.index == 2
-				assign product_two_image = item.image
-				assign product_two_text = item.title
-				assign product_two_url = item.url
-			endif 
-
-			if forloop.index == 3
-				assign product_three_image = item.image
-				assign product_three_text = item.title
-				assign product_three_url = item.url
-			endif
-		endfor
-	endif
+	assign items = all_products
 %}
 
 <div class="container container--padding container--lg">
@@ -61,9 +10,23 @@
 	</div>
 </div>
 <div class="container container--padding container--md">
-	<div class="row">
-		<div class="col-xs-12 feather-product-spotlight__sub-tagline" data-in-view>
+	<div class="row end-md">
+		<div class="col-xs-12 col-md-6 feather-product-spotlight__sub-tagline" data-in-view>
 			<p>{{ section.settings.subtagline}}</p>
+		</div>
+	</div>
+</div>
+<div class="container container--padding container--md">
+	<div class="row">
+		<div class="col-xs-12 feather-product-spotlight__items">
+			{% for collection in collections %}
+				{{ collection.products.size }}
+			{% endfor %}
+			{% for item in all_products %}
+				<a title="{{ item.title }}" href="{{ item.url }}" class="feather-product-spotlight__item">
+					<img src="{{ item.feature_image }}" />
+				</a>
+			{% endfor %}
 		</div>
 	</div>
 </div>
