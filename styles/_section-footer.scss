@@ -6,8 +6,8 @@ footer {
 
 	.container--padding {
 		margin: 0 auto;
-		padding-top: calc(#{$padding} * 4);
-		padding-bottom: calc(#{$padding} * 4);
+		padding-top: multiply($padding, 4);
+		padding-bottom: multiply($padding, 4);
 	}
 
 	.row {
@@ -16,14 +16,22 @@ footer {
 	}
 
 	.footer {
+		&__row {
+			& + .footer__row {
+				margin-top: multiply($padding, 3);
+			}
+		}
+
 		&__details {
 			&-tagline {
 				text-align: left;
 
 				h5 {
+					margin: 0;
 					font-family: $ibarra;
 					font-size: 28px;
 					line-height: 1.75;
+					color: $light-text;
 
 					@media (min-width: #{$lg}) {
 						font-size: 34px;
@@ -68,6 +76,43 @@ footer {
 
 					&:hover {
 						color: $primary;
+					}
+				}
+			}
+
+			&-nav {
+				width: 100%;
+
+				nav {
+					ul {
+						list-style: none;
+
+						@media (max-width: #{$sm}) {
+							text-align: left;
+						}
+
+						& + ul {
+							@media (min-width: #{$sm}) {
+								border-left: 1px solid $stroke;
+							}
+						}
+
+						li {
+							a {
+								font-size: 16px;
+								font-weight: 300;
+								text-decoration: none;
+							}
+
+							&:first-of-type {
+								a {
+									margin-bottom: 8px;
+									font-size: 14px;
+									font-weight: 700;
+									text-transform: uppercase;
+								}
+							}
+						}
 					}
 				}
 			}

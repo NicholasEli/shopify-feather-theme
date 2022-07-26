@@ -71,7 +71,7 @@
 							assign link-href = link.handle | prepend: '#'
 						endif
 					%}
-					<a href="{{ link-href }}">{{ link.title }}</a>
+					{{ link.title | link_to: link.url }}
 					{% comment %} DROPDOWN NAV {% endcomment %}
 					{% if link.links != blank %}
 						<nav class="feather-header__dropdown" data-nav-dropdown>
@@ -92,7 +92,7 @@
 													endif
 												%}
 												<li class="feather-header__dropdown-item start-xs" data-nav-item="{{ childlink.handle }}">
-													<a href="{{ childlink-href }}">{{ childlink.title }}</a>
+													{{ childlink.title | link_to: childlink.url }}
 												</li>
 											{% endfor %}
 										</ul>
@@ -101,7 +101,7 @@
 												<ul class="col-xs-6" data-nav="{{ childlink.handle }}">
 													{% for grandchildlink in childlink.links %}
 														<li class="feather-header__dropdown-item start-xs">
-															<a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+															{{ grandchildlink.title | link_to: grandchildlink.url }}
 														</li>
 													{% endfor %}
 												</ul>

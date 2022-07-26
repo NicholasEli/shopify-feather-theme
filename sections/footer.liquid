@@ -1,9 +1,9 @@
 <div class="container--padding">
 	<div class="row center-xs">
-		<div class="footer__details-tagline col-xs-12 col-md-6">
+		<div class="footer__details-tagline col-xs-12 col-md-6 footer__row">
 			<h5>{{ section.settings.tagline }}</h5>
 		</div>
-		<div class="footer__business-details col-xs-12 col-md-6">
+		<div class="footer__business-details col-xs-12 col-md-6 footer__row">
 			{% if shop.email or shop.phone %}
 				<div class="footer__details-detail footer__details-contact">
 					<h6>Contact</h6>
@@ -19,7 +19,26 @@
 				</address>
 			{% endif %}
 		</div>
-		<div class="footer__details-copyright col-xs-12">
+		{% if linklists.footer.links.size > 0 %}
+			<div class="footer__details-nav footer__row">
+				<nav class="row center-sm">
+					{% for link in linklists.footer.links %}
+						<ul class="col-xs-6 col-sm-3 col-md-4">
+							<li>
+								{{ link.title | link_to: link.url }}
+							</li>
+							{% for childlink in link.links %}
+								<li>{{ childlink.title | link_to: childlink.url }}</li>
+								{% for grandchildlink in childlinks.links %}
+									<li>{{ grandchildlink.title | link_to: grandchildlink.url }}</li>
+								{% endfor %}
+							{% endfor %}
+						</ul>
+					{% endfor %}
+				</nav>
+			</div>
+		{% endif %}
+		<div class="footer__details-copyright col-xs-12 footer__row">
 			<p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url }}</p>
 		</div>
 	</div>

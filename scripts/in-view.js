@@ -8,8 +8,6 @@ export const inView = function () {
 			(e) => {
 				if (e[0].isIntersecting) {
 					el.setAttribute('data-in-view', 'true');
-				} else {
-					el.setAttribute('data-in-view', 'false');
 				}
 			},
 			{ threshold: 0.75 }
