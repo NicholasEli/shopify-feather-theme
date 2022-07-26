@@ -53,47 +53,50 @@
 	endif
 %}
 
-<div class="row">
-	<p>{{ section.settings.tagline}}</p>
+<div class="container container--padding container--lg">
+	<div class="row">
+		<div class="col-xs-12 feather-product-spotlight__tagline" data-in-view>
+			<p>{{ section.settings.tagline}}</p>
+		</div>
+	</div>
 </div>
-
 
 {% schema %}
 	{
-		"name": "Collections Banner",
-		"class": "feather-product-spotlight	",
+		"name": "product-spotlight",
+		"class": "feather-product-spotlight",
 		"tag": "section",
-		"max_blocks": 3,
 		"settings": [
 			{
 				"id": "tagline",
 				"type": "text",
-				"lable": "tagline",
+				"label": "tagline",
 				"default": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love."
 			}
 		],
 		"blocks": [
-    {
-      "type": "products-banner",
-      "name": "Collections-banner",
-      "settings": [
-        {
-          "id": "image",
-          "type": "image_picker",
-          "label": "Featured Image"
-        },
-        {
-          "id": "title",
-          "type": "text",
-          "label": "Text Overlay"
-        },
-        {
-          "id": "text",
-          "type": "url",
-          "label": "Collection URL"
-        }
-      ]
-    }
-  ]
+	    {
+	      "type": "products-banner",
+	      "name": "collections-banner",
+	      "settings": [
+	        {
+	          "id": "image",
+	          "type": "image_picker",
+	          "label": "Featured Image"
+	        },
+	        {
+	          "id": "title",
+	          "type": "text",
+	          "label": "Text Overlay"
+	        },
+	        {
+	          "id": "text",
+	          "type": "url",
+	          "label": "Collection URL"
+	        }
+	      ]
+	    }
+  	]
 	}
 {% endschema %}
+

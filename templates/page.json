@@ -1,11 +1,11 @@
 {
   "sections": {
-    "banner": {
-      "type": "banner"
+    "collection-banner": {
+      "type": "collection-banner"
     },
     "main": {
       "type": "page"
     }
   },
-  "order": ["banner", "main"]
+  "order": ["collection-banner", "main"]
 }

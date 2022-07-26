@@ -1,2 +1,33 @@
-.feather-product-spolight {
+.feather-product-spotlight {
+	.container--padding {
+		padding-top: multiply(16px, 3);
+		padding-bottom: multiply(16px, 3);
+	}
+
+	&__tagline {
+		transform: translateY(multiply(16px, 3));
+		opacity: 0;
+		transition-duration: 500ms;
+		transition-timing-function: $timing;
+
+		&[data-in-view='true'] {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		p {
+			font-family: $josefin;
+			font-size: 26px;
+			line-height: 2;
+
+			@media (min-width: #{$md}) {
+				padding-right: divide(100%, 3);
+				font-size: 32px;
+			}
+
+			@media (min-width: #{$lg}) {
+				font-size: 40px;
+			}
+		}
+	}
 }

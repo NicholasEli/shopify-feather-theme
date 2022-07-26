@@ -1,5 +1,6 @@
 import { navigation } from './navigation.js';
 import { search } from './search.js';
+import { inView } from './in-view.js';
 
 window.onload = async function () {
 	console.log('--Initializing Scripts');
@@ -9,6 +10,7 @@ window.onload = async function () {
 
 	navigation();
 	search();
+	inView();
 
 	console.log('--Scripts Loaded');
 };

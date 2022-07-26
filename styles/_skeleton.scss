@@ -689,9 +689,29 @@ hr {
   }
 
   &--lg-padding {
-    @media (min-width: #{$lg}) {
+    @media (min-width: #{$xl}) {
       padding: $padding;
     }
+  }
+
+  &--xs {
+    max-width: $sm;
+  }
+
+  &--sm {
+    max-width: $sm;
+  }
+
+  &--md {
+    max-width: $md;
+  }
+
+  &--lg {
+    max-width: $lg;
+  }
+
+  &--xl {
+    max-width: $xl;
   }
 }
 
@@ -1406,7 +1426,7 @@ hr {
   }
 }
 
-@media only screen and (min-width: #{$lg}) {
+@media only screen and (min-width: #{$xl}) {
   .col-lg,
   .col-lg-1,
   .col-lg-2,

@@ -1,11 +1,14 @@
 $xs: 400px;
 $sm: 550px;
 $md: 750px;
-$lg: 1200px;
+$lg: 950px;
+$xl: 1200px;
 
 $padding: 16px;
 
 $box-shadow: 2px 7px 6px rgba(0, 0, 0, 0.35);
+
+$timing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
 $text: var(--feather-text);
 $stroke: var(--feather-stroke);
