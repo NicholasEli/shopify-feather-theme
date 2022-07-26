@@ -60,6 +60,13 @@
 		</div>
 	</div>
 </div>
+<div class="container container--padding container--md">
+	<div class="row">
+		<div class="col-xs-12 feather-product-spotlight__sub-tagline" data-in-view>
+			<p>{{ section.settings.subtagline}}</p>
+		</div>
+	</div>
+</div>
 
 {% schema %}
 	{
@@ -70,8 +77,14 @@
 			{
 				"id": "tagline",
 				"type": "text",
-				"label": "tagline",
+				"label": "Tagline",
 				"default": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love."
+			},
+			{
+				"id": "subtagline",
+				"type": "text",
+				"label": "Sub Tagline",
+				"default": "Spotlight: Products in focus"
 			}
 		],
 		"blocks": [

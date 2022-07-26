@@ -5,16 +5,6 @@
 	}
 
 	&__tagline {
-		transform: translateY(multiply(16px, 3));
-		opacity: 0;
-		transition-duration: 500ms;
-		transition-timing-function: $timing;
-
-		&[data-in-view='true'] {
-			transform: translateY(0);
-			opacity: 1;
-		}
-
 		p {
 			font-family: $ibarra;
 			font-size: 26px;
@@ -29,5 +19,36 @@
 				font-size: 40px;
 			}
 		}
+	}
+
+	&__sub-tagline {
+		p {
+			font-family: $ibarra;
+			font-size: 26px;
+			line-height: 1.5;
+
+			@media (min-width: #{$md}) {
+				text-align: right;
+			}
+		}
+	}
+
+	&__tagline,
+	&__sub-tagline {
+		p {
+			color: $text;
+		}
+	}
+
+	[data-in-view] {
+		transform: translateY(multiply(16px, 3));
+		opacity: 0;
+		transition-duration: 500ms;
+		transition-timing-function: $timing;
+	}
+
+	[data-in-view='true'] {
+		transform: translateY(0);
+		opacity: 1;
 	}
 }
