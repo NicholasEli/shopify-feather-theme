@@ -21,10 +21,13 @@ footer {
 				text-align: left;
 
 				h5 {
-					font-family: $josefin;
+					font-family: $ibarra;
 					font-size: 28px;
-					font-style: italic;
 					line-height: 1.75;
+
+					@media (min-width: #{$lg}) {
+						font-size: 34px;
+					}
 				}
 			}
 
