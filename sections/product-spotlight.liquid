@@ -1,7 +1,11 @@
 {% liquid 
-	assign items = all_products
-%}
 
+%}
+<hr>
+	{% for product in all_products %}
+		{{ product.handle }}
+	{% endfor %}
+<hr>
 <div class="container container--padding container--lg">
 	<div class="row">
 		<div class="col-xs-12 feather-product-spotlight__tagline" data-in-view>
@@ -19,9 +23,6 @@
 <div class="container container--padding container--md">
 	<div class="row">
 		<div class="col-xs-12 feather-product-spotlight__items">
-			{% for collection in collections %}
-				{{ collection.products.size }}
-			{% endfor %}
 			{% for item in all_products %}
 				<a title="{{ item.title }}" href="{{ item.url }}" class="feather-product-spotlight__item">
 					<img src="{{ item.feature_image }}" />

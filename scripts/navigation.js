@@ -30,6 +30,9 @@ const displayNavItems = function () {
 		const _select = () => {
 			const selector = navItem.getAttribute('data-nav-item');
 			const nav = document.querySelector(`[data-nav="${selector}"]`);
+
+			if (!nav) return;
+
 			clearNavItems();
 			navItem.classList.add(active);
 			nav.classList.add('active');

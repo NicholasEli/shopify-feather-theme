@@ -164,7 +164,7 @@
 			@media (min-width: #{$md}) {
 				width: auto;
 				height: auto;
-				position: static;
+				position: relative;
 				top: unset;
 				right: unset;
 			}

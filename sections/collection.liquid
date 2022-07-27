@@ -1,1 +1,16 @@
-<div class="collection"></div>
+<div class="collection container">
+	<h1>Collection - {{ collection.all_products_count }}</h1>
+	{% for item in collection.products %}
+		<div class="collection__item">
+			<h2>{{ item.title }}</h2>
+		</div>
+	{% endfor %}
+</div>
+
+{% schema %}
+	{
+		"name": "Collection",
+		"class": "feather-collection",
+		"tag": "section"
+	}
+{% endschema %}
