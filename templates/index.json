@@ -43,12 +43,19 @@
           "settings": {
             "product": "paul-weaver-leather-couch"
           }
+        },
+        "0d755c20-dc95-4c5b-94e2-5c12a71c3b93": {
+          "type": "products-banner",
+          "settings": {
+            "product": "minimal-living-room-table"
+          }
         }
       },
       "block_order": [
         "968abbda-2549-46ae-9e0f-3fc1a862ad11",
         "5f0e4371-4ef1-49a8-9554-d82854592177",
-        "9d082ee7-5931-43f2-b980-49b6d3ed74a8"
+        "9d082ee7-5931-43f2-b980-49b6d3ed74a8",
+        "0d755c20-dc95-4c5b-94e2-5c12a71c3b93"
       ],
       "settings": {
         "tagline": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love.",
