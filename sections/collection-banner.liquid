@@ -7,18 +7,12 @@
 		assign items = collections
 	endif
 
-	if blocks.settings != empty
+	if section.blocks and section.blocks.size >= 3
 		assign render_class = 'render__custom'
+		assign items = section.blocks | map: 'settings' | map: 'category'
 	endif
 %}
 
-<p>Title - {{ section.blocks.size }}</p>
-{% for block in section.blocks %}
-	<p>{{ forloop.index }}</p>
-	{% assign category =  block.settings.category %}
-	<p>{{ category.title }}</p>
-{% endfor %}
-<hr>
 {% if items and items.size >= 3 %}
 	<div class="row {{ render_class }}">
 		<div class="row col-xs-12 col-md-8">
