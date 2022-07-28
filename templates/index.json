@@ -31,10 +31,24 @@
           "settings": {
             "product": "ruslan-bardash-stool"
           }
+        },
+        "5f0e4371-4ef1-49a8-9554-d82854592177": {
+          "type": "products-banner",
+          "settings": {
+            "product": "phillip-goldsberry-couch"
+          }
+        },
+        "9d082ee7-5931-43f2-b980-49b6d3ed74a8": {
+          "type": "products-banner",
+          "settings": {
+            "product": "paul-weaver-leather-couch"
+          }
         }
       },
       "block_order": [
-        "968abbda-2549-46ae-9e0f-3fc1a862ad11"
+        "968abbda-2549-46ae-9e0f-3fc1a862ad11",
+        "5f0e4371-4ef1-49a8-9554-d82854592177",
+        "9d082ee7-5931-43f2-b980-49b6d3ed74a8"
       ],
       "settings": {
         "tagline": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love.",
