@@ -8,20 +8,8 @@
           "logo_width": 100
         }
       },
-      "banner": {
-        "type": "banner",
-        "settings": {
-          "text": "Shop Style",
-          "image": "shopify:\/\/shop_images\/image_1.jpg"
-        }
-      },
       "footer": {
         "type": "footer",
-        "settings": {
-        }
-      },
-      "mobile-menu": {
-        "type": "mobile-menu",
         "settings": {
         }
       }
