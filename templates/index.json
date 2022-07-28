@@ -25,6 +25,17 @@
     },
     "product-spotlight": {
       "type": "product-spotlight",
+      "blocks": {
+        "968abbda-2549-46ae-9e0f-3fc1a862ad11": {
+          "type": "products-banner",
+          "settings": {
+            "product": "ruslan-bardash-stool"
+          }
+        }
+      },
+      "block_order": [
+        "968abbda-2549-46ae-9e0f-3fc1a862ad11"
+      ],
       "settings": {
         "tagline": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love.",
         "subtagline": "Spotlight: Products in focus"
