@@ -8,10 +8,24 @@
           "settings": {
             "category": "livingroom-furniture"
           }
+        },
+        "d49f1c1e-0351-43fc-9608-1c9d3ed763d9": {
+          "type": "collections-banner",
+          "settings": {
+            "category": "bedroom-furniture"
+          }
+        },
+        "ec73fee9-dbff-4421-a96d-5c6d98d3bd37": {
+          "type": "collections-banner",
+          "settings": {
+            "category": "dinning-room-furniture"
+          }
         }
       },
       "block_order": [
-        "3d48ebfc-9cdf-4ebd-8fa7-b62f28d2a429"
+        "3d48ebfc-9cdf-4ebd-8fa7-b62f28d2a429",
+        "d49f1c1e-0351-43fc-9608-1c9d3ed763d9",
+        "ec73fee9-dbff-4421-a96d-5c6d98d3bd37"
       ],
       "settings": {
       }
