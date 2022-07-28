@@ -12,7 +12,7 @@
 		assign items = section.blocks | map: 'settings' | map: 'category'
 	endif
 
-	if collections.size > 0 and collections.size < 3 and section.blocks.size > 0 and section.blocks.size
+	if collections.size > 0 and collections.size < 3 and section.blocks.size > 0 and section.blocks.size < 3
 		assign render_class = 'render__auto-custom-mix'
 		assign blocks = section.blocks | map: 'settings' | map: 'category'
 		assign items = collections | concat:  blocks
