@@ -1,11 +1,3 @@
-{% liquid 
-
-%}
-<hr>
-	{% for product in all_products %}
-		{{ product.handle }}
-	{% endfor %}
-<hr>
 <div class="container container--padding container--lg">
 	<div class="row">
 		<div class="col-xs-12 feather-product-spotlight__tagline" data-in-view>
@@ -23,7 +15,8 @@
 <div class="container container--padding container--md">
 	<div class="row">
 		<div class="col-xs-12 feather-product-spotlight__items">
-			{% for item in all_products %}
+			{% for block in section.blocks %}
+				{% assign item = block.settings.product %}
 				<a title="{{ item.title }}" href="{{ item.url }}" class="feather-product-spotlight__item">
 					<img src="{{ item.feature_image }}" />
 				</a>
@@ -57,19 +50,9 @@
 	      "name": "collections-banner",
 	      "settings": [
 	        {
-	          "id": "image",
-	          "type": "image_picker",
-	          "label": "Featured Image"
-	        },
-	        {
-	          "id": "title",
-	          "type": "text",
-	          "label": "Text Overlay"
-	        },
-	        {
-	          "id": "text",
-	          "type": "url",
-	          "label": "Collection URL"
+	          "id": "product",
+	          "type": "product",
+	          "label": "Featured Product"
 	        }
 	      ]
 	    }
