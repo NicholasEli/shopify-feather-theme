@@ -1,14 +1,37 @@
 {
   "sections": {
     "collection-banner": {
-      "type": "collection-banner"
+      "type": "collection-banner",
+      "blocks": {
+        "3d48ebfc-9cdf-4ebd-8fa7-b62f28d2a429": {
+          "type": "collections-banner",
+          "settings": {
+            "category": "livingroom-furniture"
+          }
+        }
+      },
+      "block_order": [
+        "3d48ebfc-9cdf-4ebd-8fa7-b62f28d2a429"
+      ],
+      "settings": {
+      }
     },
     "product-spotlight": {
-      "type": "product-spotlight"
+      "type": "product-spotlight",
+      "settings": {
+        "tagline": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love.",
+        "subtagline": "Spotlight: Products in focus"
+      }
     },
     "main": {
-      "type": "index"
+      "type": "index",
+      "settings": {
+      }
     }
   },
-  "order": ["collection-banner", "product-spotlight", "main"]
+  "order": [
+    "collection-banner",
+    "product-spotlight",
+    "main"
+  ]
 }
