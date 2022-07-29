@@ -67,15 +67,8 @@
 	&__items {
 		width: 100%;
 
-		li {
-			height: 400px;
-			overflow: hidden;
-
-			&:hover {
-				img {
-					transform: scale(1.1, 1.1);
-				}
-			}
+		a {
+			display: inline-block;
 		}
 
 		img,
@@ -88,6 +81,18 @@
 		}
 
 		.glide {
+			li {
+				height: 400px;
+				overflow: hidden;
+
+				&:hover {
+					picture,
+					img {
+						transform: scale(1.1, 1.1);
+					}
+				}
+			}
+
 			&__arrows {
 				text-align: right;
 			}
@@ -119,6 +124,28 @@
 				svg {
 					transform: rotate(180deg);
 				}
+			}
+		}
+	}
+
+	&__column {
+		margin-left: multiply($padding, 3);
+		a {
+			height: 600px;
+			margin-bottom: multiply($padding, 3);
+			overflow: hidden;
+
+			&:hover {
+				picture,
+				img {
+					transform: scale(1.1, 1.1);
+				}
+			}
+		}
+
+		& + .feather-product-spotlight__column {
+			a {
+				height: 550px;
 			}
 		}
 	}
