@@ -25,7 +25,7 @@
 						{% for block in section.blocks %}
 							{% assign item = block.settings.product %}
 							<li  class="feather-product-spotlight__item">
-								<a title="{{ item.title }}" href="{{ item.url }}">
+								<a title="{{ item.title }}" href="{{ item.url }}" data-in-view>
 									<picture>
 										<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
 										<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
@@ -53,7 +53,7 @@
 				{% for block in section.blocks %}
 					{% assign item = block.settings.product %}
 					{% if forloop.index <= 2 %}
-						<a title="{{ item.title }}" href="{{ item.url }}">
+						<a title="{{ item.title }}" href="{{ item.url }}" data-in-view>
 							<picture>
 								<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
 								<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
@@ -69,7 +69,7 @@
 				{% for block in section.blocks %}
 					{% assign item = block.settings.product %}
 					{% if forloop.index > 2 %}
-						<a title="{{ item.title }}" href="{{ item.url }}">
+						<a title="{{ item.title }}" href="{{ item.url }}" data-in-view>
 							<picture>
 								<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
 								<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
