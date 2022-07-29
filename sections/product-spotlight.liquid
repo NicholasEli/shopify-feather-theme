@@ -1,20 +1,20 @@
-<div class="container container--padding container--lg">
+<div class="feather-product-spotlight__tagline container container--padding container--lg">
 	<div class="row">
-		<div class="col-xs-12 feather-product-spotlight__tagline" data-in-view>
+		<div class="col-xs-12" data-in-view>
 			<p>{{ section.settings.tagline}}</p>
 		</div>
 	</div>
 </div>
-<div class="container container--padding container--md">
+<div class="feather-product-spotlight__sub-tagline container container--md">
 	<div class="row end-md">
-		<div class="col-xs-12 col-md-6 feather-product-spotlight__sub-tagline" data-in-view>
+		<div class="col-xs-12 col-md-6" data-in-view>
 			<p>{{ section.settings.subtagline}}</p>
 		</div>
 	</div>
 </div>
-<div class="container container--padding container--md">
+<div class="feather-product-spotlight__items container container--padding container--md">
 	<div class="row">
-		<div data-glide="{{ section.id }}" class="col-xs-12 feather-product-spotlight__items glide">
+		<div data-glide="{{ section.id }}" class="col-xs-12 glide">
 			<div class="glide__track" data-glide-el="track">
 				<ul class="glide__slides">
 					{% for block in section.blocks %}
