@@ -1,3 +1,5 @@
+@import '../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss';
+
 .feather-product-spotlight {
 	.container--padding {
 		padding-top: multiply(16px, 3);
@@ -50,5 +52,16 @@
 	[data-in-view='true'] {
 		transform: translateY(0);
 		opacity: 1;
+	}
+
+	&__items {
+		width: 100%;
+
+		img,
+		picture {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
 	}
 }

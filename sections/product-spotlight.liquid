@@ -14,13 +14,24 @@
 </div>
 <div class="container container--padding container--md">
 	<div class="row">
-		<div class="col-xs-12 feather-product-spotlight__items">
-			{% for block in section.blocks %}
-				{% assign item = block.settings.product %}
-				<a title="{{ item.title }}" href="{{ item.url }}" class="feather-product-spotlight__item">
-					<img src="{{ item.feature_image }}" />
-				</a>
-			{% endfor %}
+		<div data-glide class="col-xs-12 feather-product-spotlight__items glide">
+			<div class="glide__track">
+				<ul class="glide__slides">
+					{% for block in section.blocks %}
+						{% assign item = block.settings.product %}
+						<li>
+							<a title="{{ item.title }}" href="{{ item.url }}" class="feather-product-spotlight__item">
+								<picture>
+									<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
+									<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
+									<source media="(max-width: 750px)" src="{{ item.featured_image | img_url: '600x' }}" />
+									<img src="{{ item.featured_image | img_url: '600x' }}" />
+								</picture>
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
