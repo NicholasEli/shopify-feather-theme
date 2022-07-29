@@ -50,15 +50,20 @@
 		}
 
 		p {
+			max-width: 100%;
 			position: absolute;
 			bottom: $padding;
 			left: $padding;
+			padding-right: multiply($padding, 2);
 			z-index: 2;
 			margin: 0;
+			overflow: hidden;
 			font-family: $ibarra;
 			font-size: 26px;
 			text-transform: lowercase;
 			color: #fff;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 			transition: all 500ms;
 
 			@media (min-width: #{$md}) {

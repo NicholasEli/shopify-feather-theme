@@ -1,14 +1,19 @@
 @import '../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss';
 @mixin spotlight-text {
+	max-width: 100%;
 	position: absolute;
 	bottom: $padding;
 	left: $padding;
-	margin: 0;
 	z-index: 2;
+	margin: 0;
+	padding-right: multiply($padding, 2);
+	overflow: hidden;
 	font-family: $ibarra;
 	font-size: 20px;
 	text-transform: capitalize;
+	text-overflow: ellipsis;
 	color: #fff;
+	white-space: nowrap;
 }
 
 .feather-product-spotlight {
