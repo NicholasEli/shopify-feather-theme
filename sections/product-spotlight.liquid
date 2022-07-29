@@ -1,44 +1,50 @@
-<div class="feather-product-spotlight__tagline container container--padding container--lg">
-	<div class="row">
-		<div class="col-xs-12" data-in-view>
-			<p>{{ section.settings.tagline}}</p>
-		</div>
-	</div>
-</div>
-<div class="feather-product-spotlight__sub-tagline container container--padding container--md">
-	<div class="row end-md">
-		<div class="col-xs-12 col-md-6" data-in-view>
-			<p>{{ section.settings.subtagline}}</p>
-		</div>
-	</div>
-</div>
-<div class="feather-product-spotlight__items container container--padding container--md">
-	<div class="row">
-		<div data-glide="{{ section.id }}" class="col-xs-12 glide">
-			<div class="glide__track" data-glide-el="track">
-				<ul class="glide__slides">
-					{% for block in section.blocks %}
-						{% assign item = block.settings.product %}
-						<li>
-							<a title="{{ item.title }}" href="{{ item.url }}" class="feather-product-spotlight__item">
-								<picture>
-									<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
-									<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
-									<source media="(max-width: 750px)" src="{{ item.featured_image | img_url: '600x' }}" />
-									<img src="{{ item.featured_image | img_url: '600x' }}" />
-								</picture>
-							</a>
-						</li>
-					{% endfor %}
-				</ul>
+{% if section.settings and section.settings.tagline %}
+	<div class="feather-product-spotlight__tagline container container--padding container--lg">
+		<div class="row">
+			<div class="col-xs-12" data-in-view>
+				<p>{{ section.settings.tagline }}</p>
 			</div>
-			<div class="glide__arrows" data-glide-el="controls">
-		    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
-		    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
-		  </div>
 		</div>
 	</div>
-</div>
+{% endif %}
+{% if section.settings and section.settings.subtagline %}
+	<div class="feather-product-spotlight__sub-tagline container container--padding container--md">
+		<div class="row end-md">
+			<div class="col-xs-12 col-md-6" data-in-view>
+				<p>{{ section.settings.subtagline }}</p>
+			</div>
+		</div>
+	</div>
+{% endif %}
+{% if section.blocks and section.blocks.size > 0 %}
+	<div class="feather-product-spotlight__items container container--padding container--md">
+		<div class="row">
+			<div data-glide="{{ section.id }}" class="col-xs-12 glide">
+				<div class="glide__track" data-glide-el="track">
+					<ul class="glide__slides">
+						{% for block in section.blocks %}
+							{% assign item = block.settings.product %}
+							<li>
+								<a title="{{ item.title }}" href="{{ item.url }}" class="feather-product-spotlight__item">
+									<picture>
+										<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
+										<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
+										<source media="(max-width: 750px)" src="{{ item.featured_image | img_url: '600x' }}" />
+										<img src="{{ item.featured_image | img_url: '600x' }}" />
+									</picture>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="glide__arrows" data-glide-el="controls">
+			    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
+			    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
+			  </div>
+			</div>
+		</div>
+	</div>
+{% endif %}
 
 {% schema %}
 	{
