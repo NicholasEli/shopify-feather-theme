@@ -14,8 +14,8 @@
 </div>
 <div class="container container--padding container--md">
 	<div class="row">
-		<div data-glide class="col-xs-12 feather-product-spotlight__items glide">
-			<div class="glide__track">
+		<div data-glide="{{ section.id }}" class="col-xs-12 feather-product-spotlight__items glide">
+			<div class="glide__track" data-glide-el="track">
 				<ul class="glide__slides">
 					{% for block in section.blocks %}
 						{% assign item = block.settings.product %}

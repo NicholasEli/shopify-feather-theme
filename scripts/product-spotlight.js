@@ -1,5 +1,6 @@
-import { uuidv4 } from './utils.js';
 import Glide from '@glidejs/glide';
+
+const instances = {};
 
 export const productSpotlight = function () {
 	const spotlights = document.querySelectorAll('[data-glide]');
@@ -7,6 +8,9 @@ export const productSpotlight = function () {
 	if (!spotlights || (spotlights && spotlights.length == 0)) return;
 
 	spotlights.forEach((spotlight) => {
-		spotlight.setAttribute('data-glide', uuidv4());
+		const id = spotlight.getAttribute('data-glide');
+		const instance = new Glide('[data-glide="' + id + '"]');
+		instance.mount();
+		instances[id] = instance;
 	});
 };
