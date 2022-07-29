@@ -32,6 +32,7 @@
 										<source media="(max-width: 750px)" src="{{ item.featured_image | img_url: '600x' }}" />
 										<img src="{{ item.featured_image | img_url: '600x' }}" />
 									</picture>
+									<p>{{ item.title }}</p>
 								</a>
 							</li>
 						{% endfor %}
@@ -59,6 +60,7 @@
 								<source media="(max-width: 750px)" src="{{ item.featured_image | img_url: '600x' }}" />
 								<img src="{{ item.featured_image | img_url: '600x' }}" />
 							</picture>
+							<p>{{ item.title }}</p>
 						</a>
 					{% endif %}
 				{% endfor %}
@@ -74,6 +76,7 @@
 								<source media="(max-width: 750px)" src="{{ item.featured_image | img_url: '600x' }}" />
 								<img src="{{ item.featured_image | img_url: '600x' }}" />
 							</picture>
+							<p>{{ item.title }}</p>
 						</a>
 					{% endif %}
 				{% endfor %}

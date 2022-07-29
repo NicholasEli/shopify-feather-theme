@@ -67,10 +67,6 @@
 	&__items {
 		width: 100%;
 
-		a {
-			display: inline-block;
-		}
-
 		img,
 		picture {
 			width: 100%;
@@ -89,6 +85,22 @@
 					picture,
 					img {
 						transform: scale(1.1, 1.1);
+					}
+				}
+
+				a {
+					position: relative;
+
+					p {
+						position: absolute;
+						bottom: $padding;
+						left: $padding;
+						margin: 0;
+						z-index: 2;
+						font-family: $ibarra;
+						font-size: 20px;
+						text-transform: capitalize;
+						color: #fff;
 					}
 				}
 			}
@@ -132,6 +144,8 @@
 		margin-left: multiply($padding, 3);
 		a {
 			height: 600px;
+			position: relative;
+			display: inline-block;
 			margin-bottom: multiply($padding, 3);
 			overflow: hidden;
 
@@ -140,6 +154,18 @@
 				img {
 					transform: scale(1.1, 1.1);
 				}
+			}
+
+			p {
+				position: absolute;
+				bottom: $padding;
+				left: $padding;
+				margin: 0;
+				z-index: 2;
+				font-family: $ibarra;
+				font-size: 20px;
+				text-transform: capitalize;
+				color: #fff;
 			}
 		}
 
