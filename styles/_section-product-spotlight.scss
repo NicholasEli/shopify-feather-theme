@@ -1,4 +1,15 @@
 @import '../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss';
+@mixin spotlight-text {
+	position: absolute;
+	bottom: $padding;
+	left: $padding;
+	margin: 0;
+	z-index: 2;
+	font-family: $ibarra;
+	font-size: 20px;
+	text-transform: capitalize;
+	color: #fff;
+}
 
 .feather-product-spotlight {
 	&__tagline {
@@ -91,16 +102,8 @@
 				a {
 					position: relative;
 
-					p {
-						position: absolute;
-						bottom: $padding;
-						left: $padding;
-						margin: 0;
-						z-index: 2;
-						font-family: $ibarra;
-						font-size: 20px;
-						text-transform: capitalize;
-						color: #fff;
+					span {
+						@include spotlight-text;
 					}
 				}
 			}
@@ -156,16 +159,8 @@
 				}
 			}
 
-			p {
-				position: absolute;
-				bottom: $padding;
-				left: $padding;
-				margin: 0;
-				z-index: 2;
-				font-family: $ibarra;
-				font-size: 20px;
-				text-transform: capitalize;
-				color: #fff;
+			span {
+				@include spotlight-text;
 			}
 		}
 
