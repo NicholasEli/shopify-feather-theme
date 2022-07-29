@@ -1,12 +1,12 @@
 @import '../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss';
 
 .feather-product-spotlight {
-	.container--padding {
-		padding-top: multiply(16px, 3);
-		padding-bottom: multiply(16px, 3);
-	}
-
 	&__tagline {
+		.container {
+			padding-top: multiply(16px, 3);
+			padding-bottom: multiply(16px, 3);
+		}
+
 		p {
 			font-family: $ibarra;
 			font-size: 26px;
