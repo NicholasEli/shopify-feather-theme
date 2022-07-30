@@ -1,21 +1,40 @@
 {% liquid
-	assign col_size = '1'
+	assign col_size = 'col-md-1'
 	if section.blocks.size > 1
-		assign col_size = section.blocks.size
+		assign col_size = section.blocks.size | prepend: 'col-md-'
 	endif
 	if section.blocks.size > 3
-		assign col_size = '3'
+		assign col_size = 'col-md-3'
 	endif
 %}
 
-<div class="container">
-	
-</div>
+{% if section.blocks.size > 0 %}
+	<div class="feather-information__items container">
+		<div class="row">
+			{% for item in section.blocks %}
+				<div class="feather-information__item col-xs-1 {{ col_size }}">
+					<div class="feather-information__image">
+						<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
+					</div>
+					<div class="feather-information__details">
+						<h4>{{ item.settings.title }}</h4>
+						<p>{{ item.settings.text }}</p>
+						{% if item.settings.url %}
+							{{ 'View More' | link_to: item.settings.url }}
+						{% endif %}
+					</div>	
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endif %}
+		
+	</div>
 
 {% schema %}
 	{
 		"name": "Information Grid",
-		"class": "feather-product-spotlight",
+		"class": "feather-information",
 		"tag": "section",
 		"blocks": [
 	    {
@@ -36,6 +55,11 @@
 	          "id": "text",
 	          "type": "text",
 	          "label": "Text"
+	        },
+	        {
+	          "id": "url",
+	          "type": "url",
+	          "label": "Url"
 	        }
 	      ]
 	    }
