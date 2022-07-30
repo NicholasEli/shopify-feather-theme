@@ -1,10 +1,10 @@
 {% liquid
 	assign col_size = 'col-md-1'
 	if section.blocks.size > 1
-		assign col_size = section.blocks.size | prepend: 'col-md-'
+		assign col_size = section.blocks.size | prepend: 'col-md-6'
 	endif
 	if section.blocks.size > 3
-		assign col_size = 'col-md-3'
+		assign col_size = 'col-md-4'
 	endif
 %}
 
@@ -12,7 +12,14 @@
 	<div class="feather-information__items container">
 		<div class="row">
 			{% for item in section.blocks %}
-				<div class="feather-information__item col-xs-1 {{ col_size }}">
+				{% liquid
+					assign remaining = forloop.index | modulo: 4
+					assign last_col_size = ''
+					if section.blocks.size > 3 and remaining == 0
+						assign last_col_size = 'col-md-12'
+					endif
+				%}
+				<div class="feather-information__item col-xs-2 {{ col_size }} {{ last_col_size }}">
 					<div class="feather-information__image">
 						<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
 					</div>
@@ -38,12 +45,12 @@
 		"tag": "section",
 		"blocks": [
 	    {
-	      "type": "information-grid-item",
+	      "type": "grid-item",
 	      "name": "Grid Item",
 	      "settings": [
 	        {
 	          "id": "image",
-	          "type": "image",
+	          "type": "image_picker",
 	          "label": "Icon"
 	        },
 	        {
