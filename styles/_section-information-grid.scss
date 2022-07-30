@@ -1,0 +1,13 @@
+.feather-information {
+	width: 100%;
+	&_items {
+	}
+
+	&_item {
+		&:nth-of-type(odd):last-of-type {
+			@media (min-width: #{$md}) {
+				width: 100%;
+			}
+		}
+	}
+}
