@@ -13,8 +13,8 @@
 		<div class="row">
 			{% for item in section.blocks %}
 				{% liquid
-					assign remaining = forloop.index | modulo: 4
 					assign last_col_size = ''
+					assign remaining = forloop.index | modulo: 4
 					if section.blocks.size > 3 and remaining == 0
 						assign last_col_size = 'col-md-12'
 					endif
