@@ -1,28 +1,39 @@
 {% liquid
-	assign col_size = 'col-md-1'
-	if section.blocks.size > 1
-		assign col_size = section.blocks.size | prepend: 'col-md-6'
+	assign container = 'container--md'
+	assign col_md = 'col-md-12'
+	assign col_lg = 'col-lg-12'
+
+	if section.blocks.size == 2
+		assign col_md = 'col-md-6'
+		assign col_lg = 'col-lg-6'
 	endif
-	if section.blocks.size > 3
-		assign col_size = 'col-md-4'
+
+	if section.blocks.size > 2
+		assign container = 'container--lg'
+		assign col_md = 'col-md-6'
+		assign col_lg = 'col-lg-4'
 	endif
 %}
 
 {% if section.blocks.size > 0 %}
-	<div class="feather-information__items container">
+	<div class="feather-information-grid__items container container--padding {{ container }}">
 		<div class="row">
 			{% for item in section.blocks %}
-				<div class="feather-information__item col-xs-2 {{ col_size }}">
-					<div class="feather-information__image">
-						<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
+				<div class="feather-information-grid__item col-xs-12 {{ col_md }} {{ col_lg }}">
+					<div class="container">
+						<div class="row between-xs">
+							<div class="feather-information-grid__item-image">
+								<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
+							</div>
+							<div class="feather-information-grid__item-details">
+								<h4>{{ item.settings.title }}</h4>
+								<p>{{ item.settings.text }}</p>
+								{% if item.settings.url %}
+									{{ 'View More' | link_to: item.settings.url }}
+								{% endif %}
+							</div>
+						</div>
 					</div>
-					<div class="feather-information__details">
-						<h4>{{ item.settings.title }}</h4>
-						<p>{{ item.settings.text }}</p>
-						{% if item.settings.url %}
-							{{ 'View More' | link_to: item.settings.url }}
-						{% endif %}
-					</div>	
 				</div>
 			{% endfor %}
 		</div>
@@ -34,7 +45,7 @@
 {% schema %}
 	{
 		"name": "Information Grid",
-		"class": "feather-information",
+		"class": "feather-information-grid",
 		"tag": "section",
 		"blocks": [
 	    {

@@ -10,11 +10,6 @@ footer {
 		padding-bottom: multiply($padding, 4);
 	}
 
-	.row {
-		max-width: $lg;
-		margin: 0 auto;
-	}
-
 	.footer {
 		&__row {
 			& + .footer__row {

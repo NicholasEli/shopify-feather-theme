@@ -1,12 +1,39 @@
-.feather-information {
-	width: 100%;
-	&_items {
-	}
+$grid-image: 50px;
 
-	&_item {
-		&:nth-of-type(odd):last-of-type {
-			@media (min-width: #{$md}) {
+.feather-information-grid {
+	width: 100%;
+
+	&__item {
+		margin-bottom: $padding;
+
+		&-image {
+			width: $grid-image;
+
+			img {
 				width: 100%;
+				display: block;
+			}
+		}
+
+		&-details {
+			width: calc(100% - #{$grid-image} - #{$padding});
+
+			h4 {
+				font-family: $ibarra;
+				color: $text;
+			}
+
+			p {
+				color: $text;
+				font-weight: 300;
+			}
+		}
+
+		&:nth-of-type(odd):last-of-type {
+			@media (min-width: #{$md}) and (max-width: #{$lg}) {
+				width: 100%;
+				max-width: 100%;
+				flex-basis: 100%;
 			}
 		}
 	}
