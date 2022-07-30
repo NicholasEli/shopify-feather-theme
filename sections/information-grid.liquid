@@ -1,0 +1,44 @@
+{% liquid
+	assign col_size = '1'
+	if section.blocks.size > 1
+		assign col_size = section.blocks.size
+	endif
+	if section.blocks.size > 3
+		assign col_size = '3'
+	endif
+%}
+
+<div class="container">
+	
+</div>
+
+{% schema %}
+	{
+		"name": "Information Grid",
+		"class": "feather-product-spotlight",
+		"tag": "section",
+		"blocks": [
+	    {
+	      "type": "information-grid-item",
+	      "name": "Grid Item",
+	      "settings": [
+	        {
+	          "id": "image",
+	          "type": "image",
+	          "label": "Icon"
+	        },
+	        {
+	          "id": "title",
+	          "type": "text",
+	          "label": "Title"
+	        },
+	        {
+	          "id": "text",
+	          "type": "text",
+	          "label": "Text"
+	        }
+	      ]
+	    }
+  	]
+	}
+{% endschema %}
