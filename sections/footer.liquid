@@ -1,4 +1,9 @@
+{%
+	assign social_links = 'twitter,facebook,pinterest,instagram,tiktok,tumblr,snapchat,youtube,vimeo' | split: ','
+%}
+
 <div class="container--padding container--xl">
+	{% render 'icon-feather' %}
 	<div class="row center-xs">
 		<div class="footer__details-tagline col-xs-12 col-md-6 footer__row">
 			<h5>{{ section.settings.tagline }}</h5>
@@ -38,6 +43,26 @@
 				</nav>
 			</div>
 		{% endif %}
+		<div class="footer__details-social-nav footer__row">
+			<ul>
+				{% for social in social_links %}
+					{% liquid
+						assign id = social | prepend: 'social_' | append: '_link'
+						assign icon = social | prepend: 'icon-'
+					%}
+					<p>{{ id }}</p>
+					<p>{{ icon }}</p>
+					<p>x{{ settings.social_facebook_link }}</p>
+					{% if settings[ id ] %}
+						<li>
+							<a title="{{ id }}" href="{{ settings[ id ]}}" target="_blank">
+	              {%- render icon -%}
+	            </a>
+	          </li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
 		<div class="footer__details-copyright col-xs-12 footer__row">
 			<p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url }}</p>
 		</div>

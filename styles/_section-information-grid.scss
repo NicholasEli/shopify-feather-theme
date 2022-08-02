@@ -3,7 +3,13 @@ $grid-image: 50px;
 .feather-information-grid {
 	width: 100%;
 
+	&__items {
+		padding-top: multiply($padding, 2);
+		padding-bottom: multiply($padding, 2);
+	}
+
 	&__item {
+		@include flex(row, space-between, flex-start, nowrap);
 		margin-bottom: $padding;
 
 		&-image {
@@ -17,8 +23,10 @@ $grid-image: 50px;
 
 		&-details {
 			width: calc(100% - #{$grid-image} - #{$padding});
+			text-align: left;
 
 			h4 {
+				text-align: left;
 				font-family: $ibarra;
 				color: $text;
 			}
@@ -26,11 +34,12 @@ $grid-image: 50px;
 			p {
 				color: $text;
 				font-weight: 300;
+				text-align: justify;
 			}
 		}
 
 		&:nth-of-type(odd):last-of-type {
-			@media (min-width: #{$md}) and (max-width: #{$lg}) {
+			@media (min-width: #{$sm}) and (max-width: #{$lg}) {
 				width: 100%;
 				max-width: 100%;
 				flex-basis: 100%;

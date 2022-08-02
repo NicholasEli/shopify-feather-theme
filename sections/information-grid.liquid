@@ -1,38 +1,31 @@
 {% liquid
-	assign container = 'container--md'
-	assign col_md = 'col-md-12'
-	assign col_lg = 'col-lg-12'
+	assign container = 'container--lg'
+	assign col = 'col-xs-12'
 
 	if section.blocks.size == 2
-		assign col_md = 'col-md-6'
-		assign col_lg = 'col-lg-6'
+		assign col = 'col-xs-12 col-sm-6'
 	endif
 
 	if section.blocks.size > 2
-		assign container = 'container--lg'
-		assign col_md = 'col-md-6'
-		assign col_lg = 'col-lg-4'
+		assign container = 'container--xl'
+		assign col = 'col-xs-12 col-sm-6 col-lg-4'
 	endif
 %}
 
 {% if section.blocks.size > 0 %}
 	<div class="feather-information-grid__items container container--padding {{ container }}">
-		<div class="row">
+		<div class="row center-xs">
 			{% for item in section.blocks %}
-				<div class="feather-information-grid__item col-xs-12 {{ col_md }} {{ col_lg }}">
-					<div class="container">
-						<div class="row between-xs">
-							<div class="feather-information-grid__item-image">
-								<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
-							</div>
-							<div class="feather-information-grid__item-details">
-								<h4>{{ item.settings.title }}</h4>
-								<p>{{ item.settings.text }}</p>
-								{% if item.settings.url %}
-									{{ 'View More' | link_to: item.settings.url }}
-								{% endif %}
-							</div>
-						</div>
+				<div class="feather-information-grid__item col-xs-12 {{ col }}">
+					<div class="feather-information-grid__item-image">
+						<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
+					</div>
+					<div class="feather-information-grid__item-details">
+						<h4>{{ item.settings.title }}</h4>
+						<p>{{ item.settings.text }}</p>
+						{% if item.settings.url %}
+							{{ 'View More' | link_to: item.settings.url }}
+						{% endif %}
 					</div>
 				</div>
 			{% endfor %}

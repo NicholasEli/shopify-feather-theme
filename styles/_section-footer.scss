@@ -3,17 +3,45 @@ footer {
 	background-color: $gray;
 	border-top: 1px solid $stroke;
 	border-bottom: 1px solid $stroke;
+	overflow: hidden;
+
+	.icon-feather {
+		height: 100%;
+		aspect-ratio: 1/1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translate(-50%, 0%);
+		z-index: 1;
+		opacity: 0.5;
+
+		svg {
+			width: 100%;
+			display: block;
+			* {
+				fill: $stroke;
+			}
+		}
+	}
 
 	.container--padding {
+		position: relative;
 		margin: 0 auto;
 		padding-top: multiply($padding, 4);
 		padding-bottom: multiply($padding, 4);
 	}
 
+	.row {
+		position: relative;
+		z-index: 2;
+	}
+
 	.footer {
-		&__row {
-			& + .footer__row {
-				margin-top: multiply($padding, 3);
+		&__business-details {
+			margin-top: multiply($padding, 4);
+
+			@media (min-width: #{$md}) {
+				margin-top: 0;
 			}
 		}
 
@@ -77,6 +105,7 @@ footer {
 
 			&-nav {
 				width: 100%;
+				margin-top: multiply($padding, 4);
 
 				nav {
 					ul {
