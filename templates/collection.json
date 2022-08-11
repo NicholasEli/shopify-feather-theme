@@ -2,13 +2,7 @@
   "sections": {
     "header": {
       "type": "collection-header"
-    },
-    "collection": {
-      "type": "collection"
-    },
-    "main": {
-      "type": "index"
     }
   },
-  "order": ["header", "collection", "main"]
+  "order": ["header"]
 }

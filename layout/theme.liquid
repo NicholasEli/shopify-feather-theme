@@ -59,7 +59,7 @@
     {{ content_for_header }}
   </head>
 
-  <body>
+  <body class="{{ template.name }}">
     {% section 'header' %}
     <main>
       {{ content_for_layout }}

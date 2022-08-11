@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "collection-header": {
+      "type": "collection-header"
+    },
+    "main": {
+      "type": "page"
+    }
+  },
+  "order": ["collection-header", "main"]
+}
