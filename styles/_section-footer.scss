@@ -141,6 +141,39 @@ footer {
 				}
 			}
 
+			&-social {
+				width: 100%;
+				margin-top: multiply($padding, 4);
+
+				ul {
+					max-width: $sm;
+					margin-left: auto;
+					margin-right: auto;
+					list-style: none;
+				}
+
+				a {
+					display: inline-block;
+
+					svg {
+						width: 30px;
+
+						* {
+							fill: $text;
+							transition: all 200ms;
+						}
+					}
+
+					&:hover {
+						svg {
+							* {
+								fill: $primary;
+							}
+						}
+					}
+				}
+			}
+
 			&-copyright {
 				margin-top: calc(#{$padding} * 4);
 

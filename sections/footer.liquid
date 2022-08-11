@@ -43,17 +43,18 @@
 				</nav>
 			</div>
 		{% endif %}
-		<div class="footer__details-social-nav footer__row">
-			<ul>
+		<div class="footer__details-social footer__row">
+			<ul class="row center-xs">
 				{% for social in social_links %}
 					{% liquid
-						assign id = social | prepend: 'social_' | append: '_link'
-						assign icon = social | prepend: 'icon-'
-						assign url = settings[id]
+						assign key = social | prepend: 'social_' | append: '_link'
+						assign value = settings[id]
 					%}
-					{% if settings[ id ] != blank %}
-						<li>
-							<a title="{{ social | capitalize }}" href="{{ url }}" target="_blank">{{ social }}</a>
+					{% if settings[ key ] != blank %}
+						<li class="col-xs-4 col-sm-3 col-md-2">
+							<a title="{{ social | capitalize }}" href="{{ value }}" target="_blank">
+								{% render 'social-icons', icon: social %}
+							</a>
 	          </li>
 	        {% endif %}
 				{% endfor %}
