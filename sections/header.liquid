@@ -64,7 +64,30 @@
 	<nav class="feather-header__nav animate__animated col-xs-12" data-nav>
 		<ul class="row center-md middle-md">
 			{% for link in linklists.main-menu.links %}
-				<li class="feather-header__nav-item {% if link.current %}feather-header__nav-item--active{% endif %}">
+				{% liquid 
+					assign class = 'feather-header__nav-item--active'
+					assign link_active = ''
+					if link.current
+						assign link_active = class
+					endif
+
+					if link.links
+						for childlink in link.links
+							if childlink.current
+								assign link_active = class
+							endif
+
+							if childlink.links
+								for grandchildlink in childlink.links
+									if grandchildlink.current
+										assign link_active = class
+									endif
+								endfor
+							endif
+						endfor
+					endif
+				%}
+				<li class="feather-header__nav-item {{ link_active }}">
 					{% liquid
 						assign link-href = link.url
 						if  link.links != blank
@@ -90,8 +113,16 @@
 													if  childlink.links != blank
 														assign childlink-href = childlink.handle | prepend: '#'
 													endif
+
+													assign childlink_active = ''
+													if childlink.current
+														assign childlink_active = 'feather-header__dropdown-item--active'
+													endif
 												%}
-												<li class="feather-header__dropdown-item start-xs" data-nav-item="{{ childlink.handle }}">
+												<li
+													class="feather-header__dropdown-item start-xs {{ childlink_active }}"
+													data-nav-item="{{ childlink.handle }}"
+												>
 													{{ childlink.title | link_to: childlink.url }}
 												</li>
 											{% endfor %}
@@ -100,7 +131,13 @@
 											{% if childlink.links != blank %}
 												<ul class="col-xs-6" data-nav="{{ childlink.handle }}">
 													{% for grandchildlink in childlink.links %}
-														<li class="feather-header__dropdown-item start-xs">
+														{% liquid 
+															assign grandchildlink_active = ''
+															if grandchildlink.current
+																assign grandchildlink_active = 'feather-header__dropdown-item--active'
+															endif
+														%}
+														<li class="feather-header__dropdown-item start-xs {{ grandchildlink_active }}">
 															{{ grandchildlink.title | link_to: grandchildlink.url }}
 														</li>
 													{% endfor %}

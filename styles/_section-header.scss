@@ -250,6 +250,10 @@
 				&--active {
 					background-color: rgba(0, 0, 0, 0.03);
 					color: $primary;
+
+					a {
+						color: $primary;
+					}
 				}
 
 				a {

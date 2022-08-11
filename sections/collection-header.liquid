@@ -1,0 +1,19 @@
+<div class="container">
+	<h1>{{- collection.title | escape -}}</h1>
+</div>
+
+{% schema %}
+	{
+		"name": "Collection Header",
+		"class": "feather-collection__header",
+		"tag": "section",
+		"settings": [
+			{
+				"id": "tagline",
+				"type": "text",
+				"default": "Contact Us!<br/>We're here to help you find the perfect item.",
+				"label": "Tag Line"
+			}
+		]
+	}
+{% endschema %}
