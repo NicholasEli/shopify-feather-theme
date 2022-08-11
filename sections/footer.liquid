@@ -50,9 +50,6 @@
 						assign id = social | prepend: 'social_' | append: '_link'
 						assign icon = social | prepend: 'icon-'
 						assign url = settings[id]
-						unless url contains 'https://'
-							assign url = url | prepend: 'https://'
-						endunless
 					%}
 					{% if settings[ id ] != blank %}
 						<li>
