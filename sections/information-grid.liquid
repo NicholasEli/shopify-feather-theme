@@ -21,7 +21,7 @@
 						<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
 					</div>
 					<div class="feather-information-grid__item-details">
-						<h4>{{ item.settings.title }}</h4>
+						<h5>{{ item.settings.title }}</h5>
 						<p>{{ item.settings.text }}</p>
 						{% if item.settings.url %}
 							{{ 'View More' | link_to: item.settings.url }}
