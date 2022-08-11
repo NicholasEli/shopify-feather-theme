@@ -20,8 +20,7 @@
         "3d48ebfc-9cdf-4ebd-8fa7-b62f28d2a429",
         "d49f1c1e-0351-43fc-9608-1c9d3ed763d9"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "product-spotlight": {
       "type": "product-spotlight",
@@ -68,7 +67,7 @@
         "fedc2a68-41ad-4e44-a754-95b87628c11b": {
           "type": "grid-item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/feather-delievery.png",
+            "image": "shopify://shop_images/feather-delievery.png",
             "title": "Reliable Delivery",
             "text": "Committed to your order is processed without delay. In addition it will come with detailed assembly instructions and follow up call to assist you with any difficulties you might run into.",
             "url": ""
@@ -77,19 +76,19 @@
         "a74c9391-558b-406e-8476-2f992b83dbb2": {
           "type": "grid-item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/feather-materials.png",
+            "image": "shopify://shop_images/feather-materials.png",
             "title": "Quality Materials",
             "text": "We take pride in selecting our materials manufacturer.  Before constructing any item we vet each and every piece before its used to ensure its quality.",
-            "url": "shopify:\/\/pages\/about"
+            "url": "shopify://pages/about"
           }
         },
         "4d6c0c3e-1750-4a2d-823b-a1d44abfff7f": {
           "type": "grid-item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/feather-chat.png",
+            "image": "shopify://shop_images/feather-chat.png",
             "title": "Dedicated Support",
             "text": "Our business strives to provide first class support to resolve any issues you might run into as quickly as possible.",
-            "url": "shopify:\/\/pages\/contact"
+            "url": "shopify://pages/contact"
           }
         }
       },
@@ -98,19 +97,8 @@
         "a74c9391-558b-406e-8476-2f992b83dbb2",
         "4d6c0c3e-1750-4a2d-823b-a1d44abfff7f"
       ],
-      "settings": {
-      }
-    },
-    "main": {
-      "type": "index",
-      "settings": {
-      }
+      "settings": {}
     }
   },
-  "order": [
-    "collection-banner",
-    "product-spotlight",
-    "information-grid",
-    "main"
-  ]
+  "order": ["collection-banner", "product-spotlight", "information-grid"]
 }

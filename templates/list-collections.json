@@ -4,17 +4,12 @@
       "type": "collection-header",
       "settings": {
         "title": "Collections",
-        "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg"
+        "image": "shopify://shop_images/sunlight-creeps-through-a-bright-living-room.jpg"
       }
     },
-    "main": {
-      "type": "page",
-      "settings": {
-      }
+    "collection-list": {
+      "type": "collection-list"
     }
   },
-  "order": [
-    "collection-header",
-    "main"
-  ]
+  "order": ["collection-header", "collection-list"]
 }
