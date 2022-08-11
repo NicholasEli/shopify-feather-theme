@@ -7,7 +7,7 @@ const state = {
 	},
 };
 
-const active = 'eather-header__dropdown-item--active';
+const active = 'feather-header__dropdown-item--active';
 const md = parseInt(getCSSVariable('--md'));
 const duration = parseInt(getCSSVariable('--animate-duration'));
 
@@ -48,7 +48,6 @@ const mobileNavBtn = function () {
 	const btn = document.querySelector('[data-nav-btn]');
 	if (!nav || !btn) return;
 
-	const limit = header.getBoundingClientRect().bottom;
 	const bounds = nav.getBoundingClientRect();
 
 	const _close = async () => {
@@ -56,12 +55,16 @@ const mobileNavBtn = function () {
 
 		await asyncTimeout(duration);
 		document.body.classList.remove('nav-active');
+		nav.style.top = '0px';
+		nav.style.height = 'auto';
 		nav.classList.remove('animate__slideInLeft');
 		nav.classList.remove('animate__slideOutLeft');
 		state.setActive = false;
 	};
 
 	btn.addEventListener('click', async () => {
+		const limit = header.getBoundingClientRect().bottom;
+
 		if (!state.active) {
 			document.body.classList.add('nav-active');
 			nav.style.top = limit + 'px';

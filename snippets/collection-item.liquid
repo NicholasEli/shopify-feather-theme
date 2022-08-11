@@ -1,0 +1,12 @@
+<a
+	title="{{ collection.title }}"
+	href="{{ collection.url }}"
+	class="feather-collection__item"
+>
+	<div class="feather-collection__item-image">
+		<img src="{{ collection.featured_image | img_url: '600x600' }}" alt="{{ collection.title }}">
+	</div>
+	<div class="feather-collection__item-title">
+		<h6>{{ collection.title }}</h6>
+	</div>
+</a>

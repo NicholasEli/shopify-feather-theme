@@ -41,4 +41,40 @@
 			}
 		}
 	}
+
+	&__list {
+		background-color: #fff;
+
+		ul {
+			list-style: none;
+		}
+	}
+
+	&__item {
+		display: inline-block;
+		margin-bottom: $padding;
+		padding-bottom: $padding;
+		border-bottom: 1px solid #{$stroke};
+		text-decoration: none;
+
+		&-image {
+			margin-bottom: $padding;
+			aspect-ratio: 1/1;
+			background-color: $gray;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		}
+
+		&-title {
+			h6 {
+				color: $text;
+				font-weight: 700;
+			}
+		}
+	}
 }

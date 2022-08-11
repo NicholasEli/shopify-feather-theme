@@ -5,6 +5,7 @@
 
 	/** TOP **/
 	&__top {
+		position: relative;
 		border-bottom: 1px solid $stroke;
 
 		@media (min-width: #{$md}) {
