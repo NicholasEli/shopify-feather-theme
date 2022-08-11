@@ -1,5 +1,5 @@
 {%
-	assign social_links = 'twitter,facebook,pinterest,instagram,tiktok,tumblr,snapchat,youtube,vimeo' | split: ','
+	assign social_links = 'facebook,twitter,telegram,truth,instagram,tiktok,snapchat,youtube,vimeo,pinterest,tumblr,github,website' | split: ','
 %}
 
 <div class="container--padding container--xl">
@@ -44,15 +44,13 @@
 			</div>
 		{% endif %}
 		<div class="footer__details-social-nav footer__row">
+			<p>{{ settings.social_facebook_link }}</p>
 			<ul>
 				{% for social in social_links %}
 					{% liquid
 						assign id = social | prepend: 'social_' | append: '_link'
 						assign icon = social | prepend: 'icon-'
 					%}
-					<p>{{ id }}</p>
-					<p>{{ icon }}</p>
-					<p>x{{ settings.social_facebook_link }}</p>
 					{% if settings[ id ] %}
 						<li>
 							<a title="{{ id }}" href="{{ settings[ id ]}}" target="_blank">
