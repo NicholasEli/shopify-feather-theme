@@ -15,67 +15,67 @@
         "content": "Social media links"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_facebook_link",
         "label": "Facebook"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_twitter_link",
         "label": "Twitter"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_telegram_link",
         "label": "Telegram"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_truth_link",
         "label": "Truth"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_instagram_link",
         "label": "Instagram"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_tiktok_link",
         "label": "Tiktok"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_snapchat_link",
         "label": "Snapchat"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_youtube_link",
         "label": "Youtube"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_vimeo_link",
         "label": "Vimeo"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_pinterest_link",
         "label": "Pinterest"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_tumblr_link",
         "label": "Tumblr"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_github_link",
         "label": "Github"
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "social_website_link",
         "label": "Website"
       }
