@@ -1,11 +1,20 @@
 {
   "sections": {
     "collection-header": {
-      "type": "collection-header"
+      "type": "collection-header",
+      "settings": {
+        "title": "Collections",
+        "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg"
+      }
     },
     "main": {
-      "type": "page"
+      "type": "page",
+      "settings": {
+      }
     }
   },
-  "order": ["collection-header", "main"]
+  "order": [
+    "collection-header",
+    "main"
+  ]
 }
