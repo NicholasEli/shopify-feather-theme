@@ -1,16 +1,16 @@
 {% if section.settings.image %}
 	<picture>
 		<source
-			media="(max-width: 960)"
-			srcset="{{ section.settings.image | img_url: '800x' }}"
+			media="(min-width: 1600px)"
+			srcset="{{ section.settings.image | img_url: '2500x' }}"
 		/>
 		<source
 			media="(min-width: 960px)"
 			srcset="{{ section.settings.image | img_url: '1200x' }}"
 		/>
 		<source
-			media="(min-width: 1600px)"
-			srcset="{{ section.settings.image | img_url: '2500x' }}"
+			media="(max-width: 960px)"
+			srcset="{{ section.settings.image | img_url: '800x' }}"
 		/>
     <img src="{{ section.settings.image | img_url: '2500x' }}" alt="{{ section.settigns.title }}">
 	</picture>
