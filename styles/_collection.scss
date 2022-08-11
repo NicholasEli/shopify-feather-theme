@@ -1,7 +1,17 @@
 .feather-collection {
 	&__header {
 		width: 100%;
-		height: 80vh;
-		min-height: 300px;
+		background-color: $gray;
+
+		.container {
+			height: 75vh;
+			min-height: 300px;
+			max-height: 480px;
+		}
+
+		h1 {
+			text-transform: uppercase;
+			color: $text;
+		}
 	}
 }
