@@ -1,3 +1,20 @@
+{% if section.settings.image %}
+	<picture>
+		<source
+			media="(max-width: 960)"
+			srcset="{{ section.settings.image | img_url: '800x' }}"
+		/>
+		<source
+			media="(min-width: 960px)"
+			srcset="{{ section.settings.image | img_url: '1200x' }}"
+		/>
+		<source
+			media="(min-width: 1600px)"
+			srcset="{{ section.settings.image | img_url: '2500x' }}"
+		/>
+    <img src="{{ section.settings.image | img_url: '2500x' }}" alt="{{ section.settigns.title }}">
+	</picture>
+{% endif %}
 <div class="container row center-xs middle-xs">
 	<h1>{{ section.settings.title }}</h1>
 </div>
@@ -14,6 +31,11 @@
 				"default": "Collections",
 				"label": "Page Title",
 				"info": "Page at '/collections'"
+			},
+			{
+				"id": "image",
+				"type": "image_picker",
+				"label": "Page Banner"
 			}
 		]
 	}
