@@ -1,23 +1,10 @@
 {
   "current": {
-    "social_facebook_link": "www.facebook.com",
-    "social_twitter_link": "www.twitter.com",
-    "social_telegram_link": "www.telegram.com",
-    "social_truth_link": "www.truthsocial.com",
-    "social_instagram_link": "www.instagram.com",
-    "social_tiktok_link": "www.tiktok.com",
-    "social_snapchat_link": "www.snapchat.com",
-    "social_youtube_link": "www.youtube.com",
-    "social_vimeo_link": "www.vimeo.com",
-    "social_pinterest_link": "www.pinterest.com",
-    "social_tumblr_link": "www.tumblr.com",
-    "social_github_link": "www.github.com",
-    "social_website_link": "www.nicholasbydesign.com",
     "sections": {
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/Screen_Shot_2022-06-15_at_3.15.19_PM.png",
+          "logo": "shopify://shop_images/Screen_Shot_2022-06-15_at_3.15.19_PM.png",
           "logo_width": 100
         }
       },
@@ -28,12 +15,9 @@
         }
       }
     },
-    "content_for_index": [
-
-    ]
+    "content_for_index": []
   },
   "presets": {
-    "Default": {
-    }
+    "Default": {}
   }
 }
