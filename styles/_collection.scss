@@ -1,17 +1,33 @@
 .feather-collection {
 	&__header {
 		width: 100%;
-		background-color: $gray;
+		overflow: hidden;
 
 		.container {
 			height: 75vh;
 			min-height: 300px;
 			max-height: 480px;
+			background-color: $gray;
 		}
 
 		h1 {
 			text-transform: uppercase;
 			color: $text;
+		}
+
+		picture {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+
+		picture + .container {
+			background-color: transparent;
+
+			h1 {
+				color: #fff;
+			}
 		}
 	}
 }
