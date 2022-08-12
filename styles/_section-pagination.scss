@@ -1,0 +1,26 @@
+.feather-pagination {
+	.row {
+		a,
+		span {
+			font-size: 16px;
+			color: $text;
+		}
+
+		svg {
+			width: 10px;
+			height: auto;
+			display: inline-block;
+			transform: rotate(-90deg);
+		}
+
+		a,
+		span,
+		svg {
+			& + a,
+			& + span,
+			& + svg {
+				margin-left: $padding;
+			}
+		}
+	}
+}

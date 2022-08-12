@@ -1,12 +1,14 @@
 {
   "sections": {
     "header": {
-      "type": "collection-header",
-      "settings": {
-      }
+      "type": "collection-header"
+    },
+    "pagination": {
+      "type": "pagination"
+    },
+    "product-list": {
+      "type": "product-list"
     }
   },
-  "order": [
-    "header"
-  ]
+  "order": ["header", "pagination", "product-list"]
 }

@@ -1,0 +1,22 @@
+<div class="container container--padding">
+	<div class="row">
+		{% if collection %}
+			{{ 'Collections' | link_to: '/collections', 'All Collections' }}
+			{% render 'icon-caret' %}
+			<span>{{ collection.title }}</span>
+		{% endif %}
+		{% if product %}
+			{{ 'Collections' | link_to: '/collections', 'All Collections' }}
+			{% render 'icon-caret' %}
+			<span>{{ product.title }}</span>
+		{% endif %}
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "Pagination",
+		"class": "feather-pagination",
+		"tag": "section"
+	}
+{% endschema %}

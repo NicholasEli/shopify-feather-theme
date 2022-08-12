@@ -1,3 +1,12 @@
+{% liquid
+	assign title = section.settings.title
+	if template.name == 'list-collections' and title == blank
+		assign title = 'Collections'
+	endif
+	if template.name == 'collection' and title == blank
+		assign title = collection.title
+	endif
+%}
 {% if section.settings.image %}
 	<picture>
 		<source
@@ -16,7 +25,7 @@
 	</picture>
 {% endif %}
 <div class="container row center-xs middle-xs">
-	<h1>{{ section.settings.title }}</h1>
+	<h1>{{ title }}</h1>
 </div>
 
 {% schema %}
@@ -28,7 +37,6 @@
 			{
 				"id": "title",
 				"type": "text",
-				"default": "Collections",
 				"label": "Page Title",
 				"info": "This page can be found at '/collections'. The text will become white when a banner image is added."
 			},

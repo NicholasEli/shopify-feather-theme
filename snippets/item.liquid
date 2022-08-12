@@ -1,0 +1,17 @@
+<a
+	title="{{ item.title }}"
+	href="{{ item.url }}"
+	class="feather-list__item"
+>
+	<div class="feather-list__item-image">
+		<img src="{{ item.featured_image | img_url: '600x600' }}" alt="{{ item.title }}">
+	</div>
+	<div class="feather-list__item-title">
+		<h6>{{ item.title }}</h6>
+	</div>
+	{% if item.price %}
+		<div class="feather-list__item-price">
+			<p>{{ item.price | money }}</p>
+		</div>
+	{% endif %}
+</a>
