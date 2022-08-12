@@ -65,7 +65,7 @@
 		<ul class="row center-md middle-md">
 			{% for link in linklists.main-menu.links %}
 				{% liquid 
-					assign class = 'feather-header__nav-item--active'
+					assign class = 'feather-header__nav-item--current'
 					assign link_active = ''
 					if link.current
 						assign link_active = class
@@ -116,7 +116,7 @@
 
 													assign childlink_active = ''
 													if childlink.current
-														assign childlink_active = 'feather-header__dropdown-item--active'
+														assign childlink_active = 'feather-header__dropdown-item--current'
 													endif
 												%}
 												<li
@@ -134,7 +134,7 @@
 														{% liquid 
 															assign grandchildlink_active = ''
 															if grandchildlink.current
-																assign grandchildlink_active = 'feather-header__dropdown-item--active'
+																assign grandchildlink_active = 'feather-header__dropdown-item--current'
 															endif
 														%}
 														<li class="feather-header__dropdown-item start-xs {{ grandchildlink_active }}">
