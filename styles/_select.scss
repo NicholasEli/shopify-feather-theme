@@ -1,0 +1,70 @@
+.feather-select {
+	position: relative;
+	padding: 10px 15px;
+	border: 1px solid $stroke;
+	border-radius: 1px;
+
+	span {
+		color: $text;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
+
+	svg {
+		width: 10px;
+		display: inline-block;
+		margin-left: 5px;
+
+		* {
+			fill: $text;
+		}
+	}
+
+	&--dropdown {
+		cursor: pointer;
+	}
+
+	&__dropdown {
+		width: 100%;
+		min-width: fit-content;
+		position: absolute;
+		top: calc(100% + #{$padding});
+		left: 0;
+		display: none;
+		padding: 20px 15px;
+		border: 1px solid $stroke;
+		border-radius: 1px;
+		z-index: 2;
+		background-color: #fff;
+
+		&-item {
+			flex-wrap: nowrap;
+
+			input {
+				margin: 0;
+				font-weight: 400;
+				color: $text;
+
+				&[type='checkbox'],
+				&[type='checkbox'] + label {
+					cursor: pointer;
+				}
+			}
+
+			label {
+				margin: 0 0 0 $padding;
+				line-height: 1;
+				font-weight: 400;
+				color: $text;
+			}
+
+			& + .feather-select__dropdown-item {
+				margin-top: $padding;
+			}
+		}
+	}
+
+	& + .feather-select {
+		margin-left: $padding;
+	}
+}

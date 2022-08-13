@@ -1,0 +1,22 @@
+<div class="row">
+  <a data-select="availability" class="feather-select feather-select--dropdown">
+    <span>Availablity</span>
+    {% render 'icon-caret' %}
+    <div class="feather-select__dropdown">
+      <div data-filter="available:true" class="feather-select__dropdown-item row">
+        <input id="available:true" type="checkbox" />
+        <label for="available:true">In Stock</label>
+      </div>
+      <div data-filter="available:false" class="feather-select__dropdown-item row top-xs">
+        <input id="available:false" type="checkbox" />
+        <label for="available:false">Out of Stock</label>
+      </div>
+    </div>
+  </a>
+  <a data-select="price" class="feather-select feather-select--dropdown">
+    <span>Price</span>
+    {% render 'icon-caret' %}
+    <div class="feather-select__dropdown">
+    </div>
+  </a>
+</div>
