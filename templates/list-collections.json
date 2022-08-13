@@ -7,9 +7,12 @@
         "image": "shopify://shop_images/sunlight-creeps-through-a-bright-living-room.jpg"
       }
     },
+    "pagination": {
+      "type": "pagination"
+    },
     "collection-list": {
       "type": "collection-list"
     }
   },
-  "order": ["collection-header", "collection-list"]
+  "order": ["collection-header", "pagination", "collection-list"]
 }

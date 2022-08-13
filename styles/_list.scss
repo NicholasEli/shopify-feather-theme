@@ -14,28 +14,25 @@
 			transition: all 500ms ease-in 0ms;
 
 			&:nth-child(2n) {
-				@media (min-width: #{$sm}) {
-					transition-delay: 200ms;
-				}
+				transition-delay: 200ms;
 			}
 
 			&:nth-child(3n) {
+				transition-delay: 0ms;
+
 				@media (min-width: #{$sm}) {
-					transition-delay: 0ms;
-				}
-				@media (min-width: #{$md}) {
 					transition-delay: 300ms;
 				}
 			}
 
 			&:nth-child(4n) {
+				transition-delay: 200ms;
+
 				@media (min-width: #{$sm}) {
-					transition-delay: 200ms;
-				}
-				@media (min-width: #{$md}) {
 					transition-delay: 0ms;
 				}
-				@media (min-width: #{$lg}) {
+
+				@media (min-width: #{$md}) {
 					transition-delay: 400ms;
 				}
 			}

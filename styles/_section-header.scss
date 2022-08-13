@@ -27,7 +27,7 @@
 				}
 			}
 
-			/** SEARCh **/
+			/** SEARCH **/
 			&__search {
 				.form {
 					width: 100%;
@@ -124,6 +124,13 @@
 				&:last-of-type {
 					bottom: 0;
 				}
+			}
+		}
+
+		// SEARCH
+		.feather-header__search {
+			.form {
+				position: relative;
 			}
 		}
 

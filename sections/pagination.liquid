@@ -1,5 +1,9 @@
 <div class="container container--padding">
 	<div class="row">
+		{% if template.name == 'list-collections' %}
+			<span>Collections</span>
+			{% render 'icon-caret' %}
+		{% endif %}
 		{% if collection %}
 			{{ 'Collections' | link_to: '/collections', 'All Collections' }}
 			{% render 'icon-caret' %}
