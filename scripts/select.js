@@ -16,7 +16,7 @@ const state = {
 
 const setUI = function (id) {
 	const el = document.querySelector(`[data-select="${id}"]`);
-	el.classList.toggle('feather-select--active');
+	el.parentElement.classList.toggle('feather-select--active');
 };
 
 export const select = function () {
@@ -36,8 +36,10 @@ export const select = function () {
 		if (!id) return;
 		obj.id = id;
 
-		const isDropdown = select.querySelector(`[data-select-dropdown="${id}"]`);
+		const isDropdown = document.querySelector(`[data-select] + [data-select-dropdown="${id}"]`);
+
 		if (isDropdown) {
+			console.log(isDropdown);
 			obj.properties.dropdown = { active: false };
 			select.addEventListener('click', () => (state.setActive = { id, callback: () => setUI(id) }));
 		}

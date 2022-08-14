@@ -1,0 +1,30 @@
+.feather-filters {
+	&--checklist {
+		.feather-filters__item {
+			input {
+				margin: 0;
+				font-weight: 400;
+				color: $text;
+
+				&[type='checkbox'],
+				&[type='checkbox'] + label {
+					cursor: pointer;
+				}
+			}
+
+			label {
+				margin: 0 0 0 $padding;
+				line-height: 1;
+				font-weight: 400;
+				color: $text;
+			}
+
+			& + .feather-filters__item {
+				margin-top: $padding;
+			}
+		}
+	}
+
+	&--price {
+	}
+}

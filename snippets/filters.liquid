@@ -1,22 +1,35 @@
 <div class="row">
-  <a data-select="availability" class="feather-select feather-select--dropdown">
-    <span>Availablity</span>
-    {% render 'icon-caret' %}
-    <div data-select-dropdown="availability" class="feather-select__dropdown">
-      <div data-filter="available:true" class="feather-select__dropdown-item row">
-        <input id="available:true" type="checkbox" />
-        <label for="available:true">In Stock</label>
+  <a class="feather-select feather-select--dropdown">
+    <div data-select="availability" class="container">
+      <span>Availablity</span>
+      {% render 'icon-caret' %}
+    </div>
+    <div data-select-dropdown="availability" class="feather-select__dropdown feather-filters--checklist">
+      <div data-filter="availability:true" class="feather-filters__item row">
+        <input id="availability:true" type="checkbox" />
+        <label for="availability:true">In Stock</label>
       </div>
-      <div data-filter="available:false" class="feather-select__dropdown-item row top-xs">
-        <input id="available:false" type="checkbox" />
-        <label for="available:false">Out of Stock</label>
+      <div data-filter="availability:false" class="feather-filters__item row top-xs">
+        <input id="availability:false" type="checkbox" />
+        <label for="availability:false">Out of Stock</label>
       </div>
     </div>
   </a>
-  <a data-select="price" class="feather-select feather-select--dropdown">
-    <span>Price</span>
-    {% render 'icon-caret' %}
+  <a class="feather-select feather-select--dropdown feather-select--active feather-filters--price">
+    <div data-select="price" class="container">
+      <span>Price</span>
+      {% render 'icon-caret' %}
+    </div>
     <div data-select-dropdown="price" class="feather-select__dropdown">
+      <div class="feather-filters__item input">
+        <label>Minimum</label>
+        <input type="text" />
+      </div>
+      <div>-</div>
+      <div class="feather-filters__item input">
+        <label>Maximum</label>
+        <input type="text" />
+      </div>
     </div>
   </a>
 </div>

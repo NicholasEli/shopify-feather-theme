@@ -1,8 +1,11 @@
 .feather-select {
 	position: relative;
-	padding: 10px 15px;
 	border: 1px solid $stroke;
 	border-radius: 1px;
+
+	.container {
+		padding: 10px 15px;
+	}
 
 	span {
 		color: $text;
@@ -39,28 +42,6 @@
 
 		&-item {
 			flex-wrap: nowrap;
-
-			input {
-				margin: 0;
-				font-weight: 400;
-				color: $text;
-
-				&[type='checkbox'],
-				&[type='checkbox'] + label {
-					cursor: pointer;
-				}
-			}
-
-			label {
-				margin: 0 0 0 $padding;
-				line-height: 1;
-				font-weight: 400;
-				color: $text;
-			}
-
-			& + .feather-select__dropdown-item {
-				margin-top: $padding;
-			}
 		}
 	}
 
