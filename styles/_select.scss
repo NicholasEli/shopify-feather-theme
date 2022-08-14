@@ -64,6 +64,27 @@
 		}
 	}
 
+	&--active {
+		border-color: $primary;
+		box-shadow: 0 0 5px $primary;
+
+		span {
+			color: $primary;
+		}
+
+		svg {
+			transform: rotate(180deg);
+
+			* {
+				fill: $primary;
+			}
+		}
+
+		.feather-select__dropdown {
+			display: block;
+		}
+	}
+
 	& + .feather-select {
 		margin-left: $padding;
 	}
