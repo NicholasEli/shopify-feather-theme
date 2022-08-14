@@ -33,7 +33,7 @@ const state = {
 		this.results = results;
 
 		if (!results) return;
-		displayResults();
+		if (callback) callback();
 	},
 };
 
@@ -51,7 +51,7 @@ const doSearch = async function (id) {
 	inputContainer.classList.add(SEARCHING);
 	timeout = setTimeout(async () => {
 		const results = await api.get(this.value);
-		state.setResults = { id, results };
+		state.setResults = { results: { id, results }, callback: displayResults };
 		inputContainer.classList.remove(SEARCHING);
 	}, 500);
 };

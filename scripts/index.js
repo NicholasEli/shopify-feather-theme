@@ -2,6 +2,7 @@ import { navigation } from './navigation.js';
 import { search } from './search.js';
 import { inView } from './in-view.js';
 import { productSpotlight } from './product-spotlight.js';
+import { select } from './select.js';
 
 window.onload = async function () {
 	console.log('--Initializing Scripts');
@@ -13,6 +14,7 @@ window.onload = async function () {
 	search();
 	inView();
 	productSpotlight();
+	select();
 
 	console.log('--Scripts Loaded');
 };
