@@ -1,0 +1,20 @@
+{% assign filters = values | split: ',' %}
+
+<a class="feather-select feather-select--dropdown">
+  <div data-select="{{ name }}" class="container">
+    <span>{{ name }}</span>
+    {% render 'icon-caret' %}
+  </div>
+  <div data-select-dropdown="{{ name }}" class="feather-select__dropdown feather-filters--checklist">
+    {% for filter in filters %}
+      {% liquid 
+        assign value = filter | split: ':'
+        assign label = value[2]
+      %}
+      <div data-filter="{{ value[0] }}:{{value[1]}}" class="feather-filters__item row">
+        <input id="{{ value[0] }}" type="checkbox" />
+        <label for="{{ value[0] }}">{{ value[2] }}</label>
+      </div>
+    {% endfor %}
+  </div>
+</a>

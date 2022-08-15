@@ -29,7 +29,7 @@
 
 	&__dropdown {
 		width: 100%;
-		min-width: fit-content;
+		min-width: max-content;
 		position: absolute;
 		top: calc(100% + #{$padding});
 		left: 0;

@@ -17,6 +17,7 @@
 				line-height: 1;
 				font-weight: 400;
 				color: $text;
+				text-transform: lowercase;
 			}
 
 			& + .feather-filters__item {
