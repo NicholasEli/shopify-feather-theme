@@ -39,7 +39,6 @@ export const select = function () {
 		const isDropdown = document.querySelector(`[data-select] + [data-select-dropdown="${id}"]`);
 
 		if (isDropdown) {
-			console.log(isDropdown);
 			obj.properties.dropdown = { active: false };
 			select.addEventListener('click', () => (state.setActive = { id, callback: () => setUI(id) }));
 		}

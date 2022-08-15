@@ -8,6 +8,4 @@ const state = {
 	},
 };
 
-export const productFilter = function () {
-	//
-};
+export const productFilter = function () {};
