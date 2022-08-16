@@ -1,12 +1,18 @@
 .feather-select {
 	position: relative;
+	margin-right: $padding;
 	border: 1px solid $stroke;
 	border-radius: 1px;
+
+	&:last-of-type {
+		margin-right: 0;
+	}
 
 	.container {
 		padding: 10px 15px;
 	}
 
+	select,
 	span {
 		color: $text;
 		font-weight: 400;
@@ -25,6 +31,11 @@
 
 	&--dropdown {
 		cursor: pointer;
+
+		select {
+			margin: 0;
+			border: none;
+		}
 	}
 
 	&__dropdown {
@@ -64,9 +75,5 @@
 		.feather-select__dropdown {
 			display: block;
 		}
-	}
-
-	& + .feather-select {
-		margin-left: $padding;
 	}
 }
