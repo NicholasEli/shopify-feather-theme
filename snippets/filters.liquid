@@ -54,8 +54,8 @@
     assign variant_filters = variant_filters | split: '; '
   endif
 %}
-<div class="row">
-  <a title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
+<div class="row hide-md">
+  <a class="feather-filters__btn button" title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
 </div>
 <div class="row">
   {% render 'filters-checklist', name: 'Availablity', values: 'availability:true:In Stock,availability:false:Out of Stock' %}

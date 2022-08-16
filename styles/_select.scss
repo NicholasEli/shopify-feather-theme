@@ -1,3 +1,10 @@
+a[title='Sort By'],
+a[title='Sort By'] select {
+	@media (max-width: #{$md}) {
+		width: 100%;
+	}
+}
+
 .feather-select {
 	position: relative;
 	margin-right: $padding;
