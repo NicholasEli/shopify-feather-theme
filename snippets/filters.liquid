@@ -58,32 +58,37 @@
   <a class="feather-filters__btn button" title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
 </div>
 <div class="feather-filters__filters row">
-  {% render 'filters-checklist', name: 'Availablity', values: 'availability:true:In Stock,availability:false:Out of Stock' %}
-  <a title="Price Filter" class="feather-select feather-select--dropdown">
-    <div data-select="price" class="container">
-      <span>Price</span>
-      {% render 'icon-caret' %}
-    </div>
-    <div data-select-dropdown="price" class="feather-select__dropdown feather-filters--price">
-      <div class="feather-filters__item input">
-        <label>Minimum</label>
-        <input type="text" />
+  <div class="feather-filters__header hide-md row">
+    <h4>Filters</h4>
+  </div>
+  <div class="row">
+    {% render 'filters-checklist', name: 'Availablity', values: 'availability:true:In Stock,availability:false:Out of Stock' %}
+    <a title="Price Filter" class="feather-select feather-select--dropdown">
+      <div data-select="price" class="container">
+        <span>Price</span>
+        {% render 'icon-caret' %}
       </div>
-      <div class="feather-filters__item input">
-        <label>Maximum</label>
-        <input type="text" />
+      <div data-select-dropdown="price" class="feather-select__dropdown feather-filters--price">
+        <div class="feather-filters__item input">
+          <label>Minimum</label>
+          <input type="text" />
+        </div>
+        <div class="feather-filters__item input">
+          <label>Maximum</label>
+          <input type="text" />
+        </div>
       </div>
-    </div>
-  </a>
-  {% for filter in variant_filters %}
-    {% liquid 
-      assign obj = filter | split: '-'
-      assign name = obj[0]
-      assign values = obj[1] | downcase
-    %}
+    </a>
+    {% for filter in variant_filters %}
+      {% liquid 
+        assign obj = filter | split: '-'
+        assign name = obj[0]
+        assign values = obj[1] | downcase
+      %}
 
-    {% render 'filters-checklist', name: name, values: values, labe_style: 'text-transform: capitalize;' %}
-  {% endfor %}
+      {% render 'filters-checklist', name: name, values: values, labe_style: 'text-transform: capitalize;' %}
+    {% endfor %}
+  </div>
 </div>
 <div class="row end-md">
   <a title="Sort By" class="feather-select feather-select--dropdown">
