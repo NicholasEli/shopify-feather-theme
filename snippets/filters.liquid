@@ -82,3 +82,14 @@
     {% render 'filters-checklist', name: name, values: values, labe_style: 'text-transform: capitalize;' %}
   {% endfor %}
 </div>
+<div class="row">
+  <a class="feather-select feather-select--dropdown">
+    <select data-sortby>
+      <option value="name-asc">Name AZ</option>
+      <option value="name-desc">Name ZA</option>
+      <option value="price-asc">price ascending</option>
+      <option value="price-desc">price descending</option>
+      <option value="topseller">top seller</option>
+    </select>
+  </a>
+</div>
