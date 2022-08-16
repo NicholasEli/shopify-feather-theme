@@ -15,8 +15,27 @@ const state = {
 };
 
 const setUI = function (id) {
+	const active = 'feather-select--active';
 	const el = document.querySelector(`[data-select="${id}"]`);
-	el.parentElement.classList.toggle('feather-select--active');
+	const dropdown = document.querySelector(`[data-select] + [data-select-dropdown="${id}"]`);
+	el.parentElement.classList.toggle(active);
+
+	document.body.addEventListener('click', (e) => {
+		const { clientX, clientY } = e;
+		const parentBounds = el.parentElement.getBoundingClientRect();
+		const dropdownBounds = dropdown.getBoundingClientRect();
+
+		if (!dropdown || el.parentElement.className.indexOf(active) === -1) return;
+
+		console.log(dropdown);
+		if (clientX < dropdownBounds.x || clientX > dropdownBounds.x + dropdownBounds.width) {
+			el.parentElement.classList.remove(active);
+		}
+
+		if (clientY < parentBounds.y || clientY > dropdownBounds.y + dropdownBounds.height) {
+			el.parentElement.classList.remove(active);
+		}
+	});
 };
 
 export const select = function () {
