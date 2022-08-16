@@ -3,6 +3,7 @@ import { search } from './search.js';
 import { inView } from './in-view.js';
 import { productSpotlight } from './product-spotlight.js';
 import { select } from './select.js';
+import { toggle } from './toggle.js';
 import { productFilter } from './product-filter.js';
 
 window.onload = async function () {
@@ -16,6 +17,7 @@ window.onload = async function () {
 	inView();
 	productSpotlight();
 	select();
+	toggle();
 	productFilter();
 
 	console.log('--Scripts Loaded');

@@ -55,9 +55,9 @@
   endif
 %}
 <div class="row hide-md">
-  <a class="feather-filters__btn button" title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
+  <a data-toggle="[data-filters]" data-toggle-class="animate__fadeInUp,animate__fadeOutDown" class="feather-filters__btn button" title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
 </div>
-<div class="feather-filters__filters row">
+<div data-filters class="feather-filters__filters row animate_animated">
   <div class="feather-filters__header hide-md row">
     <h4>Filters</h4>
   </div>
