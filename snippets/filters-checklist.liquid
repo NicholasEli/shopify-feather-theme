@@ -1,6 +1,6 @@
 {% assign filters = values | split: ',' %}
 
-<a class="feather-select feather-select--dropdown">
+<a title="{{ name }} Filter" class="feather-select feather-select--dropdown">
   <div data-select="{{ name }}" class="container">
     <span>{{ name }}</span>
     {% render 'icon-caret' %}

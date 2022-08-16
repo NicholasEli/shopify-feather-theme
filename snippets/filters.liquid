@@ -55,8 +55,11 @@
   endif
 %}
 <div class="row">
+  <a title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
+</div>
+<div class="row">
   {% render 'filters-checklist', name: 'Availablity', values: 'availability:true:In Stock,availability:false:Out of Stock' %}
-  <a class="feather-select feather-select--dropdown">
+  <a title="Price Filter" class="feather-select feather-select--dropdown">
     <div data-select="price" class="container">
       <span>Price</span>
       {% render 'icon-caret' %}
@@ -83,7 +86,7 @@
   {% endfor %}
 </div>
 <div class="row end-md">
-  <a class="feather-select feather-select--dropdown">
+  <a title="Sort By" class="feather-select feather-select--dropdown">
     <select data-sortby>
       <option value="name-asc">Name AZ</option>
       <option value="name-desc">Name ZA</option>
