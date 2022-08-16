@@ -32,6 +32,22 @@
 		}
 	}
 
+	&__filters {
+		@media (max-width: #{$md}) {
+			width: 100%;
+			height: 90%;
+			position: fixed;
+			background-color: #fff;
+			z-index: 2;
+			//top: 100%;
+		}
+
+		&--active {
+			@media (max-width: #{$md}) {
+			}
+		}
+	}
+
 	&--checklist {
 		.feather-filters__item {
 			input {
