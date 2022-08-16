@@ -1,12 +1,14 @@
 {% liquid 
   assign products = collection.products
   assign options = products | map: 'options'
-
-
   assign variants = products | map: 'variants'
 
-  assign all_combinations = ''
+  comment
+    key value combinations.
+    Match product options and variants to eachother by index. Example output 'Color:Red,Material:Wood'
+  endcomment
 
+  assign all_combinations = ''
   for variant in variants
     assign variant_index = forloop.index | minus: 1
     for item in variant
@@ -19,8 +21,12 @@
 
   assign all_combinations = all_combinations | split: ', ' | uniq | sort
 
-  assign variant_filters = nil
+  comment
+    select values that contain name, select value and label
+    Turn value key value combinations into usable pairs. Example: 'Color-color:red,color:blue;Material-material:wood;'
+  endcomment
 
+  assign variant_filters = nil
   for variation in all_combinations
     assign prev_index = forloop.index | minus: 1
     assign next_index = forloop.index | plus: 1
@@ -49,7 +55,6 @@
   endif
 %}
 <div class="row">
-  <p>{{ variant_filters }}</p>
   {% render 'filters-checklist', name: 'Availablity', values: 'availability:true:In Stock,availability:false:Out of Stock' %}
   <a class="feather-select feather-select--dropdown">
     <div data-select="price" class="container">
@@ -74,6 +79,6 @@
       assign values = obj[1] | downcase
     %}
 
-    {% render 'filters-checklist', name: name, values: values %}
+    {% render 'filters-checklist', name: name, values: values, labe_style: 'text-transform: capitalize;' %}
   {% endfor %}
 </div>
