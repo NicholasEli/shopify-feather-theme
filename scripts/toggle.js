@@ -13,19 +13,19 @@ const applyClasses = async function (elements, classlist) {
 		return;
 	}
 
-	for (element of elements) {
+	for (let element of elements) {
 		if (!active) {
-			element.classlist.add(active);
+			element.classList.add(active);
 			return;
 		}
 
 		if (active) {
-			classlist.add(inactive);
+			element.classList.add(inactive);
 
 			await asyncTimeout(delay);
 
-			classlist.remove(active);
-			classlist.remove(inactive);
+			element.classList.remove(active);
+			element.classList.remove(inactive);
 		}
 	}
 };
