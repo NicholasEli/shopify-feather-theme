@@ -15,7 +15,7 @@
         assign key_value = key | append: ':' | append: value
       %}
       <div class="feather-filters__item row">
-        <input data-filter-checklist="{{ key_value }}" id="{{ key_value }}" type="checkbox" />
+        <input data-filter-checklist="{{ key_value }}" name="filter.v.option.{{ key }}" id="{{ key_value }}" type="checkbox" />
         <label for="{{ key_value }}" style="{{ label_style }}">{{ label }}</label>
       </div>
     {% endfor %}

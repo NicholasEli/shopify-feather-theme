@@ -1,19 +1,28 @@
-<div class="container container--padding container--lg">
-	<ul class="row">
-		{% for collection in collections %}
-			<li
-				data-in-view
-				class="col-xs-6 col-sm-4"
-			>{% render 'item', item: collection %}</li>
-		{% endfor %}
-	</ul>
-</div>
+{% paginate collection.products by section.settings.paginate_count %}
+	<div class="container container--padding container--lg">
+		<ul class="row">
+			{% for collection in collections %}
+				<li
+					data-in-view
+					class="col-xs-6 col-sm-4"
+				>{% render 'item', item: collection %}</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endpaginate %}
 
 {% schema %}
 	{
 		"name": "Collection List",
 		"class": "feather-collection__list",
 		"tag": "section",
-		"settings": []
+		"settings": [
+			{
+				"id": "paginate_count",
+				"type": "number",
+				"label": "Paginate Products By",
+				"default": 10
+			}
+		]
 	}
 {% endschema %}

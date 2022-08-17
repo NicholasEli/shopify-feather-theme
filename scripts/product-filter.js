@@ -15,9 +15,11 @@ const state = {
 		this.filters[input.id][input.key] = input.value;
 	},
 	set setSortBy(sortby) {
-		if (!sortby) return;
+		if (!sortby || (sortby && !sortby.value)) return;
 
-		this.sortby = sortby;
+		this.sortby = sortby.value;
+
+		if (sortby.callback) sortby.callback();
 	},
 };
 
@@ -76,6 +78,14 @@ const range = function () {
 	state.setFilters = filters;
 };
 
+const querySortBy = function () {
+	const params = new URLSearchParams({
+		sort_by: state.sortby,
+	});
+
+	window.location.search = params;
+};
+
 const sortby = function () {
 	const el = document.querySelector('[data-sortby]');
 
@@ -88,7 +98,7 @@ const sortby = function () {
 	state.setFilters = filters;
 
 	el.addEventListener('change', () => {
-		state.setSortBy = el.value;
+		state.setSortBy = { value: el.value, callback: querySortBy };
 	});
 };
 

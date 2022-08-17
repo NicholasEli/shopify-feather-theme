@@ -1,3 +1,13 @@
+{% comment %}
+  // Filtering
+  availability: filter.v.availability=1,filter.v.availability=1
+  price:
+  color: filter.v.option.color=Beige
+  material:
+  style:
+  sortby: sort_by=title-descending
+{% endcomment %}
+
 {% liquid 
   assign products = collection.products
   assign options = products | map: 'options'
@@ -54,6 +64,7 @@
     assign variant_filters = variant_filters | split: '; '
   endif
 %}
+<script>console.log({{ results | json }})</script>
 <div class="row hide-md">
   <a data-toggle="[data-filters]" data-toggle-class="animate__fadeInUp,animate__fadeOutDown" class="feather-filters__btn button" title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
 </div>
@@ -96,8 +107,8 @@
 <div class="row end-md">
   <a title="Sort By" class="feather-select feather-select--dropdown">
     <select data-sortby>
-      <option value="name-asc">Name AZ</option>
-      <option value="name-desc">Name ZA</option>
+      <option value="title-ascending">Title A-Z</option>
+      <option value="title-descending">Title Z-A</option>
       <option value="price-asc">price ascending</option>
       <option value="price-desc">price descending</option>
       <option value="topseller">top seller</option>

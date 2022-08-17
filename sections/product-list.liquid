@@ -1,22 +1,31 @@
-<div class="feather-filters container container--lg container--padding">
-	{% render 'filters' %}
-</div>
-<div class="container container--padding container--lg">
-	<ul class="row">
-		{% for product in collection.products %}
-			<li
-				data-in-view
-				class="col-xs-6 col-sm-4"
-			>{% render 'item', item: product %}</li>
-		{% endfor %}
-	</ul>
-</div>
+{% paginate collection.products by section.settings.paginate_count %}
+	<div class="feather-filters container container--lg container--padding">
+		{% render 'filters' %}
+	</div>
+	<div class="container container--padding container--lg">
+		<ul class="row">
+			{% for product in collection.products %}
+				<li
+					data-in-view
+					class="col-xs-6 col-sm-4"
+				>{% render 'item', item: product %}</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endpaginate %}
 
 {% schema %}
 	{
 		"name": "Collection Products",
 		"class": "feather-product__list",
 		"tag": "section",
-		"settings": []
+		"settings": [
+			{
+				"id": "paginate_count",
+				"type": "number",
+				"label": "Paginate Products By",
+				"default": 10
+			}
+		]
 	}
 {% endschema %}
