@@ -27,7 +27,6 @@ const setUI = function (id) {
 
 		if (!dropdown || el.parentElement.className.indexOf(active) === -1) return;
 
-		console.log(dropdown);
 		if (clientX < dropdownBounds.x || clientX > dropdownBounds.x + dropdownBounds.width) {
 			el.parentElement.classList.remove(active);
 		}

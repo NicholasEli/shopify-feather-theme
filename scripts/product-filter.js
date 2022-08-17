@@ -4,6 +4,20 @@ const state = {
 		if (!filters) return;
 		this.filters = { ...this.filters, ...filters };
 	},
+	set setCheckbox(checkbox) {
+		if (!checkbox.id) return;
+		this.filters[checkbox.id] = checkbox.value;
+	},
+	set setInput(input) {
+		if (!input.id || !input.key) return;
+
+		this.filters[input.id][input.key] = input.value;
+	},
+	set setSortBy(sortby) {
+		if (!sortby) return;
+
+		this.sortby = sortby;
+	},
 };
 
 const checklist = function () {
@@ -16,6 +30,10 @@ const checklist = function () {
 	lists.forEach((list) => {
 		const id = list.getAttribute('data-filter-checklist').split(':')[0];
 		if (id && !filters[id]) filters[id] = [];
+
+		list.addEventListener('change', () => {
+			state.setCheckbox = { id, value: list.checked };
+		});
 	});
 
 	state.setFilters = filters;
@@ -29,15 +47,19 @@ const range = function () {
 	const filters = Object.assign({}, state.filters);
 
 	ranges.forEach((range) => {
-		const keyValue = range.getAttribute('data-filter-range').split(':');
+		const keyValueInit = range.getAttribute('data-filter-range').split(':');
 
-		if (!keyValue || (keyValue && !keyValue.length)) return;
+		if (!keyValueInit || (keyValueInit && !keyValueInit.length)) return;
 
-		const [key, value, init] = keyValue;
+		const [id, key, init] = keyValueInit;
 
-		if (!filters[key]) filters[key] = {};
+		if (!filters[id]) filters[id] = {};
 
-		filters[key][value] = init;
+		filters[id][key] = init;
+
+		range.addEventListener('change', () => {
+			state.setInput = { id, key, value: range.value };
+		});
 	});
 
 	state.setFilters = filters;
