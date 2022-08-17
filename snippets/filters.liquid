@@ -60,7 +60,9 @@
 <div data-filters class="feather-filters__filters row animate__animated">
   <div class="feather-filters__header hide-md row middle-xs">
     <h4>Filters</h4>
-    <a data-toggle="[data-filters]" data-toggle-class="animate__fadeInUp,animate__fadeOutDown" title="Close Filters">{% render 'icon-close' %}</a>
+    <a data-toggle="[data-filters]" data-toggle-class="animate__fadeInUp,animate__fadeOutDown" title="Close Filters">
+      {% render 'icon-close' %}
+    </a>
   </div>
   <div class="row">
     {% render 'filters-checklist', name: 'Availablity', values: 'availability:true:In Stock,availability:false:Out of Stock' %}
@@ -72,11 +74,11 @@
       <div data-select-dropdown="price" class="feather-select__dropdown feather-filters--price">
         <div class="feather-filters__item input">
           <label>Minimum</label>
-          <input type="text" />
+          <input data-filters-range="price:min" type="text" />
         </div>
         <div class="feather-filters__item input">
           <label>Maximum</label>
-          <input type="text" />
+          <input data-filters-range="price:max" type="text" />
         </div>
       </div>
     </a>
@@ -87,7 +89,7 @@
         assign values = obj[1] | downcase
       %}
 
-      {% render 'filters-checklist', name: name, values: values, labe_style: 'text-transform: capitalize;' %}
+      {% render 'filters-checklist', name: name, values: values, label_style: 'text-transform: capitalize;' %}
     {% endfor %}
   </div>
 </div>

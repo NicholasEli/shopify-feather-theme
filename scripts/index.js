@@ -18,7 +18,7 @@ window.onload = async function () {
 	productSpotlight();
 	select();
 	toggle();
-	productFilter();
+	productFilter(); // <!-- call after all filter, select and toggle methods have been called
 
 	console.log('--Scripts Loaded');
 };
