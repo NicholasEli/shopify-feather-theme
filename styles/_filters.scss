@@ -78,12 +78,6 @@
 				top: 10%;
 			}
 		}
-
-		&.animate__fadeOutDown {
-			@media (max-width: #{$md}) {
-				top: 100%;
-			}
-		}
 	}
 
 	&--checklist {

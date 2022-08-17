@@ -1,6 +1,6 @@
 import { getCSSVariable, asyncTimeout } from './utils.js';
 
-const delay = getCSSVariable('--animate-duration');
+const delay = parseInt(getCSSVariable('--animate-duration'));
 
 const applyClasses = async function (elements, classlist) {
 	if (!classlist || (classlist && !classlist.length)) return;
