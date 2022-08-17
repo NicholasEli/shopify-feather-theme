@@ -58,8 +58,9 @@
   <a data-toggle="[data-filters]" data-toggle-class="animate__fadeInUp,animate__fadeOutDown" class="feather-filters__btn button" title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
 </div>
 <div data-filters class="feather-filters__filters row animate__animated">
-  <div class="feather-filters__header hide-md row">
+  <div class="feather-filters__header hide-md row middle-xs">
     <h4>Filters</h4>
+    <a data-toggle="[data-filters]" data-toggle-class="animate__fadeInUp,animate__fadeOutDown" title="Close Filters">{% render 'icon-close' %}</a>
   </div>
   <div class="row">
     {% render 'filters-checklist', name: 'Availablity', values: 'availability:true:In Stock,availability:false:Out of Stock' %}

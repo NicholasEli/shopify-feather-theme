@@ -51,9 +51,37 @@
 			}
 		}
 
+		.feather-filters__header {
+			width: 100%;
+			margin-bottom: $padding;
+
+			h4 {
+				margin: 0;
+			}
+
+			a {
+				width: 15px;
+				display: inline-block;
+				margin-left: auto;
+				cursor: pointer;
+
+				svg {
+					* {
+						fill: $text;
+					}
+				}
+			}
+		}
+
 		&.animate__fadeInUp {
 			@media (max-width: #{$md}) {
 				top: 10%;
+			}
+		}
+
+		&.animate__fadeOutDown {
+			@media (max-width: #{$md}) {
+				top: 100%;
 			}
 		}
 	}
