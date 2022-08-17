@@ -43,9 +43,20 @@ const range = function () {
 	state.setFilters = filters;
 };
 
+const sortby = function () {
+	const el = document.querySelector('[data-sortby]');
+
+	if (!el) return;
+
+	const filters = Object.assign({}, state.filters);
+
+	filters.sortby = null;
+
+	state.setFilters = filters;
+};
+
 export const productFilter = function () {
-	console.clear();
 	checklist();
 	range();
-	console.log(state.filters);
+	sortby();
 };
