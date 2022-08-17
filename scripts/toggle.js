@@ -14,18 +14,17 @@ const applyClasses = async function (elements, classlist) {
 	}
 
 	for (let element of elements) {
-		if (!active) {
+		if (element.className.indexOf(active) === -1) {
 			element.classList.add(active);
 			return;
 		}
 
-		if (active) {
+		if (element.className.indexOf(active) > -1) {
 			element.classList.add(inactive);
 
 			await asyncTimeout(delay);
 
-			element.classList.remove(active);
-			element.classList.remove(inactive);
+			element.classList.remove(active, inactive);
 		}
 	}
 };
@@ -34,15 +33,17 @@ export const toggle = function () {
 	const toggles = document.querySelectorAll('[data-toggle]');
 
 	toggles.forEach((toggle) => {
-		const target = toggle.getAttribute('data-toggle');
-		const classlist = toggle.getAttribute('data-toggle-class');
+		toggle.addEventListener('click', () => {
+			const target = toggle.getAttribute('data-toggle');
+			const classlist = toggle.getAttribute('data-toggle-class');
 
-		if (target) {
-			const elements = document.querySelectorAll(target);
-			applyClasses(elements, classlist);
-			return;
-		}
+			if (target) {
+				const elements = document.querySelectorAll(target);
+				applyClasses(elements, classlist);
+				return;
+			}
 
-		applyClasses(toggle, classlist);
+			applyClasses(toggle, classlist);
+		});
 	});
 };
