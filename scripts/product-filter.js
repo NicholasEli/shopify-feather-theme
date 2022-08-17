@@ -5,8 +5,9 @@ const state = {
 		this.filters = { ...this.filters, ...filters };
 	},
 	set setCheckbox(checkbox) {
-		if (!checkbox.id) return;
-		this.filters[checkbox.id] = checkbox.value;
+		const { id, key, value } = checkbox;
+		if (!id || !key) return;
+		this.filters[id][key] = value;
 	},
 	set setInput(input) {
 		if (!input.id || !input.key) return;
@@ -28,11 +29,21 @@ const checklist = function () {
 	const filters = Object.assign({}, state.filters);
 
 	lists.forEach((list) => {
-		const id = list.getAttribute('data-filter-checklist').split(':')[0];
-		if (id && !filters[id]) filters[id] = [];
+		const idKeyValue = list.getAttribute('data-filter-checklist').split(':');
+		if (
+			!idKeyValue ||
+			(idKeyValue && !idKeyValue.length) ||
+			(idKeyValue && idKeyValue.length && idKeyValue.length != 2)
+		)
+			return;
+
+		const [id, key] = idKeyValue;
+
+		if (!filters[id]) filters[id] = {};
+		filters[id][key] = false;
 
 		list.addEventListener('change', () => {
-			state.setCheckbox = { id, value: list.checked };
+			state.setCheckbox = { id, key, value: list.checked };
 		});
 	});
 
@@ -57,7 +68,7 @@ const range = function () {
 
 		filters[id][key] = init;
 
-		range.addEventListener('change', () => {
+		range.addEventListener('keyup', () => {
 			state.setInput = { id, key, value: range.value };
 		});
 	});
@@ -75,6 +86,10 @@ const sortby = function () {
 	filters.sortby = null;
 
 	state.setFilters = filters;
+
+	el.addEventListener('change', () => {
+		state.setSortBy = el.value;
+	});
 };
 
 export const productFilter = function () {
