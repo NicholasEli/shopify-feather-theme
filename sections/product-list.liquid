@@ -12,6 +12,11 @@
 			{% endfor %}
 		</ul>
 	</div>
+	{% if paginate.pages > 1 %}
+		<div class="container">
+			Pagination
+		</div>
+	{% endif %}
 {% endpaginate %}
 
 {% schema %}

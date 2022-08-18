@@ -1,0 +1,53 @@
+{% assign list = filter.label | downcase | strip | replace: ' ', '-' %}
+
+<a title="{{ filter.label }} Filter" class="feather-select feather-select--dropdown filter--{{ filter.type }}">
+  <div data-select="{{ filter.label }}" class="container">
+    <span>{{ filter.label }}</span>
+    {% render 'icon-caret' %}
+  </div>
+  {% if filter.type == 'list' %}
+    <div data-select-dropdown="{{ filter.label }}" class="feather-select__dropdown feather-filters--checklist">
+      {% for item in filter.values %}
+        {% assign list_item = item.label | downcase | strip | replace: ' ', '-' %}
+        <div class="feather-filters__item row">
+          <input
+            data-filter-checklist="{{ list }}"
+            data-filter-checklist-item="{{ list_item }}"
+            name="{{ item.param_name }}"
+            id="{{ list_item }}"
+            type="checkbox"
+            value="{{ item.value }}"
+          />
+          <label for="{{ list_item }}" style="{{ label_style }}">{{ item.label }}</label>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if filter.type == 'price_range' %}
+    {% liquid 
+      assign min_item = item.label | downcase | strip | replace: ' ', '-'
+    %}
+    <div data-select-dropdown="{{ filter.label }}" class="feather-select__dropdown feather-filters--price">
+      <div class="feather-filters__item input">
+        <label>Minimum</label>
+        <input
+          data-filter-price-range="{{ list }}"
+          data-filter-price-range-item="min"
+          name="{{ filter.min_value.param_name }}"
+          type="text"
+          value="{{ filter.min_value.value }}"
+        />
+      </div>
+      <div class="feather-filters__item input">
+        <label>Maximum</label>
+        <input
+          data-filter-price-range="{{ list }}"
+          data-filter-price-range-item="max"
+          name="{{ filter.max_value.param_name }}"
+          type="text"
+          value="{{ filter.max_value.value }}"
+        />
+      </div>
+    </div>
+  {% endif %}
+</a>

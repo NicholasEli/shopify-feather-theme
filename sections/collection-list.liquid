@@ -1,4 +1,4 @@
-{% paginate collection.products by section.settings.paginate_count %}
+{% paginate collections.collection by section.settings.paginate_count %}
 	<div class="container container--padding container--lg">
 		<ul class="row">
 			{% for collection in collections %}
@@ -9,6 +9,11 @@
 			{% endfor %}
 		</ul>
 	</div>
+	{% if paginate.pages > 1 %}
+		<div class="container">
+			Pagination
+		</div>
+	{% endif %}
 {% endpaginate %}
 
 {% schema %}

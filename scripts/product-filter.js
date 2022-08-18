@@ -1,15 +1,16 @@
 const state = {
 	filters: {},
+	sortby: {},
 	set setFilters(filters) {
 		if (!filters) return;
 		this.filters = { ...this.filters, ...filters };
 	},
-	set setCheckbox(checkbox) {
-		const { id, key, value } = checkbox;
+	set setList(list) {
+		const { id, key, value } = list;
 		if (!id || !key) return;
 		this.filters[id][key] = value;
 	},
-	set setInput(input) {
+	set setRange(range) {
 		if (!input.id || !input.key) return;
 
 		this.filters[input.id][input.key] = input.value;
@@ -24,66 +25,57 @@ const state = {
 };
 
 const checklist = function () {
-	const lists = document.querySelectorAll('[data-filter-checklist]');
+	const checklists = document.querySelectorAll('[data-filter-checklist]');
 
-	if (!lists || (lists && !lists.length)) return;
+	if (!checklists && checklists && !checklists.length) return;
 
 	const filters = Object.assign({}, state.filters);
+	checklists.forEach((item) => {
+		const list = item.getAttribute('data-filter-checklist');
+		const listItem = item.getAttribute('data-filter-checklist-item');
+		const { name, value } = item;
 
-	lists.forEach((list) => {
-		const idKeyValue = list.getAttribute('data-filter-checklist').split(':');
-		if (
-			!idKeyValue ||
-			(idKeyValue && !idKeyValue.length) ||
-			(idKeyValue && idKeyValue.length && idKeyValue.length != 2)
-		)
-			return;
-
-		const [id, key] = idKeyValue;
-
-		if (!filters[id]) filters[id] = {};
-		filters[id][key] = false;
-
-		list.addEventListener('change', () => {
-			state.setCheckbox = { id, key, value: list.checked };
-		});
+		if (!filters[list]) filters[list] = {};
+		if (!filters[list][listItem]) filters[list][listItem] = {};
+		filters[list][listItem].value = value;
+		filters[list][listItem].query = name;
 	});
 
 	state.setFilters = filters;
 };
 
-const range = function () {
-	const ranges = document.querySelectorAll('[data-filter-range]');
+const priceRange = function () {
+	const checklists = document.querySelectorAll('[data-filter-price-range]');
 
-	if (!ranges || (ranges && !ranges.length)) return;
+	if (!checklists && checklists && !checklists.length) return;
 
 	const filters = Object.assign({}, state.filters);
+	checklists.forEach((item) => {
+		const list = item.getAttribute('data-filter-price-range');
+		const listItem = item.getAttribute('data-filter-price-range-item');
+		const { name, value } = item;
 
-	ranges.forEach((range) => {
-		const keyValueInit = range.getAttribute('data-filter-range').split(':');
-
-		if (!keyValueInit || (keyValueInit && !keyValueInit.length)) return;
-
-		const [id, key, init] = keyValueInit;
-
-		if (!filters[id]) filters[id] = {};
-
-		filters[id][key] = init;
-
-		range.addEventListener('keyup', () => {
-			state.setInput = { id, key, value: range.value };
-		});
+		if (!filters[list]) filters[list] = {};
+		if (!filters[list][listItem]) filters[list][listItem] = {};
+		filters[list][listItem].value = value;
+		filters[list][listItem].query = name;
 	});
 
 	state.setFilters = filters;
 };
 
-const querySortBy = function () {
+const querySortBy = async function () {
 	const params = new URLSearchParams({
 		sort_by: state.sortby,
 	});
 
-	window.location.search = params;
+	const url = new URL(window.location.href);
+	url.searchParams.set('sort_by', state.sortby);
+
+	const res = await fetch(url.href);
+	const html = await res.text();
+	console.log(html);
+	//window.location = url.href;
 };
 
 const sortby = function () {
@@ -91,19 +83,14 @@ const sortby = function () {
 
 	if (!el) return;
 
-	const filters = Object.assign({}, state.filters);
-
-	filters.sortby = null;
-
-	state.setFilters = filters;
-
 	el.addEventListener('change', () => {
 		state.setSortBy = { value: el.value, callback: querySortBy };
 	});
 };
 
 export const productFilter = function () {
+	console.clear();
 	checklist();
-	range();
-	sortby();
+	priceRange();
+	console.log(state);
 };
