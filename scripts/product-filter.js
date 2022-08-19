@@ -181,7 +181,7 @@ const setQuery = async function () {
  */
 const setUI = function (html) {
 	const container = document.querySelector('[data-feather-results]');
-
+	console.log(html);
 	if (html && container) {
 		container.innerHTML = html;
 		inView(true);

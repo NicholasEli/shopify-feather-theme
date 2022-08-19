@@ -13,7 +13,9 @@
 				{% endfor %}
 			</ul>
 		{% else %}
-			{% render 'alert', alert_type: 'success' , alert_message: 'No products found' %}
+			<ul data-feather-results class="row">
+				{% render 'alert', alert_type: 'success' , alert_message: 'No products found' %}
+			</ul>
 		{% endif %}
 	</div>
 	<div class="container container--lg container--padding">

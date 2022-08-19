@@ -1,23 +1,16 @@
-{% paginate collections.collection by section.settings.paginate_count %}
-	<div class="feather-filters container container--lg container--padding">
-		{% render 'filters', paginate: paginate %}
-	</div>
-	<div class="container container--padding container--lg">
-		<ul data-feather-results class="row">
-			{% for collection in collections %}
-				<li
-					data-in-view
-					class="col-xs-6 col-sm-4"
-				>{% render 'item', item: collection %}</li>
-			{% endfor %}
-		</ul>
-	</div>
-	<div class="container container--lg container--padding">
-		<div class="row center-xs">
-			{% render 'pagination', paginate: paginate %}
-		</div>
-	</div>
-{% endpaginate %}
+<div class="feather-filters container container--lg container--padding">
+	{% render 'filters' %}
+</div>
+<div class="container container--padding container--lg">
+	<ul data-feather-results class="row">
+		{% for collection in collections %}
+			<li
+				data-in-view
+				class="col-xs-6 col-sm-4"
+			>{% render 'item', item: collection %}</li>
+		{% endfor %}
+	</ul>
+</div>
 
 {% schema %}
 	{
