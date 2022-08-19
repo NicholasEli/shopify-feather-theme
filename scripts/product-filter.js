@@ -175,6 +175,8 @@ const setQuery = async function () {
 	}
 };
 
+const getQuery = function () {};
+
 /**
  * Sets UI if HTML and container element exists in HTML
  */

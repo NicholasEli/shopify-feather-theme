@@ -98,6 +98,20 @@ export const classObserver = function (el, classname, on, off) {
 	});
 };
 
+/*
+ * Gets url query paramters by key
+ * @param { string } key - name of query parameter
+ * @return { string|null } query parameter value if exists
+ * */
+export const queryParams = function (key) {
+	const params = new Proxy(new URLSearchParams(window.location.search), {
+		get: (searchParams, prop) => searchParams.get(prop),
+	});
+
+	if (params[key]) return params[key];
+	return null;
+};
+
 /**
  * Creates aribtrary wait time based on miliseconds
  * @param { int } milliseconds
