@@ -19,3 +19,23 @@ export const search = {
 		}
 	},
 };
+
+export const filter = {
+	get: async (query) => {
+		try {
+			const res = await fetch(query);
+
+			if (!res.ok) {
+				throw new Error(res.status);
+			}
+
+			const text = await res.text();
+
+			return new DOMParser()
+				.parseFromString(text, 'text/html')
+				.querySelector('[data-feather-results]').innerHTML;
+		} catch (err) {
+			return err;
+		}
+	},
+};

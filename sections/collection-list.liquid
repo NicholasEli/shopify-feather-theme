@@ -1,6 +1,6 @@
 {% paginate collections.collection by section.settings.paginate_count %}
 	<div class="container container--padding container--lg">
-		<ul class="row">
+		<ul data-feather-results class="row">
 			{% for collection in collections %}
 				<li
 					data-in-view

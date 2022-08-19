@@ -36,8 +36,9 @@
         cart: {{ cart | json }},
         collection: {{ collection | json }},
         collections: {{ collections | json }},
+        path: {{ request.path | json }},
         product: {{ product | json }},
-        template: {{ template | json }}
+        template: {{ template | json }},
       };
 
       window.Feather = debug;
