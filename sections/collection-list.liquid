@@ -1,4 +1,7 @@
 {% paginate collections.collection by section.settings.paginate_count %}
+	<div class="feather-filters container container--lg container--padding">
+		{% render 'filters', paginate: paginate %}
+	</div>
 	<div class="container container--padding container--lg">
 		<ul data-feather-results class="row">
 			{% for collection in collections %}
@@ -9,11 +12,11 @@
 			{% endfor %}
 		</ul>
 	</div>
-	{% if paginate.pages > 1 %}
-		<div class="container">
-			Pagination
+	<div class="container container--lg container--padding">
+		<div class="row center-xs">
+			{% render 'pagination', paginate: paginate %}
 		</div>
-	{% endif %}
+	</div>
 {% endpaginate %}
 
 {% schema %}

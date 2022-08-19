@@ -22,8 +22,8 @@
 %}
 {% if paginate and paginate.pages > 1 %}
   <div class="feather-pagination">
-    <div class="feather-pagination__first {{ first }} button show-md"><<</div>
-    <div class="feather-pagination__prev {{ prev }} button"><</div>
+    <div data-pagination-first class="feather-pagination__first {{ first }} button show-md"><<</div>
+    <div data-pagination-prev class="feather-pagination__prev {{ prev }} button"><</div>
     {% for i in (current_page..page_limit) %}
       {% liquid 
         assign active = ''
@@ -31,9 +31,9 @@
           assign active = 'feather-pagination__page--active'
         endif
       %}
-      <div class="feather-pagination__page {{ active }} button show-sm">{{ i }}</div>
+      <div data-pagination-page="{{ i }}" class="feather-pagination__page {{ active }} button show-sm">{{ i }}</div>
     {% endfor %}
-    <div class="feather-pagination__next {{ next }} button">></div>
-    <div class="feather-pagination__last {{ last }} button show-md">>></div>
+    <div data-pagination-next class="feather-pagination__next {{ next }} button">></div>
+    <div data-pagination-last class="feather-pagination__last {{ last }} button show-md">>></div>
   </div>
 {% endif %}
