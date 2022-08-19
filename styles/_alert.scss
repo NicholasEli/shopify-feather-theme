@@ -1,0 +1,57 @@
+.alert {
+	width: 100%;
+	position: relative;
+	padding-left: calc(25px + #{$padding});
+	background-color: $gray;
+	overflow: hidden;
+	border-radius: 5px;
+
+	&__icon {
+		width: 30px;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: $info;
+
+		svg {
+			width: 20px;
+			height: 20px;
+			margin-top: $padding;
+			margin-left: 5px;
+
+			* {
+				fill: #fff;
+			}
+		}
+	}
+
+	&__message {
+		padding: $padding;
+		font-size: 16px;
+	}
+
+	&-info {
+		.alert-icon {
+			background-color: $info;
+		}
+	}
+
+	&--waring {
+		.alert-icon {
+			background-color: $warning;
+		}
+	}
+
+	&--error {
+		.alert-icon {
+			background-color: $error;
+		}
+	}
+
+	&--success {
+		.alert-icon {
+			background-color: $success;
+		}
+	}
+}

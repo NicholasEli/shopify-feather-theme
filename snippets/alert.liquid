@@ -1,0 +1,11 @@
+{% liquid
+	assign type = 'alert--info'
+	if alert_type
+		assign alert_type = 'alert--' | append: type
+	endif
+%}
+
+<div class="alert {{ alert_type }} row">
+	<div class="alert__icon">{% render 'icon-info' %}</div>
+	<div class="alert__message">{{ alert_message }}</div>
+</div>

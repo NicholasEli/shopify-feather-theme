@@ -3,14 +3,18 @@
 		{% render 'filters', paginate: paginate %}
 	</div>
 	<div class="container container--padding container--lg">
-		<ul data-feather-results class="row">
-			{% for product in collection.products %}
-				<li
-					data-in-view
-					class="col-xs-6 col-sm-4"
-				>{% render 'item', item: product %}</li>
-			{% endfor %}
-		</ul>
+		{% if collection and collection.products.size > 0 %}
+			<ul data-feather-results class="row">
+				{% for product in collection.products %}
+					<li
+						data-in-view
+						class="col-xs-6 col-sm-4"
+					>{% render 'item', item: product %}</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			{% render 'alert', alert_type: 'success' , alert_message: 'No products found' %}
+		{% endif %}
 	</div>
 	<div class="container container--lg container--padding">
 		<div class="row center-xs">
@@ -29,7 +33,7 @@
 				"id": "paginate_count",
 				"type": "number",
 				"label": "Paginate Products By",
-				"default": 1
+				"default": 10
 			}
 		]
 	}
