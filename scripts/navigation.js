@@ -11,6 +11,9 @@ const active = 'feather-header__dropdown-item--active';
 const md = parseInt(getCSSVariable('--md'));
 const duration = parseInt(getCSSVariable('--animate-duration'));
 
+/**
+ * Removes active class from nav items
+ */
 const clearNavItems = function () {
 	const navItems = document.querySelectorAll('[data-nav-item]');
 	navItems.forEach((navItem) => navItem.classList.remove(active));
@@ -18,11 +21,17 @@ const clearNavItems = function () {
 	menus.forEach((menu) => menu.classList.remove('active'));
 };
 
+/**
+ * Removes active class from dropdowns
+ */
 const clearDropdowns = function () {
 	const dropdowns = document.querySelectorAll('[data-nav-dropdown]');
 	dropdowns.forEach((dropdown) => dropdown.addEventListener('mouseleave', () => clearNavItems()));
 };
 
+/**
+ * Sets nav items active class on mouseover and click
+ */
 const displayNavItems = function () {
 	const navItems = document.querySelectorAll('[data-nav-item]');
 
@@ -42,6 +51,10 @@ const displayNavItems = function () {
 	});
 };
 
+/**
+ * When the mobile menu button is click,
+ * sets position of mobile menu and applys active/inactive classes
+ */
 const mobileNavBtn = function () {
 	const header = document.querySelector('header');
 	const nav = document.querySelector('[data-nav]');

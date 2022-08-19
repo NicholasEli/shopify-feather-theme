@@ -9,6 +9,10 @@ const delay = parseInt(getCSSVariable('--animate-duration'));
 const state = {
 	forms: {},
 	results: null,
+	/**
+	 * Sets each search form and attaches its event listeners with callback
+	 * @param  { object } forms - HTML markup for search form
+	 */
 	set initForms(forms) {
 		if (!forms) return;
 
@@ -29,6 +33,10 @@ const state = {
 
 		this.forms = obj;
 	},
+	/**
+	 * Sets search results
+	 * @param { object } results - results of the most recent search
+	 */
 	set setResults(results) {
 		this.results = results;
 
@@ -37,6 +45,10 @@ const state = {
 	},
 };
 
+/**
+ * Conducts search via API
+ * @param  { string } id - id of form based on index of position in document
+ */
 const doSearch = async function (id) {
 	const inputContainer = this.parentElement;
 	let timeout = null;
@@ -56,6 +68,10 @@ const doSearch = async function (id) {
 	}, 500);
 };
 
+/**
+ * Sets markup of search results and reinstantiates events
+ * listeners for new markup
+ */
 const displayResults = function () {
 	if (!state.results) return;
 	const { id, results } = state.results;
@@ -82,6 +98,9 @@ const displayResults = function () {
 	document.addEventListener('click', _close);
 };
 
+/**
+ * Clears search results
+ */
 const clearResults = async function () {
 	if (!state.results) return;
 

@@ -2,6 +2,11 @@ import { getCSSVariable, asyncTimeout } from './utils.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
+/**
+ * Sets toggle classes based on inactive or active state.
+ * @param  { array } elements - array of toggles to apply class list
+ * @param  { string } classlist - comma separated values of active and inactive class
+ */
 const applyClasses = async function (elements, classlist) {
 	if (!classlist || (classlist && !classlist.length)) return;
 
@@ -29,6 +34,9 @@ const applyClasses = async function (elements, classlist) {
 	}
 };
 
+/**
+ * Aggregates toggle elements and applies event listeners
+ */
 export const toggle = function () {
 	const toggles = document.querySelectorAll('[data-toggle]');
 

@@ -4,6 +4,10 @@ import Glide from '@glidejs/glide';
 const sm = parseInt(getCSSVariable('--sm'));
 const instances = {};
 
+/**
+ * Controls wether product spotlight element is in slide show
+ * or block view depending on the viewport width
+ */
 export const productSpotlight = function () {
 	const spotlights = document.querySelectorAll('[data-glide]');
 

@@ -20,8 +20,17 @@ export const search = {
 	},
 };
 
+/**
+ * Mechanisim for filter API
+ * @type {Object}
+ */
 export const filter = {
-	get: async (query) => {
+	/**
+	 * Sets filter values
+	 * @param  { string } query - filter values based on vartiant, option and sortby
+	 * @return { string } HTML Markup
+	 */
+	set: async (query) => {
 		try {
 			const res = await fetch(query);
 

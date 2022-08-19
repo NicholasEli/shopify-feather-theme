@@ -7,10 +7,18 @@ const state = {
 		value: null,
 		callback: null,
 	},
+	/**
+	 * Sets intial state for filters and sort and page load
+	 * @param { object } filters - aggregated state of filters
+	 */
 	set setFilters(filters) {
 		if (!filters) return;
 		this.filters = { ...this.filters, ...filters };
 	},
+	/**
+	 * Updates list items in state and runs callback if present
+	 * @param { object } checklist - object of list item to update
+	 */
 	set setList(checklist) {
 		const { list, listItem, value, callback } = checklist;
 
@@ -20,6 +28,10 @@ const state = {
 
 		if (callback) callback();
 	},
+	/**
+	 * Updates range inputs in state and runs callback if present
+	 * @param { object } range - object of min or max range values to update
+	 */
 	set setRange(range) {
 		const { list, listItem, value, callback } = range;
 
@@ -29,6 +41,10 @@ const state = {
 
 		if (callback) callback();
 	},
+	/**
+	 * Updates sortby in state and runs callback if present
+	 * @param { object } sortby - object of sorby value to update
+	 */
 	set setSortBy(sortby) {
 		const { value, callback } = sortby;
 
@@ -38,6 +54,9 @@ const state = {
 	},
 };
 
+/**
+ * Handles mechanisim for toggled checkbox item
+ */
 const checklist = function () {
 	const checklists = document.querySelectorAll('[data-filter-checklist]');
 
@@ -67,6 +86,9 @@ const checklist = function () {
 	state.setFilters = filters;
 };
 
+/**
+ * Handles mechanisim for keyup when input value is changed
+ */
 const priceRange = function () {
 	const ranges = document.querySelectorAll('[data-filter-price-range]');
 	if (!ranges && ranges && !ranges.length) return;
@@ -97,6 +119,9 @@ const priceRange = function () {
 	state.setFilters = filters;
 };
 
+/**
+ * Handles mechanisim for select option
+ */
 const sortby = function () {
 	const el = document.querySelector('[data-sortby]');
 
@@ -112,6 +137,11 @@ const sortby = function () {
 	});
 };
 
+/**
+ * Aggregates state for fitlers and sortby into string and sends API request
+ * based on string value. If a response is returned it updates the URL path
+ * and the UI
+ */
 const setQuery = async function () {
 	try {
 		if (!window.Feather || (window.Feather && !window.Feather.path)) return;
@@ -133,7 +163,7 @@ const setQuery = async function () {
 		if (state.sortby.value && filters && filters.length) query += '&sort_by=' + state.sortby.value;
 		if (state.sortby.value && filters && !filters.length) query += '?sort_by=' + state.sortby.value;
 
-		const res = await filter.get(query);
+		const res = await filter.set(query);
 
 		if (res && res.data) {
 			window.history.replaceState(null, null, query);
@@ -145,6 +175,9 @@ const setQuery = async function () {
 	}
 };
 
+/**
+ * Sets UI if HTML and container element exists in HTML
+ */
 const setUI = function (html) {
 	const container = document.querySelector('[data-feather-results]');
 

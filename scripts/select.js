@@ -1,9 +1,18 @@
 const state = {
 	selects: {},
+	/**
+	 * Sets select elements with in document
+	 * @param { object } select - state of individual select item
+	 */
 	set setSelect(select) {
 		if (!select || (select && !select.id) || (select && !select.properties)) return;
 		this.selects[select.id] = { ...select.properties };
 	},
+	/**
+	 * Sets active state to select
+	 * @param { string } options.id - id of select element
+	 * @param { function } options.callback - callback after update
+	 */
 	set setActive({ id, callback }) {
 		if (!id) return;
 		const selects = Object.assign({}, state.selects);
@@ -14,6 +23,11 @@ const state = {
 	},
 };
 
+/**
+ * Sets select active state if clicked directly or clicked outside its
+ * bounds
+ * @param { string } id - id of select element
+ */
 const setUI = function (id) {
 	const active = 'feather-select--active';
 	const el = document.querySelector(`[data-select="${id}"]`);
@@ -37,6 +51,9 @@ const setUI = function (id) {
 	});
 };
 
+/**
+ * Aggregates selects and stores them in state
+ */
 export const select = function () {
 	const selects = document.querySelectorAll('[data-select]');
 
