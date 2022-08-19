@@ -176,12 +176,6 @@ const setQuery = async function () {
 	}
 };
 
-const getQuery = function () {
-	const query = queryParams();
-	// console.log(state);
-	// console.log(query);
-};
-
 /**
  * Sets UI if HTML and container element exists in HTML
  */
