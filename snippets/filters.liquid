@@ -24,7 +24,7 @@
 </div>
 {% endif %}
 {% if collection.sort_by %}
-  <div class="row {{ row_class }}">
+  <div class="feather-filters__sort row {{ row_class }}">
     {% render 'pagination' paginate: paginate %}
     <a title="Sort By" class="feather-select feather-select--dropdown">
       <select data-sortby>
