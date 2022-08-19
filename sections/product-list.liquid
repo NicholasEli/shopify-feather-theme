@@ -12,11 +12,11 @@
 			{% endfor %}
 		</ul>
 	</div>
-	{% if paginate.pages > 1 %}
-		<div class="container">
-			Pagination
+	<div class="container container--lg container--padding">
+		<div class="row center-xs">
+			{% render 'pagination' paginate: paginate %}
 		</div>
-	{% endif %}
+	</div>
 {% endpaginate %}
 
 {% schema %}
@@ -29,7 +29,7 @@
 				"id": "paginate_count",
 				"type": "number",
 				"label": "Paginate Products By",
-				"default": 10
+				"default": 1
 			}
 		]
 	}

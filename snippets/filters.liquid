@@ -18,6 +18,7 @@
 {% endif %}
 {% if collection.sort_by %}
   <div class="row end-md">
+    {% render 'pagination' paginate: paginate %}
     <a title="Sort By" class="feather-select feather-select--dropdown">
       <select data-sortby>
           <option value="null">Sort By</option>

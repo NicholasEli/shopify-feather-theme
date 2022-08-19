@@ -1,0 +1,20 @@
+.feather-pagination {
+	@include flex(row, center, center);
+
+	&__first,
+	&__prev,
+	&__last,
+	&__next,
+	&__page {
+		margin: 0;
+		font-size: 16px;
+		font-weight: 300;
+
+		&--disabled {
+		}
+
+		&--active {
+			border-color: $primary;
+		}
+	}
+}

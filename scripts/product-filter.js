@@ -192,5 +192,4 @@ export const productFilter = function () {
 	checklist();
 	priceRange();
 	sortby();
-	getQuery();
 };
