@@ -9,18 +9,18 @@
   assign first = ''
   assign prev = ''
   if current_page <= 1
-    assign prev = 'feather-pagination__first--disabled'
+    assign first = 'feather-pagination__first--disabled'
     assign prev = 'feather-pagination__prev--disabled'
   endif
 
   assign last = ''
   assign next = ''
   if current_page >= page_limit
-    assign next = 'feather-pagination__last--disabled'
+    assign last = 'feather-pagination__last--disabled'
     assign next = 'feather-pagination__next--disabled'
   endif
 %}
-{% if paginate.pages > 1 %}
+{% if paginate and paginate.pages > 1 %}
   <div class="feather-pagination">
     <div class="feather-pagination__first {{ first }} button show-md"><<</div>
     <div class="feather-pagination__prev {{ prev }} button"><</div>
@@ -28,7 +28,7 @@
       {% liquid 
         assign active = ''
         if current_page == i
-          assign active = 'feather-pagination__page--page'
+          assign active = 'feather-pagination__page--active'
         endif
       %}
       <div class="feather-pagination__page {{ active }} button show-sm">{{ i }}</div>

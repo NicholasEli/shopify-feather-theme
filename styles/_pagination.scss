@@ -1,20 +1,34 @@
 .feather-pagination {
 	@include flex(row, center, center);
 
+	.button {
+		margin: 0;
+		font-size: 16px;
+		font-weight: 300;
+
+		& + .button {
+			margin-left: divide($padding, 2);
+		}
+	}
+
 	&__first,
 	&__prev,
 	&__last,
 	&__next,
 	&__page {
-		margin: 0;
-		font-size: 16px;
-		font-weight: 300;
-
 		&--disabled {
+			color: $stroke;
+			pointer-events: none;
 		}
 
-		&--active {
+		&--active,
+		&:hover {
 			border-color: $primary;
+			color: $primary;
+		}
+
+		&:hover {
+			background-color: $gray;
 		}
 	}
 }
