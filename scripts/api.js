@@ -31,9 +31,11 @@ export const filter = {
 
 			const text = await res.text();
 
-			return new DOMParser()
-				.parseFromString(text, 'text/html')
-				.querySelector('[data-feather-results]').innerHTML;
+			return {
+				data: new DOMParser()
+					.parseFromString(text, 'text/html')
+					.querySelector('[data-feather-results]').innerHTML,
+			};
 		} catch (err) {
 			return err;
 		}

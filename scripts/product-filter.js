@@ -32,7 +32,7 @@ const state = {
 	set setSortBy(sortby) {
 		const { value, callback } = sortby;
 
-		this.sortby = value;
+		this.sortby.value = value;
 
 		if (callback) callback();
 	},
@@ -130,12 +130,16 @@ const setQuery = async function () {
 
 		if (filters && filters.length) query += '?' + filters.join('&');
 
-		if (state.sortby && filters && filters.length) query += '&sort_by=' + state.sortby;
-		if (state.sortby && filters && !filters.length) query += '?sort_by=' + state.sortby;
+		if (state.sortby.value && filters && filters.length) query += '&sort_by=' + state.sortby.value;
+		if (state.sortby.value && filters && !filters.length) query += '?sort_by=' + state.sortby.value;
 
 		const res = await filter.get(query);
 
-		setUI(res);
+		if (res && res.data) {
+			window.history.replaceState(null, null, query);
+
+			setUI(res.data);
+		}
 	} catch (err) {
 		console.error(err);
 	}
