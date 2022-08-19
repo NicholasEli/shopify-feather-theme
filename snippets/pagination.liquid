@@ -1,9 +1,10 @@
 {% liquid
   assign current_page = paginate.current_page
   assign page_limit = current_page | plus: 3
+  assign last_index = paginate.pages | minus: 1
 
-  if page_limit > paginate.page
-    assign page_limit = paginate.page
+  if page_limit > paginate.pages
+    assign page_limit = paginate.pages
   endif
 
   assign first = ''
@@ -19,21 +20,53 @@
     assign last = 'feather-pagination__last--disabled'
     assign next = 'feather-pagination__next--disabled'
   endif
+
+
 %}
 {% if paginate and paginate.pages > 1 %}
   <div class="feather-pagination">
-    <div data-pagination-first class="feather-pagination__first {{ first }} button show-md"><<</div>
-    <div data-pagination-prev class="feather-pagination__prev {{ prev }} button"><</div>
+    <a
+      title="First Page"
+      href="{{ paginate.parts[ 0 ].url }}"
+      data-pagination-first
+      class="feather-pagination__first {{ first }} button show-md"
+    ><<</a>
+    <a
+      title="Previous Page"
+      href="{{ paginate.previous.url }}"
+      data-pagination-prev
+      class="feather-pagination__prev {{ prev }} button"
+    ><</a>
     {% for i in (current_page..page_limit) %}
       {% liquid 
+        assign number = i | minus: 1
+        assign url = paginate.parts[ number ].url
+
+        assign page_text = 'Page ' | append: i
         assign active = ''
         if current_page == i
+          assign page_text = 'Current Page, Page ' | append: i
           assign active = 'feather-pagination__page--active'
         endif
       %}
-      <div data-pagination-page="{{ i }}" class="feather-pagination__page {{ active }} button show-sm">{{ i }}</div>
+      <a
+        title="{{ page_text }}"
+        href="{{ url }}"
+        data-pagination-page="{{ i }}"
+        class="feather-pagination__page {{ active }} button show-sm"
+      >{{ i }}</a>
     {% endfor %}
-    <div data-pagination-next class="feather-pagination__next {{ next }} button">></div>
-    <div data-pagination-last class="feather-pagination__last {{ last }} button show-md">>></div>
+    <a
+      title="Next Page"
+      href="{{ paginate.next.url }}"
+      data-pagination-next
+      class="feather-pagination__next {{ next }} button"
+    >></a>
+    <a
+      title="Last Page"
+      href="{{ paginate.parts[ last_index ].url }}"
+      data-pagination-last
+      class="feather-pagination__last {{ last }} button show-md"
+    >>></a>
   </div>
 {% endif %}
