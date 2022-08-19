@@ -190,7 +190,7 @@ const setUI = function (html) {
 
 	if (html && container) {
 		container.innerHTML = html;
-		inView();
+		inView(true);
 	}
 };
 
