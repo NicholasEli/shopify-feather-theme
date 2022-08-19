@@ -1,3 +1,4 @@
+import { queryParams } from './utils.js';
 import { filter } from './api.js';
 import { inView } from './in-view.js';
 
@@ -175,7 +176,11 @@ const setQuery = async function () {
 	}
 };
 
-const getQuery = function () {};
+const getQuery = function () {
+	const query = queryParams();
+	// console.log(state);
+	// console.log(query);
+};
 
 /**
  * Sets UI if HTML and container element exists in HTML
@@ -193,4 +198,5 @@ export const productFilter = function () {
 	checklist();
 	priceRange();
 	sortby();
+	getQuery();
 };

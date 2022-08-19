@@ -101,14 +101,25 @@ export const classObserver = function (el, classname, on, off) {
 /*
  * Gets url query paramters by key
  * @param { string } key - name of query parameter
- * @return { string|null } query parameter value if exists
+ * @return { string|object|null } query parameter value if exists
  * */
 export const queryParams = function (key) {
-	const params = new Proxy(new URLSearchParams(window.location.search), {
-		get: (searchParams, prop) => searchParams.get(prop),
-	});
+	if (!key) {
+		const params = {};
+		for (const [key, value] of new URLSearchParams(window.location.search).entries()) {
+			params[key] = value;
+		}
 
-	if (params[key]) return params[key];
+		return params;
+	}
+
+	if (key) {
+		const params = new Proxy(new URLSearchParams(window.location.search), {
+			get: (searchParams, prop) => searchParams.get(prop),
+		});
+
+		if (params[key]) return params[key];
+	}
 	return null;
 };
 

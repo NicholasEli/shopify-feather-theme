@@ -16,6 +16,7 @@
             name="{{ item.param_name }}"
             id="{{ list_item }}"
             type="checkbox"
+            {% if item.active %}checked{% endif %}
             value="{{ item.value }}"
           />
           <label for="{{ list_item }}" style="{{ label_style }}">{{ item.label }}</label>
@@ -26,6 +27,25 @@
   {% if filter.type == 'price_range' %}
     {% liquid 
       assign min_item = item.label | downcase | strip | replace: ' ', '-'
+
+      assign max_value = ''
+      if filter.max_value.value
+        if uses_comma_decimals
+          assign max_value = filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.'
+        else
+          assign max_value = filter.max_value.value | money_without_currency | replace: ',', ''
+        endif
+      endif
+
+      assign min_value = ''
+      if filter.min_value.value
+        if uses_comma_decimals
+          assign min_value = filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.'
+        else
+          assign min_value = filter.min_value.value | money_without_currency | replace: ',', ''
+        endif
+      endif
+
     %}
     <div data-select-dropdown="{{ filter.label }}" class="feather-select__dropdown feather-filters--price">
       <div class="feather-filters__item input">
@@ -35,7 +55,7 @@
           data-filter-price-range-item="min"
           name="{{ filter.min_value.param_name }}"
           type="text"
-          value="{{ filter.min_value.value }}"
+          value="{{ min_value }}"
         />
       </div>
       <div class="feather-filters__item input">
@@ -45,7 +65,7 @@
           data-filter-price-range-item="max"
           name="{{ filter.max_value.param_name }}"
           type="text"
-          value="{{ filter.max_value.value }}"
+          value="{{ max_value }}"
         />
       </div>
     </div>
