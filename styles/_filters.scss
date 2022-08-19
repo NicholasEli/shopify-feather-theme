@@ -32,6 +32,15 @@
 		}
 	}
 
+	.feather-pagination {
+		display: none;
+		margin-bottom: $padding;
+
+		@media (min-width: #{$md}) {
+			display: flex;
+		}
+	}
+
 	&__filters {
 		@media (max-width: #{$md}) {
 			width: 100%;

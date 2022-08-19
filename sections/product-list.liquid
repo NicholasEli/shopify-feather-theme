@@ -1,6 +1,6 @@
 {% paginate collection.products by section.settings.paginate_count %}
 	<div class="feather-filters container container--lg container--padding">
-		{% render 'filters' %}
+		{% render 'filters', paginate: paginate %}
 	</div>
 	<div class="container container--padding container--lg">
 		<ul data-feather-results class="row">
@@ -14,7 +14,7 @@
 	</div>
 	<div class="container container--lg container--padding">
 		<div class="row center-xs">
-			{% render 'pagination' paginate: paginate %}
+			{% render 'pagination', paginate: paginate %}
 		</div>
 	</div>
 {% endpaginate %}

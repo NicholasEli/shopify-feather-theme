@@ -1,3 +1,10 @@
+{% liquid 
+  assign row_class = 'end-md'
+  if paginate and paginate.pages > 1
+    assign row_class = 'between-md'
+  endif
+%}
+
 <div class="row hide-md">
   <a data-toggle="[data-filters]" data-toggle-class="animate__fadeInUp,animate__fadeOutDown" class="feather-filters__btn button" title="Filters">{% render 'icon-filter' %}<span>Filter</span></a>
 </div>
@@ -17,7 +24,7 @@
 </div>
 {% endif %}
 {% if collection.sort_by %}
-  <div class="row end-md">
+  <div class="row {{ row_class }}">
     {% render 'pagination' paginate: paginate %}
     <a title="Sort By" class="feather-select feather-select--dropdown">
       <select data-sortby>

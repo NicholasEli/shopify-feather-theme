@@ -5,6 +5,7 @@
 		margin: 0;
 		font-size: 16px;
 		font-weight: 300;
+		padding: 0 $padding;
 
 		& + .button {
 			margin-left: divide($padding, 2);
