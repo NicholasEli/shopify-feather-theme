@@ -66,6 +66,7 @@
   </head>
 
   <body class="{{ template.name }}">
+    {% render 'loading' %}
     {% section 'header' %}
     <main>
       {{ content_for_layout }}

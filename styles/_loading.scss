@@ -6,7 +6,13 @@
   border-top: 3px solid $primary;
   border-right: 3px solid transparent;
   box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
   animation: rotation 1s linear infinite;
+
+  &[data-loading='true'] {
+    opacity: 1;
+  }
 }
 
 @keyframes rotation {
@@ -16,4 +22,15 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.feather-loading {
+  width: 0%;
+  height: 3px;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  background-color: $primary;
+  transition: width 200ms ease-in;
 }
