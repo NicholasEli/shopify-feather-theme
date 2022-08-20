@@ -5,7 +5,12 @@
 	left: 0;
 	background-color: $gray;
 	border-bottom: 1px solid $stroke;
+	opacity: 0;
 	z-index: 2;
+
+	&.animate__fadeInDown {
+		top: 0;
+	}
 
 	.row {
 		width: 100%;
