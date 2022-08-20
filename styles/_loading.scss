@@ -6,13 +6,7 @@
   border-top: 3px solid $primary;
   border-right: 3px solid transparent;
   box-sizing: border-box;
-  opacity: 0;
-  pointer-events: none;
   animation: rotation 1s linear infinite;
-
-  &[data-loading='true'] {
-    opacity: 1;
-  }
 }
 
 @keyframes rotation {
@@ -31,6 +25,12 @@
   z-index: 99;
   top: 0;
   left: 0;
+  opacity: 0;
   background-color: $primary;
+  pointer-events: none;
   transition: width 200ms ease-in;
+
+  &[data-loading='true'] {
+    opacity: 1;
+  }
 }
