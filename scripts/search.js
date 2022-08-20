@@ -37,7 +37,7 @@ const state = {
 	 * Sets search results
 	 * @param { object } results - results of the most recent search
 	 */
-	set setResults(results) {
+	set setResults({ results, callback }) {
 		this.results = results;
 
 		if (!results) return;
@@ -109,7 +109,7 @@ const clearResults = async function () {
 	const container = state.forms[id].results;
 
 	input.value = '';
-	state.setResults = null;
+	state.setResults = { results: null, callback: null };
 	container.classList.add(FADEOUT);
 
 	await asyncTimeout(delay);
