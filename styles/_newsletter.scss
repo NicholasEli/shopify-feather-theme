@@ -1,26 +1,6 @@
 .feather-newsletter {
-	width: 100%;
-	position: fixed;
-	top: -100%;
-	left: 0;
-	background-color: $gray;
-	border-bottom: 1px solid $stroke;
-	opacity: 0;
-	z-index: 2;
-
-	&.animate__fadeInDown {
-		top: 0;
-	}
-
 	.row {
 		width: 100%;
-	}
-
-	form,
-	.form,
-	input,
-	.input {
-		margin-bottom: 0;
 	}
 
 	.input {

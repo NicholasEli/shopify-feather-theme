@@ -6,6 +6,7 @@ import { select } from './select.js';
 import { toggle } from './toggle.js';
 import { productFilter } from './product-filter.js';
 import { loading } from './loading.js';
+import { modal } from './modal.js';
 import { newsletter } from './newsletter.js';
 
 window.onload = async function () {
@@ -21,8 +22,9 @@ window.onload = async function () {
 	productSpotlight();
 	select();
 	toggle();
-	productFilter(); // <!-- call after all filter, select and toggle methods have been called
 	newsletter();
+	modal();
+	productFilter(); // <!-- call after all filter, select and toggle methods have been called
 
 	console.log('--Scripts Loaded');
 };

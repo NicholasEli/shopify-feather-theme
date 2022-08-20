@@ -3,6 +3,6 @@ export const newsletter = function () {
 	const storage = window.localStorage.getItem('feather-newsletter');
 
 	if (!storage && container) {
-		container.classList.add('animate__fadeInDown');
+		//container.classList.add('animate__fadeInDown');
 	}
 };
