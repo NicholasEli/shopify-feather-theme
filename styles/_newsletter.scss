@@ -1,0 +1,26 @@
+.feather-newsletter {
+	width: 100%;
+	position: fixed;
+	top: -100%;
+	left: 0;
+	background-color: $gray;
+	border-bottom: 1px solid $stroke;
+	z-index: 2;
+
+	.row {
+		width: 100%;
+	}
+
+	form,
+	.form,
+	input,
+	.input {
+		margin-bottom: 0;
+	}
+
+	.input {
+		& + .button {
+			margin-left: $padding;
+		}
+	}
+}

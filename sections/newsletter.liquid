@@ -1,0 +1,28 @@
+<div class="form">
+	<div class="container container--padding container--md">
+		{% form 'customer' %}
+			<div class="row center-xs">
+			  <div class="input">
+			    <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" />
+			  </div>
+			  <input class="button" type="submit" value="Sign up" />
+			</div>
+		{% endform %}
+	</div>
+</div>
+
+{% schema %}
+{
+  "name": "News Letter",
+  "class": "feather-newsletter animate__animated",
+  "tag": "div",
+  "settings": [
+    {
+    	"id": "placeholder",
+      "type": "text",
+      "label": "Placeholder Text",
+      "default": "Newsletter Signup"
+    }
+  ]
+}
+{% endschema %}
