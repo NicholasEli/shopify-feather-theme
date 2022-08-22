@@ -15,6 +15,20 @@
 				  </div>
 				  <input class="button" type="submit" value="Sign up" />
 				</div>
+				{% if form.posted_successfully? %}
+					{% liquid 
+						assign message = newsletter.success
+						if newsletter.success == empty or newsletter.success == blank
+							assign message = 'Thanks for subscribing!'
+						endif
+					%}
+					<script>
+						window.Feather.newsletter = {
+							message: '{{ message }}',
+							error: null,
+						}
+					</script>
+				{% endif %}
 			{% endform %}
 		</div>
 	</div>
