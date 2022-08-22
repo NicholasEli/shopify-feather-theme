@@ -91,9 +91,15 @@ const mobileNavBtn = function () {
 		_close();
 	});
 
+	document.addEventListener('keyup', (e) => {
+		if (e.keyCode == 27 && state.active) {
+			_close();
+		}
+	});
+
 	window.addEventListener('resize', () => {
 		if (window.innerWidth > md && state.active) {
-			_close;
+			_close();
 		}
 	});
 };
