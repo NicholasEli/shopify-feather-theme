@@ -8,29 +8,44 @@ const state = {
 		if (!modals) return;
 		this.modals = modals;
 	},
+	set setActive({ id, active }) {
+		if (!id || active === undefined || !this.modals[id]) return;
+		this.modals[id].active = !this.modals[id].active;
+		setUI(this.modals[id]);
+	},
+};
+
+const setUI = async function (modal) {
+	if (modal.active) {
+		modal.el.classList.add('feather-modal--active');
+
+		await asyncTimeout(500);
+		modal.el.classList.add('animate__fadeIn');
+
+		await asyncTimeout(500);
+		modal.dialog.classList.add('animate__fadeInDown');
+
+		return;
+	}
+
+	modal.dialog.classList.add('animate__fadeOutUp');
+
+	await asyncTimeout(delay);
+	modal.el.classList.add('animate__fadeOut');
+	modal.dialog.classList.remove('animate__fadeInDown');
+
+	await asyncTimeout(delay);
+	modal.el.classList.remove('animate__fadeOut', 'animate__fadeIn', 'feather-modal--active');
+	modal.dialog.classList.remove('animate__fadeOutUp');
 };
 
 export const modalOpen = async function (modal) {
-	modal.el.classList.add('feather-modal--active');
-
-	await asyncTimeout(500);
-	modal.el.classList.add('animate__fadeIn');
-
-	await asyncTimeout(500);
-	modal.dialog.classList.add('animate__fadeInDown');
+	state.setActive = { id: modal.id, active: true };
 };
 
-const modalClose = function (modal) {
+export const modalClose = function (modal) {
 	modal.close.addEventListener('click', async () => {
-		modal.dialog.classList.add('animate__fadeOutUp');
-
-		await asyncTimeout(delay);
-		modal.el.classList.add('animate__fadeOut');
-		modal.dialog.classList.remove('animate__fadeInDown');
-
-		await asyncTimeout(delay);
-		modal.el.classList.remove('animate__fadeOut', 'animate__fadeIn', 'feather-modal--active');
-		modal.dialog.classList.remove('animate__fadeOutUp');
+		state.setActive = { id: modal.id, active: false };
 	});
 };
 
@@ -45,9 +60,11 @@ const setModals = function () {
 		const id = modal.getAttribute('data-modal');
 
 		_state[id] = {
+			id,
 			el: modal,
 			dialog: modal.querySelector('[data-modal-dialog]'),
 			close: modal.querySelector('[data-modal-close]'),
+			active: false,
 		};
 
 		modalClose(_state[id]);

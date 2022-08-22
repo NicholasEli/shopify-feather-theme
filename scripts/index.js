@@ -15,15 +15,18 @@ window.onload = async function () {
 	document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 	if (Shopify.designMode) document.documentElement.classList.add('shopify-design-mode');
 
+	// Pre UI logic
 	loading(); // <!-- call first to intercept http requests
 	navigation();
 	search();
-	inView();
-	productSpotlight();
 	select();
 	toggle();
-	newsletter();
 	modal();
+
+	// Post UI logic
+	inView();
+	productSpotlight();
+	newsletter();
 	productFilter(); // <!-- call after all filter, select and toggle methods have been called
 
 	console.log('--Scripts Loaded');
