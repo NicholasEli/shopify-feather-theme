@@ -4,6 +4,8 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	display: none;
+	opacity: 0;
 	z-index: 10;
 	background-color: rgba(255, 255, 255, 0.5);
 
@@ -15,15 +17,31 @@
 		padding-bottom: multiply($padding, 2);
 		overflow-y: auto;
 		background-color: $primary;
+		opacity: 0;
 
 		@media (min-width: #{$md}) {
 			padding: multiply($padding, 2);
 		}
 
 		&-title {
+			position: relative;
 			h4 {
 				color: #fff;
 				font-family: $ibarra;
+			}
+
+			a {
+				position: absolute;
+				top: 0;
+				right: 0;
+				cursor: pointer;
+
+				svg {
+					width: 20px;
+					* {
+						fill: #fff;
+					}
+				}
 			}
 		}
 
@@ -45,5 +63,9 @@
 				background-color: #fff;
 			}
 		}
+	}
+
+	&--active {
+		display: flex;
 	}
 }

@@ -1,3 +1,10 @@
+export const getStorage = function () {
+	let storage = window.localStorage.getItem('Feather');
+	if (!storage) return null;
+
+	return JSON.parse(storage);
+};
+
 /**
  * Creates random uniqe id
  */

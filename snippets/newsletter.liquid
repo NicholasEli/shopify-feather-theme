@@ -1,7 +1,10 @@
-<div data-modal="newletter" class="feather-modal row center-xs middle-xs animate__animated">
-	<div class="feather-modal__dialog container--padding row">
+<div data-modal="newsletter" class="feather-modal row center-xs middle-xs animate__animated">
+	<div data-modal-dialog class="feather-modal__dialog container--padding row animate__animated">
 		<div class="feather-modal__dialog-title col-xs-12">
 			<h4>Get Our Newsletter</h4>
+			<a data-modal-close="newsletter" title="Close Newsletter Modal">
+				{% render 'icon-close' %}
+			</a>
 		</div>
 		<div class="feather-modal__dialog-content feather-newsletter form col-xs-12">
 			<p>Want the latest and greatest from our us straight to your inbox? Share your email with us for our monthly email.</p>
