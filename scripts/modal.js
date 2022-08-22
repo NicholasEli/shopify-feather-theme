@@ -39,13 +39,19 @@ const setUI = async function (modal) {
 	modal.dialog.classList.remove('animate__fadeOutUp');
 };
 
-export const modalOpen = async function (modal) {
+export const modalOpen = function (modal) {
 	state.setActive = { id: modal.id, active: true };
 };
 
 export const modalClose = function (modal) {
-	modal.close.addEventListener('click', async () => {
-		state.setActive = { id: modal.id, active: false };
+	modal.close.addEventListener(
+		'click',
+		async () => (state.setActive = { id: modal.id, active: false })
+	);
+	document.addEventListener('keyup', (e) => {
+		if (e.keyCode == 27 && state.modals[modal.id].active) {
+			state.setActive = { id: modal.id, active: false };
+		}
 	});
 };
 
