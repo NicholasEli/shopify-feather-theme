@@ -1,23 +1,24 @@
-export const getStorage = function () {
-	let storage = window.localStorage.getItem('Feather');
-	if (!storage) return null;
+export const storage = {
+	get: () => {
+		let obj = window.localStorage.getItem('Feather');
+		if (!obj) return null;
 
-	return JSON.parse(storage);
-};
+		return JSON.parse(obj);
+	},
+	set: ({ key, value }) => {
+		if (!key || !value) return null;
 
-export const setStorage = function (item) {
-	if (!item) return;
+		let obj = window.localStorage.getItem('Feather');
 
-	let storage = window.localStorage.getItem('Feather');
+		if (!obj) obj = {};
+		if (obj && typeof obj !== 'object') obj = JSON.parse(obj);
 
-	if (!storage) storage = {};
+		obj[key] = value;
 
-	storage = JSON.parse(storage);
+		window.localStorage.setItem('Feather', JSON.stringify(obj));
 
-	storage[item.key] = item.value;
-	window.localStorage.setItem('Feather', JSON.stringify(storage));
-
-	return storage;
+		return obj;
+	},
 };
 
 /**

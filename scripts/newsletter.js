@@ -1,19 +1,22 @@
 import { Notyf } from 'notyf';
-import { asyncTimeout, getCSSVariable, getStorage } from './utils.js';
+import { asyncTimeout, getCSSVariable, storage } from './utils.js';
 import { options } from './toast.js';
 import { modalOpen } from './modal.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
 export const newsletter = function () {
-	const storage = getStorage();
+	const obj = storage.get();
+
+	if (obj && obj.newsletter) return;
 
 	if (window.Feather?.newsletter?.message) {
 		let notyf = new Notyf(options());
 		notyf.success(window.Feather.newsletter.message);
+		storage.set({ key: 'newsletter', value: true });
 		return;
 	}
 
-	if (!storage) modalOpen({ id: 'newsletter' });
-	if (storage && !storage.newsletter) modalOpen(modal);
+	if (!obj) modalOpen({ id: 'newsletter' });
+	if (obj && !obj.newsletter) modalOpen({ id: 'newsletter' });
 };
