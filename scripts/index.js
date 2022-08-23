@@ -1,10 +1,11 @@
 import { navigation } from './navigation.js';
 import { search } from './search.js';
 import { inView } from './in-view.js';
+import { product } from './product.js';
 import { productSpotlight } from './product-spotlight.js';
+import { productFilter } from './product-filter.js';
 import { select } from './select.js';
 import { toggle } from './toggle.js';
-import { productFilter } from './product-filter.js';
 import { loading } from './loading.js';
 import { modal } from './modal.js';
 import { newsletter } from './newsletter.js';
@@ -25,8 +26,9 @@ window.onload = async function () {
 
 	// Post UI logic
 	inView();
-	productSpotlight();
 	newsletter();
+	product();
+	productSpotlight();
 	productFilter(); // <!-- call after all filter, select and toggle methods have been called
 
 	console.log('--Scripts Loaded');

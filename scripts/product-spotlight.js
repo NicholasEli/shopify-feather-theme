@@ -9,7 +9,7 @@ const instances = {};
  * or block view depending on the viewport width
  */
 export const productSpotlight = function () {
-	const spotlights = document.querySelectorAll('[data-glide]');
+	const spotlights = document.querySelectorAll('[data-spotlight]');
 
 	if (!spotlights || (spotlights && spotlights.length == 0)) return;
 
@@ -22,8 +22,8 @@ export const productSpotlight = function () {
 	};
 
 	spotlights.forEach((spotlight) => {
-		const id = spotlight.getAttribute('data-glide');
-		const instance = new Glide('[data-glide="' + id + '"]', { perView: _numSlides() });
+		const id = spotlight.getAttribute('data-spotlight');
+		const instance = new Glide('[data-spotlight="' + id + '"]', { perView: _numSlides() });
 		instance.mount();
 		instance.on(['resize'], function () {
 			const { perView } = instance.settings;

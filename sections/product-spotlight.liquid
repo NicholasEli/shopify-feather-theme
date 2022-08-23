@@ -19,7 +19,7 @@
 {% if section.blocks and section.blocks.size > 0 %}
 	<div class="feather-product-spotlight__items container container--padding container--lg hide-lg">
 		<div class="row">
-			<div data-glide="{{ section.id }}" class="col-xs-12 glide">
+			<div data-spotlight="{{ section.id }}" class="col-xs-12 glide">
 				<div data-glide-el="track" class="glide__track">
 					<ul class="glide__slides">
 						{% for block in section.blocks %}
