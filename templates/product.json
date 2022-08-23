@@ -2,7 +2,10 @@
   "sections": {
     "variant-slider": {
       "type": "product-variant-slider"
+    },
+    "details": {
+      "type": "product-details"
     }
   },
-  "order": ["variant-slider"]
+  "order": ["variant-slider", "details"]
 }

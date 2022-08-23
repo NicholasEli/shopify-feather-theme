@@ -1,24 +1,43 @@
 {% liquid
-	assign images = ''
+	assign images = nil
+
+	assign image = product.featured_image.src | img_url: 'master'
+	if images == nil and product.featured_image.src
+		assign images = image | append: ':' | append: 'Featured Image'
+	endif
+	if images != nil and product.featured_image.src
+		assign images = images | append: ',' | append: image | append: ':' | append: 'Featured Image'
+	endif
+
 	if product.variants.size > 0
 		for variant in product.variants
 			if variant.featured_image
 				assign image = variant.featured_image.src | img_url: 'master'
-				assign images = images | append: ',' | append: image | append: ':' | append: variant.title
+				if images == nil
+					assign images = image | append: ':' | append: variant.title
+				else
+					assign images = images | append: ',' | append: image | append: ':' | append: variant.title
+				endif
+			endif
+		endfor
+	endif
+
+	if product.images.size > 0
+		for img in product.images
+			assign image = img.src | img_url: 'master'
+			if images == nil
+				assign images = image | append: ':' | append: product.title
+			else
+				assign images = images | append: ',' | append: image | append: ':' | append: product.title
 			endif
 		endfor
 	endif
 
 	assign images = images | split: ','
-
-	if images.size == 0
-		assign image = product.featured_image.src | img_url: 'master'
-		assign images = image | append: ':' | append: product.title
-	endif
 %}
 
 <div class="container">
-	<div data-variant-slider="{{ section.id }}" class="col-xs-12 col-lg-6 glide">
+	<div data-variant-slider="{{ section.id }}" class="glide">
 		<div data-glide-el="track" class="glide__track">
 			<ul class="glide__slides">
 				{% for image in images %}
@@ -44,7 +63,7 @@
 {% schema %}
 	{
 		"name": "Product Variant Slider",
-		"class": "feather-product__variant-slider",
+		"class": "feather-product__variant-slider col-xs-12 col-lg-6",
 		"tag": "section",
 		"settings": []
 	}

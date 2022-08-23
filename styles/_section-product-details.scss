@@ -1,0 +1,39 @@
+.feather-product__details {
+	.container--padding {
+		padding-top: multiply($padding, 3);
+	}
+
+	.feather-product {
+		&__title {
+			h1 {
+				margin-bottom: 5px;
+				color: $text;
+				font-family: $ibarra;
+
+				@media (min-width: #{$lg}) {
+					font-size: 40px;
+				}
+			}
+		}
+
+		&__options {
+			p {
+				margin-bottom: $padding;
+				font-size: 18px;
+				color: $text;
+			}
+		}
+
+		&__price {
+			p {
+				font-family: $ibarra;
+				font-size: 30px;
+				color: $primary;
+
+				@media (min-width: #{$lg}) {
+					font-size: 40px;
+				}
+			}
+		}
+	}
+}
