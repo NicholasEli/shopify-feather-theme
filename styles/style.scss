@@ -71,6 +71,12 @@ body {
 		width: 100%;
 	}
 
+	section {
+		& + section .container--padding {
+			padding-top: 0;
+		}
+	}
+
 	h1,
 	h2,
 	h3,
