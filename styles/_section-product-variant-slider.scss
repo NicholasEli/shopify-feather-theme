@@ -1,0 +1,40 @@
+.feather-product__variant-slider {
+	.glide {
+		img {
+			width: 100%;
+			display: block;
+		}
+
+		&__arrows {
+		}
+
+		&__arrow {
+			border-color: $stroke;
+			transition: all 400ms;
+
+			&:hover {
+				border-color: $primary;
+				svg * {
+					fill: $primary;
+				}
+			}
+
+			svg {
+				width: 15px;
+				height: auto;
+				display: block;
+
+				* {
+					fill: $stroke;
+					transition: all 400ms;
+				}
+			}
+		}
+
+		&__arrow--left {
+			svg {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}
