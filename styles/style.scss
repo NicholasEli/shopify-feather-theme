@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,600;1,600&display=swap');
+
 @import '_variables.scss';
 @import '_reset.scss';
 @import '_mixins.scss';
@@ -7,6 +8,7 @@
 
 @import '_skeleton.scss';
 @import '_animate.scss';
+@import '_toast.scss';
 
 @import '_layout.scss';
 @import '_forms.scss';

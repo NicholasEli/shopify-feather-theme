@@ -1,13 +1,16 @@
-import { modalOpen } from './modal.js';
+import { Notyf } from 'notyf';
 import { asyncTimeout, getCSSVariable, getStorage } from './utils.js';
+import { options } from './toast.js';
+import { modalOpen } from './modal.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
 export const newsletter = function () {
-	let storage = getStorage();
+	const storage = getStorage();
 
-	console.log(window.Feather);
 	if (window.Feather?.newsletter?.message) {
+		let notyf = new Notyf(options());
+		notyf.success(window.Feather.newsletter.message);
 		return;
 	}
 
