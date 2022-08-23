@@ -5,6 +5,21 @@ export const getStorage = function () {
 	return JSON.parse(storage);
 };
 
+export const setStorage = function (item) {
+	if (!item) return;
+
+	let storage = window.localStorage.getItem('Feather');
+
+	if (!storage) storage = {};
+
+	storage = JSON.parse(storage);
+
+	storage[item.key] = item.value;
+	window.localStorage.setItem('Feather', JSON.stringify(storage));
+
+	return storage;
+};
+
 /**
  * Creates random uniqe id
  */
