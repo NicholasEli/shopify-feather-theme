@@ -5,15 +5,22 @@
 			display: block;
 		}
 
+		li {
+			margin: 0;
+		}
+
 		&__arrows {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			background-color: #fff;
 		}
 
 		&__arrow {
-			border-color: $stroke;
-			transition: all 400ms;
+			margin: 0;
+			border: none;
 
 			&:hover {
-				border-color: $primary;
 				svg * {
 					fill: $primary;
 				}
