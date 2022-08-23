@@ -20,7 +20,7 @@
 	<div class="feather-product-spotlight__items container container--padding container--lg hide-lg">
 		<div class="row">
 			<div data-glide="{{ section.id }}" class="col-xs-12 glide">
-				<div class="glide__track" data-glide-el="track">
+				<div data-glide-el="track" class="glide__track">
 					<ul class="glide__slides">
 						{% for block in section.blocks %}
 							{% assign item = block.settings.product %}
@@ -38,7 +38,7 @@
 						{% endfor %}
 					</ul>
 				</div>
-				<div class="glide__arrows" data-glide-el="controls">
+				<div data-glide-el="controls" class="glide__arrows">
 			    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
 			    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
 			  </div>
@@ -51,9 +51,16 @@
 		<div class="row center-xs">
 			<div class="feather-product-spotlight__column col-xs-4">
 				{% for block in section.blocks %}
-					{% assign item = block.settings.product %}
-					{% if forloop.index <= 2 %}
-						<a title="{{ item.title }}" href="{{ item.url }}" data-in-view>
+					{% liquid 
+						assign diff = forloop.index | modulo: 2
+						assign item = block.settings.product
+					%}
+					{% if diff == 1 %}
+						<a
+							data-in-view
+							title="{{ item.title }}"
+							href="{{ item.url }}"
+						>
 							<picture>
 								<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
 								<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
@@ -67,9 +74,16 @@
 			</div>
 			<div class="feather-product-spotlight__column col-xs-4">
 				{% for block in section.blocks %}
-					{% assign item = block.settings.product %}
-					{% if forloop.index > 2 %}
-						<a title="{{ item.title }}" href="{{ item.url }}" data-in-view>
+					{% liquid 
+						assign diff = forloop.index | modulo: 2
+						assign item = block.settings.product
+					%}
+					{% if diff == 0 %}
+						<a
+							data-in-view
+							title="{{ item.title }}"
+							href="{{ item.url }}"
+						>
 							<picture>
 								<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
 								<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />

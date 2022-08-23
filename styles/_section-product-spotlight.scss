@@ -179,6 +179,10 @@
 			margin-bottom: multiply($padding, 3);
 			overflow: hidden;
 
+			&:nth-child(2n) {
+				min-width: calc(120%);
+			}
+
 			&:hover {
 				picture,
 				img {
@@ -194,6 +198,23 @@
 		& + .feather-product-spotlight__column {
 			a {
 				height: 550px;
+			}
+		}
+
+		&:nth-of-type(odd) {
+			a:nth-child(2n) {
+				height: 400px;
+				left: -20%;
+			}
+		}
+
+		&:nth-of-type(even) {
+			a {
+				height: 500px;
+
+				&:nth-child(2n) {
+					height: 400px;
+				}
 			}
 		}
 	}
