@@ -1,0 +1,50 @@
+.feather-newsletter {
+	background-color: $primary;
+	border-top: 1px solid $stroke;
+	border-bottom: 1px solid $stroke;
+
+	.container {
+		padding-top: multiply($padding, 6);
+		padding-bottom: multiply($padding, 5);
+	}
+
+	.row {
+		width: 100%;
+		text-align: center;
+	}
+
+	.input {
+		@include flex(row, center, center, wrap);
+		width: 100%;
+
+		input[type='email'] {
+			width: 100%;
+
+			@media (min-width: #{$sm}) {
+				max-width: 300px;
+				margin: 0;
+			}
+		}
+
+		.button {
+			margin-left: $padding;
+			margin-bottom: 0;
+			background-color: #fff;
+		}
+	}
+
+	h4,
+	p {
+		color: #fff;
+	}
+
+	h4 {
+		font-family: $ibarra;
+	}
+
+	p {
+		font-weight: 300;
+		font-size: 16px;
+		letter-spacing: 1px;
+	}
+}

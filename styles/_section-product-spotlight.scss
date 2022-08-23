@@ -212,10 +212,24 @@
 			a {
 				height: 500px;
 
+				&:first-of-type {
+					margin-top: multiply($padding, 3);
+				}
+
 				&:nth-child(2n) {
 					height: 400px;
 				}
 			}
+		}
+	}
+
+	.container {
+		&:first-of-type {
+			padding-top: multiply($padding, 6);
+		}
+
+		&:last-of-type {
+			padding-bottom: multiply($padding, 3);
 		}
 	}
 }

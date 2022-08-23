@@ -1,0 +1,58 @@
+<div class="container container--padding container--md">
+	<div class="row form">
+		{% if section.settings.title and section.settings.title != empty %}
+		<div class="col-xs-12">
+			<h4>{{ section.settings.title }}</h4>
+		</div>
+		{% endif %}
+		{% if section.settings.title and section.settings.text != empty %}
+		<div class="col-xs-12">
+			<p>{{ section.settings.text }}</p>
+		</div>
+		{% endif %}
+		<div class="form col-xs-12">
+			{% form 'customer' %}
+			  <div class="input">
+			    <input type="email" name="contact[email]" placeholder="Newsletter Signup" required />
+			    <input class="button" type="submit" value="Sign up" />
+			  </div>
+				{% if form.posted_successfully? %}
+					{% liquid 
+						assign message = newsletter.success
+						if newsletter.success == empty or newsletter.success == blank
+							assign message = 'Thanks for subscribing!'
+						endif
+					%}
+					<script>
+						window.Feather.newsletter = {
+							message: '{{ message }}',
+							error: null,
+						}
+					</script>
+				{% endif %}
+			{% endform %}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "News Letter",
+		"class": "feather-newsletter",
+		"tag": "section",
+		"settings": [
+			{
+				"id": "title",
+				"type": "text",
+				"label": "title",
+				"default": "Join Our Mailing List"
+			},
+			{
+				"id": "text",
+				"type": "text",
+				"label": "title",
+				"default": "Want the latest and greatest from our us straight to your inbox? Share your email with us for our monthly email."
+			}
+		]
+	}
+{% endschema %}

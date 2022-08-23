@@ -16,7 +16,4 @@ export const newsletter = function () {
 		storage.set({ key: 'newsletter', value: true });
 		return;
 	}
-
-	if (!obj) modalOpen({ id: 'newsletter' });
-	if (obj && !obj.newsletter) modalOpen({ id: 'newsletter' });
 };

@@ -98,7 +98,10 @@
         "4d6c0c3e-1750-4a2d-823b-a1d44abfff7f"
       ],
       "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter"
     }
   },
-  "order": ["collection-banner", "product-spotlight", "information-grid"]
+  "order": ["collection-banner", "product-spotlight", "information-grid", "newsletter"]
 }

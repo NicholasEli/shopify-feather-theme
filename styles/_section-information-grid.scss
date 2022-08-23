@@ -4,8 +4,8 @@ $grid-image: 50px;
 	width: 100%;
 
 	&__items {
-		padding-top: multiply($padding, 2);
-		padding-bottom: multiply($padding, 2);
+		padding-top: multiply($padding, 6);
+		padding-bottom: multiply($padding, 6);
 	}
 
 	&__item {
