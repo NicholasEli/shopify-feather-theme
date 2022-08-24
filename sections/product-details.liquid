@@ -10,7 +10,7 @@
 	<div class="feather-product__id">
 		<p>Product ID: {{ product.id }}</p>
 	</div>
-	{% render 'product-description' %}
+	{% render 'product-description', tabs: section.blocks %}
 </div>
 
 {% schema %}
