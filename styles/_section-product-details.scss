@@ -16,14 +16,6 @@
 			}
 		}
 
-		&__options {
-			p {
-				margin-bottom: $padding;
-				font-size: 18px;
-				color: $text;
-			}
-		}
-
 		&__price {
 			p {
 				font-family: $ibarra;
@@ -32,6 +24,103 @@
 
 				@media (min-width: #{$lg}) {
 					font-size: 40px;
+				}
+			}
+		}
+
+		&__options {
+			margin-bottom: $padding;
+		}
+
+		&__option {
+			@include flex(row, flex-start, center, wrap);
+			margin-bottom: $padding;
+
+			p {
+				width: 100%;
+				margin-bottom: 10px;
+				font-size: 16px;
+				line-height: 1;
+				color: $text;
+				font-weight: 300;
+				text-transform: lowercase;
+			}
+		}
+
+		&__option-value {
+			min-width: min-content;
+			margin-right: $padding;
+			padding: 5px 15px;
+			border: 1px solid $stroke;
+			border-radius: 50vh;
+			cursor: pointer;
+			transition: all 200ms;
+
+			span {
+				font-size: 14px;
+				font-weight: 300;
+				line-height: 1;
+				transition: all 200ms;
+			}
+
+			span[style] {
+				width: 15px;
+				height: 15px;
+				position: relative;
+				top: 2.5px;
+				display: inline-block;
+				border-radius: 100%;
+
+				& + span {
+					margin-left: 5px;
+				}
+			}
+
+			&:hover {
+				border-color: $primary;
+
+				span {
+					color: $primary;
+				}
+			}
+
+			&--active {
+				background-color: $primary;
+
+				span {
+					color: #fff;
+				}
+			}
+		}
+
+		&__add-to-cart {
+			.input {
+				@include flex(row, space-between, center, wrap);
+				width: 100%;
+			}
+
+			input {
+				height: 50px;
+				margin-bottom: 0;
+				font-size: 16px;
+
+				&[type='number'] {
+					width: 25%;
+				}
+
+				&[type='submit'] {
+					width: calc(75% - #{$padding});
+					border-color: $primary;
+					background-color: $primary;
+					color: #fff;
+					text-transform: uppercase;
+					font-weight: 400;
+
+					&:hover {
+						background-color: #fff;
+						border-color: $primary;
+						color: $primary;
+					}
 				}
 			}
 		}

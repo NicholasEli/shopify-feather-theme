@@ -2,12 +2,11 @@
 	<div class="feather-product__title">
 		<h1>{{ product.title }}</h1>
 	</div>
-	<div class="feather-product__options">
-		<p>{{ product.options | join: ' / ' | downcase }}</p>
-	</div>
 	<div class="feather-product__price">
 		<p>{{ product.price | money }}</p>
 	</div>
+	{% render 'option-selector' %}
+	{% render 'add-to-cart' %}
 </div>
 
 {% schema %}

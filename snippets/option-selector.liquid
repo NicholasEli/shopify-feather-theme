@@ -1,0 +1,15 @@
+<div class="feather-product__options row">
+	{% for option in product.options_with_values %}
+		<div class="feather-product__option col-xs-12">
+			<p>{{ option.name }}</p>
+			{% for value in option.values %}
+				<a data-option="{{ option.name }}" data-value="{{ value }}" class="feather-product__option-value">
+					{% if option.name == 'Color' or option.name == 'color' %}
+						<span style="background-color: {{ value | downcase }};"></span>
+					{% endif %}
+					<span>{{ value }}</span>
+				</a>
+			{% endfor %}
+		</div>
+	{% endfor %}
+</div>
