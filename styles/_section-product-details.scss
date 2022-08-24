@@ -94,6 +94,8 @@
 		}
 
 		&__add-to-cart {
+			margin-bottom: $padding;
+
 			.input {
 				@include flex(row, space-between, center, wrap);
 				width: 100%;
@@ -122,6 +124,14 @@
 						color: $primary;
 					}
 				}
+			}
+		}
+
+		&__id {
+			p {
+				font-size: 14px;
+				font-weight: 300;
+				color: $text;
 			}
 		}
 	}
