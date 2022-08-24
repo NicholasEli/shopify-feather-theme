@@ -1,36 +1,6 @@
 {% liquid
-	assign categories = tabs | map: 'type' | uniq
+	assign categories = tabs | map: 'type' | join: ',' | append: ',description' | split: ',' | sort | uniq
 %}
 <div class="feather-product__description row">
-	<div class="feather-product__description-tabs">
-		<a
-			data-tab="description"
-			class="button button--active"
-			title="description"
-		>description</a>
-		{% for title in categories %}
-			<a
-				data-tab="{{ title }}"
-				class="button button--active"
-				title="{{ title }}"
-			>{{ title }}</a>
-		{% endfor %}
-	</div>
-	<div
-		data-tab-content="{{ product.description }}"
-		class="feather-product__description-tab-content feather-product__description-tab-content--active">
-		{{ product.description }}
-	</div>
-	{% for category in categories %}
-		{% assign items = tabs | where: "type", category %}
-		<div
-			data-tab-content="{{ category }}"
-			class="feather-product__description-tab-content feather-product__description-tab-content--active">
-			{% for item in items %}
-				<div>
-					<p>{{ item.settings.title }}: {{ item.settings.value }}</p>
-				</div>
-			{% endfor %}
-		</div>
-	{% endfor %}
+	{% render 'tab-content', raw: tabs, categories: categories %}
 </div>

@@ -140,30 +140,6 @@
 		}
 
 		&__description {
-			&-tabs {
-				.button {
-					border-radius: 0;
-					border: none;
-					color: $text;
-					text-transform: lowercase;
-					font-weight: 300;
-					font-size: 14px;
-
-					&:hover {
-						background-color: $stroke;
-						border-bottom: 1px solid $primary;
-						color: $primary;
-					}
-
-					&--active {
-						border-bottom: 1px solid $primary;
-						color: $primary;
-					}
-				}
-			}
-
-			&-tab-content {
-			}
 		}
 	}
 }

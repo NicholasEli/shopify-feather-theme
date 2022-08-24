@@ -1,0 +1,37 @@
+.feather-tab-content {
+	width: 100%;
+
+	&__tabs {
+		width: 100%;
+	}
+
+	&__tab-item {
+		border: none;
+		border-radius: 0;
+		font-weight: 300;
+		font-size: 14px;
+		text-transform: lowercase;
+
+		&:hover {
+			background-color: $stroke;
+			border-bottom: 1px solid $primary;
+			color: $primary;
+		}
+
+		&--active {
+			border-bottom: 1px solid $primary;
+			color: $primary;
+		}
+	}
+
+	&__content {
+		&-item {
+			display: none;
+			padding: $padding;
+
+			&--active {
+				display: block;
+			}
+		}
+	}
+}
