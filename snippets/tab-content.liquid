@@ -1,25 +1,25 @@
 <div class="feather-tab-content">
 	<div class="feather-tab-content__tabs">
 		{% for category in categories %}
-			{% liquid
-				assign active = nil
-				if forloop.index == 1
-					assign active = 'feather-tab-content__tab-item--active'
-				endif
-			%}
 			<a
 				data-tab="{{ category }}"
 				title={{ category }}
-				class="feather-tab-content__tab-item {{ active }} button">{{ category }}</a>
+				class="feather-tab-content__tab-item button">{{ category }}</a>
 		{% endfor %}
 	</div>
 	<div class="feather-tab-content__content">
 		{% for category in categories %}
 			{% assign items = raw | where: "type", category %}
+			{% if items == blank or items == empty and product[ category ] %}
+				<div
+					data-tab-item="{{ category }}"
+					class="feather-tab-content__content-item"
+				>{{ product[category] }}</div>
+			{% endif %}
 			{% for item in items %}
 				<div
 					data-tab-item="{{ item.type }}"
-					class="feather-tab-content__content"
+					class="feather-tab-content__content-item"
 				>
 					<div>{{ item.settings.title }}</div>
 					<div>{{ item.settings.value }}</div>

@@ -2,5 +2,5 @@
 	assign categories = tabs | map: 'type' | join: ',' | append: ',description' | split: ',' | sort | uniq
 %}
 <div class="feather-product__description row">
-	{% render 'tab-content', raw: tabs, categories: categories %}
+	{% render 'tab-content', raw: tabs, product: product categories: categories %}
 </div>
