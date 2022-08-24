@@ -3,7 +3,12 @@
 		<div class="feather-product__option col-xs-12">
 			<p>{{ option.name }}</p>
 			{% for value in option.values %}
-				<a data-option="{{ option.name }}" data-value="{{ value }}" class="feather-product__option-value">
+				<a
+					data-option="{{ option.name }}"
+					data-value="{{ value }}"
+					class="feather-product__option-value"
+					title="{{ option.name }} - {{ value }}"
+				>
 					{% if option.name == 'Color' or option.name == 'color' %}
 						<span style="background-color: {{ value | downcase }};"></span>
 					{% endif %}
