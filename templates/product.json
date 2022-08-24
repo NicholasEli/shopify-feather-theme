@@ -1,11 +1,54 @@
 {
   "sections": {
     "variant-slider": {
-      "type": "product-variant-slider"
+      "type": "product-variant-slider",
+      "settings": {
+      }
     },
     "details": {
-      "type": "product-details"
+      "type": "product-details",
+      "blocks": {
+        "98cc0952-ff8d-40b9-a264-7a4464ce0791": {
+          "type": "weight",
+          "settings": {
+            "title": "Width depth height:",
+            "value": "43\/34\/76 cm"
+          }
+        },
+        "35b2ed84-18dc-4968-93fa-c8238bfc39f5": {
+          "type": "weight",
+          "settings": {
+            "title": "Weight:",
+            "value": "6kg"
+          }
+        },
+        "c13cbf8b-3f60-4609-9be5-332bab77d9fc": {
+          "type": "dimensions",
+          "settings": {
+            "title": "seat height:",
+            "value": "76 cm"
+          }
+        },
+        "57295f7b-78b1-4476-9f60-baef7d4dea6a": {
+          "type": "other",
+          "settings": {
+            "title": "Stackable:",
+            "value": "Yes"
+          }
+        }
+      },
+      "block_order": [
+        "98cc0952-ff8d-40b9-a264-7a4464ce0791",
+        "35b2ed84-18dc-4968-93fa-c8238bfc39f5",
+        "c13cbf8b-3f60-4609-9be5-332bab77d9fc",
+        "57295f7b-78b1-4476-9f60-baef7d4dea6a"
+      ],
+      "settings": {
+      }
     }
   },
-  "order": ["variant-slider", "details"]
+  "order": [
+    "variant-slider",
+    "details"
+  ]
 }
