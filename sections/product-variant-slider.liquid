@@ -1,64 +1,40 @@
 {% liquid
-	assign images = nil
+	assign featured_image = product.featured_image
 
-	assign image = product.featured_image.src | img_url: 'master'
-	if images == nil and product.featured_image.src
-		assign images = image | append: ':' | append: 'Featured Image'
-	endif
-	if images != nil and product.featured_image.src
-		assign images = images | append: ',' | append: image | append: ':' | append: 'Featured Image'
-	endif
-
+	assign variant_images = nil
 	if product.variants.size > 0
-		for variant in product.variants
-			if variant.featured_image
-				assign image = variant.featured_image.src | img_url: 'master'
-				if images == nil
-					assign images = image | append: ':' | append: variant.title
-				else
-					assign images = images | append: ',' | append: image | append: ':' | append: variant.title
-				endif
-			endif
-		endfor
+		assign variant_images = product.variants | map: 'featured_image'
 	endif
 
+	assign product_images = nil
 	if product.images.size > 0
-		for img in product.images
-			assign image = img.src | img_url: 'master'
-			if images == nil
-				assign images = image | append: ':' | append: product.title
-			else
-				assign images = images | append: ',' | append: image | append: ':' | append: product.title
-			endif
-		endfor
+		assign product_images = product.images
 	endif
-
-	assign images = images | split: ','
 %}
 
-<div class="container">
-	<div data-variant-slider="{{ section.id }}" class="glide">
-		<div data-glide-el="track" class="glide__track">
-			<ul class="glide__slides">
-				{% for image in images %}
-					{% liquid 
-						assign key_value = image | split: ':'
-					%}
-					<li>
-						<img
-							src="{{ key_value[0] }}"
-							alt="{{ key_value[1] }}"
-						/>
-					</li>
-				{% endfor %}
-			</ul>
+{% if images != nil %}
+	<div class="container">
+		<div data-variant-slider="{{ section.id }}" class="glide">
+			<div data-glide-el="track" class="glide__track">
+				<ul class="glide__slides">
+					{% if featured_image %}
+						{% render 'variant-slider-item', image: featured_image %}
+					{% endif %}
+					{% for image in variant_images %}
+						{% render 'variant-slider-item', image: image %}
+					{% endfor %}
+					{% for image in product_images %}
+						{% render 'variant-slider-item', image: image %}
+					{% endfor %}
+				</ul>
+			</div>
+			<div data-glide-el="controls" class="glide__arrows">
+		    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
+		    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
+		  </div>
 		</div>
-		<div data-glide-el="controls" class="glide__arrows">
-	    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
-	    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
-	  </div>
 	</div>
-</div>
+{% endif %}
 
 {% schema %}
 	{

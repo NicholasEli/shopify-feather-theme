@@ -1,0 +1,11 @@
+{% liquid 
+	assign alt = product.title
+	if image.alt
+		assign alt = image.alt
+	endif
+%}
+{% if image.src %}
+	<li>
+		<img src="{{ image.src | img_url: 'x1200' }}" alt="{{ alt }}">
+	</li>
+{% endif %}
