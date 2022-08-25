@@ -1,10 +1,2 @@
 body.product {
-	main {
-		margin-right: -0.5rem;
-		margin-left: -0.5rem;
-
-		@media (min-width: #{$lg}) {
-			@include flex(row, flex-start, flex-start, wrap);
-		}
-	}
 }

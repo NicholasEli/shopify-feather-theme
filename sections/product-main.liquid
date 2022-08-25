@@ -1,20 +1,12 @@
-<div class="container container--padding">
-	<div class="feather-product__title">
-		<h1>{{ product.title }}</h1>
-	</div>
-	<div class="feather-product__price">
-		<p>{{ product.price | money }}</p>
-	</div>
-	{% render 'product-options' %}
-	{% render 'product-add-to-cart' %}
-	{% render 'product-description', tabs: section.blocks %}
+<div class="row">
+	{% render 'product-variant-slider' %}
+	{% render 'product-details' %}
 </div>
 
 {% schema %}
 	{
-		"name": "Product Details",
-		"class": "feather-product__details col-xs-12 col-lg-6",
-		"tag": "section",
+		"name": "Product Main",
+		"tag": "div",
 		"blocks": [
 			{
 	      "type": "dimensions",
@@ -83,3 +75,4 @@
 	  ]
 	}
 {% endschema %}
+
