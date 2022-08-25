@@ -1,2 +1,9 @@
-body.product {
+.product {
+	&__main {
+		> .row {
+			@media (min-width: #{$lg}) {
+				justify-content: flex-end;
+			}
+		}
+	}
 }

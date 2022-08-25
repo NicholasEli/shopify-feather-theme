@@ -1,4 +1,9 @@
 .feather-product__variant-slider {
+	> .container {
+		position: sticky;
+		top: 0;
+	}
+
 	.glide {
 		img {
 			width: 100%;
