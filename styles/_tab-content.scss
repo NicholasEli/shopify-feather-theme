@@ -48,18 +48,27 @@
 
 			.feather-tab-content__content-item__title,
 			.feather-tab-content__content-item__value {
+				width: 100%;
 				font-size: 14px;
 			}
 
 			.feather-tab-content__content-item__title {
-				width: 100px;
 				font-weight: 500;
+				margin-bottom: $padding;
+
+				@media (min-width: #{$sm}) {
+					width: 100px;
+					margin-bottom: 0;
+				}
 			}
 
 			.feather-tab-content__content-item__value {
-				width: calc(100% - 100px);
-				padding-left: $padding;
 				font-weight: 400;
+
+				@media (min-width: #{$sm}) {
+					width: calc(100% - 100px);
+					padding-left: $padding;
+				}
 			}
 
 			&--active {

@@ -30,7 +30,7 @@
 				>
 					{% for item in items %}
 						{% liquid 
-							assign value = items.settings.title
+							assign value = item.settings.value
 							if item.settings.text
 								assign value = item.settings.text
 							endif
