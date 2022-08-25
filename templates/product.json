@@ -2,8 +2,23 @@
   "sections": {
     "main": {
       "type": "product-main",
-      "settings": {}
+      "blocks": {
+        "93db4681-2271-4210-909e-f8b4bd88b5d6": {
+          "type": "dimensions",
+          "settings": {
+            "title": "Width depth height:",
+            "value": "220\\\/89\\\/67 cm"
+          }
+        }
+      },
+      "block_order": [
+        "93db4681-2271-4210-909e-f8b4bd88b5d6"
+      ],
+      "settings": {
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
