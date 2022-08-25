@@ -98,7 +98,9 @@
 		}
 
 		&__add-to-cart {
-			margin-bottom: $padding;
+			margin-bottom: multiply($padding, 2);
+			padding-bottom: multiply($padding, 3);
+			border-bottom: 1px solid $stroke;
 
 			.input {
 				@include flex(row, space-between, center, wrap);
@@ -129,17 +131,6 @@
 					}
 				}
 			}
-		}
-
-		&__id {
-			p {
-				font-size: 14px;
-				font-weight: 300;
-				color: $text;
-			}
-		}
-
-		&__description {
 		}
 	}
 }
