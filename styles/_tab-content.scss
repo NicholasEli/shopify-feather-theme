@@ -29,8 +29,12 @@
 			display: none;
 			padding: $padding;
 
+			&:nth-of-type(even) {
+				background-color: $stroke;
+			}
+
 			&--active {
-				display: block;
+				display: flex;
 			}
 		}
 	}
