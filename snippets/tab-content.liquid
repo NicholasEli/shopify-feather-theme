@@ -13,8 +13,11 @@
 			{% if items == blank or items == empty and product[ category ] %}
 				<div
 					data-tab-item="{{ category }}"
-					class="feather-tab-content__content-item col-xs-12"
-				>{{ product[category] }}</div>
+					class="feather-tab-content__content-item feather-tab-content__content-item--product"
+				>
+
+				{{ product[category] }}
+				</div>
 			{% endif %}
 			{% for item in items %}
 				<div

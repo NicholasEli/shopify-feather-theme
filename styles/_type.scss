@@ -1,0 +1,9 @@
+blockquote,
+.blockquote,
+q {
+	padding-left: 10px;
+	border-left: 5px solid $primary;
+	quotes: initial;
+	font-style: italic;
+	letter-spacing: 1px;
+}
