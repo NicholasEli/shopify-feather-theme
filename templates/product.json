@@ -8,40 +8,80 @@
     "details": {
       "type": "product-details",
       "blocks": {
-        "98cc0952-ff8d-40b9-a264-7a4464ce0791": {
-          "type": "weight",
-          "settings": {
-            "title": "Width depth height:",
-            "value": "43\/34\/76 cm"
-          }
-        },
-        "35b2ed84-18dc-4968-93fa-c8238bfc39f5": {
-          "type": "weight",
-          "settings": {
-            "title": "Weight:",
-            "value": "6kg"
-          }
-        },
         "c13cbf8b-3f60-4609-9be5-332bab77d9fc": {
           "type": "dimensions",
           "settings": {
-            "title": "seat height:",
-            "value": "76 cm"
+            "title": "Width depth height:",
+            "value": "220\/89\/67 cm"
           }
         },
-        "57295f7b-78b1-4476-9f60-baef7d4dea6a": {
-          "type": "other",
+        "1672c86d-b726-434f-aa1d-c7143ddf5604": {
+          "type": "dimensions",
           "settings": {
-            "title": "Stackable:",
-            "value": "Yes"
+            "title": "Weight:",
+            "value": "66kg"
+          }
+        },
+        "fe6db0ee-691e-4800-ad35-9a9f21d9a68c": {
+          "type": "dimensions",
+          "settings": {
+            "title": "seat depth:",
+            "value": "57 cm"
+          }
+        },
+        "1a0b7d8d-395b-4d45-bd51-29362a9b6db2": {
+          "type": "materials",
+          "settings": {
+            "title": "covers:",
+            "value": "covers 13"
+          }
+        },
+        "85267af3-be3f-4a23-9f4c-66855c44015c": {
+          "type": "materials",
+          "settings": {
+            "title": "Frame:",
+            "value": "Cane-line teak: A very hard-wearing type of wood that is very suitable for outdoor use. The warm golden color creates a cozy atmosphere. A gray patina develops over time. The original color can be restored by using care oil."
+          }
+        },
+        "9f64db92-319d-4485-a3f3-5c6c01a70617": {
+          "type": "materials",
+          "settings": {
+            "title": "Pad:",
+            "value": "Cane-line AirTouch: 10% through-dyed acrylic fabric, manufactured exclusively for Cane-line. Very soft feel, at the same time robust. Easy to clean, machine washable at 30 degrees."
+          }
+        },
+        "92dac3b4-4676-4ba5-adb3-088832e0b1bd": {
+          "type": "materials",
+          "settings": {
+            "title": "braid:",
+            "value": "Cane-line-Soft-Rope: UV-resistant and quick-drying fiber made of woven polypropylene (PE). The velvety surface offers excellent seating comfort and can be easily cleaned with soap and water."
+          }
+        },
+        "bdb6cb5f-07f1-4852-b1a7-d122a8574f7a": {
+          "type": "materials",
+          "settings": {
+            "title": "Let It Flow:",
+            "value": "Cane-line QuickDry airflow system: Best seating comfort and highly functional at the same time. The very fast-drying interior of the upholstery consists of QuickDry-Foam, which is water-permeable, and the underside of the upholstery is open, so rainwater simply runs through the upholstery. You can quickly use your furniture again after a rain shower."
+          }
+        },
+        "f8f4db7c-9676-4e0d-8362-c0a442da51b1": {
+          "type": "miscellaneous",
+          "settings": {
+            "title": "Cane-line Angle 3 seater sofa",
+            "text": "<p>The <strong>Angle Sofa<\/strong> impresses with its wonderful material mix of hand-picked teak and the wonderfully comfortable Cane-line Soft Rope weave in dark grey.<a href=\"https:\/\/www.daedelow-outdoor.de\/cane-line-angle-3-sitzer-sofa\/55010RODGAITGT\" target=\"_blank\" title=\"https:\/\/www.daedelow-outdoor.de\/cane-line-angle-3-sitzer-sofa\/55010RODGAITGT\">The AirTouch<\/a> cushions in elegant gray are beautifully framed by the golden-looking teak wood frame.The integrated <em>QuickDry & AirFlow<\/em> system allows rainwater to run through the upholstery, after a rain shower the upholstery is quickly dry and ready for use.A fascinating piece of furniture with the potential to become a classic.<\/p>"
           }
         }
       },
       "block_order": [
-        "98cc0952-ff8d-40b9-a264-7a4464ce0791",
-        "35b2ed84-18dc-4968-93fa-c8238bfc39f5",
         "c13cbf8b-3f60-4609-9be5-332bab77d9fc",
-        "57295f7b-78b1-4476-9f60-baef7d4dea6a"
+        "1672c86d-b726-434f-aa1d-c7143ddf5604",
+        "fe6db0ee-691e-4800-ad35-9a9f21d9a68c",
+        "1a0b7d8d-395b-4d45-bd51-29362a9b6db2",
+        "85267af3-be3f-4a23-9f4c-66855c44015c",
+        "9f64db92-319d-4485-a3f3-5c6c01a70617",
+        "92dac3b4-4676-4ba5-adb3-088832e0b1bd",
+        "bdb6cb5f-07f1-4852-b1a7-d122a8574f7a",
+        "f8f4db7c-9676-4e0d-8362-c0a442da51b1"
       ],
       "settings": {
       }
