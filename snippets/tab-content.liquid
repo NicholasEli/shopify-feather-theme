@@ -15,18 +15,26 @@
 					data-tab-item="{{ category }}"
 					class="feather-tab-content__content-item feather-tab-content__content-item--product"
 				>
-
-				{{ product[category] }}
+				<h4>{{ product.title }}</h4>
+				{{ product.description }}
+				</div>
+			{% endif %}
+			{% if items and items.size != 0 %}
+				<div
+					data-tab-item="{{ category }}"
+					class="feather-tab-content__content-item"
+				>
+					{% for item in items %}
+						<div class="container container--padding">
+							<div class="row">
+								<div class="feather-tab-content__content-item__title">{{ item.settings.title }}</div>
+								<div class="feather-tab-content__content-item__value">{{ item.settings.value }}</div>
+							</div>
+						</div>
+					{% endfor %}
 				</div>
 			{% endif %}
 			{% for item in items %}
-				<div
-					data-tab-item="{{ item.type }}"
-					class="feather-tab-content__content-item row"
-				>
-					<div class="col-xs-6">{{ item.settings.title }}</div>
-					<div class="col-xs-6">{{ item.settings.value }}</div>
-				</div>
 			{% endfor %}
 		{% endfor %}
 	</div>

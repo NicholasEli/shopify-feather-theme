@@ -13,7 +13,7 @@
 		text-transform: lowercase;
 
 		&:hover {
-			background-color: $stroke;
+			background-color: $gray;
 			border-bottom: 1px solid $primary;
 			color: $primary;
 		}
@@ -27,14 +27,44 @@
 	&__content {
 		&-item {
 			display: none;
-			padding: $padding;
+			padding: 10px;
 
-			&:nth-of-type(even) {
-				background-color: $stroke;
+			div {
+				font-size: 14px;
+				font-weight: 500;
+
+				& + .col-xs-6 {
+					font-weight: 400;
+				}
+			}
+
+			.container {
+				width: 100%;
+
+				&:nth-of-type(even) {
+					background-color: $gray;
+				}
+			}
+
+			.feather-tab-content__content-item__title,
+			.feather-tab-content__content-item__value {
+				font-size: 14px;
+			}
+
+			.feather-tab-content__content-item__title {
+				width: 100px;
+				font-weight: 500;
+			}
+
+			.feather-tab-content__content-item__value {
+				width: calc(100% - 100px);
+				padding-left: $padding;
+				font-weight: 400;
 			}
 
 			&--active {
 				display: flex;
+				flex-wrap: wrap;
 
 				&.feather-tab-content__content-item--product {
 					display: block;
@@ -42,6 +72,11 @@
 			}
 
 			&--product {
+				h4 {
+					font-family: $ibarra;
+					color: $text;
+				}
+
 				img {
 					max-width: 100%;
 				}
