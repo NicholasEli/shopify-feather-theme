@@ -87,7 +87,10 @@
         "6a3fe3f5-f9b9-4a9a-a6f7-6074238cc855"
       ],
       "settings": {}
+    },
+    "gallery": {
+      "type": "product-gallery"
     }
   },
-  "order": ["main"]
+  "order": ["main", "gallery"]
 }

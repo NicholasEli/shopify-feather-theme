@@ -1,0 +1,38 @@
+<div class="container container--padding">
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			<h5>{{ section.settings.tagline }}</h5>
+		</div>
+		<div class="col-xs-12 col-md-8"></div>
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "Product Gallery",
+		"tag": "section",
+		"class": "feather-product__gallery",
+		"settings": [
+			{
+				"id": "tagline",
+				"type": "text",
+				"label": "Tagline",
+				"default": "It's the piece that could tie up your room"
+			}
+		],
+		"max_blocks": 4,
+		"blocks": [
+			{
+	      "type": "images",
+	      "name": "Gallery Images",
+	      "settings": [
+	        {
+	          "id": "image",
+	          "type": "image_picker",
+	          "label": "Gallery Image"
+	        }
+	      ]
+	    }
+	  ]
+	}
+{% endschema %}
