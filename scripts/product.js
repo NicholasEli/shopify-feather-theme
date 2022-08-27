@@ -1,4 +1,23 @@
 import Glide from '@glidejs/glide';
+import { product as api } from './api.js';
+
+const recommendations = async function () {
+	try {
+		const el = document.querySelector('[data-recommendations]');
+		if (!window.Feather || (window.Feather && !window.Feather.product) || !el) return;
+
+		const section = el.getAttribute('data-section');
+		const product = el.getAttribute('data-product');
+
+		const res = await api.recommendations.get(section, window.Feather.product.id);
+
+		if (res && res.data) {
+			console.log(res);
+		}
+	} catch (err) {
+		console.error(err);
+	}
+};
 
 const variantSlider = function () {
 	const sliders = document.querySelectorAll('[data-variant-slider]');
@@ -14,4 +33,5 @@ const variantSlider = function () {
 
 export const product = function () {
 	variantSlider();
+	recommendations();
 };

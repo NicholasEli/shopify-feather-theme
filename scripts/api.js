@@ -40,13 +40,49 @@ export const filter = {
 
 			const text = await res.text();
 
+			const html = new DOMParser()
+				.parseFromString(text, 'text/html')
+				.querySelector('[data-feather-results]');
+
+			if (!html) return { data: null };
+
 			return {
-				data: new DOMParser()
-					.parseFromString(text, 'text/html')
-					.querySelector('[data-feather-results]').innerHTML,
+				data: html.innerHTML,
 			};
 		} catch (err) {
 			return err;
 		}
+	},
+};
+
+/**
+ * Mechanisim for filter API
+ * @type {Object}
+ */
+export const product = {
+	recommendations: {
+		get: async (section, product) => {
+			try {
+				const res = await fetch(
+					`/recommendations/products?section_id=${section}&product_id=${product}`
+				);
+
+				if (!res.ok) {
+					throw new Error(res.status);
+				}
+
+				const text = await res.text();
+
+				const html = new DOMParser().parseFromString(text, 'text/html');
+
+				if (!html) return { data: null };
+
+				return {
+					data: html,
+				};
+			} catch (err) {
+				return err;
+			}
+		},
 	},
 };
