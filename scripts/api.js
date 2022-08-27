@@ -73,7 +73,9 @@ export const product = {
 
 				const text = await res.text();
 
-				const html = new DOMParser().parseFromString(text, 'text/html');
+				const html = new DOMParser()
+					.parseFromString(text, 'text/html')
+					.querySelector('[data-recommendations]');
 
 				if (!html) return { data: null };
 
