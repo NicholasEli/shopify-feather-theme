@@ -9,12 +9,32 @@ const xl = parseInt(getCSSVariable('--xl'));
 const state = {
 	variants: {},
 	quantity: 0,
-	set setVariants(variants) {
+	set setVariants({ variants, callback }) {
 		this.variants = variants;
+
+		if (callback) callback();
 	},
-	set setQuantity(quantity) {
+	set setQuantity({ quantity, callback }) {
 		this.quantity = quantity;
+
+		if (callback) callback();
 	},
+};
+
+const toggleAddToCartBtn = function () {
+	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
+	const { product } = window.Feather;
+
+	const btn = document.querySelector('[data-add-to-cart]');
+	if (!btn) return;
+
+	const _state = Object.assign({}, state);
+
+	if (Object.keys(_state.variants) === product.options.length && _state.quantity > 0) {
+		btn.classList.remove('button--disabled');
+	} else {
+		btn.classList.add('button--disabled');
+	}
 };
 
 const setState = function () {
@@ -88,4 +108,5 @@ export const product = function () {
 	setState();
 	variantSlider();
 	recommendations();
+	toggleAddToCartBtn();
 };
