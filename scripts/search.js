@@ -50,22 +50,29 @@ const state = {
  * @param  { string } id - id of form based on index of position in document
  */
 const doSearch = async function (id) {
-	const inputContainer = this.parentElement;
-	let timeout = null;
-	clearTimeout(timeout);
+	try {
+		const inputContainer = this.parentElement;
+		let timeout = null;
+		clearTimeout(timeout);
 
-	if (!this.value) {
-		timeout = null;
-		clearResults();
-		return;
+		if (!this.value) {
+			timeout = null;
+			clearResults();
+			return;
+		}
+
+		inputContainer.classList.add(SEARCHING);
+		timeout = setTimeout(async () => {
+			const res = await api.get(this.value);
+
+			if (res && res.data) {
+				state.setResults = { results: { id, results: res.data }, callback: displayResults };
+				inputContainer.classList.remove(SEARCHING);
+			}
+		}, 500);
+	} catch (error) {
+		console.log(error);
 	}
-
-	inputContainer.classList.add(SEARCHING);
-	timeout = setTimeout(async () => {
-		const results = await api.get(this.value);
-		state.setResults = { results: { id, results }, callback: displayResults };
-		inputContainer.classList.remove(SEARCHING);
-	}, 500);
 };
 
 /**
