@@ -4,11 +4,18 @@
 	data-product="{{ product.id }}"
 	class="container container--padding"
 >
-	{% if section.settings.blocks.products.size > 0 %}
+	{% if section.blocks.size > 0 %}
 		<div class="row">
-			{% for item in section.blocks.products %}
-				{% render 'item', item: item %}
-			{% endfor %}
+			<div data-related-product-slider="{{ section.id }}" class="glide">
+				<div data-glide-el="track" class="glide__track">
+					<ul class="glide__slides">
+						{% for item in section.blocks %}
+							{% assign ref = all_products[item.settings.product] %}
+							<li data-in-view class="feather-product__related-item">{% render 'item', item: ref %}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
 		</div>
 	{% endif %}
 </div>

@@ -1,0 +1,7 @@
+.feather-product__related {
+	@include grid-animation;
+
+	&-item {
+		position: relative;
+	}
+}

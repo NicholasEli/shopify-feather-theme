@@ -1,10 +1,53 @@
 import Glide from '@glidejs/glide';
+import { getCSSVariable } from './utils.js';
 import { product as api } from './api.js';
+
+const sm = parseInt(getCSSVariable('--sm'));
+const md = parseInt(getCSSVariable('--md'));
+const lg = parseInt(getCSSVariable('--lg'));
 
 const recommendations = async function () {
 	try {
 		const el = document.querySelector('[data-recommendations]');
+		const slides = document.querySelectorAll('[data-related-product-slider]');
 		if (!window.Feather || (window.Feather && !window.Feather.product) || !el) return;
+
+		const sliders = document.querySelectorAll('[data-related-product-slider]');
+
+		if (sliders && sliders.length) {
+			const _numSlides = () => {
+				let num = 1;
+				if (window.innerWidth > sm) {
+					num = 2;
+				}
+
+				if (window.innerWidth > md) {
+					num = 3;
+				}
+
+				if (window.innerWidth > lg) {
+					num = 4;
+				}
+
+				return num;
+			};
+
+			sliders.forEach((slider) => {
+				const id = slider.getAttribute('data-related-product-slider');
+				const instance = new Glide('[data-related-product-slider="' + id + '"]', {
+					perView: _numSlides(),
+				});
+				instance.mount();
+				instance.on(['resize'], function () {
+					const { perView } = instance.settings;
+					const num = _numSlides();
+					console.log(perView, num);
+					if (perView !== num) {
+						instance.update({ perView: num });
+					}
+				});
+			});
+		}
 
 		// const section = el.getAttribute('data-section');
 		// const product = el.getAttribute('data-product');
