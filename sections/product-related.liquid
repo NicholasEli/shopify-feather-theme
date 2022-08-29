@@ -1,30 +1,34 @@
-<div
-	data-recommendations
-	data-section="{{ section.id }}"
-	data-product="{{ product.id }}"
-	class="container container--padding"
->
+<div class="container container--padding">
 	{% if section.settings.title %}
 		<h5>{{ section.settings.title }}</h5>
 	{% endif %}
-	{% if section.blocks.size > 0 %}
 		<div class="row">
 			<div data-related-product-slider="{{ section.id }}" class="glide">
 				<div data-glide-el="track" class="glide__track">
-					<ul class="glide__slides">
-						{% for item in section.blocks %}
-							{% assign ref = all_products[item.settings.product] %}
-							<li data-in-view class="feather-product__related-item">{% render 'item', item: ref %}</li>
+					<ul
+						data-recommendations
+						data-section="{{ section.id }}"
+						data-product="{{ product.id }}"
+						class="glide__slides"
+					>
+						{% for item in recommendations.products %}
+							<li data-in-view class="feather-product__related-item">{% render 'item', item: item %}</li>
 						{% endfor %}
-						{% if section.blocks.size < 4 %}
-							{% assign count = 3 | minus: section.blocks.size %}
-							{% for i in (0..count) %}
-								{% liquid 
-									assign item = section.blocks[i]
-									assign ref = all_products[item.settings.product]
-								%}
-								<li data-in-view class="feather-product__related-item feather-product__related-item--duplicate">{% render 'item', item: ref %}</li>
+						{% if section.blocks.size > 0 %}
+							{% for item in section.blocks %}
+								{% assign ref = all_products[item.settings.product] %}
+								<li data-in-view class="feather-product__related-item">{% render 'item', item: ref %}</li>
 							{% endfor %}
+							{% if section.blocks.size < 4 %}
+								{% assign count = 3 | minus: section.blocks.size %}
+								{% for i in (0..count) %}
+									{% liquid 
+										assign item = section.blocks[i]
+										assign ref = all_products[item.settings.product]
+									%}
+									<li data-in-view class="feather-product__related-item feather-product__related-item--duplicate">{% render 'item', item: ref %}</li>
+								{% endfor %}
+							{% endif %}
 						{% endif %}
 					</ul>
 				</div>
@@ -34,7 +38,6 @@
 			  </div>
 			</div>
 		</div>
-	{% endif %}
 </div>
 
 {% schema %}

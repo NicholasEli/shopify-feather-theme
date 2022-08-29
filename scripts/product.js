@@ -9,10 +9,6 @@ const xl = parseInt(getCSSVariable('--xl'));
 
 const recommendations = async function () {
 	try {
-		const el = document.querySelector('[data-recommendations]');
-		const slides = document.querySelectorAll('[data-related-product-slider]');
-		if (!window.Feather || (window.Feather && !window.Feather.product) || !el) return;
-
 		const sliders = document.querySelectorAll('[data-related-product-slider]');
 
 		if (sliders && sliders.length) {
@@ -50,14 +46,19 @@ const recommendations = async function () {
 			});
 		}
 
-		// const section = el.getAttribute('data-section');
-		// const product = el.getAttribute('data-product');
+		const el = document.querySelector('[data-recommendations]');
+		if (!window.Feather || (window.Feather && !window.Feather.product) || !el) return;
 
-		// const res = await api.recommendations.get(section, window.Feather.product.id);
+		const section = el.getAttribute('data-section');
+		const product = el.getAttribute('data-product');
+		if (!section || !product) return;
 
-		// if (res && res.data) {
-		// 	console.log(res);
-		// }
+		const res = await api.recommendations.get(section, window.Feather.product.id);
+		console.clear();
+		console.log(res);
+		if (res && res.data) {
+			console.log(res);
+		}
 	} catch (err) {
 		console.error(err);
 	}

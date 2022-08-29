@@ -86,7 +86,7 @@ export const product = {
 				if (!html) return { data: null };
 
 				return {
-					data: html,
+					data: html.innerHTML,
 				};
 			} catch (error) {
 				return { error };
