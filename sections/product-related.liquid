@@ -22,6 +22,21 @@
 	{
 		"name": "Related Products",
 		"tag": "section",
-		"class": "feather-product__related"
+		"class": "feather-product__related",
+		"settings": [
+			{
+	      "type": "text",
+	      "id": "title",
+	      "default": "Make it complete",
+	      "label": "Title"
+    	},
+		],
+		"blocks": [
+			{
+				"type": "product",
+		  	"id": "product",
+		  	"label": "Product"
+			}
+		]
 	}
 {% endschema %}
