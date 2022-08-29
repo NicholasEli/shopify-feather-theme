@@ -6,6 +6,29 @@ const md = parseInt(getCSSVariable('--md'));
 const lg = parseInt(getCSSVariable('--lg'));
 const xl = parseInt(getCSSVariable('--xl'));
 
+const state = {
+	variants: {},
+	quantity: 0,
+	set setVariants(variants) {
+		this.variants = variants;
+	},
+	set setQuantity(quantity) {
+		this.quantity = quantity;
+	},
+};
+
+const setState = function () {
+	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
+
+	const { product } = window.Feather;
+
+	const variants = {};
+
+	product.options.forEach((option) => (variants[option] = null));
+
+	state.setVariants = variants;
+};
+
 const recommendations = async function () {
 	try {
 		const sliders = document.querySelectorAll('[data-related-product-slider]');
@@ -62,6 +85,7 @@ const variantSlider = function () {
 };
 
 export const product = function () {
+	setState();
 	variantSlider();
 	recommendations();
 };
