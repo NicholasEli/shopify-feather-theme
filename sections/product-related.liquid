@@ -25,18 +25,24 @@
 		"class": "feather-product__related",
 		"settings": [
 			{
-	      "type": "text",
-	      "id": "title",
-	      "default": "Make it complete",
-	      "label": "Title"
-    	},
+				"id": "title",
+				"type": "text",
+				"label": "Title",
+				"default": "Make it complete"
+			}
 		],
 		"blocks": [
 			{
-				"type": "product",
-		  	"id": "product",
-		  	"label": "Product"
-			}
-		]
+	      "type": "products",
+	      "name": "Products",
+	      "settings": [
+	        {
+	          "id": "product",
+	          "type": "product",
+	          "label": "Product"
+	        }
+	      ]
+	    }
+	  ]
 	}
 {% endschema %}
