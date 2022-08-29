@@ -1,6 +1,5 @@
 import Glide from '@glidejs/glide';
 import { getCSSVariable } from './utils.js';
-import { product as api } from './api.js';
 
 const sm = parseInt(getCSSVariable('--sm'));
 const md = parseInt(getCSSVariable('--md'));
@@ -38,26 +37,12 @@ const recommendations = async function () {
 				instance.on(['resize'], function () {
 					const { perView } = instance.settings;
 					const num = _numSlides();
-					console.log(perView, num);
+
 					if (perView !== num) {
 						instance.update({ perView: num });
 					}
 				});
 			});
-		}
-
-		const el = document.querySelector('[data-recommendations]');
-		if (!window.Feather || (window.Feather && !window.Feather.product) || !el) return;
-
-		const section = el.getAttribute('data-section');
-		const product = el.getAttribute('data-product');
-		if (!section || !product) return;
-
-		const res = await api.recommendations.get(section, window.Feather.product.id);
-		console.clear();
-		console.log(res);
-		if (res && res.data) {
-			console.log(res);
 		}
 	} catch (err) {
 		console.error(err);

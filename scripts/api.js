@@ -65,32 +65,4 @@ export const filter = {
  * Mechanisim for filter API
  * @type {Object}
  */
-export const product = {
-	recommendations: {
-		get: async (section, product) => {
-			try {
-				const res = await fetch(
-					`/recommendations/products?section_id=${section}&product_id=${product}`
-				);
-
-				if (!res.ok) {
-					throw new Error(res.status);
-				}
-
-				const text = await res.text();
-
-				const html = new DOMParser()
-					.parseFromString(text, 'text/html')
-					.querySelector('[data-recommendations]');
-
-				if (!html) return { data: null };
-
-				return {
-					data: html.innerHTML,
-				};
-			} catch (error) {
-				return { error };
-			}
-		},
-	},
-};
+export const product = {};
