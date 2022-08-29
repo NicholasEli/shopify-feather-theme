@@ -108,5 +108,5 @@ export const product = function () {
 	setState();
 	variantSlider();
 	recommendations();
-	toggleAddToCartBtn();
+	//toggleAddToCartBtn();
 };

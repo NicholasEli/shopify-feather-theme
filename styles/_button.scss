@@ -1,0 +1,13 @@
+.button {
+	&--primary {
+		color: #fff;
+		border-color: $primary;
+		background-color: $primary;
+	}
+
+	&--disabled {
+		color: $text;
+		border-color: $text;
+		background-color: $stroke;
+	}
+}

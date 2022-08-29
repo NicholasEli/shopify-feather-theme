@@ -118,9 +118,6 @@
 
 				&[type='submit'] {
 					width: calc(75% - #{$padding});
-					border-color: $primary;
-					background-color: $primary;
-					color: #fff;
 					text-transform: uppercase;
 					font-weight: 400;
 
