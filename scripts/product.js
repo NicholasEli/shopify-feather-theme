@@ -1,7 +1,7 @@
 import Glide from '@glidejs/glide';
 import { product as api } from './api.js';
 
-const recommendations = async function () {
+const recommendations = async function ({ term }) {
 	try {
 		const el = document.querySelector('[data-recommendations]');
 		if (!window.Feather || (window.Feather && !window.Feather.product) || !el) return;
