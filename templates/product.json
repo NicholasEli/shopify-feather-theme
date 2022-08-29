@@ -141,25 +141,11 @@
           "settings": {
             "product": "phillip-goldsberry-couch"
           }
-        },
-        "a5b32c3d-979c-4eaf-b742-4621b1ad25f4": {
-          "type": "products",
-          "settings": {
-            "product": "minimal-living-room-table"
-          }
-        },
-        "da9b285d-53a0-4d18-9f6f-1c7d52622316": {
-          "type": "products",
-          "settings": {
-            "product": "phillip-goldsberry-couch"
-          }
         }
       },
       "block_order": [
         "1af477d6-9113-462f-b56b-d7c76dc696ed",
-        "da49e82b-d87c-4eba-9948-7252f21ff46d",
-        "a5b32c3d-979c-4eaf-b742-4621b1ad25f4",
-        "da9b285d-53a0-4d18-9f6f-1c7d52622316"
+        "da49e82b-d87c-4eba-9948-7252f21ff46d"
       ],
       "settings": {
         "title": "Make it complete"
