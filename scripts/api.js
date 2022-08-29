@@ -66,30 +66,6 @@ export const filter = {
  * @type {Object}
  */
 export const product = {
-	search: {
-		get: async () => {
-			try {
-				const q = `?q=${term}`;
-				const resources = 'resources[type]=product,collection,page,article';
-				const limit = 'resources[limit]=20';
-				const section = 'section_id=predictive-search';
-				const query = '/search/suggest' + q + '&' + resources + '&' + limit + '&' + section;
-				const res = await fetch(query);
-
-				if (!res.ok) {
-					return { error: 'Unable to get products' };
-				}
-
-				const text = await res.text();
-
-				return new DOMParser()
-					.parseFromString(text, 'text/html')
-					.querySelector('#shopify-section-predictive-search').innerHTML;
-			} catch (error) {
-				return { error };
-			}
-		},
-	},
 	recommendations: {
 		get: async (section, product) => {
 			try {
