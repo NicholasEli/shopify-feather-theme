@@ -1,22 +1,16 @@
-{{ recommendations.products }}
 <div
 	data-recommendations
 	data-section="{{ section.id }}"
 	data-product="{{ product.id }}"
 	class="container container--padding"
 >
-	<p>{{ recommendations.products_count }}</p>
-	<div class="row">
-		<product-recommendations>
-	    {% if recommendations.performed and recommendations.products_count > 0 %}
-	      <ul>
-	        {% for recommendation in recommendations.products %}
-	        	<p>{{ forloop.index }}</p>
-	        {% endfor %}
-	      </ul>
-	    {% endif %}
-	  </product-recommendations>
-	</div>
+	{% if section.settings.blocks.products.size > 0 %}
+		<div class="row">
+			{% for item in section.blocks.products %}
+				{% render 'item', item: item %}
+			{% endfor %}
+		</div>
+	{% endif %}
 </div>
 
 {% schema %}
