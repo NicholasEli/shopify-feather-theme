@@ -6,14 +6,14 @@ const recommendations = async function () {
 		const el = document.querySelector('[data-recommendations]');
 		if (!window.Feather || (window.Feather && !window.Feather.product) || !el) return;
 
-		const section = el.getAttribute('data-section');
-		const product = el.getAttribute('data-product');
+		// const section = el.getAttribute('data-section');
+		// const product = el.getAttribute('data-product');
 
-		const res = await api.recommendations.get(section, window.Feather.product.id);
+		// const res = await api.recommendations.get(section, window.Feather.product.id);
 
-		if (res && res.data) {
-			console.log(res);
-		}
+		// if (res && res.data) {
+		// 	console.log(res);
+		// }
 	} catch (err) {
 		console.error(err);
 	}
