@@ -16,6 +16,16 @@
 							{% assign ref = all_products[item.settings.product] %}
 							<li data-in-view class="feather-product__related-item">{% render 'item', item: ref %}</li>
 						{% endfor %}
+						{% if section.blocks.size < 4 %}
+							{% assign count = 3 | minus: section.blocks.size %}
+							{% for i in (0..count) %}
+								{% liquid 
+									assign item = section.blocks[i]
+									assign ref = all_products[item.settings.product]
+								%}
+								<li data-in-view class="feather-product__related-item feather-product__related-item--duplicate">{% render 'item', item: ref %}</li>
+							{% endfor %}
+						{% endif %}
 					</ul>
 				</div>
 				<div data-glide-el="controls" class="glide__arrows">
