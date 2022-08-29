@@ -1,7 +1,16 @@
 .feather-product__related {
-	@include grid-animation;
+	h5 {
+		font-size: 35px;
+		font-family: $ibarra;
+	}
 
 	&-item {
-		position: relative;
+		@include curtain-animation;
+
+		.feather-list__item {
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
 	}
 }

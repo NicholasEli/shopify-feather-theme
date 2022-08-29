@@ -4,6 +4,9 @@
 	data-product="{{ product.id }}"
 	class="container container--padding"
 >
+	{% if section.settings.title %}
+		<h5>{{ section.settings.title }}</h5>
+	{% endif %}
 	{% if section.blocks.size > 0 %}
 		<div class="row">
 			<div data-related-product-slider="{{ section.id }}" class="glide">
@@ -15,6 +18,10 @@
 						{% endfor %}
 					</ul>
 				</div>
+				<div data-glide-el="controls" class="glide__arrows">
+			    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
+			    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
+			  </div>
 			</div>
 		</div>
 	{% endif %}

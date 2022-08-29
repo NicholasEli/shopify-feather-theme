@@ -81,30 +81,11 @@
 	}
 
 	&__items {
+		@include curtain-animation;
 		width: 100%;
 
 		a {
 			position: relative;
-		}
-
-		[data-in-view] {
-			&::before {
-				content: '';
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				background-color: #fff;
-				z-index: 3;
-				transition: all 500ms ease-out 200ms;
-			}
-		}
-
-		[data-in-view='true'] {
-			&::before {
-				height: 0;
-			}
 		}
 
 		img,
@@ -132,39 +113,6 @@
 					span {
 						@include spotlight-text;
 					}
-				}
-			}
-
-			&__arrows {
-				text-align: right;
-			}
-
-			&__arrow {
-				border-color: $stroke;
-				transition: all 400ms;
-
-				&:hover {
-					border-color: $primary;
-					svg * {
-						fill: $primary;
-					}
-				}
-
-				svg {
-					width: 15px;
-					height: auto;
-					display: block;
-
-					* {
-						fill: $stroke;
-						transition: all 400ms;
-					}
-				}
-			}
-
-			&__arrow--left {
-				svg {
-					transform: rotate(180deg);
 				}
 			}
 		}

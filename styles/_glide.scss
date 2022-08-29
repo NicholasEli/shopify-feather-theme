@@ -1,0 +1,34 @@
+.glide {
+	&__arrows {
+		text-align: right;
+	}
+
+	&__arrow {
+		border-color: $stroke;
+		transition: all 400ms;
+
+		&:hover {
+			border-color: $primary;
+			svg * {
+				fill: $primary;
+			}
+		}
+
+		svg {
+			width: 15px;
+			height: auto;
+			display: block;
+
+			* {
+				fill: $stroke;
+				transition: all 400ms;
+			}
+		}
+	}
+
+	&__arrow--left {
+		svg {
+			transform: rotate(180deg);
+		}
+	}
+}

@@ -5,6 +5,7 @@ import { product as api } from './api.js';
 const sm = parseInt(getCSSVariable('--sm'));
 const md = parseInt(getCSSVariable('--md'));
 const lg = parseInt(getCSSVariable('--lg'));
+const xl = parseInt(getCSSVariable('--xl'));
 
 const recommendations = async function () {
 	try {
@@ -25,7 +26,7 @@ const recommendations = async function () {
 					num = 3;
 				}
 
-				if (window.innerWidth > lg) {
+				if (window.innerWidth > xl) {
 					num = 4;
 				}
 
