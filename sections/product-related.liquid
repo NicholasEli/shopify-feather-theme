@@ -5,6 +5,7 @@
 	data-product="{{ product.id }}"
 	class="container container--padding"
 >
+	<p>{{ recommendations.products_count }}</p>
 	<div class="row">
 		<product-recommendations>
 	    {% if recommendations.performed and recommendations.products_count > 0 %}

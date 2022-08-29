@@ -1,7 +1,7 @@
 {
   "sections": {
-    "main": {
-      "type": "product-main",
+    "details": {
+      "type": "product-details",
       "blocks": {
         "c13cbf8b-3f60-4609-9be5-332bab77d9fc": {
           "type": "dimensions",
@@ -130,5 +130,5 @@
       "type": "product-related"
     }
   },
-  "order": ["main", "gallery", "related"]
+  "order": ["details", "gallery", "related"]
 }
