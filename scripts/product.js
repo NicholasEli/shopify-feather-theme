@@ -1,5 +1,6 @@
 import Glide from '@glidejs/glide';
 import { getCSSVariable } from './utils.js';
+import { isSame } from './algorithims.js';
 
 const sm = parseInt(getCSSVariable('--sm'));
 const md = parseInt(getCSSVariable('--md'));
@@ -12,6 +13,8 @@ const state = {
 	quantity: 0,
 	set setOptions({ options, callback }) {
 		this.options = options;
+
+		setVariant();
 
 		if (callback) callback();
 	},
@@ -59,6 +62,24 @@ const setOptionUI = function() {
 	}
 
 	toggleAddToCartBtn();
+}
+
+const setVariant = function() {
+	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
+
+	const _state = state.options
+	const { variants } = window.Feather.product
+
+	let variant = null;
+
+	variants.forEach( v => {
+		console.log({options: Object.values(_state), variants: v.options})
+		if ( isSame(Object.values(_state), v.options) ) {
+			variant = v;
+		}
+	})
+
+	console.log( variant )
 }
 
 const setOption = function() {
