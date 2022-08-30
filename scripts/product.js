@@ -11,6 +11,9 @@ const state = {
 	variant: null,
 	options: {},
 	quantity: 0,
+	set setVariant({variant, callback}) {
+		this.variant = variant
+	},
 	set setOptions({ options, callback }) {
 		this.options = options;
 
@@ -32,7 +35,7 @@ const toggleAddToCartBtn = function () {
 	const btn = document.querySelector('[data-add-to-cart]');
 	if (!btn) return;
 
-	const { options, quantity } = state;
+	const { variant, options, quantity } = state;
 	if ( !options ) return
 
 	let optionsCount = 0
@@ -41,7 +44,7 @@ const toggleAddToCartBtn = function () {
 		if ( options[option] ) optionsCount++
 	})
 	
-	if (optionsCount === product.options.length && quantity > 0) {
+	if (optionsCount === product.options.length && quantity > 0 && variant ) {
 		btn.classList.remove('button--disabled');
 	} else {
 		btn.classList.add('button--disabled');
@@ -60,8 +63,6 @@ const setOptionUI = function() {
 
 		btn.classList.add('feather-product__option-value--active')
 	}
-
-	toggleAddToCartBtn();
 }
 
 const setVariant = function() {
@@ -73,13 +74,10 @@ const setVariant = function() {
 	let variant = null;
 
 	variants.forEach( v => {
-		console.log({options: Object.values(_state), variants: v.options})
-		if ( isSame(Object.values(_state), v.options) ) {
-			variant = v;
-		}
+		if ( isSame(Object.values(_state), v.options) ) variant = v;
 	})
 
-	console.log( variant )
+	state.setVariant = { variant, callback:() => toggleAddToCartBtn()}
 }
 
 const setOption = function() {
