@@ -10,7 +10,7 @@ const state = {
 	variant: null,
 	options: {},
 	quantity: 0,
-	set setVariants({ options, callback }) {
+	set setOptions({ options, callback }) {
 		this.options = options;
 
 		if (callback) callback();
@@ -29,14 +29,51 @@ const toggleAddToCartBtn = function () {
 	const btn = document.querySelector('[data-add-to-cart]');
 	if (!btn) return;
 
-	const _state = Object.assign({}, state);
+	const { options, quantity } = state;
+	if ( !options ) return
 
-	if (Object.keys(_state.options) === product.options.length && _state.quantity > 0) {
+	if (Object.keys(options) === product.options.length && quantity > 0) {
 		btn.classList.remove('button--disabled');
 	} else {
 		btn.classList.add('button--disabled');
 	}
 };
+
+const setOptionUI = function() {
+	const btns = document.querySelectorAll('[data-option]')
+	if(!btns || btns && !btns.length ) return
+
+	btns.forEach(btn => btn.classList.remove('feather-product__option-value--active'));
+
+	for( const option in state.options ) {
+		console.log({option, value: state.options[option]})
+		const btn = document.querySelector(`[data-option="${option}"][data-value="${state.options[option]}"]`)
+		console.log(btn)
+		if ( !btn ) return
+
+		btn.classList.add('feather-product__option-value--active')
+	}
+}
+
+const setOption = function() {
+	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
+
+	const btns = document.querySelectorAll('[data-option]')
+	if(!btns || btns && !btns.length ) return
+
+	const options = Object.assign({}, state.options )
+	
+	btns.forEach( btn => {
+		btn.addEventListener('click', () => {
+			const option = btn.getAttribute('data-option')
+			const value = btn.getAttribute('data-value')
+
+			options[option] = value
+
+			state.setOptions = { options, callback: () => setOptionUI() }
+		})
+	})
+}
 
 const setState = function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
@@ -47,7 +84,7 @@ const setState = function () {
 
 	product.options.forEach((option) => (options[option] = null));
 
-	state.setVariants = options;
+	state.setOptions = { options, callback: null };
 };
 
 const recommendations = async function () {
@@ -109,5 +146,6 @@ export const product = function () {
 	setState();
 	variantSlider();
 	recommendations();
-	//toggleAddToCartBtn();
+	toggleAddToCartBtn();
+	setOption();
 };
