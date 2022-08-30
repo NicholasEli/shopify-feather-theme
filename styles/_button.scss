@@ -1,4 +1,6 @@
-.button {
+.button,
+a.button,
+input.button {
 	&--primary {
 		color: #fff;
 		border-color: $primary;
@@ -9,5 +11,6 @@
 		color: $text;
 		border-color: $text;
 		background-color: $stroke;
+		pointer-events: none;
 	}
 }
