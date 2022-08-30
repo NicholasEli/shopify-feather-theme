@@ -40,7 +40,6 @@ const toggleAddToCartBtn = function () {
 	if (!options) return;
 
 	let optionsCount = 0;
-	console.log({ optionsCount, variant, quantity });
 	product.options.forEach((option) => {
 		if (options[option]) optionsCount++;
 	});
