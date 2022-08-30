@@ -11,8 +11,8 @@ const state = {
 	variant: null,
 	options: {},
 	quantity: 0,
-	set setVariant({variant, callback}) {
-		this.variant = variant
+	set setVariant({ variant, callback }) {
+		this.variant = variant;
 	},
 	set setOptions({ options, callback }) {
 		this.options = options;
@@ -36,79 +36,94 @@ const toggleAddToCartBtn = function () {
 	if (!btn) return;
 
 	const { variant, options, quantity } = state;
-	if ( !options ) return
 
-	let optionsCount = 0
-	
-	product.options.forEach(option => {
-		if ( options[option] ) optionsCount++
-	})
-	
-	if (optionsCount === product.options.length && quantity > 0 && variant ) {
+	if (!options) return;
+
+	let optionsCount = 0;
+	console.log({ optionsCount, variant, quantity });
+	product.options.forEach((option) => {
+		if (options[option]) optionsCount++;
+	});
+
+	if (optionsCount === product.options.length && quantity > 0 && variant) {
 		btn.classList.remove('button--disabled');
 	} else {
 		btn.classList.add('button--disabled');
 	}
 };
 
-const setOptionUI = function() {
-	const btns = document.querySelectorAll('[data-option]')
-	if(!btns || btns && !btns.length ) return
+const setOptionUI = function () {
+	const btns = document.querySelectorAll('[data-option]');
+	if (!btns || (btns && !btns.length)) return;
 
-	btns.forEach(btn => btn.classList.remove('feather-product__option-value--active'));
+	btns.forEach((btn) => btn.classList.remove('feather-product__option-value--active'));
 
-	for( const option in state.options ) {
-		const btn = document.querySelector(`[data-option="${option}"][data-value="${state.options[option]}"]`)
-		if ( !btn ) return
+	for (const option in state.options) {
+		const btn = document.querySelector(
+			`[data-option="${option}"][data-value="${state.options[option]}"]`
+		);
+		if (!btn) return;
 
-		btn.classList.add('feather-product__option-value--active')
+		btn.classList.add('feather-product__option-value--active');
 	}
-}
+};
 
-const setVariant = function() {
+const setVariant = function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
 
-	const _state = state.options
-	const { variants } = window.Feather.product
+	const _state = state.options;
+	const { variants } = window.Feather.product;
 
 	let variant = null;
 
-	variants.forEach( v => {
-		if ( isSame(Object.values(_state), v.options) ) variant = v;
-	})
+	variants.forEach((v) => {
+		if (isSame(Object.values(_state), v.options)) variant = v;
+	});
 
-	state.setVariant = { variant, callback:() => toggleAddToCartBtn()}
-}
+	state.setVariant = { variant, callback: () => toggleAddToCartBtn() };
+};
 
-const setOption = function() {
+const setOption = function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
 
-	const btns = document.querySelectorAll('[data-option]')
-	if(!btns || btns && !btns.length ) return
+	const btns = document.querySelectorAll('[data-option]');
+	if (!btns || (btns && !btns.length)) return;
 
-	const options = Object.assign({}, state.options )
-	
-	btns.forEach( btn => {
+	const options = Object.assign({}, state.options);
+
+	btns.forEach((btn) => {
 		btn.addEventListener('click', () => {
-			const option = btn.getAttribute('data-option')
-			const value = btn.getAttribute('data-value')
+			const option = btn.getAttribute('data-option');
+			const value = btn.getAttribute('data-value');
 
-			options[option] = value
+			options[option] = value;
 
-			state.setOptions = { options, callback: () => setOptionUI() }
-		})
-	})
-}
+			state.setOptions = {
+				options,
+				callback: () => {
+					setOptionUI();
+					toggleAddToCartBtn();
+				},
+			};
+		});
+	});
+};
 
-const setQuantity = function() {
-	const input = document.querySelector('[data-quantity]')
+const setQuantity = function () {
+	const input = document.querySelector('[data-quantity]');
 
-	if ( !input ) return
+	if (!input) return;
 
-	input.addEventListener('change', () => {
-		state.setQuantity = { quantity: parseInt(input.value), callback: () => setOptionUI()}
-	})
-}
+	input.addEventListener('keyup', () => {
+		state.setQuantity = {
+			quantity: parseInt(input.value),
+			callback: () => {
+				setOptionUI();
+				toggleAddToCartBtn();
+			},
+		};
+	});
+};
 
 const setState = function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
@@ -183,4 +198,5 @@ export const product = function () {
 	recommendations();
 	toggleAddToCartBtn();
 	setOption();
+	setQuantity();
 };
