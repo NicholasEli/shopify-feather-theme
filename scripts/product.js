@@ -7,10 +7,11 @@ const lg = parseInt(getCSSVariable('--lg'));
 const xl = parseInt(getCSSVariable('--xl'));
 
 const state = {
-	variants: {},
+	variant: null,
+	options: {},
 	quantity: 0,
-	set setVariants({ variants, callback }) {
-		this.variants = variants;
+	set setVariants({ options, callback }) {
+		this.options = options;
 
 		if (callback) callback();
 	},
@@ -30,7 +31,7 @@ const toggleAddToCartBtn = function () {
 
 	const _state = Object.assign({}, state);
 
-	if (Object.keys(_state.variants) === product.options.length && _state.quantity > 0) {
+	if (Object.keys(_state.options) === product.options.length && _state.quantity > 0) {
 		btn.classList.remove('button--disabled');
 	} else {
 		btn.classList.add('button--disabled');
@@ -42,11 +43,11 @@ const setState = function () {
 
 	const { product } = window.Feather;
 
-	const variants = {};
+	const options = {};
 
-	product.options.forEach((option) => (variants[option] = null));
+	product.options.forEach((option) => (options[option] = null));
 
-	state.setVariants = variants;
+	state.setVariants = options;
 };
 
 const recommendations = async function () {
