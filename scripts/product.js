@@ -32,7 +32,13 @@ const toggleAddToCartBtn = function () {
 	const { options, quantity } = state;
 	if ( !options ) return
 
-	if (Object.keys(options) === product.options.length && quantity > 0) {
+	let optionsCount = 0
+	
+	product.options.forEach(option => {
+		if ( options[option] ) optionsCount++
+	})
+	
+	if (optionsCount === product.options.length && quantity > 0) {
 		btn.classList.remove('button--disabled');
 	} else {
 		btn.classList.add('button--disabled');
@@ -46,13 +52,13 @@ const setOptionUI = function() {
 	btns.forEach(btn => btn.classList.remove('feather-product__option-value--active'));
 
 	for( const option in state.options ) {
-		console.log({option, value: state.options[option]})
 		const btn = document.querySelector(`[data-option="${option}"][data-value="${state.options[option]}"]`)
-		console.log(btn)
 		if ( !btn ) return
 
 		btn.classList.add('feather-product__option-value--active')
 	}
+
+	toggleAddToCartBtn();
 }
 
 const setOption = function() {
