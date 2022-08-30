@@ -100,6 +100,16 @@ const setOption = function() {
 	})
 }
 
+const setQuantity = function() {
+	const input = document.querySelector('[data-quantity]')
+
+	if ( !input ) return
+
+	input.addEventListener('change', () => {
+		state.setQuantity = { quantity: parseInt(input.value), callback: () => setOptionUI()}
+	})
+}
+
 const setState = function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
 
