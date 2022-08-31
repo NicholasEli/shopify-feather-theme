@@ -1,3 +1,9 @@
+{% liquid
+	assign alt = variant.title
+	if variant.featured_image.alt
+		assign alt = variant.featured_image.alt
+	endif
+%}
 <li data-variant-slide-item="{{ variant.id }}">
-	<img src="{{ variant.featured_image.src | img_url: 'x1200' }}" alt="{{ variant.featured_image.alt }}">
+	<img src="{{ variant.featured_image.src | img_url: 'x1200' }}" alt="{{ alt }}">
 </li>

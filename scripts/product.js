@@ -142,25 +142,6 @@ const variantSlider = function () {
 		const id = slider.getAttribute('data-variant-slider');
 		const instance = new Glide('[data-variant-slider="' + id + '"]', { perView: 1 });
 		instances.push(instance);
-	});
-
-	instances.forEach((instance, index) => {
-		const options = {};
-		instance.on('run.after', () => {
-			const slide = document.querySelector('.glide__slide--active');
-			if (!slide) return;
-
-			const id = slide.getAttribute('data-variant-slide-item');
-			if (!id) return;
-
-			product.variants.forEach((variant) => {
-				if (variant.id == id) {
-					variant.options.forEach((option, i) => (options[product.options[i]] = option));
-				}
-			});
-
-			state.setOptions = { options, callback: () => setUI() };
-		});
 		instance.mount();
 	});
 

@@ -3,6 +3,9 @@
 		<div data-variant-slider="{{ section.id }}" class="glide">
 			<div data-glide-el="track" class="glide__track">
 				<ul class="glide__slides">
+					<li data-variant-slide-item="{{ product.id }}">
+						<img src="{{ product.featured_image | img_url: 'x1200' }}" alt="{{ product.title }}">
+					</li>
 					{% for variant in product.variants %}
 						{% render 'variant-slider-item', variant: variant %}
 					{% endfor %}
