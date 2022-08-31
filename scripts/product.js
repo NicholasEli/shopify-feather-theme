@@ -8,34 +8,59 @@ const lg = parseInt(getCSSVariable('--lg'));
 const xl = parseInt(getCSSVariable('--xl'));
 
 const state = {
+	sliders: [],
 	variant: null,
 	options: {},
 	quantity: 0,
-	set setVariant({ variant, callback }) {
+	set setSliders({ sliders }) {
+		this.sliders = sliders;
+	},
+	set setVariant({}) {
+		const { variants } = window.Feather.product;
+		const options = this.options;
+
+		let variant = null;
+		variants.forEach((v) => {
+			if (isSame(Object.values(options), v.options)) variant = v;
+		});
+
 		this.variant = variant;
 	},
 	set setOptions({ options, callback }) {
 		this.options = options;
 
-		setVariant();
-
+		this.setVariant = {};
 		if (callback) callback();
 	},
 	set setQuantity({ quantity, callback }) {
 		this.quantity = quantity;
 
+		this.setVariant = {};
 		if (callback) callback();
 	},
 };
 
-const toggleAddToCartBtn = function () {
-	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
+const setUI = function () {
 	const { product } = window.Feather;
+	const { variant, options, quantity } = state;
 
+	// Options
+	const btns = document.querySelectorAll('[data-option]');
+
+	btns.forEach((btn) => btn.classList.remove('feather-product__option-value--active'));
+
+	for (const option in state.options) {
+		const btn = document.querySelector(
+			`[data-option="${option}"][data-value="${state.options[option]}"]`
+		);
+		if (!btn) return;
+
+		btn.classList.add('feather-product__option-value--active');
+	}
+
+	// Add to cart
 	const btn = document.querySelector('[data-add-to-cart]');
 	if (!btn) return;
-
-	const { variant, options, quantity } = state;
 
 	if (!options) return;
 
@@ -51,40 +76,7 @@ const toggleAddToCartBtn = function () {
 	}
 };
 
-const setOptionUI = function () {
-	const btns = document.querySelectorAll('[data-option]');
-	if (!btns || (btns && !btns.length)) return;
-
-	btns.forEach((btn) => btn.classList.remove('feather-product__option-value--active'));
-
-	for (const option in state.options) {
-		const btn = document.querySelector(
-			`[data-option="${option}"][data-value="${state.options[option]}"]`
-		);
-		if (!btn) return;
-
-		btn.classList.add('feather-product__option-value--active');
-	}
-};
-
-const setVariant = function () {
-	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
-
-	const _state = state.options;
-	const { variants } = window.Feather.product;
-
-	let variant = null;
-
-	variants.forEach((v) => {
-		if (isSame(Object.values(_state), v.options)) variant = v;
-	});
-
-	state.setVariant = { variant, callback: () => toggleAddToCartBtn() };
-};
-
 const setOption = function () {
-	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
-
 	const btns = document.querySelectorAll('[data-option]');
 	if (!btns || (btns && !btns.length)) return;
 
@@ -99,10 +91,7 @@ const setOption = function () {
 
 			state.setOptions = {
 				options,
-				callback: () => {
-					setOptionUI();
-					toggleAddToCartBtn();
-				},
+				callback: () => setUI(),
 			};
 		});
 	});
@@ -116,10 +105,7 @@ const setQuantity = function () {
 	input.addEventListener('keyup', () => {
 		state.setQuantity = {
 			quantity: parseInt(input.value),
-			callback: () => {
-				setOptionUI();
-				toggleAddToCartBtn();
-			},
+			callback: () => setUI(),
 		};
 	});
 };
@@ -134,6 +120,22 @@ const setState = function () {
 	product.options.forEach((option) => (options[option] = null));
 
 	state.setOptions = { options, callback: null };
+};
+
+const variantSlider = function () {
+	const sliders = document.querySelectorAll('[data-variant-slider]');
+
+	if (!sliders || (sliders && !sliders.length)) return;
+
+	let instances = [];
+	sliders.forEach((slider) => {
+		const id = slider.getAttribute('data-variant-slider');
+		const instance = new Glide('[data-variant-slider="' + id + '"]', { perView: 1 });
+		instance.mount();
+		instances.push(instance);
+	});
+
+	state.setSliders = { sliders: instances };
 };
 
 const recommendations = async function () {
@@ -179,23 +181,12 @@ const recommendations = async function () {
 	}
 };
 
-const variantSlider = function () {
-	const sliders = document.querySelectorAll('[data-variant-slider]');
-
-	if (!sliders || (sliders && !sliders.length)) return;
-
-	sliders.forEach((slider) => {
-		const id = slider.getAttribute('data-variant-slider');
-		const instance = new Glide('[data-variant-slider="' + id + '"]', { perView: 1 });
-		instance.mount();
-	});
-};
-
 export const product = function () {
+	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
+
 	setState();
 	variantSlider();
 	recommendations();
-	toggleAddToCartBtn();
 	setOption();
 	setQuantity();
 };

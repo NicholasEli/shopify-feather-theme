@@ -1,34 +1,18 @@
-{% liquid
-	assign featured_image = product.featured_image
-
-	assign variant_images = nil
-	if product.variants.size > 0
-		assign variant_images = product.variants | map: 'featured_image'
-	endif
-
-	assign product_images = nil
-	if product.images.size > 0
-		assign product_images = product.images
-	endif
-%}
-
 <section class="feather-product__variant-slider col-xs-12 col-lg-6">
-	{% if images != nil %}
-		<div class="container">
-			<div data-variant-slider="{{ section.id }}" class="glide">
-				<div data-glide-el="track" class="glide__track">
-					<ul class="glide__slides">
-						{% for image in variant_images %}
-							{% render 'variant-slider-item', image: image %}
-						{% endfor %}
-					</ul>
-				</div>
-				<div data-glide-el="controls" class="glide__arrows">
-			    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
-			    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
-			  </div>
+	<div class="container">
+		<div data-variant-slider="{{ section.id }}" class="glide">
+			<div data-glide-el="track" class="glide__track">
+				<ul class="glide__slides">
+					{% for variant in product.variants %}
+						{% render 'variant-slider-item', variant: variant %}
+					{% endfor %}
+				</ul>
 			</div>
+			<div data-glide-el="controls" class="glide__arrows">
+		    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
+		    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
+		  </div>
 		</div>
-	{% endif %}
+	</div>
 </section>
 
