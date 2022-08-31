@@ -42,14 +42,14 @@ const state = {
 
 const setUI = function () {
 	const { product } = window.Feather;
-	const { variant, options, quantity } = state;
+	const { variant, options, quantity, sliders } = state;
 
 	// Options
 	const btns = document.querySelectorAll('[data-option]');
 
 	btns.forEach((btn) => btn.classList.remove('feather-product__option-value--active'));
 
-	for (const option in state.options) {
+	for (const option in options) {
 		const btn = document.querySelector(
 			`[data-option="${option}"][data-value="${state.options[option]}"]`
 		);
@@ -58,11 +58,22 @@ const setUI = function () {
 		btn.classList.add('feather-product__option-value--active');
 	}
 
+	// Slider
+	if (variant) {
+		let index = 0;
+		const items = document.querySelectorAll('[data-variant-slide-item]');
+		items.forEach((item, i) => {
+			const id = item.getAttribute('data-variant-slide-item');
+			if (id == variant.id) index = i;
+		});
+
+		sliders.forEach((slider) => {
+			slider.go('=' + index);
+		});
+	}
+
 	// Add to cart
 	const btn = document.querySelector('[data-add-to-cart]');
-	if (!btn) return;
-
-	if (!options) return;
 
 	let optionsCount = 0;
 	product.options.forEach((option) => {
