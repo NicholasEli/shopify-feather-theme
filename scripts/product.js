@@ -80,7 +80,7 @@ const setUI = function () {
 		if (options[option]) optionsCount++;
 	});
 
-	if (optionsCount === product.options.length && quantity > 0 && variant) {
+	if (optionsCount === product.options.length && quantity > 0 && variant && variant.available) {
 		btn.classList.remove('button--disabled');
 	} else {
 		btn.classList.add('button--disabled');
@@ -122,8 +122,6 @@ const setQuantity = function () {
 };
 
 const setState = function () {
-	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
-
 	const { product } = window.Feather;
 
 	const options = {};
@@ -134,16 +132,36 @@ const setState = function () {
 };
 
 const variantSlider = function () {
+	const { product } = window.Feather;
 	const sliders = document.querySelectorAll('[data-variant-slider]');
 
 	if (!sliders || (sliders && !sliders.length)) return;
 
 	let instances = [];
-	sliders.forEach((slider) => {
+	sliders.forEach((slider, index) => {
 		const id = slider.getAttribute('data-variant-slider');
 		const instance = new Glide('[data-variant-slider="' + id + '"]', { perView: 1 });
-		instance.mount();
 		instances.push(instance);
+	});
+
+	instances.forEach((instance, index) => {
+		const options = {};
+		instance.on('run.after', () => {
+			const slide = document.querySelector('.glide__slide--active');
+			if (!slide) return;
+
+			const id = slide.getAttribute('data-variant-slide-item');
+			if (!id) return;
+
+			product.variants.forEach((variant) => {
+				if (variant.id == id) {
+					variant.options.forEach((option, i) => (options[product.options[i]] = option));
+				}
+			});
+
+			state.setOptions = { options, callback: () => setUI() };
+		});
+		instance.mount();
 	});
 
 	state.setSliders = { sliders: instances };
@@ -194,7 +212,6 @@ const recommendations = async function () {
 
 export const product = function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
-
 	setState();
 	variantSlider();
 	recommendations();
