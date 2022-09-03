@@ -62,7 +62,7 @@ export const filter = {
 };
 
 /**
- * Mechanisim for filter API
+ * Mechanisim for cart API
  * @type {Object}
  */
 export const cart = {
