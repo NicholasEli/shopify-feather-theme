@@ -9,7 +9,7 @@ input.button {
 
 	&--disabled {
 		color: $text;
-		border-color: $text;
+		border-color: $border;
 		background-color: $stroke;
 		pointer-events: none;
 	}

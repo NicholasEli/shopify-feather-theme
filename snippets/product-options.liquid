@@ -9,9 +9,6 @@
 					class="feather-product__option-value"
 					title="{{ option.name }} - {{ value }}"
 				>
-					{% if option.name == 'Color' or option.name == 'color' %}
-						<span style="background-color: {{ value | downcase }};"></span>
-					{% endif %}
 					<span>{{ value }}</span>
 				</a>
 			{% endfor %}
