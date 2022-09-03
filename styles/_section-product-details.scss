@@ -126,12 +126,6 @@
 					width: calc(75% - #{$padding});
 					text-transform: uppercase;
 					font-weight: 400;
-
-					&:hover {
-						background-color: #fff;
-						border-color: $primary;
-						color: $primary;
-					}
 				}
 			}
 		}

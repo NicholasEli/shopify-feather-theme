@@ -1,13 +1,21 @@
 .button,
 a.button,
 input.button {
-	&--primary {
+	&--primary,
+	&--primary:focus {
 		color: #fff;
 		border-color: $primary;
 		background-color: $primary;
+
+		&:hover {
+			background-color: #fff;
+			border-color: $primary;
+			color: $primary;
+		}
 	}
 
-	&--disabled {
+	&--disabled,
+	&--disabled:focus {
 		color: $text;
 		border-color: $border;
 		background-color: $stroke;
