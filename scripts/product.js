@@ -40,6 +40,10 @@ const state = {
 	},
 };
 
+/**
+ * Updates the variant and add to cart button display as selections are made. In addition
+ * will scroll the variant slider to the associated slide.
+ */
 const setUI = function () {
 	const { product } = window.Feather;
 	const { variant, options, quantity, sliders } = state;
@@ -87,6 +91,9 @@ const setUI = function () {
 	}
 };
 
+/**
+ * Set the variant option to state.
+ */
 const setOption = function () {
 	const btns = document.querySelectorAll('[data-option]');
 	if (!btns || (btns && !btns.length)) return;
@@ -108,6 +115,9 @@ const setOption = function () {
 	});
 };
 
+/**
+ * Sets the quantity on change on input field
+ */
 const setQuantity = function () {
 	const input = document.querySelector('[data-quantity]');
 
@@ -121,6 +131,9 @@ const setQuantity = function () {
 	});
 };
 
+/**
+ * Pulls options from product object and sets them to state
+ */
 const setState = function () {
 	const { product } = window.Feather;
 
@@ -131,6 +144,9 @@ const setState = function () {
 	state.setOptions = { options, callback: null };
 };
 
+/**
+ * Controls variant slider via Glide
+ */
 const variantSlider = function () {
 	const { product } = window.Feather;
 	const sliders = document.querySelectorAll('[data-variant-slider]');
@@ -148,6 +164,9 @@ const variantSlider = function () {
 	state.setSliders = { sliders: instances };
 };
 
+/**
+ * Controls recommendations slider via Glide
+ */
 const recommendations = async function () {
 	try {
 		const sliders = document.querySelectorAll('[data-related-product-slider]');
