@@ -1,4 +1,6 @@
 import Glide from '@glidejs/glide';
+import { Notyf } from 'notyf';
+import { options } from './toast.js';
 import { cart } from './api.js';
 import { getCSSVariable } from './utils.js';
 import { isSame } from './algorithims.js';
@@ -78,7 +80,7 @@ const setUI = function () {
 	}
 
 	// Add to cart
-	const btn = document.querySelector('[data-add-to-cart]');
+	const btn = document.querySelector('[data-add-to-cart] .button');
 
 	let optionsCount = 0;
 	product.options.forEach((option) => {
@@ -208,14 +210,15 @@ const recommendations = async function () {
 };
 
 const addToCart = async function () {
-	if (!state.variant || !state.quantity) return;
-
+	let notyf = new Notyf(options());
 	const form = document.querySelector('[data-add-to-cart]');
 	if (!form) return;
 
 	form.addEventListener('submit', async (e) => {
 		try {
 			e.preventDefault();
+
+			if (!state.variant || !state.quantity) return;
 
 			const update = {
 				id: state.variant.id,
@@ -224,11 +227,17 @@ const addToCart = async function () {
 
 			const res = await cart.change(update);
 
+			if (res.error) {
+				notyf.error(res.error.message);
+				return;
+			}
+			console.log(res);
 			if (res && res.data) {
 				console.log(res);
 			}
 		} catch (error) {
 			console.log(error);
+			notyf.error(error.message);
 		}
 	});
 };
