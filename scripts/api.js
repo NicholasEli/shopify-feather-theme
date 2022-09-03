@@ -66,6 +66,12 @@ export const filter = {
  * @type {Object}
  */
 export const cart = {
+	/**
+	 * Adds product variant to cart
+	 * @param  {object} variant  - variant of product
+	 * @param  {number} quantity - quantity of variant to place in cart
+	 * @return {object}  returns success|error as data|error
+	 */
 	add: async (variant, quantity) => {
 		try {
 			const res = await fetch(`/cart/add.js`, {
@@ -92,6 +98,11 @@ export const cart = {
 			return { error };
 		}
 	},
+	/**
+	 * Adds product variant to cart
+	 * @param  {object} lineitems  - lineitem values with lineitem id as key
+	 * @return {object} returns success|error as data|error
+	 */
 	update: async (lineitems) => {
 		try {
 			const res = await fetch(`/cart/update.js`, {
