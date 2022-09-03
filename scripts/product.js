@@ -240,4 +240,5 @@ export const product = function () {
 	recommendations();
 	setOption();
 	setQuantity();
+	addToCart();
 };
