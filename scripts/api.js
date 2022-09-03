@@ -65,4 +65,56 @@ export const filter = {
  * Mechanisim for filter API
  * @type {Object}
  */
-export const product = {};
+export const cart = {
+	add: async (variant, quantity) => {
+		try {
+			const res = await fetch(`/cart/add.js`, {
+				method: 'POST',
+				credentials: 'same-origin',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Requested-With': 'xmlhttprequest',
+				},
+				body: JSON.stringify({
+					id: variant.id,
+					quantity,
+				}),
+			});
+
+			if (!res.ok) {
+				return { error: shopifyError(data) };
+			}
+
+			const data = await res.json();
+
+			return { data };
+		} catch (error) {
+			return { error };
+		}
+	},
+	update: async (lineitems) => {
+		try {
+			const res = await fetch(`/cart/update.js`, {
+				method: 'POST',
+				credentials: 'same-origin',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Requested-With': 'xmlhttprequest',
+				},
+				body: JSON.stringify({
+					updates: lineitems,
+				}),
+			});
+
+			const data = await res.json();
+
+			if (!res.ok) {
+				return { error: shopifyError(data) };
+			}
+
+			return { data };
+		} catch (error) {
+			return { error };
+		}
+	},
+};
