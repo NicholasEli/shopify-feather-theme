@@ -105,11 +105,11 @@ export const cart = {
 	},
 	/**
 	 * Adds product variant to cart
-	 * @param  {object} variant  - variant of product
+	 * @param  {string} variant  - id of product variant
 	 * @param  {number} quantity - quantity of variant to place in cart
 	 * @return {object}  returns success|error as data|error
 	 */
-	add: async (variant, quantity) => {
+	add: async (id, quantity) => {
 		try {
 			const res = await fetch(`/cart/add.js`, {
 				method: 'POST',
@@ -119,7 +119,7 @@ export const cart = {
 					'X-Requested-With': 'xmlhttprequest',
 				},
 				body: JSON.stringify({
-					id: variant.id,
+					id,
 					quantity,
 				}),
 			});

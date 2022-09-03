@@ -220,22 +220,15 @@ const addToCart = async function () {
 
 			if (!state.variant || !state.quantity) return;
 
-			const change = {
-				id: state.variant.id.toString(),
-				quantity: state.quantity,
-			};
+			let res = await cart.add(state.variant.id, state.quantity);
 
-			const res = await cart.change(change);
-
-			if (res.error) {
+			if (res.error || !res.data) {
 				console.log(res.error);
 				notyf.error('Could not add item to cart');
 				return;
 			}
 
-			if (res && res.data) {
-				console.log(res);
-			}
+			res = await cart.get();
 		} catch (error) {
 			console.log(error);
 			notyf.error('Could not add item to cart');

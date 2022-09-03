@@ -57,12 +57,17 @@
 				}
 
 				a {
+					@include flex(row, flex-start, center);
 					svg {
 						width: 16px;
 						height: 16px;
 						display: block;
 						* {
 							fill: $black;
+						}
+
+						& + span {
+							margin-left: 5px;
 						}
 					}
 
