@@ -141,10 +141,10 @@ export const cart = {
 	},
 	/**
 	 * Adds product variant to cart
-	 * @param  {object} lineitems  - lineitem values with lineitem id as key
+	 * @param  {object} changes  - lineitem values with lineitem id as key
 	 * @return {object} returns success|error as data|error
 	 */
-	change: async (lineitems) => {
+	change: async (changes) => {
 		try {
 			const res = await fetch(`/cart/change.js`, {
 				method: 'POST',
