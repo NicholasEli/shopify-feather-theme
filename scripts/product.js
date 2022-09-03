@@ -207,7 +207,31 @@ const recommendations = async function () {
 	}
 };
 
-const addToCart = function () {};
+const addToCart = async function () {
+	if (!state.variant || !state.quantity) return;
+
+	const form = document.querySelector('[data-add-to-cart]');
+	if (!form) return;
+
+	form.addEventListener('submit', async (e) => {
+		try {
+			e.preventDefault();
+
+			const update = {
+				id: state.variant.id,
+				quantity: state.quantity,
+			};
+
+			const res = await cart.change(update);
+
+			if (res && res.data) {
+				console.log(res);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	});
+};
 
 export const product = function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
