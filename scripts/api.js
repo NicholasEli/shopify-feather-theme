@@ -15,7 +15,7 @@ export const search = {
 				`/search/suggest?q=${term}&resources[type]=product&resources[limit]=4&section_id=predictive-search`
 			);
 
-			if (!res.ok) {
+			if (res && !res.ok) {
 				throw new Error(res.status);
 			}
 
@@ -50,7 +50,7 @@ export const filter = {
 		try {
 			const res = await fetch(query);
 
-			if (!res.ok) {
+			if (res && !res.ok) {
 				throw new Error(res.status);
 			}
 
@@ -78,6 +78,32 @@ export const filter = {
  */
 export const cart = {
 	/**
+	 * Gets cart and its lineitems
+	 * @return {object}  returns success|error as data|error
+	 */
+	get: async () => {
+		try {
+			const res = await fetch(`/cart.js`, {
+				method: 'GET',
+				credentials: 'same-origin',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Requested-With': 'xmlhttprequest',
+				},
+			});
+
+			if (res && !res.ok) {
+				return { error: shopifyError(data) };
+			}
+
+			const data = await res.json();
+
+			return { data };
+		} catch (error) {
+			return { error };
+		}
+	},
+	/**
 	 * Adds product variant to cart
 	 * @param  {object} variant  - variant of product
 	 * @param  {number} quantity - quantity of variant to place in cart
@@ -98,7 +124,7 @@ export const cart = {
 				}),
 			});
 
-			if (!res.ok) {
+			if (res && !res.ok) {
 				return { error: shopifyError(data) };
 			}
 
@@ -130,7 +156,7 @@ export const cart = {
 
 			const data = await res.json();
 
-			if (!res.ok) {
+			if (res && !res.ok) {
 				return { error: shopifyError(data) };
 			}
 
@@ -156,9 +182,13 @@ export const cart = {
 				body: JSON.stringify(changes),
 			});
 
+			if (!res) {
+				return { error: 'No response' };
+			}
+
 			const data = await res.json();
 
-			if (!res.ok) {
+			if (res && !res.ok) {
 				return { error: shopifyError(data) };
 			}
 

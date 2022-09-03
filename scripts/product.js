@@ -220,19 +220,19 @@ const addToCart = async function () {
 
 			if (!state.variant || !state.quantity) return;
 
-			const update = {
-				id: state.variant.id,
+			const change = {
+				id: state.variant.id.toString(),
 				quantity: state.quantity,
 			};
 
-			const res = await cart.change(update);
+			const res = await cart.change(change);
 
 			if (res.error) {
 				console.log(res.error);
 				notyf.error('Could not add item to cart');
 				return;
 			}
-			console.log(res);
+
 			if (res && res.data) {
 				console.log(res);
 			}
@@ -243,8 +243,9 @@ const addToCart = async function () {
 	});
 };
 
-export const product = function () {
+export const product = async function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
+
 	setState();
 	variantSlider();
 	recommendations();
