@@ -1,4 +1,5 @@
 import Glide from '@glidejs/glide';
+import { cart } from './api.js';
 import { getCSSVariable } from './utils.js';
 import { isSame } from './algorithims.js';
 
@@ -168,47 +169,45 @@ const variantSlider = function () {
  * Controls recommendations slider via Glide
  */
 const recommendations = async function () {
-	try {
-		const sliders = document.querySelectorAll('[data-related-product-slider]');
+	const sliders = document.querySelectorAll('[data-related-product-slider]');
 
-		if (sliders && sliders.length) {
-			const _numSlides = () => {
-				let num = 1;
-				if (window.innerWidth > sm) {
-					num = 2;
-				}
+	if (sliders && sliders.length) {
+		const _numSlides = () => {
+			let num = 1;
+			if (window.innerWidth > sm) {
+				num = 2;
+			}
 
-				if (window.innerWidth > md) {
-					num = 3;
-				}
+			if (window.innerWidth > md) {
+				num = 3;
+			}
 
-				if (window.innerWidth > xl) {
-					num = 4;
-				}
+			if (window.innerWidth > xl) {
+				num = 4;
+			}
 
-				return num;
-			};
+			return num;
+		};
 
-			sliders.forEach((slider) => {
-				const id = slider.getAttribute('data-related-product-slider');
-				const instance = new Glide('[data-related-product-slider="' + id + '"]', {
-					perView: _numSlides(),
-				});
-				instance.mount();
-				instance.on(['resize'], function () {
-					const { perView } = instance.settings;
-					const num = _numSlides();
-
-					if (perView !== num) {
-						instance.update({ perView: num });
-					}
-				});
+		sliders.forEach((slider) => {
+			const id = slider.getAttribute('data-related-product-slider');
+			const instance = new Glide('[data-related-product-slider="' + id + '"]', {
+				perView: _numSlides(),
 			});
-		}
-	} catch (err) {
-		console.error(err);
+			instance.mount();
+			instance.on(['resize'], function () {
+				const { perView } = instance.settings;
+				const num = _numSlides();
+
+				if (perView !== num) {
+					instance.update({ perView: num });
+				}
+			});
+		});
 	}
 };
+
+const addToCart = function () {};
 
 export const product = function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;

@@ -100,10 +100,12 @@ export const cart = {
 	},
 	/**
 	 * Adds product variant to cart
-	 * @param  {object} lineitems  - lineitem values with lineitem id as key
+	 * @param  {object} updates  - variant values with object and quantity
+	 * @param  {object} updates.id  - id of variant
+	 * @param  {object} updates.quantity  - quantity of variant
 	 * @return {object} returns success|error as data|error
 	 */
-	update: async (lineitems) => {
+	update: async (updates) => {
 		try {
 			const res = await fetch(`/cart/update.js`, {
 				method: 'POST',
@@ -115,6 +117,34 @@ export const cart = {
 				body: JSON.stringify({
 					updates: lineitems,
 				}),
+			});
+
+			const data = await res.json();
+
+			if (!res.ok) {
+				return { error: shopifyError(data) };
+			}
+
+			return { data };
+		} catch (error) {
+			return { error };
+		}
+	},
+	/**
+	 * Adds product variant to cart
+	 * @param  {object} lineitems  - lineitem values with lineitem id as key
+	 * @return {object} returns success|error as data|error
+	 */
+	update: async (lineitems) => {
+		try {
+			const res = await fetch(`/cart/change.js`, {
+				method: 'POST',
+				credentials: 'same-origin',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Requested-With': 'xmlhttprequest',
+				},
+				body: JSON.stringify(changes),
 			});
 
 			const data = await res.json();
