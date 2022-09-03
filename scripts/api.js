@@ -1,4 +1,14 @@
+/**
+ * Mechanisim for predictive search API
+ * https://shopify.dev/api/ajax/reference/predictive-search
+ * @type {Object}
+ */
 export const search = {
+	/**
+	 * Searches for products based on term
+	 * @param  {string} term - string for search query
+	 * @return {object} returns success|error as data|error
+	 */
 	get: async (term) => {
 		try {
 			const res = await fetch(
@@ -63,6 +73,7 @@ export const filter = {
 
 /**
  * Mechanisim for cart API
+ * https://shopify.dev/api/ajax/reference/cart
  * @type {Object}
  */
 export const cart = {
@@ -100,9 +111,7 @@ export const cart = {
 	},
 	/**
 	 * Adds product variant to cart
-	 * @param  {object} updates  - variant values with object and quantity
-	 * @param  {object} updates.id  - id of variant
-	 * @param  {object} updates.quantity  - quantity of variant
+	 * @param  {object} updates  - variant property values
 	 * @return {object} returns success|error as data|error
 	 */
 	update: async (updates) => {
@@ -135,7 +144,7 @@ export const cart = {
 	 * @param  {object} lineitems  - lineitem values with lineitem id as key
 	 * @return {object} returns success|error as data|error
 	 */
-	update: async (lineitems) => {
+	change: async (lineitems) => {
 		try {
 			const res = await fetch(`/cart/change.js`, {
 				method: 'POST',
