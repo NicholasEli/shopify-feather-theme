@@ -228,7 +228,8 @@ const addToCart = async function () {
 			const res = await cart.change(update);
 
 			if (res.error) {
-				notyf.error(res.error.message);
+				console.log(res.error);
+				notyf.error('Could not add item to cart');
 				return;
 			}
 			console.log(res);
@@ -237,7 +238,7 @@ const addToCart = async function () {
 			}
 		} catch (error) {
 			console.log(error);
-			notyf.error(error.message);
+			notyf.error('Could not add item to cart');
 		}
 	});
 };
