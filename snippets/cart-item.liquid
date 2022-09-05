@@ -1,0 +1,27 @@
+{% liquid
+	assign title = item.title | split: ' - '
+	assign product_title = title[0]
+	assign variant_title = title[1]
+%}
+<div class="feather-cart-item container container--padding">
+	<div class="feather-cart-item-details row">
+		<div class="feather-cart-item-image col-xs-3">
+			<img src="{{ item | img_url: 'compact' }}" title="{{ item.title }}" />
+		</div>
+		<div class="feather-cart-item-title col-xs-7">
+			<h5>{{ product_title }}</h5>
+			<p>Variant: <span>{{ variant_title }}</span></p>
+		</div>
+		<a data-remove-item="{{ item.variant_id }}" class="feather-cart-item-remove">{% render 'icon-close' %}</a>
+	</div>
+	<div class="feather-cart-item-quantity-total">
+		<form>
+			<div class="input">
+				<input data-cart-item-quantity  type="text" />
+				<div class="feather-cart-item-total">
+				 <p>{{ item.final_line_price }}</p>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

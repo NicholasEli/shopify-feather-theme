@@ -1,2 +1,54 @@
 .feather-cart-item {
+	&-details {
+		position: relative;
+	}
+
+	&-image {
+		img {
+			width: 100%;
+			display: block;
+			border: 1px solid $stroke;
+		}
+	}
+
+	&-title {
+		h5 {
+			font-size: 16px;
+			font-weight: 500;
+		}
+
+		p {
+			font-size: 12px;
+
+			span {
+				font-weight: 300;
+			}
+		}
+	}
+
+	&-remove {
+		@include flex(row, center, center);
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border: 1px solid $stroke;
+		cursor: pointer;
+		transition: all 200ms;
+
+		svg {
+			width: 10px;
+			height: 10px;
+			display: block;
+
+			* {
+				fill: $light-text;
+			}
+		}
+
+		&:hover {
+			background-color: $stroke;
+		}
+	}
 }

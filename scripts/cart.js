@@ -15,9 +15,6 @@ const toggleCart = function () {
 			e.preventDefault();
 			if (overlay.className.indexOf('animate__fadeIn') > -1) {
 				dialog.classList.add('animate__fadeOutRight');
-
-				await asyncTimeout(delay);
-
 				overlay.classList.add('animate__fadeOut');
 
 				await asyncTimeout(delay);
