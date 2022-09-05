@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "3.5.2",
+    "currency.js": "^2.0.4",
     "notyf": "3.10.0"
   }
 }

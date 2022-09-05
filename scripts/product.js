@@ -229,6 +229,7 @@ const addToCart = async function () {
 			}
 
 			res = await cart.get();
+			console.log(res);
 		} catch (error) {
 			console.log(error);
 			notyf.error('Could not add item to cart');
