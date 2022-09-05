@@ -4,16 +4,28 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	display: none;
 	z-index: 10;
 	background-color: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	pointer-events: none;
+
+	&.animate__fadeIn {
+		display: block;
+		pointer-events: all;
+	}
 
 	&__dialog {
 		width: 300px;
 		height: 100%;
 		position: absolute;
 		top: 0;
-		right: 0;
+		right: -100%;
 		background-color: #fff;
+
+		&.animate__fadeInRight {
+			right: 0;
+		}
 
 		@media (min-width: #{$md}) {
 			width: 480px;
@@ -23,6 +35,7 @@
 			@include flex(row, flex-start, center);
 			width: 100%;
 			background-color: $gray;
+			cursor: pointer;
 
 			svg {
 				width: 10px;

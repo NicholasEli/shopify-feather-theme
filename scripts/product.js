@@ -4,7 +4,7 @@ import { options } from './toast.js';
 import { cart } from './api.js';
 import { getCSSVariable } from './utils.js';
 import { isSame } from './algorithims.js';
-import { setCart } from './cart.js';
+import { setCartTotal } from './cart.js';
 
 const sm = parseInt(getCSSVariable('--sm'));
 const md = parseInt(getCSSVariable('--md'));
@@ -230,7 +230,7 @@ const addToCart = async function () {
 			}
 
 			res = await cart.get();
-			if (res && res.data) setCart(res.data);
+			if (res && res.data) setCartTotal(res.data);
 		} catch (error) {
 			console.log(error);
 			notyf.error('Could not add item to cart');

@@ -27,7 +27,11 @@
 	     	{{ customer.log_in }}
 	     {% endif %}
 	  </a>
-	  <a class="feather-header__user-cart" href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+	  <a
+	  	data-btn="cart"
+	  	class="feather-header__user-cart"
+	  	href="{{ routes.cart_url }}"
+	  >
 	    {% if cart == empty %}
 	    	{% render 'icon-cart-empty' %}
 	    {% endif %}

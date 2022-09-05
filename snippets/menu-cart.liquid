@@ -1,9 +1,9 @@
-<div data-menu-cart="overlay" class="feather-menu-cart">
-	<div data-menu-cart="dialog" class="feather-menu-cart__dialog">
-		<div class="feather-menu-cart__dialog-close container container--padding">
+<div data-menu-cart="overlay" class="feather-menu-cart animate__animated">
+	<div data-menu-cart="dialog" class="feather-menu-cart__dialog animate__animated">
+		<a data-btn="cart" class="feather-menu-cart__dialog-close container container--padding">
 			{% render 'icon-caret' %}
 			<p>Continue Shopping</p>
-		</div>
+		</a>
 		<div class="feather-menu-cart__dialog-header container container--padding">
 			<h4>Cart</h4>
 			<p>{{ cart.items.size }} Products</p>
