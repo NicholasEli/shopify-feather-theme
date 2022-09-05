@@ -1,0 +1,26 @@
+<div data-menu-cart="overlay" class="feather-menu-cart">
+	<div data-menu-cart="dialog" class="feather-menu-cart__dialog">
+		<div class="feather-menu-cart__dialog-close container container--padding">
+			{% render 'icon-caret' %}
+			<p>Continue Shopping</p>
+		</div>
+		<div class="feather-menu-cart__dialog-header container container--padding">
+			<h4>Cart</h4>
+			<p>{{ cart.items.size }} Products</p>
+		</div>
+		<div class="feather-menu-cart__dialog-body feather-cart-items">
+			{% for item in cart.items %}
+				<div class="feather-cart-item">
+					<div class="feather-cart-item-details">
+						<div class="feather-cart-item-image">
+							<img src="{{ item | img_url: 'compact' }}" title="{{ item.title }}" />
+						</div>
+						<div class="feather-cart-item-title">
+							<h5>{{ item.title }}</h5>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

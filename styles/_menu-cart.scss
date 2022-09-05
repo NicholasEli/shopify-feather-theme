@@ -1,0 +1,62 @@
+.feather-menu-cart {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.5);
+
+	&__dialog {
+		width: 300px;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-color: #fff;
+
+		@media (min-width: #{$md}) {
+			width: 480px;
+		}
+
+		&-close {
+			@include flex(row, flex-start, center);
+			width: 100%;
+			background-color: $gray;
+
+			svg {
+				width: 10px;
+				height: 10px;
+				display: block;
+				transform: rotate(90deg);
+
+				* {
+					fill: $text;
+				}
+			}
+
+			p {
+				margin: 0 0 0 5px;
+				color: $text;
+				font-weight: 300;
+			}
+		}
+
+		&-header {
+			@include flex(row, space-between, center);
+
+			h4,
+			p {
+				margin: 0;
+				color: $light-text;
+			}
+
+			h4 {
+				font-family: $ibarra;
+			}
+
+			p {
+			}
+		}
+	}
+}

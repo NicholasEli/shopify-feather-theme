@@ -82,6 +82,7 @@
       {%- endif -%}
       {% endcomment %} 
     </main>
+    {% render 'menu-cart' %}
     {% section 'footer' %}
     {{ 'script.min.js' | asset_url | script_tag }}
   </body>
