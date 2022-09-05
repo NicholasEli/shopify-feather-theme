@@ -3,7 +3,7 @@ import currency from 'currency.js';
 export const setCart = function (cart) {
 	if (!cart) return;
 
-	const elements = document.querySelectorAll('data-cart-total');
+	const elements = document.querySelectorAll('[data-cart-total]');
 	if (!elements || (elements && !elements.length)) return;
 
 	elements.forEach((el) => {
