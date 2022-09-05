@@ -24,10 +24,11 @@ const toggleCart = function () {
 
 				overlay.classList.remove('animate__fadeIn', 'animate__fadeOut');
 				dialog.classList.remove('animate__fadeInRight', 'animate__fadeOutRight');
-
+				document.body.classList.remove('overflow-hidden');
 				return;
 			}
 
+			document.body.classList.add('overflow-hidden');
 			overlay.classList.add('animate__fadeIn');
 			dialog.classList.add('animate__fadeInRight');
 		});

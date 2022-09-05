@@ -56,6 +56,11 @@ body {
 	min-height: 100vh;
 	overflow-x: hidden;
 
+	&.overflow-hidden {
+		max-height: 100vh;
+		overflow: hidden;
+	}
+
 	&.nav-active {
 		max-height: 100vh;
 		overflow: hidden;
