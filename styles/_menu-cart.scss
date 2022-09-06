@@ -72,5 +72,17 @@
 				font-weight: 300;
 			}
 		}
+
+		.feather-cart-items,
+		.feather-cart-subtotal,
+		.feather-cart-checkout {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.feather-cart-checkout {
+			@include flex(column, center, center);
+		}
 	}
 }
