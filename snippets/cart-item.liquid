@@ -15,13 +15,9 @@
 		<a data-remove-item="{{ item.variant_id }}" class="feather-cart-item-remove">{% render 'icon-close' %}</a>
 	</div>
 	<div class="feather-cart-item-quantity-total">
-		<form>
-			<div class="input">
-				<input data-cart-item-quantity  type="text" />
-				<div class="feather-cart-item-total">
-				 <p>{{ item.final_line_price }}</p>
-				</div>
-			</div>
-		</form>
+		<div class="input">
+			<input data-cart-item-quantity type="number" placeholder="0" value="{{ item.quantity }}"/>
+		</div>
+		<p>{{ item.final_line_price | money }}</p>
 	</div>
 </div>

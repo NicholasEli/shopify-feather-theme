@@ -8,7 +8,7 @@
 			<h4>Cart</h4>
 			<p>{{ cart.items.size }} Products</p>
 		</div>
-		<div class="feather-menu-cart__dialog-body feather-cart-items">
+		<div data-cart-items class="feather-menu-cart__dialog-body feather-cart-items">
 			{% for item in cart.items %}
 				{% render 'cart-item', item: item %}
 			{% endfor %}
