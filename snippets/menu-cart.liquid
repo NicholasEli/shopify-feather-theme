@@ -11,6 +11,9 @@
 			{% endif %}
 		</div>
 		<div data-cart-items class="feather-menu-cart__dialog-body container container--padding">
+			{% if cart.item_count == 0 %}
+				{% render 'alert', alert_type: 'success', alert_message: 'Your shopping cart is empty' %}
+			{% endif %}
 			{% if cart.item_count != 0 %}
 				<div class="feather-cart-items">
 					{% for item in cart.items %}

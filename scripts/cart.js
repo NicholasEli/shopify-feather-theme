@@ -1,5 +1,8 @@
 import currency from 'currency.js';
 import { asyncTimeout, getCSSVariable } from './utils.js';
+import { cart as api } from './api.js';
+import { Notyf } from 'notyf';
+import { options } from './toast.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
@@ -46,6 +49,34 @@ export const setCartTotal = function (cart) {
 	window.Feather.cart = cart;
 };
 
+const removeLineItem = function () {
+	const btns = document.querySelectorAll('[data-remove-lineitem]');
+	console.log(btns);
+	if (!btns || (btns && !btns.length)) return;
+
+	btns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const variantID = btn.getAttribute('data-remove-lineitem');
+
+			if (!variantID) return;
+
+			const res = await api.change({
+				id: variantID,
+				quantity: 0,
+			});
+
+			if (res.error || !res.data) {
+				console.error(res.error);
+				notyf.error('Could not add item to cart');
+				return;
+			}
+
+			setCartTotal(res.data);
+		});
+	});
+};
+
 export const cart = function () {
 	toggleCart();
+	removeLineItem();
 };

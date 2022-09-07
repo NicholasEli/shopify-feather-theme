@@ -224,7 +224,7 @@ const addToCart = async function () {
 			let res = await cart.add(state.variant.id, state.quantity);
 
 			if (res.error || !res.data) {
-				console.log(res.error);
+				console.error(res.error);
 				notyf.error('Could not add item to cart');
 				return;
 			}
