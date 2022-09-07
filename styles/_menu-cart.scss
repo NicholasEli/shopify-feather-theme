@@ -83,6 +83,10 @@
 
 		.feather-cart-checkout {
 			@include flex(column, center, center);
+
+			.button {
+				width: 225px;
+			}
 		}
 	}
 }
