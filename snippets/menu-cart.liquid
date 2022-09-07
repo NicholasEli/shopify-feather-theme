@@ -6,19 +6,23 @@
 		</a>
 		<div class="feather-menu-cart__dialog-header container container--padding">
 			<h4>Cart</h4>
-			<p>{{ cart.items.size }} Products</p>
+			{% if cart.item_count != 0 %}
+				<p>{{ cart.items.size }} Products</p>
+			{% endif %}
 		</div>
 		<div data-cart-items class="feather-menu-cart__dialog-body container container--padding">
-			<div class="feather-cart-items">
-				{% for item in cart.items %}
-					{% render 'cart-item', item: item %}
-				{% endfor %}
-			</div>
-			{% render 'cart-subtotal', item: item %}
-			<div class="feather-cart-checkout container container--padding">
-				<a href="/checkout" class="button button--primary">Proceed To Checkout</a>
-				<a href="/cart" class="button">View Shopping Cart</a>
-			</div>
+			{% if cart.item_count != 0 %}
+				<div class="feather-cart-items">
+					{% for item in cart.items %}
+						{% render 'cart-item', item: item %}
+					{% endfor %}
+				</div>
+				{% render 'cart-subtotal', item: item %}
+				<div class="feather-cart-checkout container container--padding">
+					<a href="/checkout" class="button button--primary">Proceed To Checkout</a>
+					<a href="/cart" class="button">View Shopping Cart</a>
+				</div>
+			{% endif %}
 		</div>
 	</div>
 </div>
