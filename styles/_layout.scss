@@ -1,4 +1,6 @@
 .hide {
+	display: none;
+
 	&-xs {
 		@media (min-width: #{$xs}) {
 			display: none;
@@ -25,6 +27,8 @@
 }
 
 .show {
+	display: block;
+
 	&-xs {
 		display: none;
 		@media (min-width: #{$xs}) {
@@ -55,6 +59,8 @@
 }
 
 .show-flex {
+	display: flex;
+
 	&-xs {
 		display: none;
 		@media (min-width: #{$xs}) {

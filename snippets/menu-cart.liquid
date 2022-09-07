@@ -1,3 +1,9 @@
+{%
+	assign hide_class = ''
+	if cart.item_count == 0
+		assign hide_class = 'hide'
+	endif
+%}
 <div data-menu-cart="overlay" class="feather-menu-cart animate__animated animate__fadeIn">
 	<div data-menu-cart="dialog" class="feather-menu-cart__dialog animate__animated animate__fadeInRight">
 		<a data-btn="cart" class="feather-menu-cart__dialog-close container container--padding">
@@ -6,26 +12,24 @@
 		</a>
 		<div class="feather-menu-cart__dialog-header container container--padding">
 			<h4>Cart</h4>
-			{% if cart.item_count != 0 %}
-				<p>{{ cart.items.size }} Products</p>
-			{% endif %}
+			<p data-cart-item-count>{{ cart.items.size }} Products</p>
+		</div>
+		<div data-cart-empty class="feather-menu-cart__dialog-body container container--padding {{ hide_class }}">
+			{% render 'alert', alert_type: 'success', alert_message: 'Your shopping cart is empty' %}
 		</div>
 		<div data-cart-items class="feather-menu-cart__dialog-body container container--padding">
-			{% if cart.item_count == 0 %}
-				{% render 'alert', alert_type: 'success', alert_message: 'Your shopping cart is empty' %}
-			{% endif %}
-			{% if cart.item_count != 0 %}
-				<div class="feather-cart-items">
+			<div class="feather-cart-items">
+				{% if cart.item_count != 0 %}
 					{% for item in cart.items %}
 						{% render 'cart-item', item: item %}
 					{% endfor %}
-				</div>
-				{% render 'cart-subtotal', item: item %}
-				<div class="feather-cart-checkout container container--padding">
-					<a href="/checkout" class="button button--primary">Proceed To Checkout</a>
-					<a href="/cart" class="button">View Shopping Cart</a>
-				</div>
-			{% endif %}
+				{% endif %}
+			</div>
+			{% render 'cart-subtotal', item: item %}
+			<div class="feather-cart-checkout container container--padding">
+				<a data-cart-checkout href="/checkout" class="button button--primary {{ hide_class }}">Proceed To Checkout</a>
+				<a href="/cart" class="button">View Shopping Cart</a>
+			</div>
 		</div>
 	</div>
 </div>
