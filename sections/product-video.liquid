@@ -20,7 +20,9 @@
 			{% endif %}
 			{% if section.settings.video %}
 				<div class="{{ videoCol }}">
-
+					{% if section.settings.video %}
+						<p>{{ section.settings.video }}</p>
+					{% endif %}
 				</div>
 			{% endif %}
 		</div>
