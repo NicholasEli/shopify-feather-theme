@@ -1,0 +1,58 @@
+{% liquid
+	assign videoCol = 'col-xs-12'
+	if section.settings.tagline
+		assign videoCol = 'col-xs-12 col-md-8'
+	endif
+
+	assign textCol = 'col-xs-12'
+	if section.settings.video or section.settings.video_url
+		assign textCol = 'col-xs-12 col-md-4'
+	endif
+%}
+
+{% if section.settings.tagline or section.settings.video or section.settings.video_url %}
+	<div class="container container--padding">
+		<div class="row">
+			{% if section.settings.tagline %}
+				<div class="{{ textCol }}">
+					<h5>{{ section.settings.tagline }}</h5>
+				</div>
+			{% endif %}
+			{% if section.settings.video %}
+				<div class="{{ videoCol }}">
+
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}
+
+{% schema %}
+	{
+		"name": "Product Video",
+		"tag": "section",
+		"class": "feather-product__video",
+		"settings": [
+			{
+				"id": "tagline",
+				"type": "text",
+				"label": "Tagline",
+			},
+			{
+			  "type": "video_url",
+			  "id": "video_url",
+			  "label": "Video URL",
+			  "accept": [
+			    "youtube",
+			    "vimeo"
+			  ]
+			},
+			{
+				"id": "video",
+				"type": "image_picker",
+				"label": "Video Upload",
+				"info": "This will override Video URL Display"
+			}
+		]
+	}
+{% endschema %}
