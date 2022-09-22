@@ -1,6 +1,11 @@
 .feather-product__details {
 	> .container--padding {
 		padding-top: multiply($padding, 3);
+
+		@media (min-width: #{$lg}) {
+			max-width: divide($xl, 2);
+			margin: 0;
+		}
 	}
 
 	.feather-product {
