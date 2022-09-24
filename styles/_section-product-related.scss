@@ -1,4 +1,9 @@
 .feather-product__related {
+	> .container {
+		padding-top: multiply($padding, 4);
+		padding-bottom: multiply($padding, 4);
+	}
+
 	h5 {
 		font-size: 35px;
 		font-family: $ibarra;

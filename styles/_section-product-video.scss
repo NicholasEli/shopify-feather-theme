@@ -1,4 +1,9 @@
 .feather-product__video {
+	> .container {
+		padding-top: multiply($padding, 4);
+		padding-bottom: multiply($padding, 4);
+	}
+
 	iframe {
 		width: 100%;
 		height: 100%;
