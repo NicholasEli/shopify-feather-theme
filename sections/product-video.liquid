@@ -1,4 +1,7 @@
 {% liquid
+	
+	assign url = ''
+
 	assign videoCol = 'col-xs-12'
 	if section.settings.tagline
 		assign videoCol = 'col-xs-12 col-md-8'
@@ -7,6 +10,11 @@
 	assign textCol = 'col-xs-12'
 	if section.settings.video or section.settings.video_url
 		assign textCol = 'col-xs-12 col-md-4'
+	endif
+
+	if section.settings.video_url and section.settings.video_url contains 'youtube.com/watch?v='
+		assign constructor = section.settings.video_url | split: '='
+		assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
 	endif
 %}
 
@@ -18,11 +26,14 @@
 					<h5>{{ section.settings.tagline }}</h5>
 				</div>
 			{% endif %}
-			{% if section.settings.video %}
+			{% if section.settings.video_url %}
 				<div class="{{ videoCol }}">
-					{% if section.settings.video %}
-						<p>{{ section.settings.video }}</p>
-					{% endif %}
+					<iframe
+						src="{{ url }}"
+						frameborder="0"
+						allow="fullscreen;picture-in-picture"
+						allowfullscreen
+					></iframe>
 				</div>
 			{% endif %}
 		</div>
@@ -53,7 +64,7 @@
 				"id": "video",
 				"type": "image_picker",
 				"label": "Video Upload",
-				"info": "This will override Video URL Display"
+				"info": "This will override Youtube or Vimeo URl"
 			}
 		]
 	}
