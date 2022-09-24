@@ -7,6 +7,11 @@
 		assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
 	endif
 
+	if section.settings.video_url and section.settings.video_url contains 'vimeo.com'
+		assign constructor = section.settings.video_url | split: 'vimeo.com/'
+		assign url = 'https://player.vimeo.com/video/' | append: constructor[1]
+	endif
+
 	assign videoCol = 'col-xs-12'
 	if section.settings.tagline
 		assign videoCol = 'col-xs-12 col-md-8'
