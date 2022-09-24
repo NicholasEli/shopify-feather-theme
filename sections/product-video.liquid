@@ -1,6 +1,11 @@
 {% liquid
 	
-	assign url = ''
+	assign url = nil
+
+	if section.settings.video_url and section.settings.video_url contains 'youtube.com/watch?v='
+		assign constructor = section.settings.video_url | split: '='
+		assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+	endif
 
 	assign videoCol = 'col-xs-12'
 	if section.settings.tagline
@@ -8,13 +13,8 @@
 	endif
 
 	assign textCol = 'col-xs-12'
-	if section.settings.video or section.settings.video_url
+	if url
 		assign textCol = 'col-xs-12 col-md-4'
-	endif
-
-	if section.settings.video_url and section.settings.video_url contains 'youtube.com/watch?v='
-		assign constructor = section.settings.video_url | split: '='
-		assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
 	endif
 %}
 
@@ -26,7 +26,7 @@
 					<h5>{{ section.settings.tagline }}</h5>
 				</div>
 			{% endif %}
-			{% if section.settings.video_url %}
+			{% if url %}
 				<div class="{{ videoCol }}">
 					<iframe
 						src="{{ url }}"
