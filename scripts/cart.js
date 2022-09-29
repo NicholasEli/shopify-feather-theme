@@ -59,7 +59,7 @@ export const setCartItem = function (item) {
 	if (!item) return null;
 
 	const { product_title, image, variant_id, variant_title, final_line_price, quantity } = item;
-	const template = document.querySelector('[data-template="cart-item"]');
+	const template = document.querySelector('[data-template="cart-item"]').cloneNode(true);
 	const containers = document.querySelectorAll('[data-cart-items]');
 
 	if (!containers || (containers && !containers.length) || !template) return;
