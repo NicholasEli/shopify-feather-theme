@@ -50,12 +50,44 @@ const toggleCart = function () {
 	});
 };
 
+export const setCartItem = function (item) {
+	if (!item) return null;
+
+	const { product_title, image, variant_id, variant_title, final_line_price, quantity } = item;
+	const template = document.querySelector('[data-template="cart-item"]');
+	const containers = document.querySelectorAll('[data-cart-items]');
+
+	if (!containers || (containers && !containers.length) || !template) return;
+	console.log(template, item);
+	containers.forEach((container) => (container.innerHTML = ''));
+
+	containers.forEach((container) => {
+		template.content.querySelector('[data-cart-item-title]').innerText = product_title;
+
+		const _image = template.content.querySelector('[data-cart-item-image]');
+		_image.src = image;
+		_image.title = product_title;
+
+		template.content.querySelector('[data-cart-item-variant]').innerText = variant_title;
+		template.content
+			.querySelector('[data-remove-lineitem]')
+			.setAttribute('data-remove-lineitem', variant_id);
+		template.content.querySelector('[data-cart-item-quantity]').value = quantity;
+		template.content.querySelector('[data-cart-item-price]').innerText = currency(
+			final_line_price,
+			{ fromCents: true }
+		).format();
+
+		container.append(template.content);
+	});
+};
+
 export const setCartTotal = function (cart) {
 	if (!cart) return;
 
 	const elements = document.querySelectorAll('[data-cart-total]');
 	if (!elements || (elements && !elements.length)) return;
-	console.log({ cart, elements });
+
 	elements.forEach((el) => {
 		el.innerText = currency(cart.total_price, { fromCents: true }).format();
 	});
@@ -66,7 +98,6 @@ export const setCartTotal = function (cart) {
 
 const removeLineItem = function () {
 	const btns = document.querySelectorAll('[data-remove-lineitem]');
-	console.log(btns);
 	if (!btns || (btns && !btns.length)) return;
 
 	btns.forEach((btn) => {

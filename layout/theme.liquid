@@ -40,6 +40,12 @@
         path: {{ request.path | json }},
         product: {{ product | json }},
         template: {{ template | json }},
+        routes: {
+          cart_add_url: '{{ routes.cart_add_url }}',
+          cart_change_url: '{{ routes.cart_change_url }}',
+          cart_update_url: '{{ routes.cart_update_url }}',
+          predictive_search_url: '{{ routes.predictive_search_url }}'
+        }
       };
 
       window.Feather = debug;
@@ -85,5 +91,8 @@
     {% render 'menu-cart' %}
     {% section 'footer' %}
     {{ 'script.min.js' | asset_url | script_tag }}
+    <template data-template="cart-item">
+      {% render 'cart-item' %}
+    </template>
   </body>
 </html>

@@ -17,8 +17,8 @@
 		<div data-cart-empty class="feather-menu-cart__dialog-body container container--padding {{ hide_class }}">
 			{% render 'alert', alert_type: 'success', alert_message: 'Your shopping cart is empty' %}
 		</div>
-		<div data-cart-items class="feather-menu-cart__dialog-body container container--padding">
-			<div class="feather-cart-items">
+		<div class="feather-menu-cart__dialog-body container container--padding">
+			<div data-cart-items class="feather-cart-items">
 				{% if cart.item_count != 0 %}
 					{% for item in cart.items %}
 						{% render 'cart-item', item: item %}
