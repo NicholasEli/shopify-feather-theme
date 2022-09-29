@@ -6,6 +6,11 @@ import { options } from './toast.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
+export const clearCartUI = function () {
+	const containers = document.querySelectorAll('[data-cart-items]');
+	containers.forEach((container) => (container.innerHTML = ''));
+};
+
 export const cartActiveUI = function () {
 	const overlay = document.querySelector('[data-menu-cart="overlay"]');
 	const dialog = document.querySelector('[data-menu-cart="dialog"]');
@@ -58,8 +63,6 @@ export const setCartItem = function (item) {
 	const containers = document.querySelectorAll('[data-cart-items]');
 
 	if (!containers || (containers && !containers.length) || !template) return;
-	console.log(template, item);
-	containers.forEach((container) => (container.innerHTML = ''));
 
 	containers.forEach((container) => {
 		template.content.querySelector('[data-cart-item-title]').innerText = product_title;
@@ -80,6 +83,17 @@ export const setCartItem = function (item) {
 
 		container.append(template.content);
 	});
+
+	removeLineItem();
+};
+
+export const setCartProductCount = function (items = []) {
+	if (!items) return;
+
+	const count = document.querySelectorAll('[data-cart-item-count]');
+	if (!count || (count && !count.length)) return;
+
+	count.forEach((c) => (c.innerText = items.length + ' Products'));
 };
 
 export const setCartTotal = function (cart) {
@@ -117,6 +131,9 @@ const removeLineItem = function () {
 				return;
 			}
 
+			clearCartUI();
+			res.data.items.forEach((item) => setCartItem(item));
+			setCartProductCount(res.data.items);
 			setCartTotal(res.data);
 		});
 	});

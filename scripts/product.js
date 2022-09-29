@@ -4,7 +4,13 @@ import { options } from './toast.js';
 import { cart } from './api.js';
 import { getCSSVariable } from './utils.js';
 import { isSame } from './algorithims.js';
-import { setCartItem, setCartTotal, cartActiveUI } from './cart.js';
+import {
+	clearCartUI,
+	setCartItem,
+	setCartTotal,
+	cartActiveUI,
+	setCartProductCount,
+} from './cart.js';
 
 const sm = parseInt(getCSSVariable('--sm'));
 const md = parseInt(getCSSVariable('--md'));
@@ -231,8 +237,10 @@ const addToCart = async function () {
 
 			res = await cart.get();
 			if (res && res.data) {
+				clearCartUI();
 				res.data.items.forEach((item) => setCartItem(item));
 				setCartTotal(res.data);
+				setCartProductCount(res.data.items);
 				cartActiveUI();
 			}
 		} catch (error) {
