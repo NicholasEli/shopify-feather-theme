@@ -15,6 +15,10 @@ const state = {
 	},
 };
 
+/**
+ * Sets UI of modal
+ * @param  {Object} modal - DOM element representing modal
+ */
 const setUI = async function (modal) {
 	if (modal.active) {
 		modal.el.classList.add('feather-modal--active');
@@ -39,10 +43,18 @@ const setUI = async function (modal) {
 	modal.dialog.classList.remove('animate__fadeOutUp');
 };
 
+/**
+ * Set modal state of active
+ * @param  {Object} modal - DOM element representing modal
+ */
 export const modalOpen = function (modal) {
 	state.setActive = { id: modal.id, active: true };
 };
 
+/**
+ * Set modal state of inactive
+ * @param  {Object} modal - DOM element representing modal
+ */
 export const modalClose = function (modal) {
 	modal.close.addEventListener(
 		'click',
@@ -55,6 +67,9 @@ export const modalClose = function (modal) {
 	});
 };
 
+/**
+ * Sets all modals in the DOM to state
+ */
 const setModals = function () {
 	const modals = document.querySelectorAll('[data-modal]');
 

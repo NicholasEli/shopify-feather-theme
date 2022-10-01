@@ -6,11 +6,9 @@ import { options } from './toast.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
-export const clearCartUI = function () {
-	const containers = document.querySelectorAll('[data-cart-items]');
-	containers.forEach((container) => (container.innerHTML = ''));
-};
-
+/**
+ * Sets cart UI to active
+ */
 export const cartActiveUI = function () {
 	const overlay = document.querySelector('[data-menu-cart="overlay"]');
 	const dialog = document.querySelector('[data-menu-cart="dialog"]');
@@ -20,6 +18,9 @@ export const cartActiveUI = function () {
 	dialog.classList.add('animate__fadeInRight');
 };
 
+/**
+ * Sets cart UI to inactive
+ */
 export const cartInactiveUI = async function () {
 	const overlay = document.querySelector('[data-menu-cart="overlay"]');
 	const dialog = document.querySelector('[data-menu-cart="dialog"]');
@@ -34,6 +35,9 @@ export const cartInactiveUI = async function () {
 	document.body.classList.remove('overflow-hidden');
 };
 
+/**
+ * Toggles cart UI active/inactive
+ */
 const toggleCart = function () {
 	const btns = document.querySelectorAll('[data-btn="cart"]');
 	const overlay = document.querySelector('[data-menu-cart="overlay"]');
@@ -55,7 +59,37 @@ const toggleCart = function () {
 	});
 };
 
-export const setCartItem = function (item) {
+/**
+ * Sets the cart product count
+ */
+export const setCartProductCount = function (items = []) {
+	if (!items) return;
+
+	const count = document.querySelectorAll('[data-cart-item-count]');
+	if (!count || (count && !count.length)) return;
+
+	count.forEach((c) => (c.innerText = items.length + ' Products'));
+};
+
+/**
+ * Sets the cart total
+ * @param {Object} cart - /cart.js http response
+ */
+export const setCartTotal = function (cart) {
+	if (!cart) return;
+
+	const elements = document.querySelectorAll('[data-cart-total]');
+	if (!elements || (elements && !elements.length)) return;
+
+	elements.forEach((el) => {
+		el.innerText = currency(cart.total_price, { fromCents: true }).format();
+	});
+
+	if (!window.Feather || (window.Feather && !window.Feather.cart)) return;
+	window.Feather.cart = cart;
+};
+
+export const setLineItem = function (item) {
 	if (!item) return null;
 
 	const { product_title, image, variant_id, variant_title, final_line_price, quantity } = item;
@@ -87,29 +121,9 @@ export const setCartItem = function (item) {
 	removeLineItem();
 };
 
-export const setCartProductCount = function (items = []) {
-	if (!items) return;
-
-	const count = document.querySelectorAll('[data-cart-item-count]');
-	if (!count || (count && !count.length)) return;
-
-	count.forEach((c) => (c.innerText = items.length + ' Products'));
-};
-
-export const setCartTotal = function (cart) {
-	if (!cart) return;
-
-	const elements = document.querySelectorAll('[data-cart-total]');
-	if (!elements || (elements && !elements.length)) return;
-
-	elements.forEach((el) => {
-		el.innerText = currency(cart.total_price, { fromCents: true }).format();
-	});
-
-	if (!window.Feather || (window.Feather && !window.Feather.cart)) return;
-	window.Feather.cart = cart;
-};
-
+/**
+ * Removes cart line item from UI
+ */
 const removeLineItem = function () {
 	const btns = document.querySelectorAll('[data-remove-lineitem]');
 	if (!btns || (btns && !btns.length)) return;
@@ -131,12 +145,20 @@ const removeLineItem = function () {
 				return;
 			}
 
-			clearCartUI();
-			res.data.items.forEach((item) => setCartItem(item));
+			removeLineItems();
+			res.data.items.forEach((item) => setLineItem(item));
 			setCartProductCount(res.data.items);
 			setCartTotal(res.data);
 		});
 	});
+};
+
+/**
+ * Removes all cart line items
+ */
+export const removeLineItems = function () {
+	const containers = document.querySelectorAll('[data-cart-items]');
+	containers.forEach((container) => (container.innerHTML = ''));
 };
 
 export const cart = function () {

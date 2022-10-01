@@ -1,3 +1,6 @@
+/**
+ * Get and setter for localstorage
+ */
 export const storage = {
 	get: () => {
 		let obj = window.localStorage.getItem('Feather');

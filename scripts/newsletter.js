@@ -5,6 +5,10 @@ import { modalOpen } from './modal.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
+/**
+ * Tracks if newsletter form has been filled out
+ * and success message is set
+ */
 export const newsletter = function () {
 	const obj = storage.get();
 

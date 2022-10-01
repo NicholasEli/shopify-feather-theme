@@ -1,3 +1,9 @@
+/**
+ * Determines if array is contains same values and length
+ * @param  {Array}  arr1
+ * @param  {Array}  arr2
+ * @return {Boolean}   returns truthy value if condition matches description
+ */
 export const isSame = function (arr1, arr2) {
   if (arr1.length !== arr2.length) return null;
 

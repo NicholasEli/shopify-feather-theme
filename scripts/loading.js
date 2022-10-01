@@ -2,6 +2,10 @@ import { asyncTimeout } from './utils.js';
 
 let requests = 0;
 
+/**
+ * Sets UI of loading bar
+ * @param  {Number} requests - number of active http requests
+ */
 const setUI = async function (requests) {
 	const el = document.querySelector('[data-loading]');
 	el.setAttribute('data-loading', 'true');
@@ -36,6 +40,10 @@ const setUI = async function (requests) {
 	}
 };
 
+/**
+ * Listens for http requests
+ * @return {Number|Null} Number of request
+ */
 export const loading = function () {
 	if (!window.fetch) return;
 

@@ -5,8 +5,8 @@ import { cart } from './api.js';
 import { getCSSVariable } from './utils.js';
 import { isSame } from './algorithims.js';
 import {
-	clearCartUI,
-	setCartItem,
+	removeLineItems,
+	setLineItem,
 	setCartTotal,
 	cartActiveUI,
 	setCartProductCount,
@@ -237,8 +237,8 @@ const addToCart = async function () {
 
 			res = await cart.get();
 			if (res && res.data) {
-				clearCartUI();
-				res.data.items.forEach((item) => setCartItem(item));
+				removeLineItems();
+				res.data.items.forEach((item) => setLineItem(item));
 				setCartTotal(res.data);
 				setCartProductCount(res.data.items);
 				cartActiveUI();

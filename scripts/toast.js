@@ -9,7 +9,6 @@ const success = getCSSVariable('--success');
  * Toast message types
  * @param { string } text - message you be set
  **/
-
 export const options = function () {
 	return {
 		duration: 5000,

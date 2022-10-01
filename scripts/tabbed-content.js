@@ -21,6 +21,10 @@ const state = {
 	},
 };
 
+/**
+ * Sets UI of tab element
+ * @param {Object} tab - DOM element representing tab item
+ */
 const setUI = function (tab) {
 	const active = state.tabs[tab.id].active;
 
@@ -36,6 +40,9 @@ const setUI = function (tab) {
 	}
 };
 
+/**
+ * Tracks all tab elements in the DOM and sets them to state
+ */
 const setTabs = function () {
 	const tabs = document.querySelectorAll('[data-tab]');
 
