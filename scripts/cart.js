@@ -59,6 +59,16 @@ const toggleCart = function () {
 	});
 };
 
+const cartUI = function (cart) {
+	if (!cart) return;
+
+	removeLineItems();
+	cart.items.forEach((item) => setLineItem(item));
+	updateLineItem();
+	setCartProductCount(cart.items);
+	setCartTotal(cart);
+};
+
 /**
  * Sets the cart product count
  */
@@ -128,9 +138,30 @@ const updateLineItem = function () {
 	const inputs = document.querySelectorAll('[data-cart-item-quantity]');
 	if (!inputs || (inputs && !inputs.length)) return;
 
+	let interval = null;
 	inputs.forEach((input) => {
-		input.addEventListener('change', async (e) => {
-			const value = parseInt(input.value);
+		input.addEventListener('change', (e) => {
+			interval = setInterval(async () => {
+				clearInterval(interval);
+				interval = null;
+				const value = parseInt(input.value);
+				const variantID = input.getAttribute('data-cart-item-quantity');
+
+				if (!variantID) return;
+
+				const res = await api.change({
+					id: variantID,
+					quantity: value,
+				});
+
+				if (res.error || !res.data) {
+					console.error(res.error);
+					notyf.error('Could not add item to cart');
+					return;
+				}
+
+				cartUI(res.data);
+			}, 500);
 		});
 	});
 };
@@ -159,10 +190,7 @@ const removeLineItem = function () {
 				return;
 			}
 
-			removeLineItems();
-			res.data.items.forEach((item) => setLineItem(item));
-			setCartProductCount(res.data.items);
-			setCartTotal(res.data);
+			cartUI(res.data);
 		});
 	});
 };
