@@ -1,8 +1,11 @@
 {%
-	assign hide_class = ''
+	assign alert_class = 'hide'
+	assign checkout_class = ''
 	if cart.item_count == 0
-		assign hide_class = 'hide'
+		assign alert_class = ''
+		assign checkout_class = 'hide'
 	endif
+
 %}
 <div data-menu-cart="overlay" class="feather-menu-cart animate__animated">
 	<div data-menu-cart="dialog" class="feather-menu-cart__dialog animate__animated">
@@ -14,7 +17,7 @@
 			<h4>Cart</h4>
 			<p data-cart-item-count>{{ cart.items.size }} Products</p>
 		</div>
-		<div data-cart-empty class="feather-menu-cart__dialog-body container container--padding {{ hide_class }}">
+		<div data-alert="cart-empty" class="feather-menu-cart__dialog-body container container--padding {{ alert_class }}">
 			{% render 'alert', alert_type: 'success', alert_message: 'Your shopping cart is empty' %}
 		</div>
 		<div class="feather-menu-cart__dialog-body container container--padding">
@@ -27,7 +30,7 @@
 			</div>
 			{% render 'cart-subtotal', item: item %}
 			<div class="feather-cart-checkout container container--padding">
-				<a data-btn="checkout" href="/checkout" class="button button--primary {{ hide_class }}">Proceed To Checkout</a>
+				<a data-btn="checkout" href="/checkout" class="button button--primary {{ checkout_class }}">Proceed To Checkout</a>
 				<a href="/cart" class="button">View Shopping Cart</a>
 			</div>
 		</div>

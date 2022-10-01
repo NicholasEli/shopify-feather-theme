@@ -32,14 +32,12 @@
 	  	class="feather-header__user-cart"
 	  	href="{{ routes.cart_url }}"
 	  >
-	    {% if cart == empty %}
-	    	{% render 'icon-cart-empty' %}
-	    {% endif %}
-
-	    {% if cart != empty %}
-	    	{% render 'icon-cart' %}
-	    	<span data-cart-total>{{ cart.total_price | money }}</span>
-	    {% endif %}
+	    {% render 'icon-cart' %}
+	    <span data-cart-total>
+	    	{% if cart.total_price > 0 %}
+	    		{{ cart.total_price | money }}
+	    	{% endif %}
+	    </span>
 	  </a>
 	</div>
 </div>

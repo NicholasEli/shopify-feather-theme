@@ -59,6 +59,19 @@ const toggleCart = function () {
 	});
 };
 
+const emptyCartUI = function (cart) {
+	if (!cart) return;
+
+	const alerts = document.querySelectorAll('[data-alert="cart-empty"]');
+
+	if (!alerts || (alerts && !alerts.length)) return;
+
+	alerts.forEach((alert) => {
+		if (cart.item_count === 0) alert.classList.remove('hide');
+		if (cart.item_count !== 0) alert.classList.add('hide');
+	});
+};
+
 /**
  * Show/Hide checkout btns if cart is empty
  * @param  {Object} cart - http cart response
@@ -89,6 +102,7 @@ const cartUI = function (cart) {
 	setCartProductCount(cart.items);
 	setCartTotal(cart);
 	checkoutButtonUI(cart);
+	emptyCartUI(cart);
 };
 
 /**
@@ -174,7 +188,7 @@ const updateLineItem = function () {
 					id: variantID,
 					quantity: value,
 				});
-
+				console.log(res.data);
 				timeout = null;
 
 				if (res.error || !res.data) {
