@@ -1,14 +1,26 @@
 {
   "sections": {
     "header": {
-      "type": "collection-header"
+      "type": "collection-header",
+      "settings": {
+        "title": ""
+      }
     },
     "pagination": {
-      "type": "pagination"
+      "type": "pagination",
+      "settings": {
+      }
     },
     "product-list": {
-      "type": "product-list"
+      "type": "product-list",
+      "settings": {
+        "paginate_count": 10
+      }
     }
   },
-  "order": ["header", "pagination", "product-list"]
+  "order": [
+    "header",
+    "pagination",
+    "product-list"
+  ]
 }
