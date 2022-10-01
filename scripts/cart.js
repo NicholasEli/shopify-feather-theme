@@ -160,12 +160,11 @@ const updateLineItem = function () {
 	const inputs = document.querySelectorAll('[data-cart-item-quantity]');
 	if (!inputs || (inputs && !inputs.length)) return;
 
-	let interval = null;
 	inputs.forEach((input) => {
+		let timeout = null;
 		input.addEventListener('change', (e) => {
-			clearInterval(interval);
-			interval = null;
-			interval = setInterval(async () => {
+			clearTimeout(timeout);
+			timeout = setTimeout(async () => {
 				const value = parseInt(input.value);
 				const variantID = input.getAttribute('data-cart-item-quantity');
 
@@ -175,6 +174,8 @@ const updateLineItem = function () {
 					id: variantID,
 					quantity: value,
 				});
+
+				timeout = null;
 
 				if (res.error || !res.data) {
 					console.error(res.error);
