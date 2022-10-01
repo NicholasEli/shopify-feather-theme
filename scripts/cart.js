@@ -59,6 +59,27 @@ const toggleCart = function () {
 	});
 };
 
+/**
+ * Show/Hide checkout btns if cart is empty
+ * @param  {Object} cart - http cart response
+ */
+const checkoutButtonUI = function (cart) {
+	if (!cart) return;
+
+	const btns = document.querySelectorAll('[data-btn="checkout"]');
+
+	if (!btns || (btns && !btns.length)) return;
+
+	btns.forEach((btn) => {
+		if (cart.item_count === 0) btn.classList.add('hide');
+		if (cart.item_count !== 0) btn.classList.remove('hide');
+	});
+};
+
+/**
+ * Runs all cart UI methods
+ * @param  {Object} cart - http cart response
+ */
 const cartUI = function (cart) {
 	if (!cart) return;
 
@@ -67,6 +88,7 @@ const cartUI = function (cart) {
 	updateLineItem();
 	setCartProductCount(cart.items);
 	setCartTotal(cart);
+	checkoutButtonUI(cart);
 };
 
 /**
@@ -141,9 +163,9 @@ const updateLineItem = function () {
 	let interval = null;
 	inputs.forEach((input) => {
 		input.addEventListener('change', (e) => {
+			clearInterval(interval);
+			interval = null;
 			interval = setInterval(async () => {
-				clearInterval(interval);
-				interval = null;
 				const value = parseInt(input.value);
 				const variantID = input.getAttribute('data-cart-item-quantity');
 
