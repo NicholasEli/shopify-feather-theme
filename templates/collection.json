@@ -1,14 +1,45 @@
 {
   "sections": {
     "header": {
-      "type": "collection-header"
+      "type": "collection-header",
+      "settings": {
+        "title": ""
+      }
     },
     "pagination": {
-      "type": "pagination"
+      "type": "pagination",
+      "settings": {
+      }
     },
     "product-list": {
-      "type": "product-list"
+      "type": "product-list",
+      "settings": {
+        "paginate_count": 10
+      }
+    },
+    "16645907776d3ec733": {
+      "type": "product-spotlight",
+      "blocks": {
+        "1664590777fd11873a-0": {
+          "type": "products-banner",
+          "settings": {
+            "product": "minimal-living-room-table"
+          }
+        }
+      },
+      "block_order": [
+        "1664590777fd11873a-0"
+      ],
+      "settings": {
+        "tagline": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love.",
+        "subtagline": "Spotlight: Look at this couch!"
+      }
     }
   },
-  "order": ["header", "pagination", "product-list"]
+  "order": [
+    "header",
+    "pagination",
+    "product-list",
+    "16645907776d3ec733"
+  ]
 }
