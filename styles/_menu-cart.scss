@@ -1,3 +1,6 @@
+$cartCloseHeight: 60px;
+$cartHeaderHeight: 75px;
+
 .feather-menu-cart {
 	width: 100vw;
 	height: 100vh;
@@ -34,6 +37,7 @@
 		&-close {
 			@include flex(row, flex-start, center);
 			width: 100%;
+			height: $cartCloseHeight;
 			background-color: $gray;
 			cursor: pointer;
 
@@ -57,6 +61,7 @@
 
 		&-header {
 			@include flex(row, space-between, center);
+			height: $cartHeaderHeight;
 
 			h4,
 			p {
@@ -71,6 +76,11 @@
 			p {
 				font-weight: 300;
 			}
+		}
+
+		&-body {
+			max-height: calc(100vh - #{$cartCloseHeight} - #{$cartHeaderHeight} - #{$padding});
+			overflow-y: auto;
 		}
 
 		.feather-cart-items,
