@@ -16,7 +16,7 @@
 	</div>
 	<div class="feather-cart-item-quantity-total">
 		<div class="input">
-			<input data-cart-item-quantity type="number" placeholder="0" value="{{ item.quantity }}"/>
+			<input data-cart-item-quantity="{{ item.variant_id }}" type="number" placeholder="0" value="{{ item.quantity }}"/>
 		</div>
 		<p data-cart-item-price>{{ item.final_line_price | money }}</p>
 	</div>

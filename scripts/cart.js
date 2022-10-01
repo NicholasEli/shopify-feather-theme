@@ -110,6 +110,9 @@ export const setLineItem = function (item) {
 			.querySelector('[data-remove-lineitem]')
 			.setAttribute('data-remove-lineitem', variant_id);
 		template.content.querySelector('[data-cart-item-quantity]').value = quantity;
+		template.content
+			.querySelector('[data-cart-item-quantity]')
+			.setAttribute('data-cart-item-quantity', variant_id);
 		template.content.querySelector('[data-cart-item-price]').innerText = currency(
 			final_line_price,
 			{ fromCents: true }
@@ -121,8 +124,19 @@ export const setLineItem = function (item) {
 	removeLineItem();
 };
 
+const updateLineItem = function () {
+	const inputs = document.querySelectorAll('[data-cart-item-quantity]');
+	if (!inputs || (inputs && !inputs.length)) return;
+
+	inputs.forEach((input) => {
+		input.addEventListener('change', async (e) => {
+			const value = parseInt(input.value);
+		});
+	});
+};
+
 /**
- * Removes cart line item from UI
+ * Makes http request to remove lineitem from cart
  */
 const removeLineItem = function () {
 	const btns = document.querySelectorAll('[data-remove-lineitem]');
@@ -154,7 +168,7 @@ const removeLineItem = function () {
 };
 
 /**
- * Removes all cart line items
+ * Removes all lineitems from cart
  */
 export const removeLineItems = function () {
 	const containers = document.querySelectorAll('[data-cart-items]');
@@ -164,4 +178,5 @@ export const removeLineItems = function () {
 export const cart = function () {
 	toggleCart();
 	removeLineItem();
+	updateLineItem();
 };
