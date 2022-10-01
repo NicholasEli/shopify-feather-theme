@@ -89,7 +89,7 @@
       "settings": {}
     },
     "gallery": {
-      "type": "product-gallery",
+      "type": "gallery",
       "blocks": {
         "205c9528-62fd-4162-ba4f-a450dabd14b4": {
           "type": "images",
