@@ -14,7 +14,7 @@
 						>
 							{% for item in section.blocks %}
 								{% assign ref = all_products[item.settings.product] %}
-								<li data-in-view class="feather-product__related-item">{% render 'item', item: ref %}</li>
+								<li data-in-view class="feather-product__slider-item">{% render 'item', item: ref %}</li>
 							{% endfor %}
 							{% if section.blocks.size < 4 %}
 								{% assign count = 3 | minus: section.blocks.size %}
@@ -23,7 +23,7 @@
 										assign item = section.blocks[i]
 										assign ref = all_products[item.settings.product]
 									%}
-									<li data-in-view class="feather-product__related-item feather-product__related-item--duplicate">{% render 'item', item: ref %}</li>
+									<li data-in-view class="feather-product__slider-item feather-product__slider-item--duplicate">{% render 'item', item: ref %}</li>
 								{% endfor %}
 							{% endif %}
 						</ul>
@@ -39,9 +39,9 @@
 
 {% schema %}
 	{
-		"name": "Related Products",
+		"name": "Products Slider",
 		"tag": "section",
-		"class": "feather-product__related",
+		"class": "feather-product__slider",
 		"settings": [
 			{
 				"id": "title",
@@ -65,7 +65,7 @@
 	  ],
   	"presets": [
   		{
-  			"name": "Related Products",
+  			"name": "Products Slider",
   			"blocks": [
   				{
   					"type": "products"
