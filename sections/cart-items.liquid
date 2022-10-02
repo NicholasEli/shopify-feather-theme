@@ -1,9 +1,25 @@
-<div data-cart-items class="row">
-	{% if cart.item_count != 0 %}
-		{% for item in cart.items %}
-			{% render 'cart-item', item: item %}
-		{% endfor %}
-	{% endif %}
+<div class="container container--padding">
+	<div class="feather-cart-items__header row show-flex-md">
+		<div class="feather-cart-items__header-product col-xs-4">
+			<p>Product</p>
+		</div>
+		<div class="feather-cart-items__header-quantity col-xs-2">
+			<p>Quantity</p>
+		</div>
+		<div class="feather-cart-items__header-price col-xs-3">
+			<p>Unit Price</p>
+		</div>
+		<div class="feather-cart-items__header-price col-xs-3">
+			<p>Total</p>
+		</div>
+	</div>
+	<div data-cart-items class="row">
+		{% if cart.item_count != 0 %}
+			{% for item in cart.items %}
+				{% render 'cart-item', item: item %}
+			{% endfor %}
+		{% endif %}
+	</div>
 </div>
 
 {% schema %}
