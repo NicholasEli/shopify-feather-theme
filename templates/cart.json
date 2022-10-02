@@ -5,7 +5,10 @@
     },
     "cart-items": {
       "type": "cart-items"
+    },
+    "cart-summary": {
+      "type": "cart-summary"
     }
   },
-  "order": ["cart-title", "cart-items"]
+  "order": ["cart-title", "cart-items", "cart-summary"]
 }
