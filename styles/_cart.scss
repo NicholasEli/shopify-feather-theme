@@ -1,0 +1,23 @@
+main {
+	.feather-cart-title {
+		h1 {
+			margin: 0;
+			font-size: 40px;
+			font-family: $ibarra;
+			color: $text;
+		}
+	}
+
+	.feather-cart-items {
+		&__header {
+			border-bottom: 1px solid $stroke;
+
+			p {
+				margin: 0;
+				color: $text;
+				text-transform: uppercase;
+				font-size: 12px;
+			}
+		}
+	}
+}
