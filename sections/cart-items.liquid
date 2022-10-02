@@ -1,0 +1,15 @@
+<div data-cart-items class="row">
+	{% if cart.item_count != 0 %}
+		{% for item in cart.items %}
+			{% render 'cart-item', item: item %}
+		{% endfor %}
+	{% endif %}
+</div>
+
+{% schema %}
+	{
+		"name": "Cart Items",
+		"tag": "section",
+		"class": "feather-cart-items"
+	}
+{% endschema %}

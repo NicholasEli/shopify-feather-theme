@@ -1,0 +1,13 @@
+.feather-cart-tax {
+	width: 100%;
+	border-top: 1px solid $stroke;
+	border-bottom: 1px solid $stroke;
+
+	.feather-tax {
+		@include flex(row, space-between, center);
+
+		p {
+			margin: 0;
+		}
+	}
+}
