@@ -6,6 +6,31 @@
 	flex-wrap: $wrap;
 }
 
+@mixin feather-col {
+	box-sizing: border-box;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 auto;
+	flex: 0 0 auto;
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+}
+
+@mixin feather-width($columns: 1) {
+	$column: 100 / 12;
+	$total: calc(#{$column} * #{$columns} * 1%);
+
+	-ms-flex-preferred-size: $total;
+	flex-basis: $total;
+	max-width: $total;
+}
+
+@mixin feather-offset($columns: 1) {
+	$column: 100 / 12;
+	$total: calc(#{$column} * #{$columns} * 1%);
+
+	margin-left: $total;
+}
+
 @mixin curtain-animation {
 	[data-in-view] {
 		&::before {

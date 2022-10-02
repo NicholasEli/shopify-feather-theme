@@ -1,7 +1,8 @@
 .feather-cart-item {
-	&-details {
-		position: relative;
-	}
+	position: relative;
+	padding-bottom: $padding;
+	margin-bottom: $padding;
+	border-bottom: 1px soild $stroke;
 
 	&-image {
 		img {
@@ -23,6 +24,31 @@
 			span {
 				font-weight: 300;
 			}
+		}
+	}
+
+	&-quantity {
+		input {
+			width: 100px;
+			margin: 0;
+		}
+	}
+
+	&-price,
+	&-total {
+		width: auto;
+		font-size: 16px;
+		font-weight: 300;
+		color: $text;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	&-total {
+		p {
+			font-weight: 600;
 		}
 	}
 
@@ -49,23 +75,6 @@
 
 		&:hover {
 			background-color: $stroke;
-		}
-	}
-
-	&-quantity-total {
-		@include flex(row, center, center);
-
-		input {
-			width: 100px;
-			margin: 0;
-		}
-
-		p {
-			width: auto;
-			margin: 0 0 0 $padding;
-			font-size: 16px;
-			font-weight: 600;
-			color: $text;
 		}
 	}
 }

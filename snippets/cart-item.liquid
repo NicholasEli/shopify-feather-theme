@@ -1,23 +1,28 @@
 {% liquid
-	assign title = item.title | split: ' - '
-	assign product_title = title[0]
-	assign variant_title = title[1]
+	assign item_title = item.title | split: ' - '
+	assign product_title = item_title[0]
+	assign variant_title = item_title[1]
 %}
-<div data-cart-item class="feather-cart-item container container--padding">
+<div data-cart-item class="feather-cart-item container">
 	<div class="feather-cart-item-details row">
-		<div class="feather-cart-item-image col-xs-3">
+		<div class="feather-cart-item-image">
 			<img data-cart-item-image src="{{ item | img_url: 'compact' }}" title="{{ item.title }}" />
 		</div>
-		<div class="feather-cart-item-title col-xs-7">
+		<div class="feather-cart-item-title">
 			<h5 data-cart-item-title>{{ product_title }}</h5>
 			<p>Variant: <span data-cart-item-variant>{{ variant_title }}</span></p>
 		</div>
-		<a data-remove-lineitem="{{ item.variant_id }}" class="feather-cart-item-remove">{% render 'icon-close' %}</a>
-	</div>
-	<div class="feather-cart-item-quantity-total">
-		<div class="input">
-			<input data-cart-item-quantity="{{ item.variant_id }}" type="number" placeholder="0" value="{{ item.quantity }}"/>
+		<div class="feather-cart-item-quantity">
+			<div class="input">
+				<input data-cart-item-quantity="{{ item.variant_id }}" type="number" placeholder="0" value="{{ item.quantity }}"/>
+			</div>
 		</div>
-		<p data-cart-item-price>{{ item.final_line_price | money }}</p>
+		<div class="feather-cart-item-price">
+			<p data-cart-item-price>{{ item.final_line_price | money }}</p>
+		</div>
+		<div class="feather-cart-item-total">
+			<p data-cart-item-price>{{ item.final_line_price | money }}</p>
+		</div>
 	</div>
+	<a data-remove-lineitem="{{ item.variant_id }}" class="feather-cart-item-remove">{% render 'icon-close' %}</a>
 </div>

@@ -89,3 +89,7 @@
 		}
 	}
 }
+
+.feather-col {
+	@include feather-col;
+}
