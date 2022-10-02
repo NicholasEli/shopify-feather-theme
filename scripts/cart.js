@@ -139,12 +139,15 @@ export const setLineItem = function (item) {
 	if (!item) return null;
 
 	const { product_title, image, variant_id, variant_title, final_line_price, quantity } = item;
-	const template = document.querySelector('[data-template="cart-item"]').cloneNode(true);
 	const containers = document.querySelectorAll('[data-cart-items]');
 
-	if (!containers || (containers && !containers.length) || !template) return;
+	if (!containers || (containers && !containers.length)) return;
 
 	containers.forEach((container) => {
+		const template = document.querySelector('[data-template="cart-item"]').cloneNode(true);
+
+		if (!template) return;
+
 		template.content.querySelector('[data-cart-item-title]').innerText = product_title;
 
 		const _image = template.content.querySelector('[data-cart-item-image]');

@@ -10,6 +10,7 @@ main {
 
 	.feather-cart-items {
 		&__header {
+			margin-bottom: $padding;
 			border-bottom: 1px solid $stroke;
 
 			p {
@@ -17,6 +18,145 @@ main {
 				color: $text;
 				text-transform: uppercase;
 				font-size: 12px;
+			}
+		}
+
+		&__header,
+		.feather-cart-item {
+			width: 100%;
+
+			&-image,
+			&-title,
+			&-quantity,
+			&-price,
+			&-total {
+				@include feather-col;
+				@include feather-width(12);
+				position: relative;
+			}
+
+			&-image,
+			&-title,
+			&-quantity,
+			&-price {
+				margin-bottom: $padding;
+			}
+
+			&-quantity,
+			&-price,
+			&-total {
+				text-align: right;
+
+				&::before {
+					position: absolute;
+					top: 50%;
+					left: 0;
+					transform: translateY(-50%);
+					color: $text;
+					font-weight: 600;
+					font-size: 14px;
+					text-decoration: capitalize;
+				}
+
+				@media (min-width: #{$sm}) {
+					@include feather-width(4);
+					padding-top: multiply($padding, 2);
+					margin-bottom: 0;
+
+					&::before {
+						left: unset;
+						right: 0;
+						top: 0;
+						transform: translateY(0);
+					}
+				}
+
+				@media (min-width: #{$lg}) {
+					padding-top: 0;
+					&::before {
+						content: none !important; // overrides labels below
+					}
+				}
+			}
+
+			&-price,
+			&-total {
+				p {
+					color: $text;
+				}
+			}
+
+			&-image {
+				@media (min-width: #{$sm}) {
+					@include feather-width(4);
+				}
+
+				img {
+					width: auto;
+					max-width: calc(100% - #{multiply($padding, 2)});
+
+					@media (min-width: #{$sm}) {
+						width: 100%;
+						max-width: 100%;
+					}
+				}
+			}
+
+			&-title {
+				@media (min-width: #{$sm}) {
+					@include feather-width(8);
+				}
+			}
+
+			&-quantity {
+				&::before {
+					content: 'Quantity';
+				}
+
+				@media (min-width: #{$md}) {
+					@include feather-offset(4);
+					@include feather-width(2);
+				}
+
+				@media (min-width: #{$lg}) {
+					margin-left: 0;
+				}
+
+				input {
+					display: inline-block;
+				}
+			}
+
+			&-price {
+				&::before {
+					content: 'Price';
+				}
+
+				@media (min-width: #{$md}) {
+					@include feather-width(3);
+				}
+			}
+
+			&-total {
+				&::before {
+					content: 'Total';
+				}
+
+				@media (min-width: #{$md}) {
+					@include feather-width(3);
+				}
+			}
+
+			&-image,
+			&-title,
+			&-quantity,
+			&-price,
+			&-total {
+				@media (min-width: #{$lg}) {
+					width: calc(100% / 5 - 6px);
+					max-width: 100%;
+					flex-basis: auto;
+				}
 			}
 		}
 	}

@@ -25,7 +25,7 @@
 }
 
 @mixin feather-offset($columns: 1) {
-	$column: 100 / 12;
+	$column: calc(100 / 12);
 	$total: calc(#{$column} * #{$columns} * 1%);
 
 	margin-left: $total;
