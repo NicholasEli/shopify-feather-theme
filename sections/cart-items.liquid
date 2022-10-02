@@ -1,5 +1,5 @@
 <div class="container container--padding">
-	<div class="feather-cart-items__header row show-flex-lg">
+	<div class="feather-cart-items__header show-flex-xl">
 		<div class="feather-cart-items__header-image">
 			<p>Product</p>
 		</div>
@@ -10,11 +10,11 @@
 		<div class="feather-cart-items__header-price">
 			<p>Unit Price</p>
 		</div>
-		<div class="feather-cart-items__header-price">
+		<div class="feather-cart-items__header-total">
 			<p>Total</p>
 		</div>
 	</div>
-	<div data-cart-items class="row">
+	<div data-cart-items>
 		{% if cart.item_count != 0 %}
 			{% for item in cart.items %}
 				{% render 'cart-item', item: item %}

@@ -3,6 +3,13 @@
 	background-color: #fff;
 	border-bottom: 1px solid $stroke;
 
+	@media (min-width: #{$md}) {
+		position: sticky;
+		top: 0;
+		left: 0;
+		z-index: 5;
+	}
+
 	/** TOP **/
 	&__top {
 		position: relative;

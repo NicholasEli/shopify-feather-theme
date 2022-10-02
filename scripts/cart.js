@@ -100,6 +100,7 @@ const cartUI = function (cart) {
 	cart.items.forEach((item) => setLineItem(item));
 	updateLineItem();
 	setCartProductCount(cart.items);
+	setCartSubTotal(cart);
 	setCartTotal(cart);
 	checkoutButtonUI(cart);
 	emptyCartUI(cart);
@@ -115,6 +116,24 @@ export const setCartProductCount = function (items = []) {
 	if (!count || (count && !count.length)) return;
 
 	count.forEach((c) => (c.innerText = items.length + ' Products'));
+};
+
+/**
+ * Sets the cart subtotal
+ * @param {Object} cart - /cart.js http response
+ */
+export const setCartSubTotal = function (cart) {
+	if (!cart) return;
+
+	const elements = document.querySelectorAll('[data-cart-subtotal]');
+	if (!elements || (elements && !elements.length)) return;
+
+	elements.forEach((el) => {
+		el.innerText = currency(cart.items_subtotal_price, { fromCents: true }).format();
+	});
+
+	if (!window.Feather || (window.Feather && !window.Feather.cart)) return;
+	window.Feather.cart = cart;
 };
 
 /**

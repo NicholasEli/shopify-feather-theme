@@ -28,7 +28,9 @@
 					{% endfor %}
 				{% endif %}
 			</div>
-			{% render 'cart-subtotal', item: item %}
+			<div class="feather-cart-subtotal container container--padding">
+				{% render 'cart-subtotal' %}
+			</div>
 			<div class="feather-cart-checkout container container--padding">
 				<a data-btn="checkout" href="/checkout" class="button button--primary {{ checkout_class }}">Proceed To Checkout</a>
 				<a href="/cart" class="button">View Shopping Cart</a>

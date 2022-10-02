@@ -1,6 +1,4 @@
-<div class="feather-cart-subtotal container container--padding">
-	<div class="feather-subtotal">
-		<p>Subtotal</p>
-		<p data-cart-total>{{ cart.total_price | money }}</p>
-	</div>
+<div class="feather-subtotal">
+	<p>Subtotal</p>
+	<p data-cart-subtotal>{{ cart.items_subtotal_price | money }}</p>
 </div>

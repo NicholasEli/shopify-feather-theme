@@ -1,5 +1,21 @@
 <div class="container container--padding">
 	<div class="row">
+		<div class="col-xs-12">
+			<h5>Summary</h5>
+		</div>
+	</div>
+	<div class="row feather-cart-subtotal">
+		{% if cart.total_discount and cart.total_discount > 0 %}
+			<div class="feather-discount">
+				<p>Discount</p>
+				<p data-cart-discount>{{ cart.total_discount | money }}</p>
+			</div>
+		{% endif %}
+		{% render 'cart-subtotal' %}
+		<div class="feather-total">
+			<p>Total</p>
+			<p data-cart-total>{{ cart.total_price | money }}</p>
+		</div>
 	</div>
 </div>
 

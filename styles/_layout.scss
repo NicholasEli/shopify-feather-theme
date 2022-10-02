@@ -24,6 +24,12 @@
 			display: none;
 		}
 	}
+
+	&-xl {
+		@media (min-width: #{$xl}) {
+			display: none;
+		}
+	}
 }
 
 .show {
@@ -56,6 +62,13 @@
 			display: block;
 		}
 	}
+
+	&-xl {
+		display: none;
+		@media (min-width: #{$xl}) {
+			display: block;
+		}
+	}
 }
 
 .show-flex {
@@ -85,6 +98,13 @@
 	&-lg {
 		display: none;
 		@media (min-width: #{$lg}) {
+			display: flex;
+		}
+	}
+
+	&-xl {
+		display: none;
+		@media (min-width: #{$xl}) {
 			display: flex;
 		}
 	}

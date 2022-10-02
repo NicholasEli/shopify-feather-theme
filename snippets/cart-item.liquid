@@ -9,7 +9,9 @@
 			<img data-cart-item-image src="{{ item | img_url: 'compact' }}" title="{{ item.title }}" />
 		</div>
 		<div class="feather-cart-item-title">
-			<h5 data-cart-item-title>{{ product_title }}</h5>
+			<a title="{{ product_title }}" href="{{ item.url }}">
+				<h5 data-cart-item-title>{{ product_title }}</h5>
+			</a>
 			<p>Variant: <span data-cart-item-variant>{{ variant_title }}</span></p>
 		</div>
 		<div class="feather-cart-item-quantity">

@@ -1,4 +1,45 @@
 main {
+	@media (min-width: #{$lg}) {
+		@include flex(row, flex-start, flex-start, wrap);
+	}
+
+	.feather-cart-title,
+	.feather-cart-items,
+	.feather-cart-summary {
+		width: 100%;
+	}
+
+	.feather-cart-items {
+		@media (min-width: #{$lg}) {
+			width: calc(100% - 320px - #{multiply($padding, 2)});
+		}
+
+		@media (min-width: #{$xl}) {
+			width: calc(60% - #{multiply($padding, 2)});
+		}
+	}
+
+	.feather-cart-summary {
+		.container {
+			width: calc(100% - #{multiply($padding, 2)});
+			margin: 0 auto $padding;
+
+			@media (min-width: #{$lg}) {
+				width: 100%;
+				margin: 0;
+			}
+		}
+
+		@media (min-width: #{$lg}) {
+			width: 320px;
+			margin-left: $padding;
+		}
+
+		@media (min-width: #{$xl}) {
+			width: 40%;
+		}
+	}
+
 	.feather-cart-title {
 		h1 {
 			margin: 0;
@@ -24,6 +65,7 @@ main {
 		&__header,
 		.feather-cart-item {
 			width: 100%;
+			padding-right: multiply($padding, 2);
 
 			&-image,
 			&-title,
@@ -71,7 +113,7 @@ main {
 					}
 				}
 
-				@media (min-width: #{$lg}) {
+				@media (min-width: #{$xl}) {
 					padding-top: 0;
 					&::before {
 						content: none !important; // overrides labels below
@@ -118,7 +160,7 @@ main {
 					@include feather-width(2);
 				}
 
-				@media (min-width: #{$lg}) {
+				@media (min-width: #{$xl}) {
 					margin-left: 0;
 				}
 
@@ -152,10 +194,60 @@ main {
 			&-quantity,
 			&-price,
 			&-total {
-				@media (min-width: #{$lg}) {
+				@media (min-width: #{$xl}) {
 					width: calc(100% / 5 - 6px);
 					max-width: 100%;
 					flex-basis: auto;
+				}
+			}
+		}
+	}
+
+	.feather-cart-summary {
+		.container {
+			background-color: $gray;
+		}
+
+		.row {
+			margin-bottom: multiply($padding, 2);
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+
+		h5 {
+			margin-bottom: 0;
+			font-family: $ibarra;
+			color: $text;
+			text-transform: lowercase;
+		}
+
+		.feather-cart-subtotal {
+			border: none;
+
+			.feather-discount,
+			.feather-subtotal,
+			.feather-total {
+				@include feather-col;
+				@include feather-width(12);
+				@include flex(row, space-between, center);
+				margin-bottom: $padding;
+
+				p {
+					margin: 0;
+					color: $text;
+				}
+			}
+
+			.feather-total {
+				margin-top: $padding;
+				padding-top: $padding;
+				border-top: 1px solid $stroke;
+
+				p {
+					font-weight: 900;
+					letter-spacing: 0.5px;
 				}
 			}
 		}
