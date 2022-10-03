@@ -13,6 +13,7 @@
 				<h5 data-cart-item-title>{{ product_title }}</h5>
 			</a>
 			<p>Variant: <span data-cart-item-variant>{{ variant_title }}</span></p>
+			{% if item.sku %}<p>Product SKU: <span data-cart-item-sku>{{ item.sku}}</span></p>{% endif %}
 		</div>
 		<div class="feather-cart-item-quantity">
 			<div class="input">

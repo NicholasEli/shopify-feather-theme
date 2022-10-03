@@ -10,6 +10,7 @@ import { toggle } from './toggle.js';
 import { modal } from './modal.js';
 import { tabbedContent } from './tabbed-content.js';
 import { cart } from './cart.js';
+import { modelViewer } from './model-viewer.js';
 
 // Page Components
 import { product } from './product.js';
@@ -32,6 +33,7 @@ window.onload = async function () {
 	modal();
 	tabbedContent();
 	cart();
+	modelViewer();
 
 	// Page Components
 	newsletter();

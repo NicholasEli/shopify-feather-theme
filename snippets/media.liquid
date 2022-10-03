@@ -1,0 +1,16 @@
+{% if media.media_type == 'image' %}
+	{{ media | media_tag: image_size: '1200x' }}
+{% endif %}
+
+{% if media.media_type == 'video' or image.media_type == 'external_video' %}
+	{{ media | media_tag: image_size: '1200x' }}
+{% endif %}
+
+{% if media.media_type == 'model' %}
+	<div data-model-viewer class="feather-model-viewer">
+		{{ media | model_viewer_tag: image_size: '1200x', reveal: 'interaction', toggleable: true, data-model-id: media.id }}
+		<div data-btn="model-viewer" class="feather-model-viewer__btn">
+			{% render 'icon-3d-model' %}
+		</div>
+	</div>
+{% endif %}

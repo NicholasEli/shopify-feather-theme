@@ -1,4 +1,5 @@
-main {
+body.cart main {
+	padding: multiply($padding, 2) 0;
 	@media (min-width: #{$lg}) {
 		@include flex(row, flex-start, flex-start, wrap);
 	}
@@ -15,18 +16,17 @@ main {
 		}
 
 		@media (min-width: #{$xl}) {
-			width: calc(60% - #{multiply($padding, 2)});
+			width: calc(70% - #{multiply($padding, 2)});
 		}
 	}
 
 	.feather-cart-summary {
 		.container {
 			width: calc(100% - #{multiply($padding, 2)});
-			margin: 0 auto $padding;
+			margin: 0 auto;
 
 			@media (min-width: #{$lg}) {
 				width: 100%;
-				margin: 0;
 			}
 		}
 
@@ -36,7 +36,7 @@ main {
 		}
 
 		@media (min-width: #{$xl}) {
-			width: 40%;
+			width: 30%;
 		}
 	}
 

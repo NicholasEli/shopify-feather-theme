@@ -5,9 +5,17 @@
 	}
 
 	.glide {
-		img {
+		img,
+		video,
+		iframe,
+		picture,
+		model-viewer {
 			width: 100%;
 			display: block;
+		}
+
+		model-viewer {
+			height: 100%;
 		}
 
 		li {

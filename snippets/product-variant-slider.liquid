@@ -9,6 +9,11 @@
 					{% for variant in product.variants %}
 						{% render 'variant-slider-item', variant: variant %}
 					{% endfor %}
+					{% for media in product.media %}
+						<li>
+							{% render 'media', media: media %}
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 			<div data-glide-el="controls" class="glide__arrows">
