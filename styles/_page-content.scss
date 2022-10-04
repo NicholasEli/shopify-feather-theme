@@ -1,4 +1,8 @@
 .feather-page-content {
+	min-height: 320px;
+
 	.container {
+		padding-top: multiply($padding, 4);
+		padding-bottom: multiply($padding, 4);
 	}
 }
