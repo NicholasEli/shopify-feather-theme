@@ -63,6 +63,10 @@ const toggleCart = function () {
 
 		if (e.clientX < bounds.x) cartInactiveUI();
 	});
+
+	window.addEventListener('keyup', (e) => {
+		if (e.keyCode === 27) cartInactiveUI();
+	});
 };
 
 const emptyCartUI = function (cart) {
