@@ -41,9 +41,8 @@ export const cartInactiveUI = async function () {
 const toggleCart = function () {
 	const btns = document.querySelectorAll('[data-btn="cart"]');
 	const overlay = document.querySelector('[data-menu-cart="overlay"]');
-	const dialog = document.querySelector('[data-menu-cart="dialog"]');
 
-	if (!btns || (btns && !btns.length) || !overlay || !dialog) return;
+	if (!btns || (btns && !btns.length) || !overlay) return;
 
 	btns.forEach((btn) => {
 		btn.addEventListener('click', (e) => {
@@ -56,6 +55,13 @@ const toggleCart = function () {
 
 			cartActiveUI();
 		});
+	});
+
+	overlay.addEventListener('click', (e) => {
+		const dialog = overlay.querySelector('[data-menu-cart="dialog"]');
+		const bounds = dialog.getBoundingClientRect();
+
+		if (e.clientX < bounds.x) cartInactiveUI();
 	});
 };
 
