@@ -1,9 +1,20 @@
-{{ content_for_layout }}
+<div class="container container--padding container--xl">
+	{% if section.settings.title %}<h1>{{ page.title }}</h1>{% endif %}
+	{{ page.content }}
+</div>
 
 {% schema %}
 	{
 		"name": "Page",
-		"class": "feather-page",
-		"tag": "section"
+		"class": "feather-page-content",
+		"tag": "section",
+		"settings": [
+			{
+				"type": "checkbox",
+				"id": "title",
+				"label": "Display Page Title",
+				"default": true
+			}
+		]
 	}
 {% endschema %}

@@ -77,16 +77,6 @@
     {% section 'header' %}
     <main>
       {{ content_for_layout }}
-      {% comment %} 
-      {%- if page.content != blank %}
-        <section class="feather-content">
-          <div class="container">
-            <h1 class="feather-page-content__title">{{ page.title }}</h1>
-            {{ page.content }}
-          </div>
-        </section>
-      {%- endif -%}
-      {% endcomment %} 
     </main>
     {% render 'menu-cart' %}
     {% section 'footer' %}
