@@ -2,7 +2,10 @@
 	position: relative;
 	padding-bottom: $padding;
 	margin-bottom: $padding;
-	border-bottom: 1px soild $stroke;
+	border-bottom: 1px solid $stroke;
+	&:last-of-type {
+		border-bottom: none;
+	}
 
 	&-image {
 		img {

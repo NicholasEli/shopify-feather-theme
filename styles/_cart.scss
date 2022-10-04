@@ -204,8 +204,23 @@ body.cart main {
 	}
 
 	.feather-cart-summary {
+		@media (min-width: #{$lg}) {
+			align-self: stretch;
+		}
+
 		.container {
 			background-color: $gray;
+
+			.button {
+				width: 100%;
+				margin: 0;
+			}
+
+			& + .container {
+				padding-left: 0;
+				padding-right: 0;
+				background-color: #fff;
+			}
 		}
 
 		.row {
@@ -246,7 +261,7 @@ body.cart main {
 				border-top: 1px solid $stroke;
 
 				p {
-					font-weight: 900;
+					font-weight: 600;
 					letter-spacing: 0.5px;
 				}
 			}

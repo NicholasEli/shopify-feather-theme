@@ -18,6 +18,11 @@
 		</div>
 	</div>
 </div>
+{% if cart.item_count != 0 %}
+	<div class="container container--padding">
+		<a data-btn="checkout" href="/checkout" class="button button--primary">Proceed To Checkout</a>
+	</div>
+{% endif %}
 
 {% schema %}
 	{

@@ -1,19 +1,26 @@
+<div
+	data-alert="cart-empty"
+	class="feather-menu-cart__dialog-body container container--padding {% if cart.item_count != 0 %}hide{% endif %}">
+	{% render 'alert', alert_type: 'success', alert_message: 'Your shopping cart is empty' %}
+</div>
 <div class="container container--padding">
-	<div class="feather-cart-items__header show-flex-xl">
-		<div class="feather-cart-items__header-image">
-			<p>Product</p>
+	{% if cart.item_count != 0 %}
+		<div data-cart-header class="feather-cart-items__header show-flex-xl">
+			<div class="feather-cart-items__header-image">
+				<p>Product</p>
+			</div>
+			<div class="feather-cart-items__header-title"></div>
+			<div class="feather-cart-items__header-quantity">
+				<p>Quantity</p>
+			</div>
+			<div class="feather-cart-items__header-price">
+				<p>Unit Price</p>
+			</div>
+			<div class="feather-cart-items__header-total">
+				<p>Total</p>
+			</div>
 		</div>
-		<div class="feather-cart-items__header-title"></div>
-		<div class="feather-cart-items__header-quantity">
-			<p>Quantity</p>
-		</div>
-		<div class="feather-cart-items__header-price">
-			<p>Unit Price</p>
-		</div>
-		<div class="feather-cart-items__header-total">
-			<p>Total</p>
-		</div>
-	</div>
+	{% endif %}
 	<div data-cart-items>
 		{% if cart.item_count != 0 %}
 			{% for item in cart.items %}

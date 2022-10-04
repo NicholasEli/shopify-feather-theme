@@ -72,6 +72,19 @@ const emptyCartUI = function (cart) {
 	});
 };
 
+const cartHeaderUi = function (cart) {
+	if (!cart) return;
+
+	const headers = document.querySelectorAll('[data-cart-header]');
+
+	if (!headers || (headers && !headers.length)) return;
+
+	headers.forEach((header) => {
+		if (cart.item_count === 0) header.classList.add('hide');
+		if (cart.item_count !== 0) header.classList.remove('hide');
+	});
+};
+
 /**
  * Show/Hide checkout btns if cart is empty
  * @param  {Object} cart - http cart response
@@ -103,6 +116,7 @@ const cartUI = function (cart) {
 	setCartSubTotal(cart);
 	setCartTotal(cart);
 	checkoutButtonUI(cart);
+	emptyCartUI(cart);
 	emptyCartUI(cart);
 };
 
