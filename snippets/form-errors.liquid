@@ -1,9 +1,9 @@
 <script>
-	window.Feather.form_errors.push({ field: 'email', message: 'Email address is invalid' });
+	window.Feather.form_errors.push({ form: 'contact', field: 'email', message: 'Email address is invalid' });
 	{% for error in errors %}
 		{% if form == 'contact' %}
 			{% if error == 'email' %}
-				window.Feather.form_errors.push({ field: 'email', message: 'Email address is invalid' });
+				window.Feather.form_errors.push({ form:'contact', field: 'email', message: 'Email address is invalid' });
 			{% endif %}
 		{% endif %}
 	{% endfor %}
