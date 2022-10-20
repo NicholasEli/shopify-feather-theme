@@ -1,0 +1,9 @@
+<script>
+	{% for error in errors %}
+		{% if form == 'contact' %}
+			{% if error == 'email' %}
+				window.Feather.form_errors.push('Email address is invalid');
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+</script>
