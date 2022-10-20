@@ -2,45 +2,45 @@
   {% form 'contact' %}
     {% render 'form-errors', form: 'contact', errors: form.errors %}
     <div class="row">
-      <div class="col-xs-12 col-md-6">
+      <div class="input col-xs-12 col-md-6">
         <label for="first-name">First name</label>
-        <input type="text" name="contact[first_name]" id="first-name" />
+        <input type="text" name="contact[first_name]" />
       </div>
 
-      <div class="col-xs-12 col-md-6">
+      <div class="input col-xs-12 col-md-6">
         <label for="last-name">Last name</label>
-        <input type="text" name="contact[last_name]" id="last-name" />
+        <input type="text" name="contact[last_name]" />
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-md-6">
+      <div class="input col-xs-12 col-md-6">
         <label for="phone">Phone</label>
-        <input type="tel" name="contact[phone]" id="phone" />
+        <input type="tel" name="contact[phone]" />
       </div>
 
-      <div class="col-xs-12 col-md-6">
+      <div class="input col-xs-12 col-md-6">
         <label for="email">Email</label>
-        <input type="email" name="contact[email]" id="email" />
+        <input type="email" name="contact[email]" />
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-md-6">
+      <div class="input col-xs-12 col-md-6">
         <label for="order-number">Order number</label>
-        <input type="text" name="contact[order_number]" id="order-number" />
+        <input type="text" name="contact[order_number]" />
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12">
+      <div class="input col-xs-12">
         <label for="message">Message</label>
-        <textarea name="contact[body]" id="message"></textarea>
+        <textarea name="contact[body]"ea>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12">
+      <div class="input col-xs-12">
         <input class="button button--primary" type="submit" value="Send" />
       </div>
     </div>
