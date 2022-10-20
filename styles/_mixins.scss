@@ -34,7 +34,7 @@
 }
 
 @mixin feather-width($columns: 1) {
-	$column: 100 / 12;
+	$column: calc(100 / 12);
 
 	@if $columns == 12 {
 		$total: 100%;
