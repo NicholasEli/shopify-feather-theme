@@ -1,0 +1,6 @@
+{% if cart.total_discount and cart.total_discount > 0 %}
+	<div class="feather-discount">
+		<p>Discount</p>
+		<p data-cart-discount>{{ cart.total_discount | money }}</p>
+	</div>
+{% endif %}

@@ -5,12 +5,7 @@
 		</div>
 	</div>
 	<div class="row feather-cart-subtotal">
-		{% if cart.total_discount and cart.total_discount > 0 %}
-			<div class="feather-discount">
-				<p>Discount</p>
-				<p data-cart-discount>{{ cart.total_discount | money }}</p>
-			</div>
-		{% endif %}
+		{% render 'cart-discount' %}
 		{% render 'cart-subtotal' %}
 		<div class="feather-total">
 			<p>Total</p>
