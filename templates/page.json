@@ -1,8 +1,20 @@
 {
   "sections": {
     "main": {
-      "type": "page"
+      "type": "page",
+      "settings": {
+        "title": true,
+        "container_width": "xl"
+      }
+    },
+    "47994087-82c5-4cd1-aaa3-2cc8c964fec5": {
+      "type": "contact-form",
+      "settings": {
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "47994087-82c5-4cd1-aaa3-2cc8c964fec5"
+  ]
 }
