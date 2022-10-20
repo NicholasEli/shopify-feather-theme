@@ -239,6 +239,7 @@ const updateLineItem = function () {
 
 				if (res.error || !res.data) {
 					console.error(res.error);
+					const notyf = new Notyf();
 					notyf.error('Could not add item to cart');
 					return;
 				}
@@ -269,6 +270,7 @@ const removeLineItem = function () {
 
 			if (res.error || !res.data) {
 				console.error(res.error);
+				const notyf = new Notyf();
 				notyf.error('Could not add item to cart');
 				return;
 			}
