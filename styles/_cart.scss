@@ -243,7 +243,8 @@ body.cart main {
 
 			.feather-discount,
 			.feather-subtotal,
-			.feather-total {
+			.feather-total,
+			.feather-taxes-shipping {
 				@include feather-col;
 				@include feather-width(12);
 				@include flex(row, space-between, center);
@@ -263,6 +264,15 @@ body.cart main {
 				p {
 					font-weight: 600;
 					letter-spacing: 0.5px;
+				}
+			}
+
+			.feather-taxes-shipping {
+				justify-content: flex-end;
+
+				p {
+					font-style: italic;
+					font-size: 12px;
 				}
 			}
 		}
