@@ -11,6 +11,7 @@ import { modal } from './modal.js';
 import { tabbedContent } from './tabbed-content.js';
 import { cart } from './cart.js';
 import { modelViewer } from './model-viewer.js';
+import { formErrors } from './form-errors.js';
 
 // Page Components
 import { product } from './product.js';
@@ -34,6 +35,7 @@ window.onload = async function () {
 	tabbedContent();
 	cart();
 	modelViewer();
+	formErrors();
 
 	// Page Components
 	newsletter();
