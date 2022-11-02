@@ -8,4 +8,10 @@
 		resize: none;
 		min-height: 300px;
 	}
+
+	input {
+		&[type='submit'] {
+			margin-top: $padding;
+		}
+	}
 }

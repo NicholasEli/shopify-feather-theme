@@ -1,46 +1,46 @@
 <div class="container container--padding container--md">
   {% form 'contact' %}
-    {% render 'form-errors', form: 'contact', errors: form.errors %}
+    {% render 'form-errors', section: section.id, form: 'contact', errors: form.errors %}
     <div class="row">
-      <div class="input col-xs-12 col-md-6">
+      <div class="form__input col-xs-12 col-md-6" data-input="first_name">
         <label for="first-name">First name</label>
         <input type="text" name="contact[first_name]" />
       </div>
 
-      <div class="input col-xs-12 col-md-6">
+      <div class="form__input col-xs-12 col-md-6" data-input="last_name">
         <label for="last-name">Last name</label>
         <input type="text" name="contact[last_name]" />
       </div>
     </div>
 
     <div class="row">
-      <div class="input col-xs-12 col-md-6">
+      <div class="form__input col-xs-12 col-md-6" data-input="phone">
         <label for="phone">Phone</label>
         <input type="tel" name="contact[phone]" />
       </div>
 
-      <div class="input col-xs-12 col-md-6">
+      <div class="form__input col-xs-12 col-md-6" data-input="email">
         <label for="email">Email</label>
         <input type="email" name="contact[email]" />
       </div>
     </div>
 
     <div class="row">
-      <div class="input col-xs-12 col-md-6">
+      <div class="form__input col-xs-12 col-md-6" data-input="order_numbe">
         <label for="order-number">Order number</label>
         <input type="text" name="contact[order_number]" />
       </div>
     </div>
 
     <div class="row">
-      <div class="input col-xs-12">
+      <div class="form__input col-xs-12" data-input="te">
         <label for="message">Message</label>
         <textarea name="contact[body]"></textarea>
       </div>
     </div>
 
     <div class="row">
-      <div class="input col-xs-12">
+      <div class="col-xs-12">
         <input class="button button--primary" type="submit" value="Send" />
       </div>
     </div>

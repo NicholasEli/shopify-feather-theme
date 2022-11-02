@@ -2,12 +2,17 @@ import { Notyf } from 'notyf';
 import { options } from './toast.js';
 
 const errorUI = function (error) {
-	const input = document.querySelector(`input[name="${error.form}[${error.field}]"]`);
+	const form = document.getElementById(error.section);
+	if (!form) return;
+
+	const input = form.querySelector(`.form__input[data-input="${error.field}"]`);
 	if (!input) return;
 
-	const parent = input.parentElement;
-	if (!parent || (parent && parent.className.indexOf('input') == -1)) return;
-	parent.classList.add('input--error');
+	const bounds = form.getBoundingClientRect();
+
+	input.classList.add('form__input--error');
+
+	window.scrollTo({ top: bounds.top + window.pageYOffset - 200, behavior: 'smooth' });
 };
 
 const toast = function (error) {
