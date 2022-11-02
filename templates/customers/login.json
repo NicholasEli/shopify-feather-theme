@@ -2,7 +2,10 @@
   "sections": {
     "authentication": {
       "type": "authentication"
+    },
+    "registration": {
+      "type": "registration-form"
     }
   },
-  "order": ["authentication"]
+  "order": ["authentication", "registration"]
 }

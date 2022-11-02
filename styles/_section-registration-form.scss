@@ -1,0 +1,10 @@
+.feather-registration-form {
+  .row + .row {
+    margin-top: $gutter;
+  }
+
+  h6 {
+    font-weight: 600;
+    color: $text;
+  }
+}
