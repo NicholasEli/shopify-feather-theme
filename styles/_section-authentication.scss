@@ -1,0 +1,22 @@
+.feather-authentication {
+	background-color: $gray;
+
+	.container {
+	}
+
+	.form {
+		.row + .row {
+			margin-top: $gutter;
+		}
+
+		& + .form {
+			padding-top: multiply($gutter, 2);
+			border-top: 1px solid $stroke;
+		}
+	}
+
+	h6 {
+		font-weight: 600;
+		color: $text;
+	}
+}

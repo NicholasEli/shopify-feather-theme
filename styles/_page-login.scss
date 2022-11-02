@@ -1,15 +1,5 @@
 body.login {
-	section {
-		&:first-of-type {
-			.container {
-				padding-top: multiply($gutter, 4);
-			}
-		}
-
-		&:last-of-type {
-			.container {
-				padding-top: multiply($gutter, 4);
-			}
-		}
+	main {
+		//padding: multiply($gutter, 4) 0;
 	}
 }

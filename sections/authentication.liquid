@@ -1,0 +1,53 @@
+<div class="container container--padding container--sm">
+  <div class="form">
+    <h6>Already a customer </h6>
+    {% form 'customer_login' %}
+      {% render 'form-errors', section: section.id, form: 'login', errors: form.errors %}
+      <div class="row">
+        <div class="form__input col-xs-12" data-input="email">
+          <label for="email">Email</label>
+          <input placeholder="Email" type="email" name="customer[email]" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form__input col-xs-12" data-input="password">
+          <label for="password">Password</label>
+          <input placeholder="Password" type="password" name="customer[password]"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <input class="button button--primary" type="submit" value="Send" />
+        </div>
+      </div>
+    {% endform %}
+  </div>
+  <div class="form">
+    <h6>Recover password</h6>
+    {% form 'recover_customer_password' %}
+      {% render 'form-errors', section: section.id, form: 'forgot-password', errors: form.errors %}
+      <div class="row">
+        <div class="form__input  col-xs-12" data-input="email">
+          <label for="email">Email</label>
+          <input placeholder="Email" type="email" name="email"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="button button--primary" type="submit">Submit</button>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Authentication",
+    "class": "feather-authentication",
+    "tag": "section"
+  }
+{% endschema %}

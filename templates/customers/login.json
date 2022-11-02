@@ -1,11 +1,8 @@
 {
   "sections": {
-    "login-form": {
-      "type": "login-form"
-    },
-    "forgot-password-form": {
-      "type": "forgot-password-form"
+    "authentication": {
+      "type": "authentication"
     }
   },
-  "order": ["login-form", "forgot-password-form"]
+  "order": ["authentication"]
 }
