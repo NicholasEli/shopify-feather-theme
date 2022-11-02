@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "login-form": {
+      "type": "login-form"
+    }
+  },
+  "order": ["login-form"]
+}
