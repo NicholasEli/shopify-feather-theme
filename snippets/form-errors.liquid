@@ -1,16 +1,26 @@
 {% assign section_id = 'shopify-section-' | append: section %}
 
 <script>
+	if (!window.Feather.form_errors) window.Feather.form_errors = [];
+
 	{% for error in errors %}
-		{% if form == 'contact' %}
-			{% if error == 'email' %}
-				window.Feather.form_errors.push({
-					section: '{{ section_id }}',
-					form:'contact',
-					field: 'email',
-					message: 'Email address is invalid'
-				});
-			{% endif %}
+		{% if error == 'form' %}
+			window.Feather.form_errors.push({
+				section: '{{ section_id }}',
+				form: '{{ form }}',
+				field: '{{ error }}',
+				message: '{{ errors.messages[error] }}'
+			})
 		{% endif %}
+
+		{% if error == 'email' or error == 'password' %}
+			window.Feather.form_errors.push({
+				section: '{{ section_id }}',
+				form: '{{ form }}',
+				field: '{{ error }}',
+				message: '{{ error }} {{ errors.messages[error] }}'
+			})
+		{% endif %}
+
 	{% endfor %}
 </script>
