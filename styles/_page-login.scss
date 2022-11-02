@@ -1,5 +1,25 @@
 body.login {
 	main {
-		//padding: multiply($gutter, 4) 0;
+		@include feather-row;
+		max-width: $xl;
+		padding: $gutter;
+		margin: 0 auto;
+
+		section {
+			@include feather-col;
+			@include feather-width(12);
+
+			&:first-of-type {
+				@media (min-width: #{$lg}) {
+					@include feather-width(4);
+				}
+			}
+
+			&:last-of-type {
+				@media (min-width: #{$lg}) {
+					@include feather-width(8);
+				}
+			}
+		}
 	}
 }
