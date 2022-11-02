@@ -1,41 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,600;1,600&display=swap');
 
+/**
+ * Setup
+ * Do not change order
+ * */
 @import '_variables.scss';
 @import '_reset.scss';
 @import '_mixins.scss';
 @import '_functions.scss';
 
-@import '_grid.scss';
+/**
+ * Third party
+ * */
 @import '_animate.scss';
-@import '_toast.scss';
 @import '_glide.scss';
+@import '_grid.scss';
+@import '_toast.scss';
 
-@import '_layout.scss';
-@import '_type.scss';
+/**
+ * Blocks
+ * */
+@import '_alert.scss';
 @import '_button.scss';
 @import '_forms.scss';
+@import '_layout.scss';
 @import '_loading.scss';
-@import '_alert.scss';
 @import '_modal.scss';
-@import '_tab-content.scss';
 @import '_model-viewer.scss';
+@import '_tab-content.scss';
+@import '_type.scss';
+@import '_select.scss';
+@import '_filters.scss';
+@import '_pagination.scss';
 
-@import '_section-header.scss';
-@import '_section-footer.scss';
+/**
+ * Sections
+ * */
 @import '_section-collection-banner.scss';
-@import '_section-product-spotlight.scss';
-@import '_section-information-grid.scss';
-@import '_section-product-slider.scss';
-@import '_section-newsletter.scss';
-@import '_section-video.scss';
-@import '_section-gallery.scss';
-@import '_section-pagination.scss';
-@import '_section-product-variant-slider.scss';
-@import '_section-product-details.scss';
 @import '_section-contact-form.scss';
+@import '_section-footer.scss';
+@import '_section-forgot-password-form.scss';
+@import '_section-gallery.scss';
+@import '_section-header.scss';
+@import '_section-information-grid.scss';
 @import '_section-login-form.scss';
+@import '_section-newsletter.scss';
+@import '_section-pagination.scss';
+@import '_section-product-details.scss';
+@import '_section-product-slider.scss';
+@import '_section-product-spotlight.scss';
+@import '_section-product-variant-slider.scss';
+@import '_section-video.scss';
 
+/**
+ * Templates
+ * */
 @import '_page-content.scss';
 @import '_product.scss';
 @import '_cart.scss';
@@ -44,9 +64,6 @@
 @import '_cart-subtotal.scss';
 @import '_list.scss';
 @import '_collection.scss';
-@import '_select.scss';
-@import '_filters.scss';
-@import '_pagination.scss';
 @import '_page-login.scss';
 
 * {

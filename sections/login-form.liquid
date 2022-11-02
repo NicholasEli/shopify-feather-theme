@@ -1,4 +1,4 @@
-<div class="container container--padding container--md">
+<div class="container container--padding container--sm">
   {% form 'customer_login' %}
     {% render 'form-errors', section: section.id, form: 'login', errors: form.errors %}
     <div class="row">
@@ -14,7 +14,7 @@
         <input placeholder="Password" type="password" name="customer[password]"/>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-xs-12">
         <input class="button button--primary" type="submit" value="Send" />
@@ -25,13 +25,8 @@
 
 {% schema %}
   {
-    "name": "Contact Form",
+    "name": "Login Form",
     "class": "feather-login-form",
-    "tag": "section",
-    "presets": [
-      {
-        "name": "Login Form"
-      }
-    ]
+    "tag": "section"
   }
 {% endschema %}
