@@ -1,7 +1,7 @@
 .feather-content {
 	.container {
-		padding-top: $padding * 3;
-		padding-bottom: $padding * 3;
+		padding-top: $gutter * 3;
+		padding-bottom: $gutter * 3;
 	}
 	&__title {
 		margin-top: 0;

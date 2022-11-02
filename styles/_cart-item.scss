@@ -1,7 +1,7 @@
 .feather-cart-item {
 	position: relative;
-	padding-bottom: $padding;
-	margin-bottom: $padding;
+	padding-bottom: $gutter;
+	margin-bottom: $gutter;
 	border-bottom: 1px solid $stroke;
 	&:last-of-type {
 		border-bottom: none;

@@ -54,7 +54,7 @@
 
 			.feather-tab-content__content-item__title {
 				font-weight: 500;
-				margin-bottom: $padding;
+				margin-bottom: $gutter;
 
 				@media (min-width: #{$sm}) {
 					width: 100px;
@@ -67,7 +67,7 @@
 
 				@media (min-width: #{$sm}) {
 					width: calc(100% - 100px);
-					padding-left: $padding;
+					padding-left: $gutter;
 				}
 			}
 

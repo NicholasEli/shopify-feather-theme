@@ -1,7 +1,7 @@
 .feather-video {
 	> .container {
-		padding-top: multiply($padding, 4);
-		padding-bottom: multiply($padding, 4);
+		padding-top: multiply($gutter, 4);
+		padding-bottom: multiply($gutter, 4);
 	}
 
 	iframe {

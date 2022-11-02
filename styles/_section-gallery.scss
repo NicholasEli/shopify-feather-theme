@@ -1,7 +1,7 @@
 .feather-gallery {
 	> .container {
-		padding-top: multiply($padding, 4);
-		padding-bottom: multiply($padding, 4);
+		padding-top: multiply($gutter, 4);
+		padding-bottom: multiply($gutter, 4);
 	}
 
 	h5 {
@@ -11,7 +11,7 @@
 
 	&-image {
 		aspect-ratio: 16 / 9;
-		margin-bottom: $padding;
+		margin-bottom: $gutter;
 
 		img {
 			width: 100%;

@@ -1,5 +1,5 @@
 body.cart main {
-	padding: multiply($padding, 2) 0;
+	padding: multiply($gutter, 2) 0;
 	@media (min-width: #{$lg}) {
 		@include flex(row, flex-start, flex-start, wrap);
 	}
@@ -12,17 +12,17 @@ body.cart main {
 
 	.feather-cart-items {
 		@media (min-width: #{$lg}) {
-			width: calc(100% - 320px - #{multiply($padding, 2)});
+			width: calc(100% - 320px - #{multiply($gutter, 2)});
 		}
 
 		@media (min-width: #{$xl}) {
-			width: calc(70% - #{multiply($padding, 2)});
+			width: calc(70% - #{multiply($gutter, 2)});
 		}
 	}
 
 	.feather-cart-summary {
 		.container {
-			width: calc(100% - #{multiply($padding, 2)});
+			width: calc(100% - #{multiply($gutter, 2)});
 			margin: 0 auto;
 
 			@media (min-width: #{$lg}) {
@@ -32,7 +32,7 @@ body.cart main {
 
 		@media (min-width: #{$lg}) {
 			width: 320px;
-			margin-left: $padding;
+			margin-left: $gutter;
 		}
 
 		@media (min-width: #{$xl}) {
@@ -51,7 +51,7 @@ body.cart main {
 
 	.feather-cart-items {
 		&__header {
-			margin-bottom: $padding;
+			margin-bottom: $gutter;
 			border-bottom: 1px solid $stroke;
 
 			p {
@@ -65,7 +65,7 @@ body.cart main {
 		&__header,
 		.feather-cart-item {
 			width: 100%;
-			padding-right: multiply($padding, 2);
+			padding-right: multiply($gutter, 2);
 
 			&-image,
 			&-title,
@@ -81,7 +81,7 @@ body.cart main {
 			&-title,
 			&-quantity,
 			&-price {
-				margin-bottom: $padding;
+				margin-bottom: $gutter;
 			}
 
 			&-quantity,
@@ -102,7 +102,7 @@ body.cart main {
 
 				@media (min-width: #{$sm}) {
 					@include feather-width(4);
-					padding-top: multiply($padding, 2);
+					padding-top: multiply($gutter, 2);
 					margin-bottom: 0;
 
 					&::before {
@@ -135,7 +135,7 @@ body.cart main {
 
 				img {
 					width: auto;
-					max-width: calc(100% - #{multiply($padding, 2)});
+					max-width: calc(100% - #{multiply($gutter, 2)});
 
 					@media (min-width: #{$sm}) {
 						width: 100%;
@@ -224,7 +224,7 @@ body.cart main {
 		}
 
 		.row {
-			margin-bottom: multiply($padding, 2);
+			margin-bottom: multiply($gutter, 2);
 
 			&:last-of-type {
 				margin-bottom: 0;
@@ -248,7 +248,7 @@ body.cart main {
 				@include feather-col;
 				@include feather-width(12);
 				@include flex(row, space-between, center);
-				margin-bottom: $padding;
+				margin-bottom: $gutter;
 
 				p {
 					margin: 0;
@@ -257,8 +257,8 @@ body.cart main {
 			}
 
 			.feather-total {
-				margin-top: $padding;
-				padding-top: $padding;
+				margin-top: $gutter;
+				padding-top: $gutter;
 				border-top: 1px solid $stroke;
 
 				p {

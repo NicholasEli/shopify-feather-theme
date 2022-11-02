@@ -86,7 +86,7 @@
 		transition: all 500ms ease-in 0ms;
 
 		@media (min-width: #{$md}) {
-			padding: 0 $padding;
+			padding: 0 $gutter;
 		}
 
 		&:nth-child(2n) {

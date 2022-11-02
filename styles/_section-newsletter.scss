@@ -4,8 +4,8 @@
 	border-bottom: 1px solid $stroke;
 
 	.container {
-		padding-top: multiply($padding, 6);
-		padding-bottom: multiply($padding, 5);
+		padding-top: multiply($gutter, 6);
+		padding-bottom: multiply($gutter, 5);
 	}
 
 	.row {
@@ -27,7 +27,7 @@
 		}
 
 		.button {
-			margin-left: $padding;
+			margin-left: $gutter;
 			margin-bottom: 0;
 			background-color: #fff;
 		}

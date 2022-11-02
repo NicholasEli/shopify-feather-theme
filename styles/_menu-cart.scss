@@ -79,7 +79,7 @@ $cartHeaderHeight: 75px;
 		}
 
 		&-body {
-			max-height: calc(100vh - #{$cartCloseHeight} - #{$cartHeaderHeight} - #{$padding});
+			max-height: calc(100vh - #{$cartCloseHeight} - #{$cartHeaderHeight} - #{$gutter});
 			overflow-y: auto;
 		}
 
@@ -129,7 +129,7 @@ $cartHeaderHeight: 75px;
 
 				&-quantity,
 				&-total {
-					margin-top: $padding;
+					margin-top: $gutter;
 				}
 
 				&-total {

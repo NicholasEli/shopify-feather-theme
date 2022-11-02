@@ -40,7 +40,7 @@
 			top: 100%;
 			left: 0;
 			margin: 0;
-			padding: $padding;
+			padding: $gutter;
 			flex-direction: column;
 			border-radius: 8px 8px 0 0;
 			background-color: #fff;
@@ -53,7 +53,7 @@
 
 		.feather-filters__header {
 			width: 100%;
-			margin-bottom: $padding;
+			margin-bottom: $gutter;
 
 			h4 {
 				margin: 0;
@@ -108,14 +108,14 @@
 			}
 
 			label {
-				margin: 0 0 0 $padding;
+				margin: 0 0 0 $gutter;
 				line-height: 1;
 				font-weight: 400;
 				color: $text;
 			}
 
 			& + .feather-filters__item {
-				margin-top: $padding;
+				margin-top: $gutter;
 			}
 		}
 	}
@@ -123,7 +123,7 @@
 	&--price {
 		&::after {
 			content: '';
-			width: calc(#{$padding} / 2);
+			width: calc(#{$gutter} / 2);
 			height: 1px;
 			position: absolute;
 			top: 50%;
@@ -134,7 +134,7 @@
 
 		.feather-filters__item {
 			&.input {
-				width: calc(50% - #{$padding});
+				width: calc(50% - #{$gutter});
 				float: left;
 
 				label {
@@ -150,7 +150,7 @@
 			}
 
 			& + .feather-filters__item {
-				margin-left: multiply($padding, 2);
+				margin-left: multiply($gutter, 2);
 			}
 		}
 	}

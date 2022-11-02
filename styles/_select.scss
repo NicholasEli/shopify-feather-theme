@@ -7,8 +7,8 @@ a[title='Sort By'] select {
 
 .feather-select {
 	position: relative;
-	margin-right: $padding;
-	margin-bottom: $padding;
+	margin-right: $gutter;
+	margin-bottom: $gutter;
 	border: 1px solid $stroke;
 	border-radius: 1px;
 
@@ -50,7 +50,7 @@ a[title='Sort By'] select {
 		width: 100%;
 		min-width: max-content;
 		position: absolute;
-		top: calc(100% + #{$padding});
+		top: calc(100% + #{$gutter});
 		left: 0;
 		display: none;
 		padding: 20px 15px;

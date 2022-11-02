@@ -54,8 +54,8 @@
 			/** USER NAV - SHOPIFY ACTIONS **/
 			&__user-nav {
 				position: absolute;
-				top: calc(100% - #{$padding * 2.5});
-				right: $padding;
+				top: calc(100% - #{$gutter * 2.5});
+				right: $gutter;
 
 				@media (min-width: #{$md}) {
 					position: relative;
@@ -202,7 +202,7 @@
 				border-top: 2px solid transparent;
 
 				a {
-					padding: $padding;
+					padding: $gutter;
 					text-transform: uppercase;
 				}
 
@@ -257,8 +257,8 @@
 				border-bottom: 1px solid $stroke;
 
 				.container {
-					padding-left: calc($padding * 2);
-					padding-right: calc($padding * 2);
+					padding-left: calc($gutter * 2);
+					padding-right: calc($gutter * 2);
 				}
 
 				span {
@@ -286,7 +286,7 @@
 
 				a {
 					width: 100%;
-					padding: 20px $padding;
+					padding: 20px $gutter;
 					text-transform: none;
 					border-radius: 5px;
 				}

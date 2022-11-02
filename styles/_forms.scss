@@ -95,7 +95,7 @@
 	}
 
 	&__search-results {
-		width: calc(100% - #{$padding * 2});
+		width: calc(100% - #{$gutter * 2});
 		position: absolute;
 		top: 100%;
 		left: 50%;
@@ -117,8 +117,8 @@
 
 		.form__search-no-results,
 		.form__search-term {
-			margin: 0 0 $padding;
-			padding-bottom: $padding;
+			margin: 0 0 $gutter;
+			padding-bottom: $gutter;
 			text-align: left;
 			border-bottom: 1px solid $stroke;
 
@@ -154,8 +154,8 @@
 		}
 
 		.form__search-results-product {
-			margin: 0 0 $padding;
-			padding-bottom: $padding;
+			margin: 0 0 $gutter;
+			padding-bottom: $gutter;
 			text-align: left;
 			border-bottom: 1px solid $stroke;
 

@@ -669,30 +669,30 @@ hr {
   margin-left: auto;
 
   &--padding {
-    padding: $padding;
+    padding: $gutter;
   }
 
   &--xs-padding {
     @media (min-width: #{$xs}) {
-      padding: $padding;
+      padding: $gutter;
     }
   }
 
   &--sm-padding {
     @media (min-width: #{$sm}) {
-      padding: $padding;
+      padding: $gutter;
     }
   }
 
   &--md-padding {
     @media (min-width: #{$md}) {
-      padding: $padding;
+      padding: $gutter;
     }
   }
 
   &--lg-padding {
     @media (min-width: #{$xl}) {
-      padding: $padding;
+      padding: $gutter;
     }
   }
 

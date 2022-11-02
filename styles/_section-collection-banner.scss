@@ -52,9 +52,9 @@
 		p {
 			max-width: 100%;
 			position: absolute;
-			bottom: $padding;
-			left: $padding;
-			padding-right: multiply($padding, 2);
+			bottom: $gutter;
+			left: $gutter;
+			padding-right: multiply($gutter, 2);
 			z-index: 2;
 			margin: 0;
 			overflow: hidden;
@@ -79,15 +79,15 @@
 
 			p {
 				left: unset;
-				right: calc(#{$padding} * 2);
+				right: calc(#{$gutter} * 2);
 				bottom: 0;
 				transform: translateY(0%) rotate(90deg);
 				transform-origin: center right;
 
 				@media (min-width: #{$md}) {
-					left: $padding;
+					left: $gutter;
 					right: unset;
-					bottom: $padding;
+					bottom: $gutter;
 					transform: rotate(0deg);
 					transform-origin: center center;
 				}

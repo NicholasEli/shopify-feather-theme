@@ -2,11 +2,11 @@
 @mixin spotlight-text {
 	max-width: 100%;
 	position: absolute;
-	bottom: $padding;
-	left: $padding;
+	bottom: $gutter;
+	left: $gutter;
 	z-index: 2;
 	margin: 0;
-	padding-right: multiply($padding, 2);
+	padding-right: multiply($gutter, 2);
 	overflow: hidden;
 	font-family: $ibarra;
 	font-size: 20px;
@@ -119,12 +119,12 @@
 	}
 
 	&__column {
-		margin-left: multiply($padding, 3);
+		margin-left: multiply($gutter, 3);
 		a {
 			height: 600px;
 			position: relative;
 			display: inline-block;
-			margin-bottom: multiply($padding, 3);
+			margin-bottom: multiply($gutter, 3);
 			overflow: hidden;
 
 			&:nth-child(2n) {
@@ -161,7 +161,7 @@
 				height: 500px;
 
 				&:first-of-type {
-					margin-top: multiply($padding, 3);
+					margin-top: multiply($gutter, 3);
 				}
 
 				&:nth-child(2n) {
@@ -173,11 +173,11 @@
 
 	.container {
 		&:first-of-type {
-			padding-top: multiply($padding, 6);
+			padding-top: multiply($gutter, 6);
 		}
 
 		&:last-of-type {
-			padding-bottom: multiply($padding, 6);
+			padding-bottom: multiply($gutter, 6);
 		}
 	}
 }

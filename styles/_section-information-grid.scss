@@ -4,13 +4,13 @@ $grid-image: 50px;
 	width: 100%;
 
 	&__items {
-		padding-top: multiply($padding, 6);
-		padding-bottom: multiply($padding, 6);
+		padding-top: multiply($gutter, 6);
+		padding-bottom: multiply($gutter, 6);
 	}
 
 	&__item {
 		@include flex(row, space-between, flex-start, nowrap);
-		margin-bottom: $padding;
+		margin-bottom: $gutter;
 
 		&-image {
 			width: $grid-image;
@@ -22,7 +22,7 @@ $grid-image: 50px;
 		}
 
 		&-details {
-			width: calc(100% - #{$grid-image} - #{$padding});
+			width: calc(100% - #{$grid-image} - #{$gutter});
 			text-align: left;
 
 			h5 {

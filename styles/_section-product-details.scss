@@ -1,6 +1,6 @@
 .feather-product__details {
 	> .container--padding {
-		padding-top: multiply($padding, 3);
+		padding-top: multiply($gutter, 3);
 
 		@media (min-width: #{$lg}) {
 			max-width: divide($xl, 2);
@@ -34,12 +34,12 @@
 		}
 
 		&__options {
-			margin-bottom: $padding;
+			margin-bottom: $gutter;
 		}
 
 		&__option {
 			@include flex(row, flex-start, center, wrap);
-			margin-bottom: $padding;
+			margin-bottom: $gutter;
 
 			p {
 				width: 100%;
@@ -54,7 +54,7 @@
 
 		&__option-value {
 			min-width: min-content;
-			margin-right: $padding;
+			margin-right: $gutter;
 			padding: 5px 15px;
 			border: 1px solid $stroke;
 			border-radius: 50vh;
@@ -109,8 +109,8 @@
 		}
 
 		&__add-to-cart {
-			margin-bottom: multiply($padding, 2);
-			padding-bottom: multiply($padding, 3);
+			margin-bottom: multiply($gutter, 2);
+			padding-bottom: multiply($gutter, 3);
 			border-bottom: 1px solid $stroke;
 
 			.input {
@@ -128,7 +128,7 @@
 				}
 
 				&[type='submit'] {
-					width: calc(75% - #{$padding});
+					width: calc(75% - #{$gutter});
 					text-transform: uppercase;
 					font-weight: 400;
 				}

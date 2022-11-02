@@ -1,4 +1,8 @@
 .feather-contact-form {
+	.row + .row {
+		margin-top: $gutter;
+	}
+
 	input,
 	textarea {
 		width: 100%;
@@ -7,11 +11,5 @@
 	textarea {
 		resize: none;
 		min-height: 300px;
-	}
-
-	input {
-		&[type='submit'] {
-			margin-top: $padding;
-		}
 	}
 }

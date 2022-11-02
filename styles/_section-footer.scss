@@ -27,8 +27,8 @@ footer {
 	.container--padding {
 		position: relative;
 		margin: 0 auto;
-		padding-top: multiply($padding, 4);
-		padding-bottom: multiply($padding, 4);
+		padding-top: multiply($gutter, 4);
+		padding-bottom: multiply($gutter, 4);
 	}
 
 	.row {
@@ -38,7 +38,7 @@ footer {
 
 	.footer {
 		&__business-details {
-			margin-top: multiply($padding, 4);
+			margin-top: multiply($gutter, 4);
 
 			@media (min-width: #{$md}) {
 				margin-top: 0;
@@ -70,7 +70,7 @@ footer {
 				}
 
 				& + .footer__details-detail {
-					margin-top: $padding;
+					margin-top: $gutter;
 				}
 
 				h6,
@@ -105,7 +105,7 @@ footer {
 
 			&-nav {
 				width: 100%;
-				margin-top: multiply($padding, 4);
+				margin-top: multiply($gutter, 4);
 
 				nav {
 					ul {
@@ -143,7 +143,7 @@ footer {
 
 			&-social {
 				width: 100%;
-				margin-top: multiply($padding, 4);
+				margin-top: multiply($gutter, 4);
 
 				ul {
 					max-width: $sm;
@@ -175,7 +175,7 @@ footer {
 			}
 
 			&-copyright {
-				margin-top: calc(#{$padding} * 4);
+				margin-top: calc(#{$gutter} * 4);
 
 				p {
 					margin: 0;
