@@ -7,8 +7,8 @@
     "test": "cypress open",
     "sass": "sass --watch ./styles/style.scss ./assets/style.min.css --style compressed",
     "js": "rollup --config rollup.config.js --watch",
-    "dev": "concurrently --kill-others \"sass --watch ./styles/style.scss ./assets/style.min.css  --style compressed\" \"rollup --config rollup.config.js --watch\" \"shopify theme serve\"",
-    "login": "shopify login --store nicholasbydesign.myshopify.com"
+    "dev": "concurrently --kill-others \"sass --watch ./styles/style.scss ./assets/style.min.css  --style compressed\" \"rollup --config rollup.config.js --watch\" \"shopify2 theme serve\"",
+    "login": "shopify2 login --store nicholasbydesign.myshopify.com"
   },
   "repository": {
     "type": "git",
