@@ -55,15 +55,16 @@
 /**
  * Templates
  * */
-@import '_page-content.scss';
-@import '_product.scss';
-@import '_cart.scss';
-@import '_menu-cart.scss';
 @import '_cart-item.scss';
 @import '_cart-subtotal.scss';
-@import '_list.scss';
+@import '_cart.scss';
 @import '_collection.scss';
+@import '_list.scss';
+@import '_menu-cart.scss';
+@import '_page-content.scss';
 @import '_page-login.scss';
+@import '_page-registration.scss';
+@import '_product.scss';
 
 * {
 	box-sizing: border-box;
