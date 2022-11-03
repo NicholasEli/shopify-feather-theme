@@ -9,13 +9,31 @@ body.account {
 			@include feather-col;
 			@include feather-width(12);
 
-			@media (min-width: #{$md}) {
-				@include feather-width(6);
+			&.feather-current-address {
+				@media (min-width: #{$md}) {
+					@include feather-width(4);
+				}
 			}
 
-			&.feather-account-navigation {
+			&.feather-orders {
 				@media (min-width: #{$md}) {
-					@include feather-width(12);
+					@include feather-width(8);
+				}
+
+				table {
+					width: 100%;
+
+					tbody {
+						tr {
+							td {
+								vertical-align: top;
+							}
+
+							&:nth-of-type(even) {
+								background-color: $gray;
+							}
+						}
+					}
 				}
 			}
 		}

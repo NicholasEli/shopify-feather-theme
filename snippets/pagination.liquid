@@ -20,10 +20,9 @@
     assign last = 'feather-pagination__last--disabled'
     assign next = 'feather-pagination__next--disabled'
   endif
-
-
 %}
-{% if paginate and paginate.pages > 1 %}
+
+{% if paginate and paginate.pages > 0 %}
   <div class="feather-pagination">
     <a
       title="First Page"

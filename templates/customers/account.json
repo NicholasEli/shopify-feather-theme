@@ -6,9 +6,9 @@
     "address": {
       "type": "current-address"
     },
-    "order": {
-      "type": "recent-order"
+    "orders": {
+      "type": "orders"
     }
   },
-  "order": ["navigation", "address", "order"]
+  "order": ["navigation", "address", "orders"]
 }

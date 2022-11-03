@@ -1,3 +1,9 @@
-<address class="feather-address col-xs-12 col-sm-6 col-md-4">
+{% liquid
+	assign class = 'col-xs-12 col-sm-6 col-md-4'
+	if _class
+		assign class = _class
+	endif
+%}
+<address class="feather-address {{ class }}">
 	{{ address | format_address }}
 </address>

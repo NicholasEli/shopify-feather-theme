@@ -2,7 +2,6 @@
 	assign addresses = 'Addresses(' | append: customer.addresses_count | append: '):/account/addresses;'
 	assign links = 'Account:/account;'
 	assign links = links | append: addresses
-	assign links = links | append: 'Orders(' | append: customer.orders_count | append: '):/account/orders'
 	assign links = links | split: ';'
 %}
 
