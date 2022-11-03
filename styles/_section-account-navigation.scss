@@ -1,6 +1,10 @@
 .feather-account-navigation {
 	width: 100%;
 
+	h1 {
+		text-transform: capitalize;
+	}
+
 	ul {
 		@include flex(row, flex-start, flex-start, wrap);
 
