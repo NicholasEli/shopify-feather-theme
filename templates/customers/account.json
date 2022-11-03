@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "navigation": {
+      "type": "account-navigation"
+    },
+    "addresses": {
+      "type": "addresses-preview"
+    }
+  },
+  "order": ["navigation", "addresses"]
+}

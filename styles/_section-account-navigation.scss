@@ -1,0 +1,22 @@
+.feather-account-navigation {
+	ul {
+		@include flex(row, flex-start, flex-start, wrap);
+
+		.link {
+			list-style: none;
+
+			a {
+				padding: 10px;
+				text-decoration: none;
+				text-transform: capitalize;
+			}
+
+			&:hover,
+			&--active {
+				a {
+					background-color: $gray;
+				}
+			}
+		}
+	}
+}

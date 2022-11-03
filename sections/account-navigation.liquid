@@ -1,0 +1,34 @@
+{% liquid
+	assign links = 'Account:/account;Addresses:/account/addresses;Orders:/account/orders'
+	assign links = links | split: ';'
+%}
+
+<div class="container container--padding container--lg">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Account</h1>
+		</div>
+		<div class="col-xs-12">
+			<ul>
+				{% for link in links %}
+					{% liquid 
+						assign link_props = link | split: ':'
+					%}
+					<li
+						class="link{% if request.path == link_props[1] %} link--active{% endif %}"
+					>
+						<a href="{{ link_props[1] }}">{{ link_props[0] }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "Addresses Navigation",
+		"tag": "section",
+		"class": "feather-account-navigation"
+	}
+{% endschema %}

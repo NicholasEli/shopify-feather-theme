@@ -37,6 +37,8 @@
 /**
  * Sections
  * */
+
+// Client
 @import '_section-authentication.scss';
 @import '_section-collection-banner.scss';
 @import '_section-footer.scss';
@@ -51,6 +53,9 @@
 @import '_section-product-variant-slider.scss';
 @import '_section-registration-form.scss';
 @import '_section-video.scss';
+
+// Admin
+@import '_section-account-navigation.scss';
 
 /**
  * Templates
