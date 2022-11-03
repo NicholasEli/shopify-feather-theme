@@ -16,10 +16,10 @@
 			{% for item in order.line_items %}
 				<div class="feather-order__line-item col-xs-12">
 					<div class="row">
-						<div class="feather-order__line-item-image col-xs-12 col-sm-4">
+						<div class="feather-order__line-item-image col-xs-12 col-sm-5 col-md-4">
 							{{ item.image | img_url: 'x180' | img_tag }}
 						</div>
-						<div class="feather-order__line-item-details col-xs-12 col-sm-8">
+						<div class="feather-order__line-item-details col-xs-12 col-sm-6 col-sm-offset-1 col-md-7">
 							<a
 								class="feather-line-item__title"
 								href="{{ item.url }}"
@@ -28,7 +28,11 @@
 								<h6>{{ item.title }}</h6>
 							</a>
 							<p class="feather-line-item__variant">{{ item.variant.title }}</p>
-							<p class="feather-line-item__sku"><span>Sku</span >{{ item.sku }}</p>
+							{% if item.sku %}
+								<p class="feather-line-item__sku"><span>Sku</span >{{ item.sku }}</p>
+							{% else  %}
+								<p class="feather-line-item__sku"><span>Product ID</span >{{ item.id }}</p>
+							{% endif %}
 							<p class="feather-line-item__quantity"><span>Quantity</span> {{ item.quantity }}</p>
 							<p class="feather-line-item__original-price"><span>Price</span> {{ item.original_price | money }}</p>
 							<p class="feather-line-item__final-price"><span>Total</span> {{ item.final_price | money }}</p>
