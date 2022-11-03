@@ -1,0 +1,19 @@
+<div class="container container--padding container--lg">
+	<div class="row">
+		<div class="feather-order__title col-xs-12">
+			<h5>Order: {{ order.name }}</h5>
+		</div>
+	</div>
+	<div class="feather-order__addresses row">
+		{% render 'address', title: 'Billing Address', address: order.billing_address, _class: 'feather-order__billing-address col-xs-12 col-sm-6' %}
+		{% render 'address', title: 'Shipping Address', address: order.shipping_address, _class: 'feather-order__shipping-address col-xs-12 col-sm-6' %}
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "Order",
+		"tag": "section",
+		"class": "feather-order"
+	}
+{% endschema %}

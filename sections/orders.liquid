@@ -20,6 +20,7 @@
 							<th>Payment</th>
 							<th>Status</th>
 							<th>Total</th>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,6 +35,9 @@
 								<td>{{ order.financial_status }}</td>
 								<td>{{ order.fulfillment_status }}</td>
 								<td>{{ order.total_price | money }}</td>
+								<td>
+									{{ 'View Order' | link_to: order.customer_url }}
+								</td>
 							</tr>
 						{% endfor %}
 					</tbody>
@@ -50,7 +54,7 @@
 
 {% schema %}
 	{
-		"name": "Order",
+		"name": "Orders",
 		"tag": "section",
 		"class": "feather-orders",
 		"settings": [
