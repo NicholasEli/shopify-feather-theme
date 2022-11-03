@@ -1,9 +1,12 @@
 {% liquid
-	assign links = 'Account:/account;Addresses:/account/addresses;Orders:/account/orders'
+	assign addresses = 'Addresses(' | append: customer.addresses_count | append: '):/account/addresses;'
+	assign links = 'Account:/account;'
+	assign links = links | append: addresses
+	assign links = links | append: 'Orders(' | append: customer.orders_count | append: '):/account/orders'
 	assign links = links | split: ';'
 %}
 
-<div class="container container--padding container--lg">
+<div class="container container--padding">
 	<div class="row">
 		<div class="col-xs-12">
 			<h1>Account</h1>

@@ -1,4 +1,6 @@
 .feather-account-navigation {
+	width: 100%;
+
 	ul {
 		@include flex(row, flex-start, flex-start, wrap);
 

@@ -19,20 +19,24 @@
 @import '_toast.scss';
 
 /**
- * Blocks
+ * Blocks/Snippets
  * */
 @import '_alert.scss';
 @import '_button.scss';
+@import '_cart-item.scss';
+@import '_cart-subtotal.scss';
+@import '_filters.scss';
 @import '_forms.scss';
 @import '_layout.scss';
 @import '_loading.scss';
+@import '_menu-cart.scss';
 @import '_modal.scss';
 @import '_model-viewer.scss';
+@import '_order.scss';
+@import '_pagination.scss';
+@import '_select.scss';
 @import '_tab-content.scss';
 @import '_type.scss';
-@import '_select.scss';
-@import '_filters.scss';
-@import '_pagination.scss';
 
 /**
  * Sections
@@ -60,12 +64,10 @@
 /**
  * Templates
  * */
-@import '_cart-item.scss';
-@import '_cart-subtotal.scss';
 @import '_cart.scss';
 @import '_collection.scss';
 @import '_list.scss';
-@import '_menu-cart.scss';
+@import '_page-account.scss';
 @import '_page-content.scss';
 @import '_page-login.scss';
 @import '_page-registration.scss';

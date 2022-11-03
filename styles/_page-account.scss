@@ -1,0 +1,23 @@
+body.account {
+	main {
+		@include feather-row;
+		max-width: $lg;
+		margin: 0 auto;
+		padding: multiply($gutter, 4) 0;
+
+		section {
+			@include feather-col;
+			@include feather-width(12);
+
+			@media (min-width: #{$md}) {
+				@include feather-width(6);
+			}
+
+			&.feather-account-navigation {
+				@media (min-width: #{$md}) {
+					@include feather-width(12);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+<div class="feather-order col-xs-12 col-sm-6 col-lg-4">
+	<h6>Order: 	{{ order.name }}</h6>
+	<p>Created At: <span>{{ order.created_at | time_tag: format: 'date' }}</span></p>
+	<p>Payment: <span>{{ order.financial_status_label }}</span></p>
+	<p>Status: <span>{{ order.fulfillment_status_label }}</span></p>
+	<p>Total: <span>{{ order.total_price | money_with_currency }}</span></p>
+	<a href="{{ order.customer_url }}">View Order</a>
+</div>

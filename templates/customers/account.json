@@ -3,9 +3,12 @@
     "navigation": {
       "type": "account-navigation"
     },
-    "addresses": {
-      "type": "addresses-preview"
+    "address": {
+      "type": "current-address"
+    },
+    "order": {
+      "type": "recent-order"
     }
   },
-  "order": ["navigation", "addresses"]
+  "order": ["navigation", "address", "order"]
 }
