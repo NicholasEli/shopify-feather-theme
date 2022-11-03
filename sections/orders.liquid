@@ -40,7 +40,7 @@
 				</table>
 				<div class="container container--lg container--padding">
 					<div class="row center-xs">
-						{% render 'pagination', paginate: paginate %}
+						{% render 'pagination', paginate: paginate, limit: section.settings.paginate_count %}
 					</div>
 				</div>
 			{% endif %}

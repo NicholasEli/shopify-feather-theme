@@ -1,6 +1,6 @@
 {% liquid
   assign current_page = paginate.current_page
-  assign page_limit = current_page | plus: 3
+  assign page_limit = current_page | plus: limit
   assign last_index = paginate.pages | minus: 1
 
   if page_limit > paginate.pages

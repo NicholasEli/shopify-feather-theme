@@ -1,6 +1,6 @@
 {% paginate collection.products by section.settings.paginate_count %}
 	<div class="feather-filters container container--lg container--padding">
-		{% render 'filters', paginate: paginate %}
+		{% render 'filters', paginate: paginate, limit: section.settings.paginate_count %}
 	</div>
 	<div class="container container--padding container--lg">
 		{% if collection and collection.products.size > 0 %}
@@ -20,7 +20,7 @@
 	</div>
 	<div class="container container--lg container--padding">
 		<div class="row center-xs">
-			{% render 'pagination', paginate: paginate %}
+			{% render 'pagination', paginate: paginate, limit: section.settings.paginate_count %}
 		</div>
 	</div>
 {% endpaginate %}
