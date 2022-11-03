@@ -6,10 +6,9 @@
         "title": ""
       }
     },
-    "pagination": {
-      "type": "pagination",
-      "settings": {
-      }
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
     },
     "product-list": {
       "type": "product-list",
@@ -18,9 +17,5 @@
       }
     }
   },
-  "order": [
-    "header",
-    "pagination",
-    "product-list"
-  ]
+  "order": ["header", "breadcrumbs", "product-list"]
 }
