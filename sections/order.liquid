@@ -12,31 +12,80 @@
 		<div class="col-xs-12">
 			<h5>Line Items</h5>
 		</div>
-		{% for item in order.line_items %}
-			<div class="feather-order__line-item col-xs-12">
-				<div class="row">
-					<div class="feather-order__line-item-image col-xs-12 col-sm-4">
-						{{ item.image | img_url: '600x' | img_tag }}
-					</div>
-					<div class="feather-order__line-item-details col-xs-12 col-sm-8">
-						<a
-							class="feather-line-item__title"
-							href="{{ item.url }}"
-							title="{{ item.title }}"
-						>
-							<h6>{{ item.title }}</h6>
-						</a>
-						<p class="feather-line-item__variant">{{ item.variant.title }}</p>
-						<p class="feather-line-item__sku"><span>Sku-</span>{{ item.sku }}</p>
-						<p class="feather-line-item__quantity"><span>Quantity-</span>{{ item.quantity }}</p>
-						<p class="feather-line-item__original-price"><span>Price-</span>{{ item.original_price | money }}</p>
-						<p class="feather-line-item__final-price"><span>Total-</span>{{ item.final_price | money }}</p>
+		<div class="feather-order__line-items-scroll">
+			{% for item in order.line_items %}
+				<div class="feather-order__line-item col-xs-12">
+					<div class="row">
+						<div class="feather-order__line-item-image col-xs-12 col-sm-4">
+							{{ item.image | img_url: '600x' | img_tag }}
+						</div>
+						<div class="feather-order__line-item-details col-xs-12 col-sm-8">
+							<a
+								class="feather-line-item__title"
+								href="{{ item.url }}"
+								title="{{ item.title }}"
+							>
+								<h6>{{ item.title }}</h6>
+							</a>
+							<p class="feather-line-item__variant">{{ item.variant.title }}</p>
+							<p class="feather-line-item__sku"><span>Sku-</span>{{ item.sku }}</p>
+							<p class="feather-line-item__quantity"><span>Quantity-</span>{{ item.quantity }}</p>
+							<p class="feather-line-item__original-price"><span>Price-</span>{{ item.original_price | money }}</p>
+							<p class="feather-line-item__final-price"><span>Total-</span>{{ item.final_price | money }}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		{% endfor %}
+			{% endfor %}
+		</div>
 	</div>
 </div>
+<div class="feather-order__summary container container--padding">
+	<div class="container container--lg">
+		<div class="row">
+			<div class="feather-order__summary-title col-xs-12">
+				<h5>Summary</h5>
+			</div>
+			<div class="feather-order__summary-details col-xs-12">
+					<div class="feather-order__summary-subtotal feather-order__summary-detail">
+						<h6>Subtotal</h6>
+			      <p><span>Subtotal</span>{{ order.line_items_subtotal_price | money }}</p>
+			    </div>
+		      {%- if order.cart_level_discount_applications != blank -%}
+		      	<div class="feather-order__summary-cart-level-discount feather-order__summary-detail">
+		      		<h6>Discount</h6>
+			        {%- for discount_application in order.cart_level_discount_applications -%}
+			          <p><span>{{ discount_application.title }}</span>{{ discount_application.total_allocated_amount | money }}</p>
+			        {%- endfor -%}
+		        </div>
+		      {%- endif -%}
+		    	<div class="feather-order__summary-shipping feather-order__summary-detail">
+		    		<h6>Shipping</h6>
+			      {%- for shipping_method in order.shipping_methods -%}
+			        <p><span>{{ shipping_method.title }}</span>{{ shipping_method.price | money }}</p>
+			      {%- endfor -%}
+		     </div>
+		     <div class="feather-order__summary-tax feather-order__summary-detail">
+		     	<h6>Taxes</h6>
+		      {%- for tax_line in order.tax_lines -%}
+		        <p><span>{{ customer.order.tax | money }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</span>{{ tax_line.price | money }}</p>
+		        </tr>
+		      {%- endfor -%}
+		    </div>
+		    {%- if order.total_duties -%}
+		    	<div class="feather-order__summary-duties feather-order__summary-detail">
+	    			<h6>Duties</h6>
+		        <p>{{ customer.order.total_duties | money }}</p>
+		        <p>{{ order.total_duties | money }}</p>
+		    	</div>
+		    {%- endif -%}
+		    <div class="feather-order__summary-total feather-order__summary-detail">
+		      <p><span>Total</span>{{ order.total_price | money_with_currency }}</p>
+		    </div>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 {% schema %}
 	{

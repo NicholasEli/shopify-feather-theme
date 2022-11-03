@@ -5,16 +5,28 @@
 		border-bottom: 1px solid $stroke;
 	}
 
-	&__addresses {
+	&__addresses,
+	.feather-order__line-item-details,
+	&__summary {
 		h6 {
 			font-weight: 600;
 		}
 	}
 
 	&__line-items {
+		&-scroll {
+			max-height: 600px;
+			overflow-y: auto;
+		}
 	}
 
 	&__line-item {
+		padding: multiply($gutter, 2);
+
+		&:nth-of-type(even) {
+			background-color: $gray;
+		}
+
 		&-image {
 			img {
 				width: 100%;
@@ -23,21 +35,56 @@
 		}
 	}
 
-	.feather-line-item {
-		&__variant,
-		&__sku,
-		&__original-price,
-		&__quantity,
-		&__final-price {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
+	&__line-item-details,
+	&__summary {
+		p {
+			@include flex(row, space-between, center);
 			margin-bottom: divide($gutter, 2);
 			font-weight: 300;
 			font-size: 14px;
 
 			span {
 				font-weight: 400;
+			}
+		}
+	}
+
+	&__summary {
+		padding: multiply($gutter, 2);
+		background-color: $primary;
+
+		&-detail {
+			margin-bottom: multiply($gutter, 2);
+		}
+
+		&-title {
+			margin-bottom: $gutter;
+			border-bottom: 1px solid $stroke;
+		}
+
+		h5,
+		h6,
+		p {
+			color: #fff;
+		}
+
+		h6 {
+			margin-bottom: 0;
+			font-size: 18px;
+		}
+	}
+
+	&__summary-total {
+		margin-top: multiply($gutter, 2);
+		margin-bottom: 0;
+		padding-top: multiply($gutter, 2);
+		border-top: 1px solid $stroke;
+
+		p {
+			font-size: 16px;
+			font-weight: 600;
+			span {
+				font-weight: 600;
 			}
 		}
 	}
