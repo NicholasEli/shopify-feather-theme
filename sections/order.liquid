@@ -8,6 +8,34 @@
 		{% render 'address', title: 'Billing Address', address: order.billing_address, _class: 'feather-order__billing-address col-xs-12 col-sm-6' %}
 		{% render 'address', title: 'Shipping Address', address: order.shipping_address, _class: 'feather-order__shipping-address col-xs-12 col-sm-6' %}
 	</div>
+	<div class="feather-order__line-items row">
+		<div class="col-xs-12">
+			<h5>Line Items</h5>
+		</div>
+		{% for item in order.line_items %}
+			<div class="feather-order__line-item col-xs-12">
+				<div class="row">
+					<div class="feather-order__line-item-image col-xs-12 col-sm-4">
+						{{ item.image | img_url: '600x' | img_tag }}
+					</div>
+					<div class="feather-order__line-item-details col-xs-12 col-sm-8">
+						<a
+							class="feather-line-item__title"
+							href="{{ item.url }}"
+							title="{{ item.title }}"
+						>
+							<h6>{{ item.title }}</h6>
+						</a>
+						<p class="feather-line-item__variant">{{ item.variant.title }}</p>
+						<p class="feather-line-item__sku"><span>Sku-</span>{{ item.sku }}</p>
+						<p class="feather-line-item__quantity"><span>Quantity-</span>{{ item.quantity }}</p>
+						<p class="feather-line-item__original-price"><span>Price-</span>{{ item.original_price | money }}</p>
+						<p class="feather-line-item__final-price"><span>Total-</span>{{ item.final_price | money }}</p>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 </div>
 
 {% schema %}

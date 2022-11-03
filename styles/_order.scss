@@ -4,4 +4,41 @@
 		margin-bottom: $gutter;
 		border-bottom: 1px solid $stroke;
 	}
+
+	&__addresses {
+		h6 {
+			font-weight: 600;
+		}
+	}
+
+	&__line-items {
+	}
+
+	&__line-item {
+		&-image {
+			img {
+				width: 100%;
+				display: block;
+			}
+		}
+	}
+
+	.feather-line-item {
+		&__variant,
+		&__sku,
+		&__original-price,
+		&__quantity,
+		&__final-price {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: divide($gutter, 2);
+			font-weight: 300;
+			font-size: 14px;
+
+			span {
+				font-weight: 400;
+			}
+		}
+	}
 }
