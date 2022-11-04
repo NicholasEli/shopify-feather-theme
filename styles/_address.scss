@@ -1,0 +1,20 @@
+.feather-address {
+	display: flex;
+	flex-direction: column;
+	padding: $gutter;
+
+	&--default {
+		background-color: $gray;
+		border: 1px solid $stroke;
+	}
+
+	&__default,
+	&__editable {
+		font-size: 12px;
+	}
+
+	&__editable {
+		margin-top: auto;
+		cursor: pointer;
+	}
+}

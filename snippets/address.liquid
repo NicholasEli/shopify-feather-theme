@@ -5,6 +5,12 @@
 	endif
 %}
 <address class="feather-address {{ class }}">
+	{% if default %}
+		<span class="feather-address__default">Default</span>
+	{% endif %}
 	{% if title %}<h6>{{ title }}</h6>{% endif %}
 	{{ address | format_address }}
+	{% if editable %}
+		<a class="feather-address__editable">edit</a>
+	{% endif %}
 </address>

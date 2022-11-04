@@ -1,0 +1,16 @@
+<div class="container container--padding container--lg">
+  <div class="row">
+    {% render 'address', address: customer.default_address, default: true, editable: true _class: 'feather-address--default col-xs-12 col-sm-6 col-md-4' %}
+    {% for address in customer.addresses %}
+      {% render 'address', address: address, editable: true %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Addresses",
+    "class": "feather-addresses",
+    "tag": "section"
+  }
+{% endschema %}

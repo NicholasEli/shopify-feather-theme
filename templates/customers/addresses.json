@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "navigation": {
+      "type": "account-navigation"
+    },
+    "addressess": {
+      "type": "addresses"
+    }
+  },
+  "order": ["navigation", "addressess"]
+}
