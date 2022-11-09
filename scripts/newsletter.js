@@ -1,7 +1,6 @@
 import { Notyf } from 'notyf';
 import { asyncTimeout, getCSSVariable, storage } from './utils.js';
 import { options } from './toast.js';
-import { modalOpen } from './modal.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 

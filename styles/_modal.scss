@@ -1,72 +1,50 @@
 .feather-modal {
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	position: fixed;
-	top: 0;
+	top: 0px;
 	left: 0;
 	display: none;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	z-index: 99;
 	opacity: 0;
-	z-index: 10;
-	background-color: rgba(255, 255, 255, 0.25);
-	backdrop-filter: blur(5px);
+	pointer-events: none;
 
 	&__dialog {
 		width: calc(100% - #{multiply($gutter, 2)});
-		max-width: 600px;
-		max-height: calc(100vh - #{multiply($gutter, 2)});
-		padding-top: multiply($gutter, 2);
-		padding-bottom: multiply($gutter, 2);
-		overflow-y: auto;
-		background-color: $primary;
-		opacity: 0;
+		max-width: $md;
+		background-color: #fff;
+		border-radius: 4px;
+		border: 1px solid $stroke;
+		box-shadow: $box-shadow;
+	}
 
-		@media (min-width: #{$md}) {
-			padding: multiply($gutter, 2);
+	&__close-btn {
+		width: auto;
+		height: auto;
+		position: absolute;
+		top: $gutter;
+		right: $gutter;
+		padding: 0;
+		line-height: 1;
+		border: none;
+
+		svg {
+			width: 20px;
+			height: 20px;
 		}
+	}
 
-		&-title {
-			position: relative;
-			h4 {
-				color: #fff;
-				font-family: $ibarra;
-			}
-
-			a {
-				position: absolute;
-				top: 0;
-				right: 0;
-				cursor: pointer;
-
-				svg {
-					width: 20px;
-					* {
-						fill: #fff;
-					}
-				}
-			}
-		}
-
-		div,
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6,
-		p,
-		li {
-			color: #fff;
-		}
-
-		&-content {
-			input,
-			.button {
-				background-color: #fff;
-			}
-		}
+	&__dialog-header {
+		position: relative;
 	}
 
 	&--active {
 		display: flex;
+		pointer-events: all;
 	}
 }
