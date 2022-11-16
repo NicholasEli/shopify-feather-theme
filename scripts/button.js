@@ -23,7 +23,9 @@ export const button = function (selector, callback) {
 	for (let btn of btns) {
 		if (!callback || !btn.element || !btn.type || !btn.target) return;
 
-		btn.element.addEventListener('click', () => {
+		btn.element.addEventListener('click', (e) => {
+			e.preventDefault();
+
 			const selector = `[data-${btn.type}="${btn.target}"]`;
 			callback(selector);
 		});

@@ -3,6 +3,7 @@ import { asyncTimeout, getCSSVariable } from './utils.js';
 import { cart as api } from './api.js';
 import { Notyf } from 'notyf';
 import { options } from './toast.js';
+import { button } from './button.js';
 
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
@@ -10,8 +11,8 @@ const delay = parseInt(getCSSVariable('--animate-duration'));
  * Sets cart UI to active
  */
 export const cartActiveUI = function () {
-	const overlay = document.querySelector('[data-menu-cart="overlay"]');
-	const dialog = document.querySelector('[data-menu-cart="dialog"]');
+	const overlay = document.querySelector('[data-cart="overlay"]');
+	const dialog = document.querySelector('[data-cart="dialog"]');
 
 	document.body.classList.add('overflow-hidden');
 	overlay.classList.add('animate__fadeIn');
@@ -22,8 +23,8 @@ export const cartActiveUI = function () {
  * Sets cart UI to inactive
  */
 export const cartInactiveUI = async function () {
-	const overlay = document.querySelector('[data-menu-cart="overlay"]');
-	const dialog = document.querySelector('[data-menu-cart="dialog"]');
+	const overlay = document.querySelector('[data-cart="overlay"]');
+	const dialog = document.querySelector('[data-cart="dialog"]');
 
 	dialog.classList.add('animate__fadeOutRight');
 	overlay.classList.add('animate__fadeOut');
@@ -40,33 +41,30 @@ export const cartInactiveUI = async function () {
  */
 const toggleCart = function () {
 	const btns = document.querySelectorAll('[data-btn="cart"]');
-	const overlay = document.querySelector('[data-menu-cart="overlay"]');
 
-	if (!btns || (btns && !btns.length) || !overlay) return;
+	button('cart', () => {
+		const overlay = document.querySelector('[data-cart="overlay"]');
 
-	btns.forEach((btn) => {
-		btn.addEventListener('click', (e) => {
-			e.preventDefault();
+		if (!overlay) return;
 
-			if (overlay.className.indexOf('animate__fadeIn') > -1) {
-				cartInactiveUI();
-				return;
-			}
+		if (overlay.className.indexOf('animate__fadeIn') > -1) {
+			cartInactiveUI();
+			return;
+		}
 
-			cartActiveUI();
-		});
+		cartActiveUI();
 	});
 
-	overlay.addEventListener('click', (e) => {
-		const dialog = overlay.querySelector('[data-menu-cart="dialog"]');
-		const bounds = dialog.getBoundingClientRect();
+	// overlay.addEventListener('click', (e) => {
+	// 	const dialog = overlay.querySelector('[data-menu-cart="dialog"]');
+	// 	const bounds = dialog.getBoundingClientRect();
 
-		if (e.clientX < bounds.x) cartInactiveUI();
-	});
+	// 	if (e.clientX < bounds.x) cartInactiveUI();
+	// });
 
-	window.addEventListener('keyup', (e) => {
-		if (e.keyCode === 27) cartInactiveUI();
-	});
+	// window.addEventListener('keyup', (e) => {
+	// 	if (e.keyCode === 27) cartInactiveUI();
+	// });
 };
 
 const emptyCartUI = function (cart) {
