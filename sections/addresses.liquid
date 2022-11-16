@@ -1,12 +1,13 @@
 <div class="container container--padding container--lg">
   <div class="row">
     {% render 'address', address: customer.default_address, default: true, editable: true _class: 'feather-address--default col-xs-12 col-sm-6 col-md-4' %}
+    {% render 'modal', target: target, address: customer.default_address %}
     {% for address in customer.addresses %}
-      {% render 'address', address: address, editable: true %}
+      {% render 'address', address: address, editable: true, index: forloop.index, index: forloop.index %}
+      {% render 'modal', address: address, index: forloop.index %}
     {% endfor %}
   </div>
 </div>
-{% render 'modal', target: 'data-address-modal' %}
 
 {% schema %}
   {

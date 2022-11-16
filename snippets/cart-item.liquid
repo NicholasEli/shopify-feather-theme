@@ -17,7 +17,13 @@
 		</div>
 		<div class="feather-cart-item-quantity">
 			<div class="input">
-				<input data-cart-item-quantity="{{ item.variant_id }}" type="number" placeholder="0" value="{{ item.quantity }}"/>
+				<input
+					data-cart-item-quantity
+					type="number"
+					placeholder="0"
+					value="{{ item.quantity }}"
+					onchange="updateLineItem(event, {{ item.variant_id }})"
+				/>
 			</div>
 		</div>
 		<div class="feather-cart-item-price">
@@ -27,5 +33,9 @@
 			<p data-cart-item-price>{{ item.final_line_price | money }}</p>
 		</div>
 	</div>
-	<a data-remove-lineitem="{{ item.variant_id }}" class="feather-cart-item-remove">{% render 'icon-close' %}</a>
+	<a
+		data-remove-lineitem
+		class="feather-cart-item-remove"
+		onclick="removeLineItem(event, {{ item.variant_id }})"
+	>{% render 'icon-close' %}</a>
 </div>

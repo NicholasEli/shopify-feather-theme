@@ -172,6 +172,7 @@ export const cart = {
 	 */
 	change: async (changes) => {
 		try {
+			console.log(changes);
 			const res = await fetch(`/cart/change.js`, {
 				method: 'POST',
 				credentials: 'same-origin',

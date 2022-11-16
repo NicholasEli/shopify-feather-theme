@@ -10,7 +10,8 @@ const delay = parseInt(getCSSVariable('--animate-duration'));
 /**
  * Sets cart UI to active
  */
-export const cartActiveUI = function () {
+export const cartActiveUI = function (e) {
+	if (e) e.preventDefault();
 	const overlay = document.querySelector('[data-cart-overlay]');
 	const dialog = document.querySelector('[data-cart-dialog]');
 
@@ -22,7 +23,8 @@ export const cartActiveUI = function () {
 /**
  * Sets cart UI to inactive
  */
-export const cartInactiveUI = async function () {
+export const cartInactiveUI = async function (e) {
+	if (e) e.preventDefault();
 	const overlay = document.querySelector('[data-cart-overlay]');
 	const dialog = document.querySelector('[data-cart-dialog]');
 
@@ -34,28 +36,6 @@ export const cartInactiveUI = async function () {
 	overlay.classList.remove('animate__fadeIn', 'animate__fadeOut');
 	dialog.classList.remove('animate__fadeInRight', 'animate__fadeOutRight');
 	document.body.classList.remove('overflow-hidden');
-};
-
-/**
- * Toggles cart UI active/inactive
- */
-const toggleCart = function () {
-	button('data-cart-overlay', (e, { target }) => {
-		if (target.className.indexOf('animate__fadeIn') > -1) {
-			cartInactiveUI();
-			return;
-		}
-		cartActiveUI();
-	});
-
-	button('data-cart-dialog', (e, { target }) => {
-		const bounds = target.getBoundingClientRect();
-		if (e.clientX < bounds.x) cartInactiveUI();
-	});
-
-	window.addEventListener('keyup', (e) => {
-		if (e.keyCode === 27) cartInactiveUI();
-	});
 };
 
 const emptyCartUI = function (cart) {
@@ -186,14 +166,22 @@ export const setLineItem = function (item) {
 		_image.src = image;
 		_image.title = product_title;
 
+		// title
 		template.content.querySelector('[data-cart-item-variant]').innerText = variant_title;
+		// remove line item
 		template.content
 			.querySelector('[data-remove-lineitem]')
 			.setAttribute('data-remove-lineitem', variant_id);
+		template.content.querySelector('[data-remove-lineitem]').onclick = (e) =>
+			removeLineItem(e, variant_id);
+		// quantity
 		template.content.querySelector('[data-cart-item-quantity]').value = quantity;
 		template.content
 			.querySelector('[data-cart-item-quantity]')
 			.setAttribute('data-cart-item-quantity', variant_id);
+		template.content.querySelector('[data-cart-item-quantity]').onchange = (e) =>
+			updateLineItem(e, variant_id);
+		// price
 		template.content.querySelector('[data-cart-item-price]').innerText = currency(
 			final_line_price,
 			{ fromCents: true }
@@ -205,68 +193,52 @@ export const setLineItem = function (item) {
 	removeLineItem();
 };
 
-const updateLineItem = function () {
-	const inputs = document.querySelectorAll('[data-cart-item-quantity]');
-	if (!inputs || (inputs && !inputs.length)) return;
+const updateLineItem = async function (e, id, qty = 0) {
+	let quantity = qty;
+	if (e) {
+		e.preventDefault();
+		quantity = e.currentTarget.value;
+	}
 
-	inputs.forEach((input) => {
-		let timeout = null;
-		input.addEventListener('change', (e) => {
-			clearTimeout(timeout);
-			timeout = setTimeout(async () => {
-				const value = parseInt(input.value);
-				const variantID = input.getAttribute('data-cart-item-quantity');
+	if (!id) return;
 
-				if (!variantID) return;
+	quantity = parseInt(quantity);
 
-				const res = await api.change({
-					id: variantID,
-					quantity: value,
-				});
-				console.log(res.data);
-				timeout = null;
-
-				if (res.error || !res.data) {
-					console.error(res.error);
-					const notyf = new Notyf();
-					notyf.error('Could not add item to cart');
-					return;
-				}
-
-				cartUI(res.data);
-			}, 500);
-		});
+	const res = await api.change({
+		id: id.toString(),
+		quantity,
 	});
+
+	if (res.error || !res.data) {
+		console.error(res.error);
+		const notyf = new Notyf();
+		notyf.error('Could not add item to cart');
+		return;
+	}
+
+	cartUI(res.data);
 };
 
 /**
  * Makes http request to remove lineitem from cart
  */
-const removeLineItem = function () {
-	const btns = document.querySelectorAll('[data-remove-lineitem]');
-	if (!btns || (btns && !btns.length)) return;
+const removeLineItem = async function (e, id) {
+	if (e) e.preventDefault();
+	if (!id) return;
 
-	btns.forEach((btn) => {
-		btn.addEventListener('click', async () => {
-			const variantID = btn.getAttribute('data-remove-lineitem');
-
-			if (!variantID) return;
-
-			const res = await api.change({
-				id: variantID,
-				quantity: 0,
-			});
-
-			if (res.error || !res.data) {
-				console.error(res.error);
-				const notyf = new Notyf();
-				notyf.error('Could not add item to cart');
-				return;
-			}
-
-			cartUI(res.data);
-		});
+	const res = await api.change({
+		id: id.toString(),
+		quantity: 0,
 	});
+
+	if (res.error || !res.data) {
+		console.error(res.error);
+		const notyf = new Notyf();
+		notyf.error('Could not add item to cart');
+		return;
+	}
+
+	cartUI(res.data);
 };
 
 /**
@@ -278,7 +250,12 @@ export const removeLineItems = function () {
 };
 
 export const cart = function () {
-	toggleCart();
-	removeLineItem();
-	updateLineItem();
+	window.cartActiveUI = cartActiveUI;
+	window.cartInactiveUI = cartInactiveUI;
+	window.removeLineItem = removeLineItem;
+	window.updateLineItem = updateLineItem;
+
+	window.addEventListener('keyup', (e) => {
+		if (e.keyCode === 27) cartInactiveUI();
+	});
 };
