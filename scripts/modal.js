@@ -4,20 +4,17 @@ import { button } from './button.js';
 const delay = parseInt(getCSSVariable('--animate-duration'));
 
 const toggle = function () {
-	const btns = button('modal', async (selector) => {
-		const modal = document.querySelector(selector);
-		if (!modal) return;
-
-		if (modal.className.indexOf('feather-modal--active') > -1) {
-			modal.classList.add('animate__fadeOut');
+	const btns = button('data-address-modal', async (e, { target }) => {
+		if (target.className.indexOf('feather-modal--active') > -1) {
+			target.classList.add('animate__fadeOut');
 			await asyncTimeout(delay);
-			modal.classList.remove('feather-modal--active', 'animate__fadeIn', 'animate__fadeOut');
+			target.classList.remove('feather-modal--active', 'animate__fadeIn', 'animate__fadeOut');
 			return;
 		}
 
-		modal.classList.add('feather-modal--active');
+		target.classList.add('feather-modal--active');
 		await asyncTimeout(delay);
-		modal.classList.add('animate__fadeIn');
+		target.classList.add('animate__fadeIn');
 	});
 };
 
@@ -33,15 +30,12 @@ const close = function () {
 		modal.classList.remove('feather-modal--active', 'animate__fadeIn', 'animate__fadeOut');
 	};
 
-	document.addEventListener('click', (e) => {
-		for (let modal of modals) {
-			const dialog = modal.querySelector('.feather-modal__dialog');
-			const bounds = dialog.getBoundingClientRect();
+	button('data-modal-dialog', (e, { btn, target }) => {
+		const bounds = target.getBoundingClientRect();
 
-			if (modal.className.indexOf('feather-modal--active') === -1) return;
-			if (e.clientX < bounds.x || e.clientX > bounds.x + bounds.width) _close(modal);
-			if (e.clientY < bounds.y || e.clientY > bounds.y + bounds.height) _close(modal);
-		}
+		if (btn.className.indexOf('feather-modal--active') === -1) return;
+		if (e.clientX < bounds.x || e.clientX > bounds.x + bounds.width) _close(btn);
+		if (e.clientY < bounds.y || e.clientY > bounds.y + bounds.height) _close(btn);
 	});
 
 	document.addEventListener('keyup', (e) => {

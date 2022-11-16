@@ -11,6 +11,6 @@
 	{% if title %}<h6>{{ title }}</h6>{% endif %}
 	{{ address | format_address }}
 	{% if editable %}
-		<a title="{% if default %}Default Adddress | {%endif%}{{ title }}" class="feather-address__editable" data-btn="modal:address">edit</a>
+		<a title="{% if default %}Default Adddress | {%endif%}{{ title }}" class="feather-address__editable" data-btn="data-address-modal">edit</a>
 	{% endif %}
 </address>

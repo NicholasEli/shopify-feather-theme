@@ -1,33 +1,28 @@
-export const button = function (selector, callback) {
-	let btns = document.querySelectorAll('[data-btn]');
+export const button = async function (selector, callback) {
+	const btns = document.querySelectorAll(`[data-btn="${selector}"]`);
+	if (!btns || !callback) return null;
 
-	if (!btns || (btns && !btns.length)) return;
+	const _btns = Array.from(btns).map((btn) => {
+		const target = document.querySelectorAll(`[${selector}]`);
 
-	btns = Array.from(btns);
+		if (!target || (target && !target.length)) return null;
 
-	btns = btns
-		.filter((btn) => {
-			const attr = btn.getAttribute('data-btn').split(':');
-			const type = attr[0];
+		const obj = {
+			selector,
+			btn,
+			target,
+		};
 
-			if (type === selector) return btn;
-		})
-		.map((btn) => {
-			const attr = btn.getAttribute('data-btn').split(':');
-			const type = attr[0];
-			const target = attr[1];
+		if (target.length === 1) obj.target = target[0];
 
-			return { element: btn, type, target };
-		});
+		return obj;
+	});
 
-	for (let btn of btns) {
-		if (!callback || !btn.element || !btn.type || !btn.target) return;
-
-		btn.element.addEventListener('click', (e) => {
+	for (let _btn of _btns) {
+		const { btn, target } = _btn;
+		btn.addEventListener('click', async (e) => {
 			e.preventDefault();
-
-			const selector = `[data-${btn.type}="${btn.target}"]`;
-			callback(selector);
+			await callback(e, { ..._btn });
 		});
 	}
 };

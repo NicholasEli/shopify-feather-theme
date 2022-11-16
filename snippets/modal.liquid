@@ -1,9 +1,14 @@
-<div class="feather-modal animate__animated" data-modal="address">
-	<div class="feather-modal__dialog animate__animated">
+<div
+	class="feather-modal animate__animated"
+	data-modal
+	data-btn="data-modal-dialog"
+	{% if target %}{{ target }}{% endif %}
+	>
+	<div data-modal-dialog class="feather-modal__dialog animate__animated">
 		<div class="feather-modal__dialog-header">
 			<div class="container container--padding">
 				<h5>Feather Modal</h5>
-				<button data-btn="modal:address" class="feather-modal__close-btn">
+				<button data-btn="data-address-modal" class="feather-modal__close-btn">
 					{% render 'icon-close' %}
 				</button>
 			</div>

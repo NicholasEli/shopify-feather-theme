@@ -11,8 +11,8 @@ const delay = parseInt(getCSSVariable('--animate-duration'));
  * Sets cart UI to active
  */
 export const cartActiveUI = function () {
-	const overlay = document.querySelector('[data-cart="overlay"]');
-	const dialog = document.querySelector('[data-cart="dialog"]');
+	const overlay = document.querySelector('[data-cart-overlay]');
+	const dialog = document.querySelector('[data-cart-dialog]');
 
 	document.body.classList.add('overflow-hidden');
 	overlay.classList.add('animate__fadeIn');
@@ -23,8 +23,8 @@ export const cartActiveUI = function () {
  * Sets cart UI to inactive
  */
 export const cartInactiveUI = async function () {
-	const overlay = document.querySelector('[data-cart="overlay"]');
-	const dialog = document.querySelector('[data-cart="dialog"]');
+	const overlay = document.querySelector('[data-cart-overlay]');
+	const dialog = document.querySelector('[data-cart-dialog]');
 
 	dialog.classList.add('animate__fadeOutRight');
 	overlay.classList.add('animate__fadeOut');
@@ -40,31 +40,22 @@ export const cartInactiveUI = async function () {
  * Toggles cart UI active/inactive
  */
 const toggleCart = function () {
-	const btns = document.querySelectorAll('[data-btn="cart"]');
-
-	button('cart', () => {
-		const overlay = document.querySelector('[data-cart="overlay"]');
-
-		if (!overlay) return;
-
-		if (overlay.className.indexOf('animate__fadeIn') > -1) {
+	button('data-cart-overlay', (e, { target }) => {
+		if (target.className.indexOf('animate__fadeIn') > -1) {
 			cartInactiveUI();
 			return;
 		}
-
 		cartActiveUI();
 	});
 
-	// overlay.addEventListener('click', (e) => {
-	// 	const dialog = overlay.querySelector('[data-menu-cart="dialog"]');
-	// 	const bounds = dialog.getBoundingClientRect();
+	button('data-cart-dialog', (e, { target }) => {
+		const bounds = target.getBoundingClientRect();
+		if (e.clientX < bounds.x) cartInactiveUI();
+	});
 
-	// 	if (e.clientX < bounds.x) cartInactiveUI();
-	// });
-
-	// window.addEventListener('keyup', (e) => {
-	// 	if (e.keyCode === 27) cartInactiveUI();
-	// });
+	window.addEventListener('keyup', (e) => {
+		if (e.keyCode === 27) cartInactiveUI();
+	});
 };
 
 const emptyCartUI = function (cart) {
