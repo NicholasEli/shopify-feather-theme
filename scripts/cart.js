@@ -38,6 +38,16 @@ export const cartInactiveUI = async function (e) {
 	document.body.classList.remove('overflow-hidden');
 };
 
+const cartOutOfBounds = function (e) {
+	if (e) e.preventDefault();
+
+	const dialog = document.querySelector('[data-cart-dialog]');
+	const bounds = dialog.getBoundingClientRect();
+
+	if (e.clientX < bounds.x || e.clientX > bounds.x + bounds.width) cartInactiveUI(e);
+	if (e.clientY < bounds.y || e.clientY > bounds.y + bounds.height) cartInactiveUI(e);
+};
+
 const emptyCartUI = function (cart) {
 	if (!cart) return;
 
@@ -254,6 +264,7 @@ export const cart = function () {
 	window.cartInactiveUI = cartInactiveUI;
 	window.removeLineItem = removeLineItem;
 	window.updateLineItem = updateLineItem;
+	window.cartOutOfBounds = cartOutOfBounds;
 
 	window.addEventListener('keyup', (e) => {
 		if (e.keyCode === 27) cartInactiveUI();

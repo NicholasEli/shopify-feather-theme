@@ -7,7 +7,11 @@
 {% endif %}
 
 {% if media.media_type == 'model' %}
-	<div data-model-viewer class="feather-model-viewer">
+	<div
+		data-model-viewer="{{ media.id }}"
+		class="feather-model-viewer"
+		onclick="modelViewActiveUI(event, {{ media.id }})"
+	>
 		{{ media | model_viewer_tag: image_size: '1200x', reveal: 'interaction', toggleable: true, data-model-id: media.id }}
 		<div data-btn="model-viewer" class="feather-model-viewer__btn">
 			{% render 'icon-3d-model' %}

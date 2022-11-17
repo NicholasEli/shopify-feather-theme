@@ -1,12 +1,9 @@
-const setActive = function () {
-	const viewers = document.querySelectorAll('[data-model-viewer]');
-	if (!viewers || (viewers && !viewers.length)) return;
-
-	viewers.forEach((viewer) => {
-		viewer.addEventListener('click', () => viewer.classList.add('feather-model-viewer--active'));
-	});
+const modelViewActiveUI = function (e, id) {
+	if (e) e.preventDefault();
+	const viewer = document.querySelector(`[data-model-viewer="${id}"]`);
+	viewer.classList.add('feather-model-viewer--active');
 };
 
 export const modelViewer = function () {
-	setActive();
+	window.modelViewActiveUI = modelViewActiveUI;
 };
