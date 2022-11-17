@@ -1,67 +1,11 @@
 <div class="form form__address">
-  {% form 'customer_address', address %}
-    <div class="row">
-      <div class="form form__input col-xs-12 col-sm-6 col-sm-4">
-        <label>First Name</label>
-        <input type="text" name="address[first_name]" value="{{ form.first_name }}">
-      </div>
-      <div class="form form__input col-xs-12 col-sm-6 col-sm-4">
-        <label>Last Name</label>
-        <input type="text" name="address[last_name]" value="{{ form.last_name }}">
-      </div>
-    </div>
-    <div class="row">
-      <div class="form__input col-xs-12">
-        <label>Company</label>
-        <input type="text" name="address[company]" value="{{ form.company }}">
-      </div>
-    </div>
-    <div class="row">
-      <div class="form__input col-xs-12 col-sm-7 col-md-9">
-        <label>Address</label>
-        <input type="text" name="address[address1]" value="{{ form.address1 }}">
-      </div>
-      <div class="form__input col-xs-12 col-sm-5 col-md-3">
-        <label>Unit #</label>
-        <input type="text" name="address[address2]" value="{{ form.address2 }}">
-      </div>
-    </div>
-    <div class="row">
-      <div class="form__input col-xs-12 col-sm-4 col-md-4">
-        <label>City</label>
-        <input type="text" name="address[city]" value="{{ form.city }}">
-      </div>
-      <div class="form__input col-xs-12 col-sm-4 col-md-4">
-        <label>Country</label>
-        <select name="address[country]">{{ all_country_option_tags }}</select>
-      </div>
-      <div class="form__input col-xs-12 col-sm-4 col-4">
-        <label>State</label>
-        <select name="address[province]">
-          {% render 'states' %}
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="form__input col-xs-6 col-sm-3">
-        <label>Zip Code</label>
-        <input type="text" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
-      </div>
-      <div class="form__input col-xs-6 col-sm-9 col-md-9">
-        <label>Phone #</label>
-        <input type="tel" name="address[phone]" value="{{ form.phone }}">
-      </div>
-    </div>
-    <div class="row">
-      <div class="form__input form__input--set-default col-xs-12">
-        {{ form.set_as_default_checkbox }}
-        <label>Set Default</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 end-xs">
-        <input type="submit" class="btn btn--transparent-white" value="Update Address" />
-      </div>
-    </div>
-  {% endform %}
+  {% if address %}
+    {% form 'customer_address', address %}
+      {% render 'form-address-fields', address: address, form: form %}
+    {% endform %}
+  {% else %}
+    {% form 'customer_address', customer.new_address %}
+      {% render 'form-address-fields', form: form %}
+    {% endform %}
+  {% endif %}
 </div>

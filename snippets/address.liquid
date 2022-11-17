@@ -8,23 +8,37 @@
 	{% if default %}
 		<span class="feather-address__default">Default</span>
 	{% endif %}
-	{% if title %}<h6>{{ title }}</h6>{% endif %}
-	{{ address | format_address }}
-	{% if editable %}
+
+	{% comment %}If Address Exists{% endcomment %}
+	{% if address %}
+		{{ address | format_address }}
+		{% if editable %}
+			<div class="feather-address__editable">
+				<a
+					title="{% if default %}Default Adddress{% else %}{{ address.name }}{%endif%}"
+					onclick="modalActiveUI(event, '{{ id }}')"
+				>edit</a>
+				<span>|</span>
+				<form class="feather-address__delete"
+	        method="post"
+	        action="/account/addresses/{{ address.id }}"
+	      >
+	        <input type="hidden" name="_method" value="delete" />
+	        <button type="submit">{{ 'customer.addresses.delete' | t }}</button>
+	      </form>
+			</div>
+		{% endif %}
+	{% endif %}
+
+	{% comment %}New Address{% endcomment %}
+	{% if id == 'address-new' %}
+		<span class="feather-address__new">New Address</span>
 		<div class="feather-address__editable">
 			<a
-				title="{% if default %}Default Adddress | {%endif%}{{ title }}"
-				class=""
+				title="New Address"
+				class="address__new"
 				onclick="modalActiveUI(event, '{{ id }}')"
-			>edit</a>
-			<span>|</span>
-			<form class="feather-address__delete"
-        method="post"
-        action="/account/addresses/{{ address.id }}"
-      >
-        <input type="hidden" name="_method" value="delete" />
-        <button type="submit">{{ 'customer.addresses.delete' | t }}</button>
-      </form>
+			>create</a>
 		</div>
 	{% endif %}
 </address>

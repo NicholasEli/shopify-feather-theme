@@ -2,9 +2,12 @@
   <div class="row">
     {% liquid
       assign default = 'address-default'
+      assign new = 'address-new'
      %}
-    {% render 'address', address: customer.default_address, default: true, editable: true _class: 'feather-address--default col-xs-12 col-sm-6 col-md-4', id: default %}
-    {% render 'modal', title: "Edit Default Address", address: customer.default_address, id: default %}
+     {% if customer.default_address %}
+      {% render 'address', address: customer.default_address, default: true, editable: true, _class: 'feather-address--default col-xs-12 col-sm-6 col-md-4', id: default %}
+      {% render 'modal', title: "Edit Default Address", address: customer.default_address, id: default %}
+    {% endif %}
     {% for address in customer.addresses %}
       {% 
         assign id = 'address-' | append: forloop.index
@@ -12,6 +15,8 @@
       {% render 'address', address: address, editable: true, id: id %}
       {% render 'modal', title: "Edit Address", address: address, id: id %}
     {% endfor %}
+    {% render 'address', editable: true, _class: 'feather-address--new col-xs-12 col-sm-6 col-md-4', id: new %}
+    {% render 'modal', title: "New Address", id: new %}
   </div>
 </div>
 

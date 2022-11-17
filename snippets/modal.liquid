@@ -17,7 +17,7 @@
 		</div>
 		<div class="feather-modal__dialog-body">
 			<div class="container container--padding">
-				{% if address %}
+				{% if address or id == 'address-new' %}
 					{% render 'form-address', address: address %}
 				{% endif %}
 			</div>
