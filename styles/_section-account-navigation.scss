@@ -23,6 +23,11 @@
 					background-color: $gray;
 				}
 			}
+
+			&__logout {
+				margin-left: auto;
+				text-decoration: underline;
+			}
 		}
 	}
 }

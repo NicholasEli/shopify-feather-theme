@@ -33,6 +33,11 @@ body.account {
 					@include feather-width(8);
 				}
 
+				.feather-orders__table-container {
+					max-width: 100%;
+					overflow-x: auto;
+				}
+
 				table {
 					width: 100%;
 

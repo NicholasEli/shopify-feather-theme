@@ -12,36 +12,38 @@
 				</div>
 			{% endif %}
 			{% if customer.orders.size != 0 %}
-				<table class="col-xs-12">
-					<thead>
-						<tr>
-							<th></th>
-							<th>Order</th>
-							<th>Payment</th>
-							<th>Status</th>
-							<th>Total</th>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-						{% for order in customer.orders %}
+				<div class="feather-orders__table-container col-xs-12">
+					<table>
+						<thead>
 							<tr>
-								<td>
-									{% if order.line_items[0].image %}
-										<img src="{{ order.line_items[0].image | img_url: '100x' }}" alt="{{ order.line_items[0].title }}" />
-									{% endif %}
-								</td>
-								<td>{{ order.name }}</td>
-								<td>{{ order.financial_status }}</td>
-								<td>{{ order.fulfillment_status }}</td>
-								<td>{{ order.total_price | money }}</td>
-								<td>
-									{{ 'View Order' | link_to: order.customer_url }}
-								</td>
+								<th></th>
+								<th>Order</th>
+								<th>Payment</th>
+								<th>Status</th>
+								<th>Total</th>
+								<td></td>
 							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{% for order in customer.orders %}
+								<tr>
+									<td>
+										{% if order.line_items[0].image %}
+											<img src="{{ order.line_items[0].image | img_url: '100x' }}" alt="{{ order.line_items[0].title }}" />
+										{% endif %}
+									</td>
+									<td>{{ order.name }}</td>
+									<td>{{ order.financial_status }}</td>
+									<td>{{ order.fulfillment_status }}</td>
+									<td>{{ order.total_price | money }}</td>
+									<td>
+										{{ 'View Order' | link_to: order.customer_url }}
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
 				<div class="container container--lg container--padding">
 					<div class="row center-xs">
 						{% render 'pagination', paginate: paginate, limit: section.settings.paginate_count %}
