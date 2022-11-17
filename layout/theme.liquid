@@ -36,7 +36,6 @@
         cart: {{ cart | json }},
         collection: {{ collection | json }},
         collections: {{ collections | json }},
-        newsletter: { message: null, error: null },
         path: {{ request.path | json }},
         product: {{ product | json }},
         template: {{ template | json }},
@@ -46,7 +45,8 @@
           cart_update_url: '{{ routes.cart_update_url }}',
           predictive_search_url: '{{ routes.predictive_search_url }}'
         },
-        form_errors: []
+        form_errors: [],
+        form_success: null
       };
 
       window.Feather = debug;

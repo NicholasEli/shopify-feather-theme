@@ -1,0 +1,9 @@
+<script>
+	if (!window.Feather.form_success) window.Feather.form_success = null;
+	{% if form.posted_successfully? %}
+		window.Feather.form_success = {
+			form: '{{ form }}',
+			message: '{{ message }}'
+		};
+	{% endif %}
+</script>

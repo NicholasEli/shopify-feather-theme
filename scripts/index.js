@@ -12,13 +12,13 @@ import { tabbedContent } from './tabbed-content.js';
 import { cart } from './cart.js';
 import { modelViewer } from './model-viewer.js';
 import { formErrors } from './form-errors.js';
+import { formSuccess } from './form-success.js';
 import { address } from './address.js';
 
 // Page Components
 import { product } from './product.js';
 import { productSpotlight } from './product-spotlight.js';
 import { productFilter } from './product-filter.js';
-import { newsletter } from './newsletter.js';
 
 window.onload = async function () {
 	console.log('--Initializing Scripts');
@@ -37,10 +37,10 @@ window.onload = async function () {
 	cart();
 	modelViewer();
 	formErrors();
+	formSuccess();
 	address();
 
 	// Page Components
-	newsletter();
 	product();
 	productSpotlight();
 	productFilter(); // <!-- call after all filter, select and toggle methods have been called
