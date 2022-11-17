@@ -4,7 +4,9 @@
 			<a
 				data-tab="{{ category }}"
 				title={{ category }}
-				class="feather-tab-content__tab-item button">{{ category }}</a>
+				class="feather-tab-content__tab-item button"
+				onclick="tabActive(event, '{{ category }}')"
+			>{{ category }}</a>
 		{% endfor %}
 	</div>
 	<div class="feather-tab-content__content">

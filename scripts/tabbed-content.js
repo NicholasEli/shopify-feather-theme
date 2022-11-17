@@ -63,10 +63,6 @@ const setTabs = function () {
 			active: false,
 		};
 
-		tab.addEventListener(
-			'click',
-			() => (state.setActive = { tab: obj, callback: () => setUI(obj) })
-		);
 		_state[id] = obj;
 		if (index === 0) currentTab = obj;
 	});
@@ -75,6 +71,20 @@ const setTabs = function () {
 	state.setActive = { tab: currentTab, callback: () => setUI(currentTab) };
 };
 
+const tabActive = function (e, id) {
+	if (e) e.preventDefault();
+
+	const obj = {
+		id,
+		tabEl: document.querySelector(`[data-tab="${id}"]`),
+		contentEl: document.querySelector(`[data-tab-item="${id}"]`),
+		active: false,
+	};
+
+	state.setActive = { tab: obj, callback: () => setUI(obj) };
+};
+
 export const tabbedContent = function () {
 	setTabs();
+	window.tabActive = tabActive;
 };
