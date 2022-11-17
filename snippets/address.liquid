@@ -11,10 +11,20 @@
 	{% if title %}<h6>{{ title }}</h6>{% endif %}
 	{{ address | format_address }}
 	{% if editable %}
-		<a
-			title="{% if default %}Default Adddress | {%endif%}{{ title }}"
-			class="feather-address__editable"
-			onclick="modalActiveUI(event, '{{ id }}')"
-		>edit</a>
+		<div class="feather-address__editable">
+			<a
+				title="{% if default %}Default Adddress | {%endif%}{{ title }}"
+				class=""
+				onclick="modalActiveUI(event, '{{ id }}')"
+			>edit</a>
+			<span>|</span>
+			<form class="feather-address__delete"
+        method="post"
+        action="/account/addresses/{{ address.id }}"
+      >
+        <input type="hidden" name="_method" value="delete" />
+        <button type="submit">{{ 'customer.addresses.delete' | t }}</button>
+      </form>
+		</div>
 	{% endif %}
 </address>

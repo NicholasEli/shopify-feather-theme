@@ -15,6 +15,26 @@
 
 	&__editable {
 		margin-top: auto;
-		cursor: pointer;
+
+		a {
+			cursor: pointer;
+		}
+	}
+	&__delete {
+		width: max-content;
+		display: inline;
+		margin: 0;
+		padding: 0;
+
+		button {
+			width: auto;
+			height: auto;
+			margin: auto;
+			padding: 0;
+			line-height: 1;
+			border: none;
+			color: $error;
+			text-transform: lowercase;
+		}
 	}
 }
