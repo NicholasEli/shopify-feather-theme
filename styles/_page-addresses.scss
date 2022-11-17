@@ -1,0 +1,28 @@
+body.addresses {
+	.form__address {
+		.row {
+			& + .row {
+				margin-top: $gutter;
+			}
+
+			.form__input {
+				& + .form__input {
+					margin-top: $gutter;
+
+					@media (min-width: #{$sm}) {
+						margin-top: 0;
+					}
+				}
+
+				&--set-default {
+					@include flex(row, flex-start, center);
+
+					label {
+						margin: 0;
+						margin-left: 5px;
+					}
+				}
+			}
+		}
+	}
+}

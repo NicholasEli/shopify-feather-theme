@@ -1,32 +1,25 @@
-{% liquid
-	assign target = 'data-modal'
-	if index
-		assign target = target | append: '-' | append: index
-	endif
-
-	assign btn = 'data-modal-dialog'
-	if index
-		assign btn = btn | append: '-' | append: index
-	endif
-%}
-
 <div
 	class="feather-modal animate__animated"
-	{{ target }}
-	{{ btn }}
+	data-modal="{{ id }}"
+	onclick="modalUIBounds(event, '{{ id }}')"
 	>
 	<div data-modal-dialog class="feather-modal__dialog animate__animated">
 		<div class="feather-modal__dialog-header">
 			<div class="container container--padding">
-				<h5>Feather Modal</h5>
-				<button data-btn="{{ target }}" class="feather-modal__close-btn">
+				<h5>{{ title }}</h5>
+				<button 
+					class="feather-modal__close-btn"
+					onclick="modalInactiveUI(event, '{{ id }}')"
+				>
 					{% render 'icon-close' %}
 				</button>
 			</div>
 		</div>
 		<div class="feather-modal__dialog-body">
 			<div class="container container--padding">
-				
+				{% if address %}
+					{% render 'form-address', address: address %}
+				{% endif %}
 			</div>
 		</div>
 		<div class="feather-modal__dialog-footer">

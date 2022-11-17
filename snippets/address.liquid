@@ -3,12 +3,6 @@
 	if _class
 		assign class = _class
 	endif
-
-	assign target = 'data-modal'
-	if index
-		assign target = target | append: '-' | append: index
-	endif
-
 %}
 <address class="feather-address {{ class }}">
 	{% if default %}
@@ -17,6 +11,10 @@
 	{% if title %}<h6>{{ title }}</h6>{% endif %}
 	{{ address | format_address }}
 	{% if editable %}
-		<a title="{% if default %}Default Adddress | {%endif%}{{ title }}" class="feather-address__editable" data-btn="{{ target }}">edit</a>
+		<a
+			title="{% if default %}Default Adddress | {%endif%}{{ title }}"
+			class="feather-address__editable"
+			onclick="modalActiveUI(event, '{{ id }}')"
+		>edit</a>
 	{% endif %}
 </address>
