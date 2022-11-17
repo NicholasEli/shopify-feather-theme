@@ -16,7 +16,7 @@
 			    <input type="email" name="contact[email]" placeholder="Newsletter Signup" required />
 			    <input class="button" type="submit" value="Sign up" />
 			  </div>
-			  {% render 'form-success', form: form, message: 'Thanks for subscribing!' %}
+			  {% render 'form-success', form: 'newsletter', message: 'Thanks for subscribing!' %}
 				{% if form.posted_successfully? %}
 				{% endif %}
 			{% endform %}
