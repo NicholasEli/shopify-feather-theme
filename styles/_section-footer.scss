@@ -1,9 +1,9 @@
 footer {
 	width: 100%;
-	background-color: $gray;
 	border-top: 1px solid $stroke;
 	border-bottom: 1px solid $stroke;
 	overflow: hidden;
+	background-color: var(--feather-background-color);
 
 	.icon-feather {
 		height: 100%;

@@ -49,6 +49,12 @@
         "id": "background_color",
         "label": "Background Color",
         "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "footer_background_color",
+        "label": "Footer Background Color",
+        "default": "#ffffff"
       }
     ]
   },

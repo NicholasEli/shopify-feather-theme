@@ -1,6 +1,6 @@
 .feather-header {
 	width: 100%;
-	background-color: #fff;
+	background-color: var(--feather-background);
 	border-bottom: 1px solid $stroke;
 
 	@media (min-width: #{$md}) {
