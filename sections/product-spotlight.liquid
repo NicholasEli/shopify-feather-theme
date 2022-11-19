@@ -10,6 +10,11 @@
 	if section.settings.subtagline_container_width != 'fluid'
 		assign subtagline_container_width = section.settings.subtagline_container_width
 	endif
+
+	assign product_carousel_container_width = nil
+	if section.settings.product_carousel_container_width != 'fluid'
+		assign product_carousel_container_width = section.settings.product_carousel_container_width
+	endif
 %}
 
 {% if section.settings and section.settings.tagline %}
@@ -70,15 +75,19 @@
 		"tag": "section",
 		"settings": [
 			{
+        "type": "header",
+        "content": "Tagline"
+      },
+			{
 				"id": "tagline",
 				"type": "text",
-				"label": "Tagline",
+				"label": "Text",
 				"default": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love."
 			},
 			{
 				"id": "tagline_container_width",
 				"type": "select",
-				"label": "Tagline Max Width",
+				"label": "Max Width",
 				"options": [
 			    {
 			      "value": "xs",
@@ -108,15 +117,19 @@
 			  "default": "xl"
 			},
 			{
+        "type": "header",
+        "content": "Sub Tagline"
+      },
+			{
 				"id": "subtagline",
 				"type": "text",
-				"label": "Sub Tagline",
+				"label": "Text",
 				"default": "Spotlight: Products in focus"
 			},
 			{
 				"id": "subtagline_container_width",
 				"type": "select",
-				"label": "Sub Tagline Max Width",
+				"label": "Max Width",
 				"options": [
 			    {
 			      "value": "xs",
@@ -145,16 +158,52 @@
 			  ],
 			  "default": "xl"
 			},
+			{
+        "type": "header",
+        "content": "Product Carousel"
+      },
+      {
+				"id": "product_carousel_container_width",
+				"type": "select",
+				"label": "Max Width",
+				"options": [
+			    {
+			      "value": "xs",
+			      "label": "Extra Small"
+			    },
+			    {
+			      "value": "sm",
+			      "label": "Small"
+			    },
+			    {
+			      "value": "md",
+			      "label": "Medium"
+			    },
+			    {
+			      "value": "lg",
+			      "label": "Large"
+			    },
+			    {
+			      "value": "xl",
+			      "label": "Extra Large"
+			    },
+			    {
+			      "value": "fluid",
+			      "label": "Fluid"
+			    }
+			  ],
+			  "default": "xl"
+			}
 		],
 		"blocks": [
 	    {
-	      "type": "products-banner",
+	      "type": "products-carousel",
 	      "name": "Featured Product",
 	      "settings": [
 	        {
 	          "id": "product",
 	          "type": "product",
-	          "label": "Featured Product"
+	          "label": "Product Carousel"
 	        }
 	      ]
 	    }
@@ -164,7 +213,7 @@
   			"name": "Product Spotlight",
   			"blocks": [
   				{
-  					"type": "products-banner"
+  					"type": "products-carousel"
   				}
   			]
   		}
