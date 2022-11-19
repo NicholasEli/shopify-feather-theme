@@ -73,7 +73,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="{{ template.name }}">
+  <body class="{{ template.name }}" style="background-color: {{ settings.background_color }};">
     {% render 'loading' %}
     {% section 'header' %}
     <main>

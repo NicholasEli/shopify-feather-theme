@@ -43,6 +43,12 @@
         "id": "border_color",
         "label": "Border Text Color",
         "default": "#d1d1d1"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
       }
     ]
   },
