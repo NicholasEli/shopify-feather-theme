@@ -5,8 +5,13 @@
 	if section.settings.tagline_container_width != 'fluid'
 		assign tagline_container_width = section.settings.tagline_container_width
 	endif
+
+	assign subtagline_container_width = nil
+	if section.settings.subtagline_container_width != 'fluid'
+		assign subtagline_container_width = section.settings.subtagline_container_width
+	endif
 %}
-{{ tagline_container_width }}
+
 {% if section.settings and section.settings.tagline %}
 	<div
 		class="feather-product-spotlight__tagline container container--padding{% if tagline_container_width %} container--{{ tagline_container_width }}{% endif %}"
@@ -19,7 +24,7 @@
 	</div>
 {% endif %}
 {% if section.settings and section.settings.subtagline %}
-	<div class="feather-product-spotlight__sub-tagline container container--padding container--md">
+	<div class="feather-product-spotlight__sub-tagline container container--padding{% if subtagline_container_width %} container--{{ subtagline_container_width }}{% endif %}">
 		<div class="row end-md">
 			<div class="col-xs-12 col-md-6" data-in-view>
 				<p>{{ section.settings.subtagline }}</p>
@@ -73,7 +78,7 @@
 			{
 				"id": "tagline_container_width",
 				"type": "select",
-				"label": "Tagline Width",
+				"label": "Tagline Max Width",
 				"options": [
 			    {
 			      "value": "xs",
@@ -107,7 +112,39 @@
 				"type": "text",
 				"label": "Sub Tagline",
 				"default": "Spotlight: Products in focus"
-			}
+			},
+			{
+				"id": "subtagline_container_width",
+				"type": "select",
+				"label": "Sub Tagline Max Width",
+				"options": [
+			    {
+			      "value": "xs",
+			      "label": "Extra Small"
+			    },
+			    {
+			      "value": "sm",
+			      "label": "Small"
+			    },
+			    {
+			      "value": "md",
+			      "label": "Medium"
+			    },
+			    {
+			      "value": "lg",
+			      "label": "Large"
+			    },
+			    {
+			      "value": "xl",
+			      "label": "Extra Large"
+			    },
+			    {
+			      "value": "fluid",
+			      "label": "Fluid"
+			    }
+			  ],
+			  "default": "xl"
+			},
 		],
 		"blocks": [
 	    {
