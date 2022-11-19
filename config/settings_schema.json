@@ -19,6 +19,30 @@
         "id": "primary_color",
         "label": "Primary Color",
         "default": "#767a38"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#595958"
+      },
+      {
+        "type": "color",
+        "id": "light_text_color",
+        "label": "Light Text Color",
+        "default": "#262626"
+      },
+      {
+        "type": "color",
+        "id": "stroke_color",
+        "label": "Stroke Text Color",
+        "default": "#e5e5e3"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border Text Color",
+        "default": "#d1d1d1"
       }
     ]
   },

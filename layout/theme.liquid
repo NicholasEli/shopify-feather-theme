@@ -54,16 +54,16 @@
 
     {% style %}
       :root {
-        --feather-text: #595958;
-        --feather-light-text: #262626;
-        --feather-stroke: #e5e5e3;
-        --feather-border: #d1d1d1;
+        --feather-primary: {{ settings.primary_color }};
+        --feather-text: {{ settings.text_color}};
+        --feather-light-text: {{ settings.light_text_color }};
+        --feather-stroke: {{ settings.stroke_color }};
+        --feather-border: {{ settings.border_color }};
         --feather-gray: #fafaf7;
         --feather-black: #111111;
         --feather-error: #ff7272;
         --feather-warning: #ffbd5d;
         --feather-info: #26b6cf;
-        --feather-primary: {{ settings.primary_color }};
         --animate-duration: 500ms;
         --animate-delay: 0ms;
         --animate-repeat: 1;
