@@ -21,10 +21,15 @@
 	if url
 		assign textCol = 'col-xs-12 col-md-4'
 	endif
+
+	assign video_width = nil
+	if section.settings.video_width != 'fluid'
+		assign tagline_container_width = section.settings.video_width
+	endif
 %}
 
 {% if section.settings.tagline or section.settings.video or section.settings.video_url %}
-	<div class="container container--padding">
+	<div class="container container--padding{% if video_width %} container--{{ video_width }}{% endif %}">
 		<div class="row">
 			{% if section.settings.tagline %}
 				<div class="{{ textCol }}">
@@ -64,6 +69,38 @@
 			    "youtube",
 			    "vimeo"
 			  ]
+			},
+			{
+				"id": "video_width",
+				"type": "select",
+				"label": "Max Width",
+				"options": [
+			    {
+			      "value": "xs",
+			      "label": "Extra Small"
+			    },
+			    {
+			      "value": "sm",
+			      "label": "Small"
+			    },
+			    {
+			      "value": "md",
+			      "label": "Medium"
+			    },
+			    {
+			      "value": "lg",
+			      "label": "Large"
+			    },
+			    {
+			      "value": "xl",
+			      "label": "Extra Large"
+			    },
+			    {
+			      "value": "fluid",
+			      "label": "Fluid"
+			    }
+			  ],
+			  "default": "xl"
 			}
 		],
   	"presets": [
