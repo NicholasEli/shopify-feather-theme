@@ -59,6 +59,7 @@
         --feather-light-text: {{ settings.light_text_color }};
         --feather-stroke: {{ settings.stroke_color }};
         --feather-border: {{ settings.border_color }};
+        --feather-background: {{ settings.background_color }}
         --feather-gray: #fafaf7;
         --feather-black: #111111;
         --feather-error: #ff7272;
@@ -73,7 +74,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="{{ template.name }}" style="background-color: {{ settings.background_color }};">
+  <body class="{{ template.name }}">
     {% render 'loading' %}
     {% section 'header' %}
     <main>
