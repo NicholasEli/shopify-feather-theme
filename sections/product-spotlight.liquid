@@ -1,5 +1,16 @@
+{% 
+	liquid
+
+	assign tagline_container_width = nil
+	if section.settings.tagline_container_width != 'fluid'
+		assign tagline_container_width = section.settings.tagline_container_width
+	endif
+%}
+{{ tagline_container_width }}
 {% if section.settings and section.settings.tagline %}
-	<div class="feather-product-spotlight__tagline container container--padding container--xl">
+	<div
+		class="feather-product-spotlight__tagline container container--padding{% if tagline_container_width %} container--{{ tagline_container_width }}{% endif %}"
+	>
 		<div class="row">
 			<div class="col-xs-12" data-in-view>
 				<p>{{ section.settings.tagline }}</p>
@@ -17,7 +28,7 @@
 	</div>
 {% endif %}
 {% if section.blocks and section.blocks.size > 0 %}
-	<div class="feather-product-spotlight__items container container--padding container--lg hide-lg">
+	<div class="feather-product-spotlight__items container container--padding container--lg">
 		<div class="row">
 			<div data-spotlight="{{ section.id }}" class="col-xs-12 glide">
 				<div data-glide-el="track" class="glide__track">
@@ -46,58 +57,6 @@
 		</div>
 	</div>
 {% endif %}
-{% if section.blocks and section.blocks.size > 0 %}
-	<div class="feather-product-spotlight__items container container--padding container--lg show-lg">
-		<div class="row center-xs">
-			<div class="feather-product-spotlight__column col-xs-4">
-				{% for block in section.blocks %}
-					{% liquid 
-						assign diff = forloop.index | modulo: 2
-						assign item = block.settings.product
-					%}
-					{% if diff == 1 %}
-						<a
-							data-in-view
-							title="{{ item.title }}"
-							href="{{ item.url }}"
-						>
-							<picture>
-								<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
-								<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
-								<source media="(max-width: 750px)" src="{{ item.featured_image | img_url: '600x' }}" />
-								<img src="{{ item.featured_image | img_url: '600x' }}" />
-							</picture>
-							<span>{{ item.title }}</span>
-						</a>
-					{% endif %}
-				{% endfor %}
-			</div>
-			<div class="feather-product-spotlight__column col-xs-4">
-				{% for block in section.blocks %}
-					{% liquid 
-						assign diff = forloop.index | modulo: 2
-						assign item = block.settings.product
-					%}
-					{% if diff == 0 %}
-						<a
-							data-in-view
-							title="{{ item.title }}"
-							href="{{ item.url }}"
-						>
-							<picture>
-								<source media="(min-width: 1200px)" src="{{ item.featured_image | img_url: '1200x' }}" />
-								<source media="(min-width: 750px)" src="{{ item.featured_image | img_url: '950x' }}" />
-								<source media="(max-width: 750px)" src="{{ item.featured_image | img_url: '600x' }}" />
-								<img src="{{ item.featured_image | img_url: '600x' }}" />
-							</picture>
-							<span>{{ item.title }}</span>
-						</a>
-					{% endif %}
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-{% endif %}
 
 {% schema %}
 	{
@@ -110,6 +69,38 @@
 				"type": "text",
 				"label": "Tagline",
 				"default": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love."
+			},
+			{
+				"id": "tagline_container_width",
+				"type": "select",
+				"label": "Tagline Width",
+				"options": [
+			    {
+			      "value": "xs",
+			      "label": "Extra Small"
+			    },
+			    {
+			      "value": "sm",
+			      "label": "Small"
+			    },
+			    {
+			      "value": "md",
+			      "label": "Medium"
+			    },
+			    {
+			      "value": "lg",
+			      "label": "Large"
+			    },
+			    {
+			      "value": "xl",
+			      "label": "Extra Large"
+			    },
+			    {
+			      "value": "fluid",
+			      "label": "Fluid"
+			    }
+			  ],
+			  "default": "xl"
 			},
 			{
 				"id": "subtagline",

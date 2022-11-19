@@ -184,7 +184,7 @@
 			top: 100%;
 			right: 100%;
 			z-index: 3;
-			background-color: #fff;
+			background-color: var(--feather-background);
 
 			@media (min-width: #{$md}) {
 				width: auto;
