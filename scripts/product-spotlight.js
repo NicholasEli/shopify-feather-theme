@@ -2,6 +2,8 @@ import { getCSSVariable } from './utils.js';
 import Glide from '@glidejs/glide';
 
 const sm = parseInt(getCSSVariable('--sm'));
+const md = parseInt(getCSSVariable('--md'));
+const lg = parseInt(getCSSVariable('--lg'));
 const instances = {};
 
 /**
@@ -13,29 +15,33 @@ export const productSpotlight = function () {
 
 	if (!spotlights || (spotlights && spotlights.length == 0)) return;
 
-	const _numSlides = () => {
-		if (window.innerWidth > sm) {
-			return 2;
+	const _numSlides = (mobile, tablet, desktop) => {
+		if (window.innerWidth >= lg) {
+			return desktop;
 		}
 
-		return 1;
+		if (window.innerWidth >= md) {
+			return tablet;
+		}
+
+		return mobile;
 	};
 
 	spotlights.forEach((spotlight) => {
 		const id = spotlight.getAttribute('data-spotlight');
+		let mobile = parseInt(spotlight.getAttribute('data-mobile'));
+		if (!mobile) mobile = 1;
+		let tablet = parseInt(spotlight.getAttribute('data-tablet'));
+		if (!tablet) tablet = 1;
+		let desktop = parseInt(spotlight.getAttribute('data-desktop'));
+		if (!desktop) desktop = 1;
+
 		const instance = new Glide('[data-spotlight="' + id + '"]', { perView: _numSlides() });
 		instance.mount();
 		instance.on(['resize'], function () {
 			const { perView } = instance.settings;
-			const num = _numSlides();
-
-			if (perView === 2 && num === 1) {
-				instance.update({ perView: 1 });
-			}
-
-			if (perView === 1 && num === 2) {
-				instance.update({ perView: 2 });
-			}
+			const num = _numSlides(mobile, tablet, desktop);
+			instance.update({ perView: num });
 		});
 		instances[id] = instance;
 	});

@@ -40,7 +40,13 @@
 {% if section.blocks and section.blocks.size > 0 %}
 	<div class="feather-product-spotlight__items container container--padding container--lg">
 		<div class="row">
-			<div data-spotlight="{{ section.id }}" class="col-xs-12 glide">
+			<div
+				class="col-xs-12 glide"
+				data-spotlight="{{ section.id }}"
+				data-mobile="{{ section.settings.slides_perview_mobile }}"
+				data-tablet="{{ section.settings.slides_perview_tablet }}"
+				data-desktop="{{ section.settings.slides_perview_desktop }}"
+			>
 				<div data-glide-el="track" class="glide__track">
 					<ul class="glide__slides">
 						{% for block in section.blocks %}
@@ -193,6 +199,24 @@
 			    }
 			  ],
 			  "default": "xl"
+			},
+			{
+				"id": "slides_perview_mobile",
+				"type": "number",
+				"label": "Mobile Slides Per View",
+				"default": 1
+			},
+			{
+				"id": "slides_perview_tablet",
+				"type": "number",
+				"label": "Tablet Slides Per View",
+				"default": 2
+			},
+			{
+				"id": "slides_perview_desktop",
+				"type": "number",
+				"label": "Desktop Slides Per View",
+				"default": 3
 			}
 		],
 		"blocks": [
