@@ -36,7 +36,9 @@ export const productSpotlight = function () {
 		let desktop = parseInt(spotlight.getAttribute('data-desktop'));
 		if (!desktop) desktop = 1;
 
-		const instance = new Glide('[data-spotlight="' + id + '"]', { perView: _numSlides() });
+		const instance = new Glide('[data-spotlight="' + id + '"]', {
+			perView: _numSlides(mobile, tablet, desktop),
+		});
 		instance.mount();
 		instance.on(['resize'], function () {
 			const { perView } = instance.settings;
