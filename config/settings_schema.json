@@ -18,7 +18,13 @@
         "type": "color",
         "id": "primary_color",
         "label": "Primary Color",
-        "default": "#767a38"
+        "default": "#7D4F50"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Secondary Color",
+        "default": "#CC8B86"
       },
       {
         "type": "color",
@@ -36,13 +42,13 @@
         "type": "color",
         "id": "stroke_color",
         "label": "Stroke Text Color",
-        "default": "#e5e5e3"
+        "default": "#AA998F"
       },
       {
         "type": "color",
         "id": "border_color",
         "label": "Border Text Color",
-        "default": "#d1d1d1"
+        "default": "#F9EAE1"
       },
       {
         "type": "color",
@@ -54,7 +60,7 @@
         "type": "color",
         "id": "footer_background_color",
         "label": "Footer Background Color",
-        "default": "#ffffff"
+        "default": "#D1BE9C"
       }
     ]
   },
