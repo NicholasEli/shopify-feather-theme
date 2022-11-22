@@ -17,29 +17,7 @@
 }
 
 .feather-product-spotlight {
-	&__tagline {
-		.container {
-			padding-top: multiply(16px, 3);
-			padding-bottom: multiply(16px, 3);
-		}
-
-		p {
-			font-family: $ibarra;
-			font-size: 26px;
-			line-height: 2;
-
-			@media (min-width: #{$md}) {
-				padding-right: divide(100%, 3);
-				font-size: 32px;
-			}
-
-			@media (min-width: #{$lg}) {
-				font-size: 40px;
-			}
-		}
-	}
-
-	&__sub-tagline {
+	&__title {
 		p {
 			font-family: $ibarra;
 			font-size: 26px;

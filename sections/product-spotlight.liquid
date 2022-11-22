@@ -1,14 +1,9 @@
 {% 
 	liquid
 
-	assign tagline_container_width = nil
-	if section.settings.tagline_container_width != 'fluid'
-		assign tagline_container_width = section.settings.tagline_container_width
-	endif
-
-	assign subtagline_container_width = nil
-	if section.settings.subtagline_container_width != 'fluid'
-		assign subtagline_container_width = section.settings.subtagline_container_width
+	assign title_container_width = nil
+	if section.settings.title_container_width != 'fluid'
+		assign title_container_width = section.settings.title_container_width
 	endif
 
 	assign product_carousel_container_width = nil
@@ -16,29 +11,17 @@
 		assign product_carousel_container_width = section.settings.product_carousel_container_width
 	endif
 %}
-
-{% if section.settings and section.settings.tagline %}
-	<div
-		class="feather-product-spotlight__tagline container container--padding{% if tagline_container_width %} container--{{ tagline_container_width }}{% endif %}"
-	>
-		<div class="row">
-			<div class="col-xs-12" data-in-view>
-				<p>{{ section.settings.tagline }}</p>
-			</div>
-		</div>
-	</div>
-{% endif %}
-{% if section.settings and section.settings.subtagline %}
-	<div class="feather-product-spotlight__sub-tagline container container--padding{% if subtagline_container_width %} container--{{ subtagline_container_width }}{% endif %}">
+{% if section.settings and section.settings.title %}
+	<div class="feather-product-spotlight__title container container--padding{% if title_container_width %} container--{{ title_container_width }}{% endif %}">
 		<div class="row end-md">
 			<div class="col-xs-12 col-md-6" data-in-view>
-				<p>{{ section.settings.subtagline }}</p>
+				<p>{{ section.settings.title }}</p>
 			</div>
 		</div>
 	</div>
 {% endif %}
 {% if section.blocks and section.blocks.size > 0 %}
-	<div class="feather-product-spotlight__items container container--padding container--lg">
+	<div class="feather-product-spotlight__items container container--padding{% if product_carousel_container_width %} container--{{ product_carousel_container_width }}{% endif %}">
 		<div class="row">
 			<div
 				class="col-xs-12 glide"
@@ -82,58 +65,16 @@
 		"settings": [
 			{
         "type": "header",
-        "content": "Tagline"
+        "content": "Title"
       },
 			{
-				"id": "tagline",
-				"type": "text",
-				"label": "Text",
-				"default": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love."
-			},
-			{
-				"id": "tagline_container_width",
-				"type": "select",
-				"label": "Max Width",
-				"options": [
-			    {
-			      "value": "xs",
-			      "label": "Extra Small"
-			    },
-			    {
-			      "value": "sm",
-			      "label": "Small"
-			    },
-			    {
-			      "value": "md",
-			      "label": "Medium"
-			    },
-			    {
-			      "value": "lg",
-			      "label": "Large"
-			    },
-			    {
-			      "value": "xl",
-			      "label": "Extra Large"
-			    },
-			    {
-			      "value": "fluid",
-			      "label": "Fluid"
-			    }
-			  ],
-			  "default": "xl"
-			},
-			{
-        "type": "header",
-        "content": "Sub Tagline"
-      },
-			{
-				"id": "subtagline",
+				"id": "title",
 				"type": "text",
 				"label": "Text",
 				"default": "Spotlight: Products in focus"
 			},
 			{
-				"id": "subtagline_container_width",
+				"id": "title_container_width",
 				"type": "select",
 				"label": "Max Width",
 				"options": [
