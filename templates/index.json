@@ -22,6 +22,9 @@
       ],
       "settings": {}
     },
+    "generic": {
+      "type": "generic"
+    },
     "product-spotlight": {
       "type": "product-spotlight",
       "blocks": {},
@@ -73,5 +76,5 @@
       "type": "newsletter"
     }
   },
-  "order": ["collection-banner", "product-spotlight", "information-grid", "newsletter"]
+  "order": ["collection-banner", "generic", "product-spotlight", "information-grid", "newsletter"]
 }

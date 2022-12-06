@@ -1,0 +1,161 @@
+{% 
+  liquid
+
+  assign generic_width = nil
+  if section.settings.generic_width != 'fluid'
+    assign tagline_container_width = section.settings.generic_width
+  endif
+%}
+
+<div class="container container--padding{% if generic_width %} container--{{ generic_width }}{% endif %}">
+  {% for block in section.blocks %}
+    <div
+      class="
+        feather-generic__block
+        feather-generic__block--{{ block.type }}
+        {% if block.settings.text_alignment %}feather-generic__block--alignment-{{ block.settings.text_alignment  }}{% endif %}
+      "
+    >
+      {% case block.type %}
+        {% when 'text' %}
+          <p>{{ block.settings.text }}</p>
+      {% endcase %}
+    </div>
+  {% endfor %}
+</div>
+
+
+{% schema %}
+{
+  "name": "Generic",
+  "class": "feather-generic",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "generic_width",
+      "type": "select",
+      "label": "Max Width",
+      "options": [
+        {
+          "value": "xs",
+          "label": "Extra Small"
+        },
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        },
+        {
+          "value": "xl",
+          "label": "Extra Large"
+        },
+        {
+          "value": "fluid",
+          "label": "Fluid"
+        }
+      ],
+      "default": "xl"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "text",
+      "type": "text",
+      "settings": [
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Text",
+          "default": "Text"
+        },
+        {
+          "id": "text_alignment",
+          "type": "select",
+          "label": "Alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "id": "text_fontsize",
+          "type": "range",
+          "label": "Font Size",
+          "unit": "px",
+          "min": 0,
+          "max": 100,
+          "default": 15
+        }
+      ]
+    },
+    {
+      "name": "texarea",
+      "type": "textarea",
+      "settings": [
+        {
+          "id": "textarea",
+          "type": "textarea",
+          "label": "Textarea",
+          "default": "Textarea"
+        },
+        {
+          "id": "textarea_alignment",
+          "type": "select",
+          "label": "Alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "id": "textarea_fontsize",
+          "type": "range",
+          "label": "Font Size",
+          "unit": "px",
+          "min": 0,
+          "max": 100,
+          "default": 15
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Generic",
+      "blocks": [
+        { "type": "text" },
+        { "type": "textarea" }
+      ]
+    }
+  ]
+}
+{% endschema %}
