@@ -19,6 +19,7 @@
       assign aspect_ratio = nil
       assign background_color = nil
       assign color = nil
+      assign background_image = nil
 
       case block.type
         when 'text'
@@ -44,6 +45,9 @@
           endif 
           if block.settings.url_color != empty 
             assign color = block.settings.url_color
+          endif
+          if block.settings.url_background_image != empty 
+            assign background_image = block.settings.url_background_image
           endif
       endcase
 
@@ -79,13 +83,14 @@
           <a
             href="{{ block.settings.url }}"
             title="{{ block.settings.url_text }}"
-            class="button{% unless background_color or color %} button--primary{% endunless %}"
+            class="button{% unless background_color %} button--primary{% endunless %}"
             style="
               width: {{ width }}%;
               min-width: {{ min_width }}px;
               max-width: {{ max_width }}px;
               {% if aspect_ratio %}aspect-ratio: {{ aspect_ratio  }}; height: auto;{% endif %}
               {% if background_color %}background-color: {{ background_color }}; border-color: {{ background_color  }};{% endif %}
+              {% if background_image %}background-image: {{ background_image }}{% endif %}
               {% if color %}color: {{ color }}; {% endif %}
             "
           >{{ block.settings.url_text }}</a>
@@ -362,6 +367,11 @@
           "id": "url_color",
           "type": "color",
           "label": "Text Color"
+        },
+        {
+          "id": "url_background_image",
+          "type": "image_picker",
+          "label": "Background Image"
         }
       ]
     }
