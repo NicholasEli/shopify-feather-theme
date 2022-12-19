@@ -13,5 +13,12 @@
 				text-align: center;
 			}
 		}
+
+		&--url {
+			a.button {
+				@include flex(row, center, center);
+				font-size: inherit;
+			}
+		}
 	}
 }

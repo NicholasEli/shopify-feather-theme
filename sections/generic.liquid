@@ -3,22 +3,92 @@
 
   assign generic_width = nil
   if section.settings.generic_width != 'fluid'
-    assign tagline_container_width = section.settings.generic_width
+    assign generic_width = section.settings.generic_width
   endif
 %}
 
 <div class="container container--padding{% if generic_width %} container--{{ generic_width }}{% endif %}">
   {% for block in section.blocks %}
+    {% liquid
+      assign width = nil
+      assign min_width = nil
+      assign max_width = nil
+      assign justify = 'start-xs'
+      assign alignment = 'left'
+      assign fontsize = '15'
+      assign aspect_ratio = nil
+      assign background_color = nil
+      assign color = nil
+
+      case block.type
+        when 'text'
+          assign alignment = block.settings.text_alignment
+          assign fontsize = block.settings.text_fontsize
+        when 'textarea'
+          assign alignment = block.settings.textarea_alignment
+          assign fontsize = block.settings.textarea_fontsize
+        when 'richtext'
+          assign alignment = block.settings.richtext_alignment
+          assign fontsize = block.settings.richtext_fontsize
+        when 'url'
+          assign alignment = block.settings.url_alignment
+          assign fontsize = block.settings.url_fontsize
+          assign width = block.settings.url_width
+          assign min_width = block.settings.url_min_width
+          assign max_width = block.settings.url_max_width
+          unless block.settings.url_aspect_ratio == 'none'
+            assign aspect_ratio = block.settings.url_aspect_ratio
+          endunless
+          if block.settings.url_background_color != empty 
+            assign background_color = block.settings.url_background_color
+          endif 
+          if block.settings.url_color != empty 
+            assign color = block.settings.url_color
+          endif
+      endcase
+
+      if alignment == 'left'
+        assign justify = 'start-xs'
+      endif 
+      if alignment == 'right'
+        assign justify = 'end-xs'
+      endif 
+      if alignment == 'center'
+        assign justify = 'center-xs'
+      endif 
+
+    %}
     <div
       class="
         feather-generic__block
         feather-generic__block--{{ block.type }}
-        {% if block.settings.text_alignment %}feather-generic__block--alignment-{{ block.settings.text_alignment  }}{% endif %}
+        feather-generic__block--alignment-{{ alignment }}
+        {{ justify }}
+        row
       "
+      style="font-size: {{fontsize }}px;"
     >
       {% case block.type %}
         {% when 'text' %}
           <p>{{ block.settings.text }}</p>
+        {% when 'textarea' %}
+          <p>{{ block.settings.textarea }}</p>
+        {% when 'richtext' %}
+          {{ block.settings.richtext }}
+        {% when 'url' %}
+          <a
+            href="{{ block.settings.url }}"
+            title="{{ block.settings.url_text }}"
+            class="button{% unless background_color or color %} button--primary{% endunless %}"
+            style="
+              width: {{ width }}%;
+              min-width: {{ min_width }}px;
+              max-width: {{ max_width }}px;
+              {% if aspect_ratio %}aspect-ratio: {{ aspect_ratio  }}; height: auto;{% endif %}
+              {% if background_color %}background-color: {{ background_color }}; border-color: {{ background_color  }};{% endif %}
+              {% if color %}color: {{ color }}; {% endif %}
+            "
+          >{{ block.settings.url_text }}</a>
       {% endcase %}
     </div>
   {% endfor %}
@@ -61,7 +131,7 @@
           "label": "Fluid"
         }
       ],
-      "default": "xl"
+      "default": "lg"
     }
   ],
   "blocks": [
@@ -146,6 +216,154 @@
           "default": 15
         }
       ]
+    },
+    {
+      "name": "richtext",
+      "type": "richtext",
+      "settings": [
+        {
+          "id": "richtext",
+          "type": "richtext",
+          "label": "Rich Text",
+          "default": "<p><strong>Rich</strong> Text</p>"
+        },
+        {
+          "id": "richtext_alignment",
+          "type": "select",
+          "label": "Rich Text Alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "id": "richtext_fontsize",
+          "type": "range",
+          "label": "Font Size",
+          "unit": "px",
+          "min": 0,
+          "max": 100,
+          "default": 15
+        }
+      ]
+    },
+    {
+      "name": "url",
+      "type": "url",
+      "settings": [
+        {
+          "id": "url",
+          "type": "url",
+          "label": "URl"
+        },
+        {
+          "id": "url_text",
+          "type": "text",
+          "label": "URL Text",
+          "default": "Collections"
+        },
+        {
+          "id": "url_alignment",
+          "type": "select",
+          "label": "URL Alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "id": "url_fontsize",
+          "type": "range",
+          "label": "Font Size",
+          "unit": "px",
+          "min": 0,
+          "max": 100,
+          "default": 15
+        },
+        {
+          "id": "url_min_width",
+          "type": "range",
+          "label": "Minimum Width",
+          "unit": "px",
+          "min": 0,
+          "max": 2000,
+          "step": 100,
+          "default": 200,
+          "info": "Setting a minimum width larger than the maximum width will override maximum width."
+        },
+        {
+          "id": "url_max_width",
+          "type": "range",
+          "label": "Maximum Width",
+          "unit": "px",
+          "min": 0,
+          "max": 2000,
+          "step": 100,
+          "default": 200
+        },
+        {
+          "id": "url_width",
+          "type": "range",
+          "label": "Width",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "default": 100
+        },
+        {
+          "id": "url_aspect_ratio",
+          "type": "select",
+          "label": "Aspect Ratio",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "16/9",
+              "label": "16/9"
+            },
+            {
+              "value": "1/1",
+              "label": "1/1"
+            }
+          ]
+        },
+        {
+          "id": "url_background_color",
+          "type": "color",
+          "label": "Background Color"
+        },
+        {
+          "id": "url_color",
+          "type": "color",
+          "label": "Text Color"
+        }
+      ]
     }
   ],
   "presets": [
@@ -153,7 +371,9 @@
       "name": "Generic",
       "blocks": [
         { "type": "text" },
-        { "type": "textarea" }
+        { "type": "textarea" },
+        { "type": "richtext" },
+        { "type": "url" }
       ]
     }
   ]
