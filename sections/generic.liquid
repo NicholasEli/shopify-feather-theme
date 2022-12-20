@@ -90,8 +90,8 @@
               max-width: {{ max_width }}px;
               {% if aspect_ratio %}aspect-ratio: {{ aspect_ratio  }}; height: auto;{% endif %}
               {% if background_color %}background-color: {{ background_color }}; border-color: {{ background_color  }};{% endif %}
-              {% if background_image %}background-image: {{ background_image }}{% endif %}
               {% if color %}color: {{ color }}; {% endif %}
+              {% if background_image %}background-image: url('{{ background_image | img_url }}'); border-color: transparent;{% endif %}
             "
           >{{ block.settings.url_text }}</a>
       {% endcase %}

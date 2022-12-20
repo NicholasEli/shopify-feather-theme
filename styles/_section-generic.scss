@@ -18,6 +18,8 @@
 			a.button {
 				@include flex(row, center, center);
 				font-size: inherit;
+				background-size: cover;
+				background-position: center center;
 			}
 		}
 	}
