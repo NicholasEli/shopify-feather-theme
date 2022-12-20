@@ -49,6 +49,10 @@
           if block.settings.url_background_image != empty 
             assign background_image = block.settings.url_background_image
           endif
+        when 'video'
+          if block.settings.video_text_alignment != empty 
+            assign alignment = block.settings.video_text_alignment
+          endif
       endcase
 
       if alignment == 'left'
@@ -94,6 +98,37 @@
               {% if background_image %}background-image: url('{{ background_image | img_url }}'); border-color: transparent;{% endif %}
             "
           >{{ block.settings.url_text }}</a>
+        {% when 'video' %}
+          {% if block.settings.video_overlay %}<div class="feather-generic__block-overlay"></div>{% endif %}
+          {% if block.settings.video_title or block.settings.video_text %}
+            <div
+              class="feather-generic__block-content feather-generic__block-content--{{ block.settings.video_content_x_alignment}}  feather-generic__block-content--{{ block.settings.video_content_y_alignment}}"
+            >
+              {% if block.settings.video_title %}<h3>{{ block.settings.video_title }}</h3>{% endif %}
+              {% if block.settings.video_text %}<p>{{ block.settings.video_text }}</p>{% endif %}
+            </div>
+          {% endif %}
+          {{ block.settings.video | video_tag: image_size: 'Large', controls: block.settings.video_controls, autoplay: block.settings.video_autoplay, loop: block.settings.video_loop  }}
+        {% when 'video_url' %}
+          {% liquid 
+            assign url = nil
+
+            if block.settings.video_url contains 'youtube.com/watch?v='
+              assign constructor = block.settings.video_url | split: '='
+              assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+            endif
+
+            if block.settings.video_url contains 'vimeo.com'
+              assign constructor = block.settings.video_url | split: 'vimeo.com/'
+              assign url = 'https://player.vimeo.com/video/' | append: constructor[1]
+            endif
+          %}
+          <iframe
+            src="{{ url }}"
+            frameborder="0"
+            allow="fullscreen;picture-in-picture"
+            allowfullscreen
+          ></iframe>
       {% endcase %}
     </div>
   {% endfor %}
@@ -374,6 +409,156 @@
           "label": "Background Image"
         }
       ]
+    },
+    {
+      "name": "video",
+      "type": "video",
+      "settings": [
+        {
+          "id": "video",
+          "type": "video",
+          "label": "Video"
+        },
+        {
+          "type": "header",
+          "content": "Video Settings"
+        },
+        {
+          "id": "video_controls",
+          "type": "checkbox",
+          "label": "Show Video Controls",
+          "default": false
+        },
+        {
+          "id": "video_autoplay",
+          "type": "checkbox",
+          "label": "Autoplay",
+          "default": false
+        },
+        {
+          "id": "video_loop",
+          "type": "checkbox",
+          "label": "Loop Video",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Video Content"
+        },
+        {
+          "id": "video_overlay",
+          "type": "checkbox",
+          "label": "Video Overlay",
+          "default": false
+        },
+        {
+          "id": "video_title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "video_text",
+          "type": "textarea",
+          "label": "Description"
+        },
+        {
+          "id": "video_content_x_alignment",
+          "type": "select",
+          "label": "Left/Right Alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "x-center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "id": "video_content_y_alignment",
+          "type": "select",
+          "label": "Top/Bottom Alignment",
+          "default": "top",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "y-center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "id": "video_text_alignment",
+          "type": "select",
+          "label": "Text Alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "video_url",
+      "type": "video_url",
+      "settings": [
+        {
+          "id": "video_url",
+          "type": "video_url",
+          "label": "Video",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Video Settings"
+        },
+        {
+          "id": "video_url_controls",
+          "type": "checkbox",
+          "label": "Show Video Controls",
+          "default": false
+        },
+        {
+          "id": "video_url_autoplay",
+          "type": "checkbox",
+          "label": "Autoplay",
+          "default": false
+        },
+        {
+          "id": "video_url_loop",
+          "type": "checkbox",
+          "label": "Loop Video",
+          "default": false
+        }
+      ]
     }
   ],
   "presets": [
@@ -383,7 +568,8 @@
         { "type": "text" },
         { "type": "textarea" },
         { "type": "richtext" },
-        { "type": "url" }
+        { "type": "url" },
+        { "type": "video" }
       ]
     }
   ]
