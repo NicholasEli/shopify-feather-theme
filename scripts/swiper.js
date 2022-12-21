@@ -13,6 +13,7 @@ export const swiper = function () {
 		const spaceBetweenSlides = _swiper.getAttribute('data-space-between-slides');
 		const slidesPerViewMobile = _swiper.getAttribute('data-slides-per-view-mobile');
 		const slidesPerViewDesktop = _swiper.getAttribute('data-slides-per-view-desktop');
+		const effect = _swiper.getAttribute('data-effect');
 
 		const config = {
 			direction: 'horizontal',
@@ -62,7 +63,9 @@ export const swiper = function () {
 			config.breakpoints[950].slidesPerView = parseInt(slidesPerViewDesktop);
 		}
 
-		console.log(config);
+		if (effect && effect !== 'none') {
+			config.effect = effect;
+		}
 
 		new Swiper(`[data-swiper="${id}"]`, config);
 	});
