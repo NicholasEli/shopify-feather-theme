@@ -1,47 +1,43 @@
 {% if section.blocks.size > 0 %}
 	<div class="container container--padding">
-		{% if section.settings.title %}
-			<h5>{{ section.settings.title }}</h5>
-		{% endif %}
-			<div class="row">
-				<div data-related-product-slider="{{ section.id }}" class="glide">
-					<div data-glide-el="track" class="glide__track">
-						<ul
-							data-recommendations
-							data-section="{{ section.id }}"
-							data-product="{{ product.id }}"
-							class="glide__slides"
-						>
-							{% for item in section.blocks %}
-								{% assign ref = all_products[item.settings.product] %}
-								<li data-in-view class="feather-product__slider-item">{% render 'item', item: ref %}</li>
-							{% endfor %}
-							{% if section.blocks.size < 4 %}
-								{% assign count = 3 | minus: section.blocks.size %}
-								{% for i in (0..count) %}
-									{% liquid 
-										assign item = section.blocks[i]
-										assign ref = all_products[item.settings.product]
-									%}
-									<li data-in-view class="feather-product__slider-item feather-product__slider-item--duplicate">{% render 'item', item: ref %}</li>
-								{% endfor %}
-							{% endif %}
-						</ul>
-					</div>
-					<div data-glide-el="controls" class="glide__arrows">
-				    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
-				    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
+		<div class="row">
+			{% if section.settings.title %}
+				<h5>{{ section.settings.title }}</h5>
+			{% endif %}
+		</div>
+		<div class="row">
+			<!-- Slider main container -->
+				<div data-swiper={{ section.id }} class="swiper">
+				  <!-- Additional required wrapper -->
+				  <div class="swiper-wrapper">
+				    <!-- Slides -->
+				    {% for item in section.blocks %}
+				    	{% assign ref = all_products[item.settings.product] %}
+				    	<div class="swiper-slide">
+				    		{% render 'item', item: ref %}
+				    	</div>
+				    {% endfor %}
+				    ...
 				  </div>
+				  <!-- If we need pagination -->
+				  <div class="swiper-pagination"></div>
+
+				  <!-- If we need navigation buttons -->
+				  <div class="swiper-button-prev"></div>
+				  <div class="swiper-button-next"></div>
+
+				  <!-- If we need scrollbar -->
+				  <div class="swiper-scrollbar"></div>
 				</div>
-			</div>
+		</div>
 	</div>
 {% endif %}
 
 {% schema %}
 	{
-		"name": "Products Slider",
+		"name": "Swiper",
 		"tag": "section",
-		"class": "feather-product__slider",
+		"class": "feather-swiper",
 		"settings": [
 			{
 				"id": "title",
@@ -52,8 +48,8 @@
 		],
 		"blocks": [
 			{
-	      "type": "products",
-	      "name": "Products",
+	      "type": "product",
+	      "name": "Product",
 	      "settings": [
 	        {
 	          "id": "product",
@@ -65,10 +61,10 @@
 	  ],
   	"presets": [
   		{
-  			"name": "Products Slider",
+  			"name": "Swiper",
   			"blocks": [
   				{
-  					"type": "products"
+  					"type": "product"
   				}
   			]
   		}

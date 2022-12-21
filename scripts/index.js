@@ -14,6 +14,7 @@ import { modelViewer } from './model-viewer.js';
 import { formErrors } from './form-errors.js';
 import { formSuccess } from './form-success.js';
 import { address } from './address.js';
+import { swiper } from './swiper.js';
 
 // Page Components
 import { product } from './product.js';
@@ -39,10 +40,11 @@ window.onload = async function () {
 	formErrors();
 	formSuccess();
 	address();
+	swiper();
 
 	// Page Components
 	product();
-	productSpotlight();
+	//productSpotlight();
 	productFilter(); // <!-- call after all filter, select and toggle methods have been called
 
 	document.documentElement.className = document.documentElement.className.replace('no-js', 'js');

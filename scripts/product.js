@@ -1,4 +1,4 @@
-import Glide from '@glidejs/glide';
+//import Glide from '@glidejs/glide';
 import { Notyf } from 'notyf';
 import { options } from './toast.js';
 import { cart } from './api.js';
@@ -254,7 +254,7 @@ export const product = async function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
 
 	setState();
-	variantSlider();
+	//variantSlider();
 	recommendations();
 	setOption();
 	setQuantity();

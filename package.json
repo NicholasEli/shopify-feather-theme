@@ -30,8 +30,8 @@
     "rollup-plugin-terser": "7.0.2"
   },
   "dependencies": {
-    "@glidejs/glide": "3.5.2",
     "currency.js": "^2.0.4",
-    "notyf": "3.10.0"
+    "notyf": "3.10.0",
+    "swiper": "8.4.5"
   }
 }

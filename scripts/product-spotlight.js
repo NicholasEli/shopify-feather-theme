@@ -1,5 +1,5 @@
-import { getCSSVariable } from './utils.js';
-import Glide from '@glidejs/glide';
+// import { getCSSVariable } from './utils.js';
+// import Glide from '@glidejs/glide';
 
 const sm = parseInt(getCSSVariable('--sm'));
 const md = parseInt(getCSSVariable('--md'));
