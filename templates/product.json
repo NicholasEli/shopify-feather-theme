@@ -158,5 +158,5 @@
       }
     }
   },
-  "order": ["details", "gallery", "video", "swiper"]
+  "order": ["details", "gallery", "swiper"]
 }
