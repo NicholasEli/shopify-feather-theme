@@ -13,6 +13,7 @@
 	/** TOP **/
 	&__top {
 		position: relative;
+		margin: 0;
 		border-bottom: 1px solid $stroke;
 
 		@media (min-width: #{$md}) {
@@ -100,6 +101,7 @@
 
 	/** BOTTOM **/
 	&__bottom {
+		margin: 0;
 		@media (min-width:#{$md}) {
 			padding: 0;
 		}

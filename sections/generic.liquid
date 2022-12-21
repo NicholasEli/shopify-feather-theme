@@ -11,6 +11,7 @@
   <div class="row">
     {% for block in section.blocks %}
       {% liquid
+        assign name = block.type
         assign width = nil
         assign min_width = nil
         assign max_width = nil
@@ -21,17 +22,25 @@
         assign background_color = nil
         assign color = nil
         assign background_image = nil
+        assign mobile_col = 'col-xs-12'
+        assign desktop_col = 'col-lg-12'
 
         case block.type
           when 'text'
             assign alignment = block.settings.text_alignment
             assign fontsize = block.settings.text_fontsize
+            assign mobile_col = block.settings.text_mobile_col
+            assign desktop_col = block.settings.text_desktop_col
           when 'textarea'
             assign alignment = block.settings.textarea_alignment
             assign fontsize = block.settings.textarea_fontsize
+            assign mobile_col = block.settings.textarea_mobile_col
+            assign desktop_col = block.settings.textarea_desktop_col
           when 'richtext'
             assign alignment = block.settings.richtext_alignment
             assign fontsize = block.settings.richtext_fontsize
+            assign mobile_col = block.settings.richtext_mobile_col
+            assign desktop_col = block.settings.richtext_desktop_col
           when 'url'
             assign alignment = block.settings.url_alignment
             assign fontsize = block.settings.url_fontsize
@@ -50,9 +59,26 @@
             if block.settings.url_background_image != empty 
               assign background_image = block.settings.url_background_image
             endif
+            assign mobile_col = block.settings.url_mobile_col
+            assign desktop_col = block.settings.url_desktop_col
           when 'video'
             if block.settings.video_text_alignment != empty 
               assign alignment = block.settings.video_text_alignment
+            endif
+            assign mobile_col = block.settings.video_mobile_col
+            assign desktop_col = block.settings.video_desktop_col
+          when 'video_url'
+            assign mobile_col = block.settings.video_url_mobile_col
+            assign desktop_col = block.settings.video_url_desktop_col
+          when 'select'
+            assign name = 'spacer'
+            assign mobile_col = block.settings.spacer_mobile_col
+            if mobile_col == 'hide'
+              assign mobile_col = 'hide show-lg'
+            endif
+            assign desktop_col = block.settings.spacer_desktop_col
+            if desktop_col == 'hide'
+              assign desktop_col = 'hide-lg'
             endif
         endcase
 
@@ -70,9 +96,10 @@
       <div
         class="
           feather-generic__block
-          feather-generic__block--{{ block.type }}
+          feather-generic__block--{{ name }}
           feather-generic__block--alignment-{{ alignment }}
-          {{ justify }}"
+          {{ justify }}
+          {{ mobile_col }} {{ desktop_col }}"
         style="font-size: {{fontsize }}px;"
       >
         {% case block.type %}
@@ -114,6 +141,11 @@
 
               if block.settings.video_url contains 'youtube.com/watch?v='
                 assign constructor = block.settings.video_url | split: '='
+                assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+              endif
+
+              if block.settings.video_url contains 'youtu.be/'
+                assign constructor = block.settings.video_url | split: 'youtu.be/'
                 assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
               endif
 
@@ -1209,6 +1241,132 @@
           ]
         }
       ]
+    },
+    {
+      "name": "spacer",
+      "type": "select",
+      "settings": [
+        {
+          "id": "spacer_mobile_col",
+          "type": "select",
+          "label": "Spacer Mobile Columns",
+          "default": "col-xs-12",
+          "options": [
+            {
+              "value": "hide",
+              "label": "Hidden"
+            },
+            {
+              "value": "col-xs-1",
+              "label": "1"
+            },
+            {
+              "value": "col-xs-2",
+              "label": "2"
+            },
+            {
+              "value": "col-xs-3",
+              "label": "3"
+            },
+            {
+              "value": "col-xs-4",
+              "label": "4"
+            },
+            {
+              "value": "col-xs-5",
+              "label": "5"
+            },
+            {
+              "value": "col-xs-6",
+              "label": "6"
+            },
+            {
+              "value": "col-xs-7",
+              "label": "7"
+            },
+            {
+              "value": "col-xs-8",
+              "label": "8"
+            },
+            {
+              "value": "col-xs-9",
+              "label": "9"
+            },
+            {
+              "value": "col-xs-10",
+              "label": "10"
+            },
+            {
+              "value": "col-xs-11",
+              "label": "11"
+            },
+            {
+              "value": "col-xs-12",
+              "label": "12"
+            }
+          ]
+        },
+        {
+          "id": "spacer_desktop_col",
+          "type": "select",
+          "label": "Spacert Desktop Columns",
+          "default": "col-lg-12",
+          "options": [
+            {
+              "value": "hide",
+              "label": "Hidden"
+            },
+            {
+              "value": "col-lg-1",
+              "label": "1"
+            },
+            {
+              "value": "col-lg-2",
+              "label": "2"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10"
+            },
+            {
+              "value": "col-lg-11",
+              "label": "11"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12"
+            }
+          ]
+        }
+      ]
     }
   ],
   "presets": [
@@ -1220,7 +1378,8 @@
         { "type": "richtext" },
         { "type": "url" },
         { "type": "video" },
-        { "type": "video_url" }
+        { "type": "video_url" },
+        { "type": "select" }
       ]
     }
   ]
