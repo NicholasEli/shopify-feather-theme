@@ -8,130 +8,130 @@
 %}
 
 <div class="container container--padding{% if generic_width %} container--{{ generic_width }}{% endif %}">
-  {% for block in section.blocks %}
-    {% liquid
-      assign width = nil
-      assign min_width = nil
-      assign max_width = nil
-      assign justify = 'start-xs'
-      assign alignment = 'left'
-      assign fontsize = '15'
-      assign aspect_ratio = nil
-      assign background_color = nil
-      assign color = nil
-      assign background_image = nil
-
-      case block.type
-        when 'text'
-          assign alignment = block.settings.text_alignment
-          assign fontsize = block.settings.text_fontsize
-        when 'textarea'
-          assign alignment = block.settings.textarea_alignment
-          assign fontsize = block.settings.textarea_fontsize
-        when 'richtext'
-          assign alignment = block.settings.richtext_alignment
-          assign fontsize = block.settings.richtext_fontsize
-        when 'url'
-          assign alignment = block.settings.url_alignment
-          assign fontsize = block.settings.url_fontsize
-          assign width = block.settings.url_width
-          assign min_width = block.settings.url_min_width
-          assign max_width = block.settings.url_max_width
-          unless block.settings.url_aspect_ratio == 'none'
-            assign aspect_ratio = block.settings.url_aspect_ratio
-          endunless
-          if block.settings.url_background_color != empty 
-            assign background_color = block.settings.url_background_color
-          endif 
-          if block.settings.url_color != empty 
-            assign color = block.settings.url_color
-          endif
-          if block.settings.url_background_image != empty 
-            assign background_image = block.settings.url_background_image
-          endif
-        when 'video'
-          if block.settings.video_text_alignment != empty 
-            assign alignment = block.settings.video_text_alignment
-          endif
-      endcase
-
-      if alignment == 'left'
+  <div class="row">
+    {% for block in section.blocks %}
+      {% liquid
+        assign width = nil
+        assign min_width = nil
+        assign max_width = nil
         assign justify = 'start-xs'
-      endif 
-      if alignment == 'right'
-        assign justify = 'end-xs'
-      endif 
-      if alignment == 'center'
-        assign justify = 'center-xs'
-      endif 
+        assign alignment = 'left'
+        assign fontsize = '15'
+        assign aspect_ratio = nil
+        assign background_color = nil
+        assign color = nil
+        assign background_image = nil
 
-    %}
-    <div
-      class="
-        feather-generic__block
-        feather-generic__block--{{ block.type }}
-        feather-generic__block--alignment-{{ alignment }}
-        {{ justify }}
-        row
-      "
-      style="font-size: {{fontsize }}px;"
-    >
-      {% case block.type %}
-        {% when 'text' %}
-          <p>{{ block.settings.text }}</p>
-        {% when 'textarea' %}
-          <p>{{ block.settings.textarea }}</p>
-        {% when 'richtext' %}
-          {{ block.settings.richtext }}
-        {% when 'url' %}
-          <a
-            href="{{ block.settings.url }}"
-            title="{{ block.settings.url_text }}"
-            class="button{% unless background_color %} button--primary{% endunless %}"
-            style="
-              width: {{ width }}%;
-              min-width: {{ min_width }}px;
-              max-width: {{ max_width }}px;
-              {% if aspect_ratio %}aspect-ratio: {{ aspect_ratio  }}; height: auto;{% endif %}
-              {% if background_color %}background-color: {{ background_color }}; border-color: {{ background_color  }};{% endif %}
-              {% if color %}color: {{ color }}; {% endif %}
-              {% if background_image %}background-image: url('{{ background_image | img_url }}'); border-color: transparent;{% endif %}
-            "
-          >{{ block.settings.url_text }}</a>
-        {% when 'video' %}
-          {% if block.settings.video_overlay %}<div class="feather-generic__block-overlay"></div>{% endif %}
-          {% if block.settings.video_title or block.settings.video_text %}
-            <div
-              class="feather-generic__block-content feather-generic__block-content--{{ block.settings.video_content_x_alignment}}  feather-generic__block-content--{{ block.settings.video_content_y_alignment}}"
-            >
-              {% if block.settings.video_title %}<h3>{{ block.settings.video_title }}</h3>{% endif %}
-              {% if block.settings.video_text %}<p>{{ block.settings.video_text }}</p>{% endif %}
-            </div>
-          {% endif %}
-          {{ block.settings.video | video_tag: image_size: 'Large', controls: block.settings.video_controls, autoplay: block.settings.video_autoplay, loop: block.settings.video_loop  }}
-        {% when 'video_url' %}
-          {% liquid 
-            assign url = nil
-
-            if block.settings.video_url contains 'youtube.com/watch?v='
-              assign constructor = block.settings.video_url | split: '='
-              assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+        case block.type
+          when 'text'
+            assign alignment = block.settings.text_alignment
+            assign fontsize = block.settings.text_fontsize
+          when 'textarea'
+            assign alignment = block.settings.textarea_alignment
+            assign fontsize = block.settings.textarea_fontsize
+          when 'richtext'
+            assign alignment = block.settings.richtext_alignment
+            assign fontsize = block.settings.richtext_fontsize
+          when 'url'
+            assign alignment = block.settings.url_alignment
+            assign fontsize = block.settings.url_fontsize
+            assign width = block.settings.url_width
+            assign min_width = block.settings.url_min_width
+            assign max_width = block.settings.url_max_width
+            unless block.settings.url_aspect_ratio == 'none'
+              assign aspect_ratio = block.settings.url_aspect_ratio
+            endunless
+            if block.settings.url_background_color != empty 
+              assign background_color = block.settings.url_background_color
+            endif 
+            if block.settings.url_color != empty 
+              assign color = block.settings.url_color
             endif
-
-            if block.settings.video_url contains 'vimeo.com'
-              assign constructor = block.settings.video_url | split: 'vimeo.com/'
-              assign url = 'https://player.vimeo.com/video/' | append: constructor[1]
+            if block.settings.url_background_image != empty 
+              assign background_image = block.settings.url_background_image
             endif
-          %}
-          <iframe
-            src="{{ url }}"
-            frameborder="0"
-            allow="fullscreen;picture-in-picture"
-            allowfullscreen
-          ></iframe>
-      {% endcase %}
-    </div>
-  {% endfor %}
+          when 'video'
+            if block.settings.video_text_alignment != empty 
+              assign alignment = block.settings.video_text_alignment
+            endif
+        endcase
+
+        if alignment == 'left'
+          assign justify = 'start-xs'
+        endif 
+        if alignment == 'right'
+          assign justify = 'end-xs'
+        endif 
+        if alignment == 'center'
+          assign justify = 'center-xs'
+        endif 
+
+      %}
+      <div
+        class="
+          feather-generic__block
+          feather-generic__block--{{ block.type }}
+          feather-generic__block--alignment-{{ alignment }}
+          {{ justify }}"
+        style="font-size: {{fontsize }}px;"
+      >
+        {% case block.type %}
+          {% when 'text' %}
+            <p>{{ block.settings.text }}</p>
+          {% when 'textarea' %}
+            <p>{{ block.settings.textarea }}</p>
+          {% when 'richtext' %}
+            {{ block.settings.richtext }}
+          {% when 'url' %}
+            <a
+              href="{{ block.settings.url }}"
+              title="{{ block.settings.url_text }}"
+              class="button{% unless background_color %} button--primary{% endunless %}"
+              style="
+                width: {{ width }}%;
+                min-width: {{ min_width }}px;
+                max-width: {{ max_width }}px;
+                {% if aspect_ratio %}aspect-ratio: {{ aspect_ratio  }}; height: auto;{% endif %}
+                {% if background_color %}background-color: {{ background_color }}; border-color: {{ background_color  }};{% endif %}
+                {% if color %}color: {{ color }}; {% endif %}
+                {% if background_image %}background-image: url('{{ background_image | img_url }}'); border-color: transparent;{% endif %}
+              "
+            >{{ block.settings.url_text }}</a>
+          {% when 'video' %}
+            {% if block.settings.video_overlay %}<div class="feather-generic__block-overlay"></div>{% endif %}
+            {% if block.settings.video_title or block.settings.video_text %}
+              <div
+                class="feather-generic__block-content feather-generic__block-content--{{ block.settings.video_content_x_alignment}}  feather-generic__block-content--{{ block.settings.video_content_y_alignment}}"
+              >
+                {% if block.settings.video_title %}<h3>{{ block.settings.video_title }}</h3>{% endif %}
+                {% if block.settings.video_text %}<p>{{ block.settings.video_text }}</p>{% endif %}
+              </div>
+            {% endif %}
+            {{ block.settings.video | video_tag: image_size: 'Large', controls: block.settings.video_controls, autoplay: block.settings.video_autoplay, loop: block.settings.video_loop  }}
+          {% when 'video_url' %}
+            {% liquid 
+              assign url = nil
+
+              if block.settings.video_url contains 'youtube.com/watch?v='
+                assign constructor = block.settings.video_url | split: '='
+                assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+              endif
+
+              if block.settings.video_url contains 'vimeo.com'
+                assign constructor = block.settings.video_url | split: 'vimeo.com/'
+                assign url = 'https://player.vimeo.com/video/' | append: constructor[1]
+              endif
+            %}
+            <iframe
+              src="{{ url }}"
+              frameborder="0"
+              allow="fullscreen;picture-in-picture"
+              allowfullscreen
+            ></iframe>
+        {% endcase %}
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 
@@ -213,6 +213,118 @@
           "min": 0,
           "max": 100,
           "default": 15
+        },
+        {
+          "id": "text_mobile_col",
+          "type": "select",
+          "label": "Mobile Columns",
+          "default": "col-xs-12",
+          "options": [
+            {
+              "value": "col-xs-1",
+              "label": "1"
+            },
+            {
+              "value": "col-xs-2",
+              "label": "2"
+            },
+            {
+              "value": "col-xs-3",
+              "label": "3"
+            },
+            {
+              "value": "col-xs-4",
+              "label": "4"
+            },
+            {
+              "value": "col-xs-5",
+              "label": "5"
+            },
+            {
+              "value": "col-xs-6",
+              "label": "6"
+            },
+            {
+              "value": "col-xs-7",
+              "label": "7"
+            },
+            {
+              "value": "col-xs-8",
+              "label": "8"
+            },
+            {
+              "value": "col-xs-9",
+              "label": "9"
+            },
+            {
+              "value": "col-xs-10",
+              "label": "10"
+            },
+            {
+              "value": "col-xs-11",
+              "label": "11"
+            },
+            {
+              "value": "col-xs-12",
+              "label": "12"
+            }
+          ]
+        },
+        {
+          "id": "text_desktop_col",
+          "type": "select",
+          "label": "Desktop Columns",
+          "default": "col-lg-12",
+          "options": [
+            {
+              "value": "col-lg-1",
+              "label": "1"
+            },
+            {
+              "value": "col-lg-2",
+              "label": "2"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10"
+            },
+            {
+              "value": "col-lg-11",
+              "label": "11"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12"
+            }
+          ]
         }
       ]
     },
@@ -254,6 +366,118 @@
           "min": 0,
           "max": 100,
           "default": 15
+        },
+        {
+          "id": "textarea_mobile_col",
+          "type": "select",
+          "label": "Mobile Columns",
+          "default": "col-xs-12",
+          "options": [
+            {
+              "value": "col-xs-1",
+              "label": "1"
+            },
+            {
+              "value": "col-xs-2",
+              "label": "2"
+            },
+            {
+              "value": "col-xs-3",
+              "label": "3"
+            },
+            {
+              "value": "col-xs-4",
+              "label": "4"
+            },
+            {
+              "value": "col-xs-5",
+              "label": "5"
+            },
+            {
+              "value": "col-xs-6",
+              "label": "6"
+            },
+            {
+              "value": "col-xs-7",
+              "label": "7"
+            },
+            {
+              "value": "col-xs-8",
+              "label": "8"
+            },
+            {
+              "value": "col-xs-9",
+              "label": "9"
+            },
+            {
+              "value": "col-xs-10",
+              "label": "10"
+            },
+            {
+              "value": "col-xs-11",
+              "label": "11"
+            },
+            {
+              "value": "col-xs-12",
+              "label": "12"
+            }
+          ]
+        },
+        {
+          "id": "textarea_desktop_col",
+          "type": "select",
+          "label": "Desktop Columns",
+          "default": "col-lg-12",
+          "options": [
+            {
+              "value": "col-lg-1",
+              "label": "1"
+            },
+            {
+              "value": "col-lg-2",
+              "label": "2"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10"
+            },
+            {
+              "value": "col-lg-11",
+              "label": "11"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12"
+            }
+          ]
         }
       ]
     },
@@ -295,6 +519,118 @@
           "min": 0,
           "max": 100,
           "default": 15
+        },
+        {
+          "id": "richtext_mobile_col",
+          "type": "select",
+          "label": "Mobile Columns",
+          "default": "col-xs-12",
+          "options": [
+            {
+              "value": "col-xs-1",
+              "label": "1"
+            },
+            {
+              "value": "col-xs-2",
+              "label": "2"
+            },
+            {
+              "value": "col-xs-3",
+              "label": "3"
+            },
+            {
+              "value": "col-xs-4",
+              "label": "4"
+            },
+            {
+              "value": "col-xs-5",
+              "label": "5"
+            },
+            {
+              "value": "col-xs-6",
+              "label": "6"
+            },
+            {
+              "value": "col-xs-7",
+              "label": "7"
+            },
+            {
+              "value": "col-xs-8",
+              "label": "8"
+            },
+            {
+              "value": "col-xs-9",
+              "label": "9"
+            },
+            {
+              "value": "col-xs-10",
+              "label": "10"
+            },
+            {
+              "value": "col-xs-11",
+              "label": "11"
+            },
+            {
+              "value": "col-xs-12",
+              "label": "12"
+            }
+          ]
+        },
+        {
+          "id": "richtext_desktop_col",
+          "type": "select",
+          "label": "Desktop Columns",
+          "default": "col-lg-12",
+          "options": [
+            {
+              "value": "col-lg-1",
+              "label": "1"
+            },
+            {
+              "value": "col-lg-2",
+              "label": "2"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10"
+            },
+            {
+              "value": "col-lg-11",
+              "label": "11"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12"
+            }
+          ]
         }
       ]
     },
@@ -407,6 +743,118 @@
           "id": "url_background_image",
           "type": "image_picker",
           "label": "Background Image"
+        },
+        {
+          "id": "url_mobile_col",
+          "type": "select",
+          "label": "Mobile Columns",
+          "default": "col-xs-12",
+          "options": [
+            {
+              "value": "col-xs-1",
+              "label": "1"
+            },
+            {
+              "value": "col-xs-2",
+              "label": "2"
+            },
+            {
+              "value": "col-xs-3",
+              "label": "3"
+            },
+            {
+              "value": "col-xs-4",
+              "label": "4"
+            },
+            {
+              "value": "col-xs-5",
+              "label": "5"
+            },
+            {
+              "value": "col-xs-6",
+              "label": "6"
+            },
+            {
+              "value": "col-xs-7",
+              "label": "7"
+            },
+            {
+              "value": "col-xs-8",
+              "label": "8"
+            },
+            {
+              "value": "col-xs-9",
+              "label": "9"
+            },
+            {
+              "value": "col-xs-10",
+              "label": "10"
+            },
+            {
+              "value": "col-xs-11",
+              "label": "11"
+            },
+            {
+              "value": "col-xs-12",
+              "label": "12"
+            }
+          ]
+        },
+        {
+          "id": "url_desktop_col",
+          "type": "select",
+          "label": "Desktop Columns",
+          "default": "col-lg-12",
+          "options": [
+            {
+              "value": "col-lg-1",
+              "label": "1"
+            },
+            {
+              "value": "col-lg-2",
+              "label": "2"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10"
+            },
+            {
+              "value": "col-lg-11",
+              "label": "11"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12"
+            }
+          ]
         }
       ]
     },
@@ -520,6 +968,118 @@
               "label": "Center"
             }
           ]
+        },
+        {
+          "id": "video_mobile_col",
+          "type": "select",
+          "label": "Mobile Columns",
+          "default": "col-xs-12",
+          "options": [
+            {
+              "value": "col-xs-1",
+              "label": "1"
+            },
+            {
+              "value": "col-xs-2",
+              "label": "2"
+            },
+            {
+              "value": "col-xs-3",
+              "label": "3"
+            },
+            {
+              "value": "col-xs-4",
+              "label": "4"
+            },
+            {
+              "value": "col-xs-5",
+              "label": "5"
+            },
+            {
+              "value": "col-xs-6",
+              "label": "6"
+            },
+            {
+              "value": "col-xs-7",
+              "label": "7"
+            },
+            {
+              "value": "col-xs-8",
+              "label": "8"
+            },
+            {
+              "value": "col-xs-9",
+              "label": "9"
+            },
+            {
+              "value": "col-xs-10",
+              "label": "10"
+            },
+            {
+              "value": "col-xs-11",
+              "label": "11"
+            },
+            {
+              "value": "col-xs-12",
+              "label": "12"
+            }
+          ]
+        },
+        {
+          "id": "video_desktop_col",
+          "type": "select",
+          "label": "Desktop Columns",
+          "default": "col-lg-12",
+          "options": [
+            {
+              "value": "col-lg-1",
+              "label": "1"
+            },
+            {
+              "value": "col-lg-2",
+              "label": "2"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10"
+            },
+            {
+              "value": "col-lg-11",
+              "label": "11"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12"
+            }
+          ]
         }
       ]
     },
@@ -535,6 +1095,118 @@
             "youtube",
             "vimeo"
           ]
+        },
+        {
+          "id": "video_url_mobile_col",
+          "type": "select",
+          "label": "Mobile Columns",
+          "default": "col-xs-12",
+          "options": [
+            {
+              "value": "col-xs-1",
+              "label": "1"
+            },
+            {
+              "value": "col-xs-2",
+              "label": "2"
+            },
+            {
+              "value": "col-xs-3",
+              "label": "3"
+            },
+            {
+              "value": "col-xs-4",
+              "label": "4"
+            },
+            {
+              "value": "col-xs-5",
+              "label": "5"
+            },
+            {
+              "value": "col-xs-6",
+              "label": "6"
+            },
+            {
+              "value": "col-xs-7",
+              "label": "7"
+            },
+            {
+              "value": "col-xs-8",
+              "label": "8"
+            },
+            {
+              "value": "col-xs-9",
+              "label": "9"
+            },
+            {
+              "value": "col-xs-10",
+              "label": "10"
+            },
+            {
+              "value": "col-xs-11",
+              "label": "11"
+            },
+            {
+              "value": "col-xs-12",
+              "label": "12"
+            }
+          ]
+        },
+        {
+          "id": "video_url_desktop_col",
+          "type": "select",
+          "label": "Desktop Columns",
+          "default": "col-lg-12",
+          "options": [
+            {
+              "value": "col-lg-1",
+              "label": "1"
+            },
+            {
+              "value": "col-lg-2",
+              "label": "2"
+            },
+            {
+              "value": "col-lg-3",
+              "label": "3"
+            },
+            {
+              "value": "col-lg-4",
+              "label": "4"
+            },
+            {
+              "value": "col-lg-5",
+              "label": "5"
+            },
+            {
+              "value": "col-lg-6",
+              "label": "6"
+            },
+            {
+              "value": "col-lg-7",
+              "label": "7"
+            },
+            {
+              "value": "col-lg-8",
+              "label": "8"
+            },
+            {
+              "value": "col-lg-9",
+              "label": "9"
+            },
+            {
+              "value": "col-lg-10",
+              "label": "10"
+            },
+            {
+              "value": "col-lg-11",
+              "label": "11"
+            },
+            {
+              "value": "col-lg-12",
+              "label": "12"
+            }
+          ]
         }
       ]
     }
@@ -547,7 +1219,8 @@
         { "type": "textarea" },
         { "type": "richtext" },
         { "type": "url" },
-        { "type": "video" }
+        { "type": "video" },
+        { "type": "video_url" }
       ]
     }
   ]

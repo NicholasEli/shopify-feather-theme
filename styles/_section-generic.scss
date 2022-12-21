@@ -82,6 +82,7 @@
 		&--url {
 			a.button {
 				@include flex(row, center, center);
+				margin: 0;
 				font-size: inherit;
 				background-size: cover;
 				background-position: center center;
