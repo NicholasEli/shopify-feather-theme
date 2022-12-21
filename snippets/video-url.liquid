@@ -1,0 +1,26 @@
+{% liquid 
+  assign url = nil
+
+  if video_url contains 'youtube.com/watch?v='
+    assign constructor = video_url | split: '='
+    assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+  endif
+
+  if video_url contains 'youtu.be/'
+    assign constructor = video_url | split: 'youtu.be/'
+    assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+  endif
+
+  if video_url contains 'vimeo.com'
+    assign constructor = video_url | split: 'vimeo.com/'
+    assign url = 'https://player.vimeo.com/video/' | append: constructor[1]
+  endif
+%}
+{% if video_url and url %}
+  <iframe
+    src="{{ url }}"
+    frameborder="0"
+    allow="fullscreen;picture-in-picture"
+    allowfullscreen
+  ></iframe>
+{% endif %}

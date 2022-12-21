@@ -1,17 +1,4 @@
 {% liquid
-	
-	assign url = nil
-
-	if section.settings.video_url and section.settings.video_url contains 'youtube.com/watch?v='
-		assign constructor = section.settings.video_url | split: '='
-		assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
-	endif
-
-	if section.settings.video_url and section.settings.video_url contains 'vimeo.com'
-		assign constructor = section.settings.video_url | split: 'vimeo.com/'
-		assign url = 'https://player.vimeo.com/video/' | append: constructor[1]
-	endif
-
 	assign videoCol = 'col-xs-12'
 	if section.settings.tagline
 		assign videoCol = 'col-xs-12 col-md-8'
@@ -36,16 +23,7 @@
 					<h5>{{ section.settings.tagline }}</h5>
 				</div>
 			{% endif %}
-			{% if url %}
-				<div class="{{ videoCol }} first-md">
-					<iframe
-						src="{{ url }}"
-						frameborder="0"
-						allow="fullscreen;picture-in-picture"
-						allowfullscreen
-					></iframe>
-				</div>
-			{% endif %}
+			{% render 'video-url', video_url: section.settings.video_url %}
 		</div>
 	</div>
 {% endif %}
