@@ -2,6 +2,15 @@
 	&-slide {
 		display: flex;
 		justify-content: center;
+
+		img,
+		video,
+		iframe {
+			width: 100%;
+			max-width: 100%;
+			height: auto;
+			display: block;
+		}
 	}
 
 	&-button-next,
@@ -19,6 +28,8 @@
 
 	.feather-list__item {
 		width: 100%;
+		margin: 0;
+		padding: 0;
 		position: relative;
 		border: none;
 
@@ -26,6 +37,20 @@
 			img {
 				transform: scale(1, 1);
 			}
+		}
+
+		&-image {
+			margin: 0;
+			aspect-ratio: 0;
+
+			img {
+				object-fit: contain;
+			}
+		}
+
+		&-title,
+		&-price {
+			display: none;
 		}
 	}
 }

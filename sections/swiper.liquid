@@ -31,12 +31,57 @@
 				  <!-- Additional required wrapper -->
 				  <div class="swiper-wrapper">
 				    <!-- Slides -->
-				    {% for item in section.blocks %}
-				    	{% assign ref = all_products[item.settings.product] %}
-				    	<div class="swiper-slide">
-				    		{% render 'item', item: ref %}
-				    	</div>
-				    {% endfor %}
+					  {% for item in section.blocks %}
+					    <div class="swiper-slide">
+					    	{% case item.type %}
+					    		{% when 'product' %}
+							    	{% assign ref = all_products[item.settings.product] %}
+							    		{% render 'item', item: ref %}
+							    	
+							    {% when 'image_picker' %}
+							    	{% if item.settings.image_url and item.settings.image_url != empty %}
+							    		<a title="{{ item.settings.image.alt }}" href="{{ item.settings.image_url }}">
+							    			{{ item.settings.image | image_url: width: 1200 | image_tag }}
+							    		</a>
+							    	{% else %}
+							    		{{ item.settings.image | image_url: width: 1200 | image_tag }}
+							    	{% endif %}
+							    {% when 'video' %}
+							    	{% if item.settings.image_url and item.settings.image_url != empty %}
+							    		<a href="{{ item.settings.image_url }}">
+							    			{{ item.settings.video | video_tag: image_size: 'Large', controls: item.settings.video_controls, autoplay: item.settings.video_autoplay, loop: item.settings.video_loop  }}
+							    		</a>
+							    	{% else %}
+							    		{{ item.settings.video | video_tag: image_size: 'Large', controls: item.settings.video_controls, autoplay: item.settings.video_autoplay, loop: item.settings.video_loop  }}
+							    	{% endif %}
+							    {% when 'video_url' %}
+				            {% liquid 
+				              assign url = nil
+
+				              if item.settings.video_url contains 'youtube.com/watch?v='
+				                assign constructor = item.settings.video_url | split: '='
+				                assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+				              endif
+
+				              if item.settings.video_url contains 'youtu.be/'
+				                assign constructor = item.settings.video_url | split: 'youtu.be/'
+				                assign url = 'https://www.youtube.com/embed/' | append: constructor[1]
+				              endif
+
+				              if item.settings.video_url contains 'vimeo.com'
+				                assign constructor = item.settings.video_url | split: 'vimeo.com/'
+				                assign url = 'https://player.vimeo.com/video/' | append: constructor[1]
+				              endif
+				            %}
+				            <iframe
+				              src="{{ url }}"
+				              frameborder="0"
+				              allow="fullscreen;picture-in-picture"
+				              allowfullscreen
+				            ></iframe>
+						    {% endcase %}
+					    </div>
+					  {% endfor %}
 				  </div>
 
 				  {% if section.settings.pagination %}
@@ -178,15 +223,85 @@
 	          "label": "Product"
 	        }
 	      ]
+	    },
+	    {
+	      "type": "image_picker",
+	      "name": "Image",
+	      "settings": [
+	        {
+	          "id": "image",
+	          "type": "image_picker",
+	          "label": "Image"
+	        },
+	        {
+	          "id": "image_url",
+	          "type": "url",
+	          "label": "Image as Link"
+	        }
+	      ]
+	    },
+	    {
+	      "type": "video",
+	      "name": "video",
+	      "settings": [
+	        {
+	          "id": "video",
+	          "type": "video",
+	          "label": "Video"
+	        },
+	        {
+	          "id": "video_url",
+	          "type": "url",
+	          "label": "Video as Link"
+	        },
+	        {
+	          "type": "header",
+	          "content": "Video Settings"
+	        },
+	        {
+	          "id": "video_controls",
+	          "type": "checkbox",
+	          "label": "Show Video Controls",
+	          "default": false
+	        },
+	        {
+	          "id": "video_autoplay",
+	          "type": "checkbox",
+	          "label": "Autoplay",
+	          "default": false
+	        },
+	        {
+	          "id": "video_loop",
+	          "type": "checkbox",
+	          "label": "Loop Video",
+	          "default": false
+	        }
+	      ]
+	    },
+	    {
+	      "type": "video_url",
+	      "name": "video_url",
+	      "settings": [
+	        {
+	          "id": "video_url",
+	          "type": "video_url",
+	          "label": "External Video",
+	          "accept": [
+	            "youtube",
+	            "vimeo"
+	          ]
+	        }
+	      ]
 	    }
 	  ],
   	"presets": [
   		{
   			"name": "Swiper",
   			"blocks": [
-  				{
-  					"type": "product"
-  				}
+  				{ "type": "product" },
+  				{ "type": "image_picker" },
+	        { "type": "video" },
+	        { "type": "video_url" }
   			]
   		}
   	]
