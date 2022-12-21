@@ -2,33 +2,42 @@ import Swiper from 'swiper/bundle';
 
 export const swiper = function () {
 	const swipers = document.querySelectorAll('[data-swiper]');
-	console.log('gettings');
 	if (!swipers || (swipers && !swipers.length)) return;
 
 	swipers.forEach((_swiper) => {
 		const id = _swiper.getAttribute('data-swiper');
+		const pagination = _swiper.getAttribute('data-pagination');
+		const navigation = _swiper.getAttribute('data-navigation');
+		const scrollbar = _swiper.getAttribute('data-scrollbar');
+		const loop = _swiper.getAttribute('data-loop');
 
 		const config = {
-			// Optional parameters
 			direction: 'horizontal',
 			loop: true,
+		};
 
-			// If we need pagination
-			pagination: {
+		if (pagination) {
+			config.pagination = {
 				el: '.swiper-pagination',
-			},
+			};
+		}
 
-			// Navigation arrows
-			navigation: {
+		if (navigation) {
+			config.navigation = {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
-			},
+			};
+		}
 
-			// And if we need scrollbar
-			scrollbar: {
+		if (scrollbar) {
+			config.scrollbar = {
 				el: '.swiper-scrollbar',
-			},
-		};
+			};
+		}
+
+		if (loop) {
+			config.loop = true;
+		}
 
 		new Swiper(`[data-swiper="${id}"]`, config);
 	});
