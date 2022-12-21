@@ -14,25 +14,135 @@
           "settings": {
             "category": "bedroom-furniture"
           }
+        },
+        "b683ae6d-6ae3-4e9c-a55b-42d1da8cabaf": {
+          "type": "collections-banner",
+          "settings": {
+            "category": "dinning-room-furniture"
+          }
         }
       },
       "block_order": [
         "3d48ebfc-9cdf-4ebd-8fa7-b62f28d2a429",
-        "d49f1c1e-0351-43fc-9608-1c9d3ed763d9"
+        "d49f1c1e-0351-43fc-9608-1c9d3ed763d9",
+        "b683ae6d-6ae3-4e9c-a55b-42d1da8cabaf"
       ],
       "settings": {}
     },
     "generic": {
-      "type": "generic"
-    },
-    "product-spotlight": {
-      "type": "product-spotlight",
-      "blocks": {},
-      "block_order": [],
+      "type": "generic",
+      "blocks": {
+        "8c4b743d-c805-40ec-b517-a0b6a0aa7f2d": {
+          "type": "text",
+          "settings": {
+            "text": "She immediately ordered the chaise away: and then took me into her own room, to consider what should be done.",
+            "text_alignment": "left",
+            "text_fontsize": 15,
+            "text_mobile_col": "col-xs-12",
+            "text_desktop_col": "col-lg-6"
+          }
+        },
+        "16aed105-c3cf-4571-ae71-0904c2c21c13": {
+          "type": "textarea",
+          "settings": {
+            "textarea": "She would have had me immediately accompany her to the Hot-Wells; but I entreated her to spare me the distress of so abrupt an introduction, and to pave the way for my reception. She consented rather reluctantly, and, attended only by her servant, walked to the Wells.",
+            "textarea_alignment": "center",
+            "textarea_fontsize": 20,
+            "textarea_mobile_col": "col-xs-12",
+            "textarea_desktop_col": "col-lg-12"
+          }
+        },
+        "befb1f06-a76d-4e27-81cc-07123084d5f8": {
+          "type": "select",
+          "settings": {
+            "spacer_mobile_col": "hide",
+            "spacer_desktop_col": "col-lg-6"
+          }
+        },
+        "a0fc99c9-ae06-47e8-a998-0cc958f317dc": {
+          "type": "richtext",
+          "settings": {
+            "richtext": "<p><em>It was some time ere she could give, or I could hear, the account of her visit;</em> and then she related it in a hasty manner; yet, I believe I can recollect every word.</p>",
+            "richtext_alignment": "right",
+            "richtext_fontsize": 15,
+            "richtext_mobile_col": "col-xs-12",
+            "richtext_desktop_col": "col-lg-5"
+          }
+        },
+        "6577200c-dc6f-432b-9265-a9c8e8e576fb": {
+          "type": "url",
+          "settings": {
+            "url": "https://litipsum.com/",
+            "url_text": "Lit Ipsum",
+            "url_alignment": "center",
+            "url_fontsize": 12,
+            "url_min_width": 200,
+            "url_max_width": 200,
+            "url_width": 100,
+            "url_aspect_ratio": "none",
+            "url_background_color": "",
+            "url_color": "",
+            "url_mobile_col": "col-xs-12",
+            "url_desktop_col": "col-lg-12"
+          }
+        },
+        "75ea6358-c507-42de-9143-19e2f5f781dc": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify://shop_images/autumn-walk-hand-in-hand.jpg",
+            "image_overlay": false,
+            "image_title": "",
+            "image_text": "",
+            "image_content_x_alignment": "left",
+            "image_content_y_alignment": "top",
+            "image_text_alignment": "left",
+            "image_mobile_col": "col-xs-12",
+            "image_desktop_col": "col-lg-12"
+          }
+        },
+        "75be033c-a79b-4413-983e-7a68d55cf961": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/mothership.mp4",
+            "video_controls": false,
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_overlay": true,
+            "video_title": "Shall I interrupt you?",
+            "video_text": "I was silent, and he seated himself next me.",
+            "video_content_x_alignment": "left",
+            "video_content_y_alignment": "bottom",
+            "video_text_alignment": "left",
+            "video_mobile_col": "col-xs-12",
+            "video_desktop_col": "col-lg-6"
+          }
+        },
+        "e568742a-6e7c-4384-a9c3-b6656fc8d675": {
+          "type": "video_url",
+          "settings": {
+            "video_url": "https://youtu.be/YWY6mf2WV-M",
+            "video_url_mobile_col": "col-xs-12",
+            "video_url_desktop_col": "col-lg-6"
+          }
+        }
+      },
+      "block_order": [
+        "8c4b743d-c805-40ec-b517-a0b6a0aa7f2d",
+        "16aed105-c3cf-4571-ae71-0904c2c21c13",
+        "befb1f06-a76d-4e27-81cc-07123084d5f8",
+        "a0fc99c9-ae06-47e8-a998-0cc958f317dc",
+        "6577200c-dc6f-432b-9265-a9c8e8e576fb",
+        "75ea6358-c507-42de-9143-19e2f5f781dc",
+        "75be033c-a79b-4413-983e-7a68d55cf961",
+        "e568742a-6e7c-4384-a9c3-b6656fc8d675"
+      ],
       "settings": {
-        "tagline": "Outdoor furniture that turns your patio into an oasis of. Our furniture combines nature and modern design with materials your company will love.",
-        "subtagline": "Spotlight: Products in focus"
+        "generic_width": "lg"
       }
+    },
+    "swiper": {
+      "type": "swiper",
+      "blocks": {}
     },
     "information-grid": {
       "type": "information-grid",
@@ -73,8 +183,12 @@
       "settings": {}
     },
     "newsletter": {
-      "type": "newsletter"
+      "type": "newsletter",
+      "settings": {
+        "title": "Join Our Mailing List",
+        "text": "Want the latest and greatest from our us straight to your inbox? Share your email with us for our monthly email."
+      }
     }
   },
-  "order": ["collection-banner", "generic", "product-spotlight", "information-grid", "newsletter"]
+  "order": ["collection-banner", "generic", "swiper", "information-grid", "newsletter"]
 }

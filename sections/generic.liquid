@@ -100,7 +100,7 @@
           feather-generic__block--alignment-{{ alignment }}
           {{ justify }}
           {{ mobile_col }} {{ desktop_col }}"
-        style="font-size: {{fontsize }}px;"
+        style="font-size: {{fontsize }}px;{% if block.type == 'url' %} display: flex;{% endif %}"
       >
         {% case block.type %}
           {% when 'text' %}
@@ -124,6 +124,8 @@
                 {% if background_image %}background-image: url('{{ background_image | img_url }}'); border-color: transparent;{% endif %}
               "
             >{{ block.settings.url_text }}</a>
+          {% when 'image_picker' %}
+            {{ block.settings.image | image_url: width: 1200 | image_tag }}
           {% when 'video' %}
             {% if block.settings.video_overlay %}<div class="feather-generic__block-overlay"></div>{% endif %}
             {% if block.settings.video_title or block.settings.video_text %}
