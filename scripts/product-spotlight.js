@@ -1,4 +1,4 @@
-// import { getCSSVariable } from './utils.js';
+import { getCSSVariable } from './utils.js';
 // import Glide from '@glidejs/glide';
 
 const sm = parseInt(getCSSVariable('--sm'));

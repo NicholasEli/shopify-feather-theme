@@ -133,8 +133,8 @@
         "video_url": "https://vimeo.com/750910988?embedded=true&source=video_title&owner=2057105"
       }
     },
-    "product-slider": {
-      "type": "product-slider",
+    "swiper": {
+      "type": "swiper",
       "blocks": {
         "1af477d6-9113-462f-b56b-d7c76dc696ed": {
           "type": "products",
@@ -158,5 +158,5 @@
       }
     }
   },
-  "order": ["details", "gallery", "video", "product-slider"]
+  "order": ["details", "gallery", "video", "swiper"]
 }

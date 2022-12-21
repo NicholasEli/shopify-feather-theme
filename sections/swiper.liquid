@@ -1,0 +1,104 @@
+{% if section.blocks.size > 0 %}
+	<div class="container container--padding">
+		<div class="row">
+			{% if section.settings.title %}
+				<h5>{{ section.settings.title }}</h5>
+			{% endif %}
+		</div>
+		<div class="row">
+			<!-- Slider main container -->
+				<div
+					data-swiper={{ section.id }}
+					{% if section.settings.pagination %}data-pagination{% endif %}
+					{% if section.settings.navigation %}data-navigation{% endif %}
+					{% if section.settings.scrollbar %}data-scrollbar{% endif %}
+					class="swiper"
+				>
+				  <!-- Additional required wrapper -->
+				  <div class="swiper-wrapper">
+				    <!-- Slides -->
+				    {% for item in section.blocks %}
+				    	{% assign ref = all_products[item.settings.product] %}
+				    	<div class="swiper-slide">
+				    		{% render 'item', item: ref %}
+				    	</div>
+				    {% endfor %}
+				  </div>
+
+				  {% if section.settings.pagination %}
+				  	<div class="swiper-pagination"></div>
+				  {% endif %}
+
+				  {% if section.settings.navigation %}
+					  <div class="swiper-button-prev"></div>
+					  <div class="swiper-button-next"></div>
+					{% endif %}
+
+				  {% if section.settings.scrollbar %}
+				  	<div class="swiper-scrollbar"></div>
+				  {% endif %}
+				</div>
+		</div>
+	</div>
+{% endif %}
+
+{% schema %}
+	{
+		"name": "Swiper",
+		"tag": "section",
+		"class": "feather-swiper",
+		"settings": [
+			{
+				"id": "title",
+				"type": "text",
+				"label": "Title",
+				"default": "Make it complete"
+			},
+			{
+				"type": "header",
+				"content": "Swiper Settings"
+			},
+			{
+				"id": "pagination",
+				"type": "checkbox",
+				"label": "Show Pagination",
+				"default": true
+			},
+			{
+				"id": "navigation",
+				"type": "checkbox",
+				"label": "Show Navigation",
+				"default": true
+			},
+			{
+				"id": "scrollbar",
+				"type": "checkbox",
+				"label": "Show Scrollbar",
+				"default": true
+			}
+		],
+		"blocks": [
+			{
+	      "type": "product",
+	      "name": "Product",
+	      "settings": [
+	        {
+	          "id": "product",
+	          "type": "product",
+	          "label": "Product"
+	        }
+	      ]
+	    }
+	  ],
+  	"presets": [
+  		{
+  			"name": "Swiper",
+  			"blocks": [
+  				{
+  					"type": "product"
+  				}
+  			]
+  		}
+  	]
+	}
+{% endschema %}
