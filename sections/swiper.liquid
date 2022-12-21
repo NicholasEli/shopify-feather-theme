@@ -1,5 +1,14 @@
+{% 
+  liquid
+
+  assign swiper_width = nil
+  if section.settings.swiper_width != 'fluid'
+    assign swiper_width = section.settings.swiper_width
+  endif
+%}
+
 {% if section.blocks.size > 0 %}
-	<div class="container container--padding">
+	<div class="container container--padding{% if swiper_width %} container--{{ swiper_width }}{% endif %}">
 		<div class="row">
 			{% if section.settings.title %}
 				<h5>{{ section.settings.title }}</h5>
@@ -9,10 +18,13 @@
 			<!-- Slider main container -->
 				<div
 					data-swiper={{ section.id }}
-					{% if section.settings.pagination %}data-pagination{% endif %}
-					{% if section.settings.navigation %}data-navigation{% endif %}
-					{% if section.settings.scrollbar %}data-scrollbar{% endif %}
-					{% if section.settings.loop %}data-loop{% endif %}
+					{% if section.settings.pagination %}data-pagination="true"{% endif %}
+					{% if section.settings.navigation %}data-navigation="true"{% endif %}
+					{% if section.settings.scrollbar %}data-scrollbar="true"{% endif %}
+					{% if section.settings.loop %}data-loop="true"{% endif %}
+					{% if section.settings.space_between_slides %}data-space-between-slides="{{ section.settings.space_between_slides }}"{% endif %}
+					{% if section.settings.slides_perview_mobile %}data-slides-per-view-mobile="{{ section.settings.slides_perview_mobile }}"{% endif %}
+					{% if section.settings.slides_perview_desktop %}data-slides-per-view-desktop="{{ section.settings.slides_perview_desktop }}"{% endif %}
 					class="swiper"
 				>
 				  <!-- Additional required wrapper -->
@@ -82,6 +94,56 @@
 				"type": "checkbox",
 				"label": "Loop",
 				"default": true
+			},
+			{
+	      "id": "swiper_width",
+	      "type": "select",
+	      "label": "Max Width",
+	      "options": [
+	        {
+	          "value": "xs",
+	          "label": "Extra Small"
+	        },
+	        {
+	          "value": "sm",
+	          "label": "Small"
+	        },
+	        {
+	          "value": "md",
+	          "label": "Medium"
+	        },
+	        {
+	          "value": "lg",
+	          "label": "Large"
+	        },
+	        {
+	          "value": "xl",
+	          "label": "Extra Large"
+	        },
+	        {
+	          "value": "fluid",
+	          "label": "Fluid"
+	        }
+	      ],
+	      "default": "lg"
+	    },
+	    {
+				"id": "space_between_slides",
+				"type": "number",
+				"label": "Space Between Slides",
+				"default": 0
+			},
+			{
+				"id": "slides_perview_mobile",
+				"type": "number",
+				"label": "Slides Per View On Mobile",
+				"default": 1
+			},
+			{
+				"id": "slides_perview_desktop",
+				"type": "number",
+				"label": "Slides Per View On Desktop",
+				"default": 1
 			}
 		],
 		"blocks": [
