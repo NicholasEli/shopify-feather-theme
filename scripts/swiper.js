@@ -35,8 +35,8 @@ export const swiper = function () {
 
 		if (navigation) {
 			config.navigation = {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
+				nextEl: `[data-navigation="${id}"] .swiper-button-next`,
+				prevEl: `[data-navigation="${id}"] .swiper-button-prev`,
 				clickable: true,
 			};
 		}

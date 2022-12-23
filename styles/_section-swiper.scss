@@ -1,56 +1,111 @@
-.swiper {
-	&-slide {
-		display: flex;
-		justify-content: center;
-
-		img,
-		video,
-		iframe {
-			width: 100%;
-			max-width: 100%;
-			height: auto;
-			display: block;
-		}
-	}
-
-	&-button-next,
-	&-button-prev {
-		color: var(--feather-primary);
-	}
-
-	&-pagination-bullet {
-		background-color: var(--feather-stroke);
-
-		&-active {
-			background-color: var(--feather-primary);
-		}
-	}
-
-	.feather-list__item {
-		width: 100%;
-		margin: 0;
-		padding: 0;
+.feather-swiper {
+	&__navigation {
 		position: relative;
-		border: none;
+		padding: $gutter 0;
 
-		&:hover {
-			img {
-				transform: scale(1, 1);
-			}
-		}
-
-		&-image {
+		.swiper-button-next,
+		.swiper-button-prev {
+			@include flex(row, center, center);
+			position: relative;
+			top: 0;
+			right: unset;
+			left: 0;
 			margin: 0;
-			aspect-ratio: 0;
+			color: var(--feather-stroke);
 
-			img {
-				object-fit: contain;
+			svg {
+				width: 25px;
+				min-width: 25px;
+				height: auto;
+
+				* {
+					fill: var(--feather-stroke);
+					transition: all 200ms;
+				}
+			}
+
+			&:hover {
+				color: var(--feather-primary);
+
+				svg * {
+					fill: var(--feather-primary);
+				}
 			}
 		}
 
-		&-title,
-		&-price {
+		.swiper-button-prev {
+			margin-right: $gutter;
+
+			svg {
+				transform: rotate(180deg);
+			}
+		}
+
+		.swiper-button-next:after,
+		.swiper-button-prev:after {
 			display: none;
+		}
+	}
+
+	.swiper {
+		&-slide {
+			display: flex;
+			justify-content: center;
+
+			img,
+			video,
+			iframe {
+				width: 100%;
+				max-width: 100%;
+				height: auto;
+				display: block;
+			}
+		}
+
+		&-scrollbar {
+			width: 100%;
+			left: 0;
+			bottom: 0;
+
+			&-scrollbar-drag {
+				border-radius: 0;
+			}
+		}
+
+		&-pagination-bullet {
+			background-color: var(--feather-stroke);
+
+			&-active {
+				background-color: var(--feather-primary);
+			}
+		}
+
+		.feather-list__item {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			border: none;
+
+			&:hover {
+				img {
+					transform: scale(1, 1);
+				}
+			}
+
+			&-image {
+				margin: 0;
+				aspect-ratio: 0;
+
+				img {
+					object-fit: contain;
+				}
+			}
+
+			&-title,
+			&-price {
+				display: none;
+			}
 		}
 	}
 }

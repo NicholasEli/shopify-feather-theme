@@ -9,12 +9,12 @@
 
 {% if section.blocks.size > 0 %}
 	<div class="container container--padding{% if swiper_width %} container--{{ swiper_width }}{% endif %}">
-		<div class="row">
+		<div class="feather-swiper__title row">
 			{% if section.settings.title %}
 				<h5>{{ section.settings.title }}</h5>
 			{% endif %}
 		</div>
-		<div class="row">
+		<div class="feather-swiper__swiper row">
 			<!-- Slider main container -->
 				<div
 					data-swiper={{ section.id }}
@@ -65,16 +65,21 @@
 				  	<div class="swiper-pagination"></div>
 				  {% endif %}
 
-				  {% if section.settings.navigation %}
-					  <div class="swiper-button-prev"></div>
-					  <div class="swiper-button-next"></div>
-					{% endif %}
-
 				  {% if section.settings.scrollbar %}
 				  	<div class="swiper-scrollbar"></div>
 				  {% endif %}
 				</div>
 		</div>
+		{% if section.settings.navigation %}
+			<div data-navigation="{{ section.id }}" class="feather-swiper__navigation row end-xs">
+				<div class="swiper-button-prev button">
+					{% render 'icon-arrow' %}
+				</div>
+				<div class="swiper-button-next button">
+					{% render 'icon-arrow' %}
+				</div>
+			</div>
+		{% endif%}
 	</div>
 {% endif %}
 
