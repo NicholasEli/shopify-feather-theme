@@ -43,7 +43,7 @@
 							    		<div class="feather-swiper__overlay"></div>
 							    	{% endif %}
 							    	{% if item.settings.image_title or item.settings.image_text %}
-							    		<div class="feather-swiper__content">
+							    		<div class="feather-swiper__content feather-swiper__content--{{ block.settings.video_content_x_alignment}}  feather-swiper__content--{{ block.settings.video_content_y_alignment}}">
 							    			{% if item.settings.image_title %}<h3>{{ item.settings.image_title }}</h3>{% endif %}
 							    			{% if item.settings.image_text %}<h3>{{ item.settings.image_text }}</h3>{% endif %}
 							    		</div>
@@ -60,7 +60,7 @@
 							    		<div class="feather-swiper__overlay"></div>
 							    	{% endif %}
 							    	{% if item.settings.video_title or item.settings.video_text %}
-							    		<div class="feather-swiper__content">
+							    		<div class="feather-swiper__content feather-swiper__content--{{ block.settings.video_content_x_alignment}}  feather-swiper__content--{{ block.settings.video_content_y_alignment}}">
 							    			{% if item.settings.video_title %}<h3>{{ item.settings.video_title }}</h3>{% endif %}
 							    			{% if item.settings.video_text %}<h3>{{ item.settings.video_text }}</h3>{% endif %}
 							    		</div>
