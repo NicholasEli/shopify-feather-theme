@@ -27,7 +27,8 @@
         "d49f1c1e-0351-43fc-9608-1c9d3ed763d9",
         "b683ae6d-6ae3-4e9c-a55b-42d1da8cabaf"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "generic": {
       "type": "generic",
@@ -62,7 +63,7 @@
         "a0fc99c9-ae06-47e8-a998-0cc958f317dc": {
           "type": "richtext",
           "settings": {
-            "richtext": "<p><em>It was some time ere she could give, or I could hear, the account of her visit;</em> and then she related it in a hasty manner; yet, I believe I can recollect every word.</p>",
+            "richtext": "<p><em>It was some time ere she could give, or I could hear, the account of her visit;<\/em> and then she related it in a hasty manner; yet, I believe I can recollect every word.<\/p>",
             "richtext_alignment": "right",
             "richtext_fontsize": 15,
             "richtext_mobile_col": "col-xs-12",
@@ -72,7 +73,7 @@
         "6577200c-dc6f-432b-9265-a9c8e8e576fb": {
           "type": "url",
           "settings": {
-            "url": "https://litipsum.com/",
+            "url": "https:\/\/litipsum.com\/",
             "url_text": "Lit Ipsum",
             "url_alignment": "center",
             "url_fontsize": 12,
@@ -89,13 +90,13 @@
         "75ea6358-c507-42de-9143-19e2f5f781dc": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify://shop_images/autumn-walk-hand-in-hand.jpg",
+            "image": "shopify:\/\/shop_images\/autumn-walk-hand-in-hand.jpg",
             "image_overlay": true,
             "image_title": "Autum Vibes",
             "image_text": "Some generic text for display.",
             "image_content_x_alignment": "right",
             "image_content_y_alignment": "bottom",
-            "image_text_alignment": "left",
+            "image_text_alignment": "center",
             "image_mobile_col": "col-xs-12",
             "image_desktop_col": "col-lg-12"
           }
@@ -103,7 +104,7 @@
         "75be033c-a79b-4413-983e-7a68d55cf961": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/mothership.mp4",
+            "video": "shopify:\/\/files\/videos\/mothership.mp4",
             "video_controls": false,
             "video_autoplay": true,
             "video_loop": true,
@@ -120,7 +121,7 @@
         "e568742a-6e7c-4384-a9c3-b6656fc8d675": {
           "type": "video_url",
           "settings": {
-            "video_url": "https://youtu.be/YWY6mf2WV-M",
+            "video_url": "https:\/\/youtu.be\/YWY6mf2WV-M",
             "video_url_mobile_col": "col-xs-12",
             "video_url_desktop_col": "col-lg-6"
           }
@@ -146,7 +147,7 @@
         "6e84273c-7b38-4f06-91ef-bdf69e497818": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify://shop_images/autumn-walk-hand-in-hand.jpg",
+            "image": "shopify:\/\/shop_images\/autumn-walk-hand-in-hand.jpg",
             "image_url": "",
             "image_title": "Autum Days",
             "image_text": "She immediately ordered the chaise away: and then took me into her own room, to consider what should be done.",
@@ -158,7 +159,7 @@
         "392fe799-76b6-4de9-957b-5c06065cff63": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/mothership.mp4",
+            "video": "shopify:\/\/files\/videos\/mothership.mp4",
             "video_url": "",
             "video_controls": false,
             "video_autoplay": true,
@@ -194,7 +195,7 @@
         "fedc2a68-41ad-4e44-a754-95b87628c11b": {
           "type": "grid-item",
           "settings": {
-            "image": "shopify://shop_images/feather-delievery.png",
+            "image": "shopify:\/\/shop_images\/feather-delievery.png",
             "title": "Reliable Delivery",
             "text": "Committed to your order is processed without delay. In addition it will come with detailed assembly instructions and follow up call to assist you with any difficulties you might run into.",
             "url": ""
@@ -203,19 +204,19 @@
         "a74c9391-558b-406e-8476-2f992b83dbb2": {
           "type": "grid-item",
           "settings": {
-            "image": "shopify://shop_images/feather-materials.png",
+            "image": "shopify:\/\/shop_images\/feather-materials.png",
             "title": "Quality Materials",
             "text": "We take pride in selecting our materials manufacturer.  Before constructing any item we vet each and every piece before its used to ensure its quality.",
-            "url": "shopify://pages/about"
+            "url": "shopify:\/\/pages\/about"
           }
         },
         "4d6c0c3e-1750-4a2d-823b-a1d44abfff7f": {
           "type": "grid-item",
           "settings": {
-            "image": "shopify://shop_images/feather-chat.png",
+            "image": "shopify:\/\/shop_images\/feather-chat.png",
             "title": "Dedicated Support",
             "text": "Our business strives to provide first class support to resolve any issues you might run into as quickly as possible.",
-            "url": "shopify://pages/contact"
+            "url": "shopify:\/\/pages\/contact"
           }
         }
       },
@@ -224,7 +225,8 @@
         "a74c9391-558b-406e-8476-2f992b83dbb2",
         "4d6c0c3e-1750-4a2d-823b-a1d44abfff7f"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "newsletter": {
       "type": "newsletter",
@@ -234,5 +236,11 @@
       }
     }
   },
-  "order": ["collection-banner", "generic", "swiper", "information-grid", "newsletter"]
+  "order": [
+    "collection-banner",
+    "generic",
+    "swiper",
+    "information-grid",
+    "newsletter"
+  ]
 }
