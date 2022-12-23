@@ -125,17 +125,10 @@
               "
             >{{ block.settings.url_text }}</a>
           {% when 'image_picker' %}
+            {% render 'overlay', overlay: block.settings.image_overlay title: blocks.settings.image_title text: blocks.settings.image_text, x_alignment: block.settings.image_content_x_alignment, y_alignment: block.settings.image_content_y_alignment %}
             {{ block.settings.image | image_url: width: 1200 | image_tag }}
           {% when 'video' %}
-            {% if block.settings.video_overlay %}<div class="feather-generic__block-overlay"></div>{% endif %}
-            {% if block.settings.video_title or block.settings.video_text %}
-              <div
-                class="feather-generic__block-content feather-generic__block-content--{{ block.settings.video_content_x_alignment}}  feather-generic__block-content--{{ block.settings.video_content_y_alignment}}"
-              >
-                {% if block.settings.video_title %}<h3>{{ block.settings.video_title }}</h3>{% endif %}
-                {% if block.settings.video_text %}<p>{{ block.settings.video_text }}</p>{% endif %}
-              </div>
-            {% endif %}
+            {% render 'overlay', overlay: block.settings.video_overlay, title: blocks.settings.video_title text: blocks.settings.video_text, x_alignment: block.settings.image_content_x_alignment, y_alignment: block.settings.image_content_y_alignment %}
             {{ block.settings.video | video_tag: image_size: 'Large', controls: block.settings.video_controls, autoplay: block.settings.video_autoplay, loop: block.settings.video_loop  }}
           {% when 'video_url' %}
             {% render 'video-url', video_url: block.settings.video_url %}

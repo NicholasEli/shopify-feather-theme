@@ -8,15 +8,7 @@
 	}
 
 	&__block {
-		margin: calc(#{$gutter / 2}) 0;
-
-		&-overlay {
-			@include overlay;
-		}
-
-		&-content {
-			@include overlay-content;
-		}
+		margin: calc(#{$gutter} / 2) 0;
 
 		&--alignment {
 			&-left {
@@ -33,6 +25,7 @@
 		}
 
 		&--image_picker {
+			position: relative;
 			img {
 				height: auto;
 			}
