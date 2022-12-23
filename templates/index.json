@@ -91,11 +91,11 @@
           "type": "image_picker",
           "settings": {
             "image": "shopify:\/\/shop_images\/autumn-walk-hand-in-hand.jpg",
-            "image_overlay": false,
-            "image_title": "",
-            "image_text": "",
-            "image_content_x_alignment": "left",
-            "image_content_y_alignment": "top",
+            "image_overlay": true,
+            "image_title": "Autum Vibes",
+            "image_text": "Some generic text for display.",
+            "image_content_x_alignment": "right",
+            "image_content_y_alignment": "bottom",
             "image_text_alignment": "left",
             "image_mobile_col": "col-xs-12",
             "image_desktop_col": "col-lg-12"
@@ -153,7 +153,7 @@
             "image_text": "She immediately ordered the chaise away: and then took me into her own room, to consider what should be done.",
             "image_overlay": true,
             "image_content_y_alignment": "bottom",
-            "image_text_alignment": "right"
+            "image_text_x_alignment": "right"
           }
         },
         "392fe799-76b6-4de9-957b-5c06065cff63": {
@@ -168,7 +168,7 @@
             "video_text": "",
             "video_overlay": true,
             "video_content_y_alignment": "top",
-            "video_text_alignment": "left"
+            "video_text_x_alignment": "left"
           }
         }
       },
