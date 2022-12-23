@@ -274,6 +274,44 @@
 	          ]
 	        }
 	      ]
+	    },
+	    {
+        "type": "header",
+        "content": "Slide Content"
+	    },
+	    {
+	      "type": "title",
+	      "name": "title",
+	      "settings": [
+	        {
+	          "id": "title",
+	          "type": "text",
+	          "label": "Slide Title"
+	        }
+	      ]
+	    },
+	    {
+	      "type": "textarea",
+	      "name": "text",
+	      "settings": [
+	        {
+	          "id": "text",
+	          "type": "textarea",
+	          "label": "Slide Description"
+	        }
+	      ]
+	    },
+	    {
+	      "type": "checkbox",
+	      "name": "overlay",
+	      "settings": [
+	        {
+	          "id": "overlay",
+	          "type": "checkbox",
+	          "label": "Slide Overlay",
+	          "default": true
+	        }
+	      ]
 	    }
 	  ],
   	"presets": [
@@ -283,7 +321,9 @@
   				{ "type": "product" },
   				{ "type": "image_picker" },
 	        { "type": "video" },
-	        { "type": "video_url" }
+	        { "type": "video_url" },
+	        { "type": "title" },
+	        { "type": "text" }
   			]
   		}
   	]
