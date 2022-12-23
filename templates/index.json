@@ -148,7 +148,10 @@
           "type": "image_picker",
           "settings": {
             "image": "shopify:\/\/shop_images\/autumn-walk-hand-in-hand.jpg",
-            "image_url": ""
+            "image_url": "",
+            "image_title": "Autum Days",
+            "image_text": "She immediately ordered the chaise away: and then took me into her own room, to consider what should be done.",
+            "image_overlay": true
           }
         },
         "392fe799-76b6-4de9-957b-5c06065cff63": {
@@ -158,7 +161,10 @@
             "video_url": "",
             "video_controls": false,
             "video_autoplay": true,
-            "video_loop": true
+            "video_loop": true,
+            "video_title": "",
+            "video_text": "",
+            "video_overlay": true
           }
         }
       },
