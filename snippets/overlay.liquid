@@ -1,7 +1,7 @@
 {% if overlay %}<div class="feather-overlay"></div>{% endif %}
 {% if title or text %}
   <div
-    class="feather-overlay__content feather-overlay__content--{{ x_alignment }}  feather-overlay__content--{{ y_alignment}}"
+    class="feather-overlay__content feather-overlay__content--{{ x_alignment }}  feather-overlay__content--{{ y_alignment}} feather-overlay__content--text-{{ text_alignment}}"
   >
     {% if title %}<h3>{{ title }}</h3>{% endif %}
     {% if text %}<p>{{ text }}</p>{% endif %}

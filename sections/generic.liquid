@@ -131,7 +131,8 @@
               title: block.settings.image_title,
               text: block.settings.image_text,
               x_alignment: block.settings.image_content_x_alignment,
-              y_alignment: block.settings.image_content_y_alignment
+              y_alignment: block.settings.image_content_y_alignment,
+              text_alignment: block.settings.image_text_alignment
             %}
             {{ block.settings.image | image_url: width: 1200 | image_tag }}
           {% when 'video' %}
@@ -140,8 +141,9 @@
               overlay: block.settings.video_overlay,
               title: block.settings.video_title,
               text: block.settings.video_text,
-              x_alignment: block.settings.image_content_x_alignment,
-              y_alignment: block.settings.image_content_y_alignment
+              x_alignment: block.settings.video_content_x_alignment,
+              y_alignment: block.settings.video_content_y_alignment,
+              text_alignment: block.settings.video_text_alignment
             %}
             {{ block.settings.video | video_tag: image_size: 'Large', controls: block.settings.video_controls, autoplay: block.settings.video_autoplay, loop: block.settings.video_loop  }}
           {% when 'video_url' %}
