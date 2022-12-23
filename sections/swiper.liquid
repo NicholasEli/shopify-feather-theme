@@ -37,17 +37,16 @@
 					    		{% when 'product' %}
 							    	{% assign ref = all_products[item.settings.product] %}
 							    		{% render 'item', item: ref %}
-							    	
 							    {% when 'image_picker' %}
 							    	{%
 				              render 'overlay',
-				              overlay: block.settings.image_overlay,
-				              title: block.settings.image_title,
-				              text: block.settings.image_text,
-				              x_alignment: block.settings.image_content_x_alignment,
-				              y_alignment: block.settings.image_content_y_alignment
+				              overlay: item.settings.image_overlay,
+				              title: item.settings.image_title,
+				              text: item.settings.image_text,
+				              x_alignment: item.settings.image_content_x_alignment,
+				              y_alignment: item.settings.image_content_y_alignment
 				            %}
-							    	{% if item.settings.image and item.settings.image != empty %}
+							    	{% if item.settings.image_url and item.settings.image_url != empty %}
 							    		<a title="{{ item.settings.image.alt }}" href="{{ item.settings.image_url }}">
 							    			{{ item.settings.image | image_url: width: 1200 | image_tag }}
 							    		</a>
@@ -64,7 +63,7 @@
 				              y_alignment: block.settings.video_content_y_alignment
 				            %}
 							    	{% if item.settings.video and item.settings.video != empty %}
-							    		<a href="{{ item.settings.image_url }}">
+							    		<a href="{{ item.settings.video_url }}">
 							    			{{ item.settings.video | video_tag: image_size: 'Large', controls: item.settings.video_controls, autoplay: item.settings.video_autoplay, loop: item.settings.video_loop  }}
 							    		</a>
 							    	{% else %}
@@ -257,6 +256,26 @@
 	          "default": false
 	        },
 	        {
+          "id": "image_content_x_alignment",
+          "type": "select",
+          "label": "Left/Right Alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "x-center",
+              "label": "Center"
+            }
+          ]
+        },
+	        {
 	          "id": "image_content_y_alignment",
 	          "type": "select",
 	          "label": "Top/Bottom Alignment",
@@ -277,7 +296,7 @@
 	          ]
 	        },
 	        {
-	          "id": "image_text_x_alignment",
+	          "id": "image_text_alignment",
 	          "type": "select",
 	          "label": "Left/Right Alignment",
 	          "default": "left",
