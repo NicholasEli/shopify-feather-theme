@@ -152,8 +152,9 @@
             "image_title": "Autum Days",
             "image_text": "She immediately ordered the chaise away: and then took me into her own room, to consider what should be done.",
             "image_overlay": true,
-            "image_content_y_alignment": "bottom",
-            "image_text_x_alignment": "right"
+            "image_content_x_alignment": "right",
+            "image_content_y_alignment": "top",
+            "image_text_alignment": "right"
           }
         },
         "392fe799-76b6-4de9-957b-5c06065cff63": {
