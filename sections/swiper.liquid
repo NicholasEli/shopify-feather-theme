@@ -44,7 +44,8 @@
 				              title: item.settings.image_title,
 				              text: item.settings.image_text,
 				              x_alignment: item.settings.image_content_x_alignment,
-				              y_alignment: item.settings.image_content_y_alignment
+				              y_alignment: item.settings.image_content_y_alignment,
+				              text_alignment: item.settings.image_text_alignment
 				            %}
 							    	{% if item.settings.image_url and item.settings.image_url != empty %}
 							    		<a title="{{ item.settings.image.alt }}" href="{{ item.settings.image_url }}">
@@ -60,7 +61,8 @@
 				              title: block.settings.video_title,
 				              text: block.settings.video_text,
 				              x_alignment: block.settings.video_content_x_alignment,
-				              y_alignment: block.settings.video_content_y_alignment
+				              y_alignment: block.settings.video_content_y_alignment,
+				              text_alignment: item.settings.video_text_alignment
 				            %}
 							    	{% if item.settings.video and item.settings.video != empty %}
 							    		<a href="{{ item.settings.video_url }}">
