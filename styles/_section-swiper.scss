@@ -47,6 +47,14 @@
 		}
 	}
 
+	&__overlay {
+		@include overlay;
+	}
+
+	&__content {
+		@include overlay-content;
+	}
+
 	.swiper {
 		&-slide {
 			display: flex;
