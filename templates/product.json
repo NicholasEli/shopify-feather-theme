@@ -125,38 +125,7 @@
       "settings": {
         "tagline": "It's the piece that could tie up your room"
       }
-    },
-    "video": {
-      "type": "video",
-      "settings": {
-        "tagline": "Moving images that speak for themselves.",
-        "video_url": "https://vimeo.com/750910988?embedded=true&source=video_title&owner=2057105"
-      }
-    },
-    "swiper": {
-      "type": "swiper",
-      "blocks": {
-        "1af477d6-9113-462f-b56b-d7c76dc696ed": {
-          "type": "products",
-          "settings": {
-            "product": "minimal-living-room-table"
-          }
-        },
-        "da49e82b-d87c-4eba-9948-7252f21ff46d": {
-          "type": "products",
-          "settings": {
-            "product": "phillip-goldsberry-couch"
-          }
-        }
-      },
-      "block_order": [
-        "1af477d6-9113-462f-b56b-d7c76dc696ed",
-        "da49e82b-d87c-4eba-9948-7252f21ff46d"
-      ],
-      "settings": {
-        "title": "Make it complete"
-      }
     }
   },
-  "order": ["details", "gallery", "swiper"]
+  "order": ["details", "gallery"]
 }
