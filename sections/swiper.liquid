@@ -43,7 +43,7 @@
 							    		<div class="feather-swiper__overlay"></div>
 							    	{% endif %}
 							    	{% if item.settings.image_title or item.settings.image_text %}
-							    		<div class="feather-swiper__content feather-swiper__content--{{ block.settings.video_content_x_alignment}}  feather-swiper__content--{{ block.settings.video_content_y_alignment}}">
+							    		<div class="feather-swiper__content feather-swiper__content--{{ block.settings.image_content_x_alignment}}  feather-swiper__content--{{ block.settings.image_content_y_alignment}}">
 							    			{% if item.settings.image_title %}<h3>{{ item.settings.image_title }}</h3>{% endif %}
 							    			{% if item.settings.image_text %}<h3>{{ item.settings.image_text }}</h3>{% endif %}
 							    		</div>
@@ -279,7 +279,7 @@
 	          ]
 	        },
 	        {
-	          "id": "image_text_alignment",
+	          "id": "image_text_x_alignment",
 	          "type": "select",
 	          "label": "Left/Right Alignment",
 	          "default": "left",
@@ -377,7 +377,7 @@
 	          ]
 	        },
 	        {
-	          "id": "video_text_alignment",
+	          "id": "video_text_x_alignment",
 	          "type": "select",
 	          "label": "Left/Right Alignment",
 	          "default": "left",
