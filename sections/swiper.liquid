@@ -38,6 +38,15 @@
 							    	{% liquid 
 							    		assign ref = all_products[item.settings.product]
 							    	%}
+							    	{%
+				              render 'overlay',
+				              overlay: item.settings.product_overlay,
+				              title: ref.title,
+				              text: ref.text,
+				              x_alignment: item.settings.product_content_x_alignment,
+				              y_alignment: item.settings.product_content_y_alignment,
+				              text_alignment: item.settings.product_text_alignment
+				            %}
 				            <a title="{{ ref.title }}" href="{{ ref.url }}">
 							    		{% render 'item', item: ref %}
 							    	</a>
@@ -224,6 +233,72 @@
 	          "id": "product",
 	          "type": "product",
 	          "label": "Product"
+	        },
+	        {
+	          "id": "product_overlay",
+	          "type": "checkbox",
+	          "label": "Slide Overlay",
+	          "default": false
+	        },
+	        {
+	          "id": "product_content_x_alignment",
+	          "type": "select",
+	          "label": "Left/Right Alignment",
+	          "default": "left",
+	          "options": [
+	          	{
+	          		"value": "left",
+	          		"label": "Left"
+	          	},
+	          	{
+	          		"value": "right",
+	          		"label": "Right"
+	          	},
+	          	{
+	          		"value": "x-center",
+	          		"label": "Center"
+	          	}
+	          ]
+	        },
+	        {
+	          "id": "product_content_y_alignment",
+	          "type": "select",
+	          "label": "Top/Bottom Alignment",
+	          "default": "top",
+	          "options": [
+	            {
+	              "value": "top",
+	              "label": "Top"
+	            },
+	            {
+	              "value": "bottom",
+	              "label": "Bottom"
+	            },
+	            {
+	              "value": "y-center",
+	              "label": "Center"
+	            }
+	          ]
+	        },
+	        {
+	          "id": "product_text_alignment",
+	          "type": "select",
+	          "label": "Left/Right Alignment",
+	          "default": "left",
+	          "options": [
+	            {
+	              "value": "left",
+	              "label": "Left"
+	            },
+	            {
+	              "value": "right",
+	              "label": "Right"
+	            },
+	            {
+	              "value": "center",
+	              "label": "Center"
+	            }
+	          ]
 	        }
 	      ]
 	    },
@@ -267,18 +342,18 @@
 	          "label": "Left/Right Alignment",
 	          "default": "left",
 	          "options": [
-	            {
-	              "value": "left",
-	              "label": "Left"
-	            },
-	            {
-	              "value": "right",
-	              "label": "Right"
-	            },
-	            {
-	              "value": "x-center",
-	              "label-show-less": "Center"
-	            }
+	          	{
+	          		"value": "left",
+	          		"label": "Left"
+	          	},
+	          	{
+	          		"value": "right",
+	          		"label": "Right"
+	          	},
+	          	{
+	          		"value": "x-center",
+	          		"label": "Center"
+	          	}
 	          ]
 	        },
 	        {
