@@ -147,7 +147,11 @@
         "562046da-67a7-4787-b2eb-fe25b393b883": {
           "type": "product",
           "settings": {
-            "product": "minimal-living-room-table"
+            "product": "minimal-living-room-table",
+            "product_overlay": true,
+            "product_content_x_alignment": "x-center",
+            "product_content_y_alignment": "y-center",
+            "product_text_alignment": "center"
           }
         },
         "6e84273c-7b38-4f06-91ef-bdf69e497818": {
