@@ -149,9 +149,9 @@
           "settings": {
             "product": "minimal-living-room-table",
             "product_overlay": true,
-            "product_content_x_alignment": "x-center",
-            "product_content_y_alignment": "y-center",
-            "product_text_alignment": "center"
+            "product_content_x_alignment": "right",
+            "product_content_y_alignment": "top",
+            "product_text_alignment": "right"
           }
         },
         "6e84273c-7b38-4f06-91ef-bdf69e497818": {
