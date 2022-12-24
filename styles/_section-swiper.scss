@@ -60,6 +60,11 @@
 				height: auto;
 				display: block;
 			}
+
+			video {
+				height: 100%;
+				object-fit: cover;
+			}
 		}
 
 		&-scrollbar {
