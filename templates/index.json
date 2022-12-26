@@ -152,12 +152,25 @@
             "image_content_y_alignment": "bottom",
             "image_text_alignment": "right"
           }
+        },
+        "b1bc96d1-9e94-4e43-a895-c360076e9cac": {
+          "type": "image_picker",
+          "settings": {
+            "image_url": "",
+            "image_title": "Lorem Ipsum",
+            "image_text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "image_overlay": false,
+            "image_content_x_alignment": "left",
+            "image_content_y_alignment": "bottom",
+            "image_text_alignment": "left"
+          }
         }
       },
       "block_order": [
         "6e84273c-7b38-4f06-91ef-bdf69e497818",
         "1426efe9-9496-4d23-b66c-e2f4cdf02c49",
-        "0d4b3f11-3329-467c-b51a-761762181971"
+        "0d4b3f11-3329-467c-b51a-761762181971",
+        "b1bc96d1-9e94-4e43-a895-c360076e9cac"
       ],
       "settings": {
         "title": "Make it complete",
