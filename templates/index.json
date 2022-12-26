@@ -199,8 +199,7 @@
         "a74c9391-558b-406e-8476-2f992b83dbb2": {
           "type": "grid-item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/feather-materials.png",
-            "title": "Quality Materials",
+            "title": "Lorem Ipsum",
             "text": "We take pride in selecting our materials manufacturer.  Before constructing any item we vet each and every piece before its used to ensure its quality.",
             "url": "shopify:\/\/pages\/about"
           }
