@@ -65,7 +65,7 @@
         "75ea6358-c507-42de-9143-19e2f5f781dc": {
           "type": "image_picker",
           "settings": {
-            "image_overlay": true,
+            "image_overlay": false,
             "image_title": "Lorem Ipsum",
             "image_text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
             "image_content_x_alignment": "right",
@@ -79,9 +79,9 @@
           "type": "video",
           "settings": {
             "video_controls": false,
-            "video_autoplay": true,
-            "video_loop": true,
-            "video_overlay": true,
+            "video_autoplay": false,
+            "video_loop": false,
+            "video_overlay": false,
             "video_title": "Lorem Ipsum",
             "video_text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
             "video_content_x_alignment": "left",
