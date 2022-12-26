@@ -191,9 +191,8 @@
         "fedc2a68-41ad-4e44-a754-95b87628c11b": {
           "type": "grid-item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/feather-delievery.png",
-            "title": "Reliable Delivery",
-            "text": "Committed to your order is processed without delay. In addition it will come with detailed assembly instructions and follow up call to assist you with any difficulties you might run into.",
+            "title": "Lorem Ipsum",
+            "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
             "url": ""
           }
         },
