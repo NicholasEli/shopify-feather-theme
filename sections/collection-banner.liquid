@@ -14,9 +14,9 @@
 
 	for i in (1..remainder)
 		if forloop.index == 1
-			assign background_images = background_images | append: 'http://via.placeholder.com/1200/fafaf7/595958?Text=1200x900' | append: ','
+			assign background_images = background_images | append: 'feather-placeholder' | append: ','
 		else
-			assign background_images = background_images | append: 'http://via.placeholder.com/1200/fafaf7/595958?Text=1200x450' | append: ','
+			assign background_images = background_images | append: 'feather-placeholder' | append: ','
 		endif
 	endfor
 
@@ -32,7 +32,11 @@
 				class="feather-collection-banner__item"
 			>	
 				<p>{{ item.settings.category.title }}</p>
-				<div class="feather-collection-banner__item-bg" style="background-image: url('{{ background_images }}')"></div>
+				{% if  background_images[0] != 'feather-placeholder' %}
+					<div class="feather-collection-banner__item-bg" style="background-image: url('{{ background_images[0] }}')"></div>
+				{% else %}
+					{{ 'collection-1' | placeholder_svg_tag }}
+				{% endif %}
 			</a>
 		{% endfor %}
 	</div>
@@ -48,7 +52,12 @@
 					class="feather-collection-banner__item col-xs-6 col-md-12"
 				>	
 					<p>{{ item.title }}</p>
-					<div class="feather-collection-banner__item-bg" style="background-image: url('{{ background_images[index] }}')"></div>
+					{% if background_images[index] != 'feather-placeholder' %}
+						<div class="feather-collection-banner__item-bg" style="background-image: url('{{ background_images[index] }}')"></div>
+					{% else %}
+						{% assign placeholder_image = 'collection-' | append: forloop.index %}
+						{{ placeholder_image | placeholder_svg_tag }}
+					{% endif %}
 				</a>
 			{% endif %}
 		{% endfor %}
