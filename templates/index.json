@@ -117,49 +117,34 @@
     "swiper": {
       "type": "swiper",
       "blocks": {
-        "562046da-67a7-4787-b2eb-fe25b393b883": {
-          "type": "product",
-          "settings": {
-            "product": "minimal-living-room-table",
-            "product_overlay": true,
-            "product_content_x_alignment": "right",
-            "product_content_y_alignment": "top",
-            "product_text_alignment": "right"
-          }
-        },
         "6e84273c-7b38-4f06-91ef-bdf69e497818": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify:\/\/shop_images\/autumn-walk-hand-in-hand.jpg",
             "image_url": "",
-            "image_title": "Autum Dayz",
-            "image_text": "She immediately ordered the chaise away: and then took me into her own room, to consider what should be done",
-            "image_overlay": true,
+            "image_title": "Lorem Ipsum",
+            "image_text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "image_overlay": false,
             "image_content_x_alignment": "x-center",
             "image_content_y_alignment": "top",
             "image_text_alignment": "center"
           }
         },
-        "392fe799-76b6-4de9-957b-5c06065cff63": {
-          "type": "video",
+        "1426efe9-9496-4d23-b66c-e2f4cdf02c49": {
+          "type": "image_picker",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/mothership.mp4",
-            "video_url": "",
-            "video_controls": false,
-            "video_autoplay": true,
-            "video_loop": true,
-            "video_title": "",
-            "video_text": "",
-            "video_overlay": true,
-            "video_content_y_alignment": "top",
-            "video_text_x_alignment": "left"
+            "image_url": "",
+            "image_title": "",
+            "image_text": "",
+            "image_overlay": false,
+            "image_content_x_alignment": "left",
+            "image_content_y_alignment": "top",
+            "image_text_alignment": "left"
           }
         }
       },
       "block_order": [
-        "562046da-67a7-4787-b2eb-fe25b393b883",
         "6e84273c-7b38-4f06-91ef-bdf69e497818",
-        "392fe799-76b6-4de9-957b-5c06065cff63"
+        "1426efe9-9496-4d23-b66c-e2f4cdf02c49"
       ],
       "settings": {
         "title": "Make it complete",
