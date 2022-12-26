@@ -2,17 +2,6 @@
   "sections": {
     "collection-banner": {
       "type": "collection-banner",
-      "blocks": {
-        "d3f07e23-7fc1-4880-aa95-e1deed6afec8": {
-          "type": "collections-banner",
-          "settings": {
-            "category": "bedroom-furniture"
-          }
-        }
-      },
-      "block_order": [
-        "d3f07e23-7fc1-4880-aa95-e1deed6afec8"
-      ],
       "settings": {
       }
     },
