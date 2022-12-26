@@ -32,6 +32,7 @@
 				  <div class="swiper-wrapper">
 				    <!-- Slides -->
 					  {% for item in section.blocks %}
+					  	{% assign placeholder_image = 'product-' | append: forloop.index %}
 					    <div class="swiper-slide">
 					    	{% case item.type %}
 					    		{% when 'product' %}
@@ -60,13 +61,17 @@
 				              y_alignment: item.settings.image_content_y_alignment,
 				              text_alignment: item.settings.image_text_alignment
 				            %}
-							    	{% if item.settings.image_url and item.settings.image_url != empty %}
-							    		<a title="{{ item.settings.image.alt }}" href="{{ item.settings.image_url }}">
-							    			{{ item.settings.image | image_url: width: 1200 | image_tag }}
-							    		</a>
-							    	{% else %}
-							    		{{ item.settings.image | image_url: width: 1200 | image_tag }}
-							    	{% endif %}
+				            {% if item.settings.image %}
+								    	{% if item.settings.image_url and item.settings.image_url != empty %}
+								    		<a title="{{ item.settings.image.alt }}" href="{{ item.settings.image_url }}">
+								    			{{ item.settings.image | image_url: width: 1200 | image_tag }}
+								    		</a>
+								    	{% else %}
+								    		{{ item.settings.image | image_url: width: 1200 | image_tag }}
+								    	{% endif %}
+								    {% else %}
+								    	{{ placeholder_image | placeholder_svg_tag }}
+								    {% endif %}
 							    {% when 'video' %}
 							    	{%
 				              render 'overlay',
@@ -77,13 +82,17 @@
 				              y_alignment: block.settings.video_content_y_alignment,
 				              text_alignment: item.settings.video_text_alignment
 				            %}
-							    	{% if item.settings.video and item.settings.video != empty %}
-							    		<a href="{{ item.settings.video_url }}">
-							    			{{ item.settings.video | video_tag: image_size: '1200x', controls: item.settings.video_controls, autoplay: item.settings.video_autoplay, loop: item.settings.video_loop  }}
-							    		</a>
-							    	{% else %}
-							    		{{ item.settings.video | video_tag: image_size: '1200x', controls: item.settings.video_controls, autoplay: item.settings.video_autoplay, loop: item.settings.video_loop  }}
-							    	{% endif %}
+				            {% if item.settings.video %}
+								    	{% if item.settings.video_url %}
+								    		<a href="{{ item.settings.video_url }}">
+								    			{{ item.settings.video | video_tag: image_size: '1200x', controls: item.settings.video_controls, autoplay: item.settings.video_autoplay, loop: item.settings.video_loop  }}
+								    		</a>
+								    	{% else %}
+								    		{{ item.settings.video | video_tag: image_size: '1200x', controls: item.settings.video_controls, autoplay: item.settings.video_autoplay, loop: item.settings.video_loop  }}
+								    	{% endif %}
+								    {% else %}
+								    	{{ placeholder_image | placeholder_svg_tag }}
+								    {% endif %}
 							    {% when 'video_url' %}
 				            {% render 'video-url', video_url: item.settings.video_url %}
 						    {% endcase %}
