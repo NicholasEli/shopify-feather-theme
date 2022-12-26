@@ -1,45 +1,58 @@
 {% liquid 
-	assign main_class = 'col-xs-12'
-	if section.blocks.size > 1
-		assign main_class = 'col-xs-12 col-md-8'
-	endif
+	assign background_images = ''
+	for item in section.blocks limit: 3
+		assign image = item.settings.category.featured_image | img_url: '1200x900'
+
+		if forloop.index != 1
+			assign image = item.settings.category.featured_image | img_url: '1200x450'
+		endif
+
+		assign background_images = background_images | append: image | append: ','
+	endfor
+
+	assign remainder = 3 | minus: section.blocks.size
+
+	for i in (1..remainder)
+		if forloop.index == 1
+			assign background_images = background_images | append: 'http://via.placeholder.com/1200/fafaf7/595958?Text=1200x900' | append: ','
+		else
+			assign background_images = background_images | append: 'http://via.placeholder.com/1200/fafaf7/595958?Text=1200x450' | append: ','
+		endif
+	endfor
+
+	assign background_images = background_images | split: ','
 %}
 
 <div class="row">
-	<div class="row {{ main_class }}">
-		{% if section.blocks.size >= 1 %}
-			{% for item in section.blocks limit: 1 %}
-				<a
-					href="{{ item.settings.category.url }}"
-					title="{{ item.settings.category.title }}"
-					class="feather-collection-banner__item"
-				>	
-					<p>{{ item.settings.category.title }}</p>
-					<div class="feather-collection-banner__item-bg" style="background-image: url('{{ item.settings.category.featured_image | img_url: '1200x900' }}')"></div>
-				</a>
-			{% endfor %}
-		{% else %}
-			<a class="feather-collection-banner__item feather-collection-banner__item-none">	
-				<div class="feather-collection-banner__item-bg" style="background-image: url('https://via.placeholder.com/1200')"></div>
+	<div class="row col-xs-12 col-md-8">
+		{% for item in background_images limit: 1 %}
+			<a
+				href="{{ item.settings.category.url }}"
+				title="{{ item.settings.category.title }}"
+				class="feather-collection-banner__item"
+			>	
+				<p>{{ item.settings.category.title }}</p>
+				<div class="feather-collection-banner__item-bg" style="background-image: url('{{ background_images }}')"></div>
 			</a>
-		{% endif %}
+		{% endfor %}
 	</div>
-	{% if section.blocks.size >= 2 %}
-		<div class="row col-xs-12 col-md-4">
-			{% for item in section.blocks limit: 3 %}
-				{% if forloop.index != 1 %}
-					<a
-						href="{{ item.url }}"
-						title="{{ item.title }}"
-						class="feather-collection-banner__item col-xs-6 col-md-12"
-					>	
-						<p>{{ item.title }}</p>
-						<div class="feather-collection-banner__item-bg" style="background-image: url('{{ item.featured_image | img_url: '1200x450' }}')"></div>
-					</a>
-				{% endif %}
-			{% endfor %}
-		{% endif %}
-		</div>
+	<div class="row col-xs-12 col-md-4">
+		{% for item in background_images limit: 3 %}
+			{% if forloop.index != 1 %}
+				{% liquid 
+					assign index = forloop.index | minus: 1
+				%}
+				<a
+					href="{{ item.url }}"
+					title="{{ item.title }}"
+					class="feather-collection-banner__item col-xs-6 col-md-12"
+				>	
+					<p>{{ item.title }}</p>
+					<div class="feather-collection-banner__item-bg" style="background-image: url('{{ background_images[index] }}')"></div>
+				</a>
+			{% endif %}
+		{% endfor %}
+	</div>
 </div>
 
 
