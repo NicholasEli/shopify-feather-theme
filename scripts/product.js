@@ -178,48 +178,6 @@ const variantSwiper = function () {
 	state.setSwipers = { swipers: instances };
 };
 
-/**
- * Controls recommendations slider via Glide
- */
-const recommendations = async function () {
-	const swipers = document.querySelectorAll('[data-related-product-slider]');
-
-	if (swipers && swipers.length) {
-		const _numSlides = () => {
-			let num = 1;
-			if (window.innerWidth > sm) {
-				num = 2;
-			}
-
-			if (window.innerWidth > md) {
-				num = 3;
-			}
-
-			if (window.innerWidth > xl) {
-				num = 4;
-			}
-
-			return num;
-		};
-
-		swipers.forEach((slider) => {
-			const id = slider.getAttribute('data-related-product-slider');
-			const instance = new Glide('[data-related-product-slider="' + id + '"]', {
-				perView: _numSlides(),
-			});
-			instance.mount();
-			instance.on(['resize'], function () {
-				const { perView } = instance.settings;
-				const num = _numSlides();
-
-				if (perView !== num) {
-					instance.update({ perView: num });
-				}
-			});
-		});
-	}
-};
-
 const addToCart = async function () {
 	let notyf = new Notyf(options());
 	const form = document.querySelector('[data-add-to-cart]');
@@ -259,7 +217,6 @@ export const product = async function () {
 
 	setState();
 	variantSwiper();
-	//recommendations();
 	setOption();
 	setQuantity();
 	addToCart();
