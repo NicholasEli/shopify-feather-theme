@@ -18,7 +18,12 @@
 			{% for item in section.blocks %}
 				<div class="feather-information-grid__item col-xs-12 {{ col }}">
 					<div class="feather-information-grid__item-image">
-						<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
+						{% if item.settings.image %}
+							<img src="{{ item.settings.image | img_url: '300x' }}" alt="{{ item.settigns.title }}" />
+						{% else %}
+							{% assign placeholder_image = 'collection-' | append: forloop.index %}
+							{{ placeholder_image | placeholder_svg_tag }}
+						{% endif %}
 					</div>
 					<div class="feather-information-grid__item-details">
 						<h5>{{ item.settings.title }}</h5>

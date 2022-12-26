@@ -15,7 +15,8 @@ $grid-image: 50px;
 		&-image {
 			width: $grid-image;
 
-			img {
+			img,
+			svg {
 				width: 100%;
 				display: block;
 			}
