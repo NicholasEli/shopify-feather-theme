@@ -22,7 +22,11 @@
 						endif
 					%}
 					<div class="feather-gallery-image col-xs-12 col-md-6">
-						<img src="{{ block.settings.image.src | img_url: '1200x' }}" alt="{{ alt }}">
+						{% if block.settings.image and block.settings.image.src %}
+							<img src="{{ block.settings.image.src | img_url: '1200x' }}" alt="{{ alt }}">
+						{% else %}
+							{{ 'image' | placeholder_svg_tag }}
+						{% endif %}
 					</div>
 				{% endfor %}
 			</div>
