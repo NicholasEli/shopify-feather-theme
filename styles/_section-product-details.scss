@@ -1,4 +1,10 @@
 .feather-product__details {
+	.swiper {
+		img {
+			max-width: 100%;
+		}
+	}
+
 	> .container--padding {
 		padding-top: multiply($gutter, 3);
 

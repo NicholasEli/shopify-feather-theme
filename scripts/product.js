@@ -1,4 +1,4 @@
-//import Glide from '@glidejs/glide';
+import Swiper from 'swiper/bundle';
 import { Notyf } from 'notyf';
 import { options } from './toast.js';
 import { cart } from './api.js';
@@ -18,12 +18,12 @@ const lg = parseInt(getCSSVariable('--lg'));
 const xl = parseInt(getCSSVariable('--xl'));
 
 const state = {
-	sliders: [],
+	swipers: [],
 	variant: null,
 	options: {},
 	quantity: 0,
-	set setSliders({ sliders }) {
-		this.sliders = sliders;
+	set setSwipers({ swipers }) {
+		this.swipers = swipers;
 	},
 	set setVariant({}) {
 		const { variants } = window.Feather.product;
@@ -56,7 +56,7 @@ const state = {
  */
 const setUI = function () {
 	const { product } = window.Feather;
-	const { variant, options, quantity, sliders } = state;
+	const { variant, options, quantity, swipers } = state;
 
 	// Options
 	const btns = document.querySelectorAll('[data-option]');
@@ -81,7 +81,7 @@ const setUI = function () {
 			if (id == variant.id) index = i;
 		});
 
-		sliders.forEach((slider) => {
+		swipers.forEach((slider) => {
 			slider.go('=' + index);
 		});
 	}
@@ -155,32 +155,36 @@ const setState = function () {
 };
 
 /**
- * Controls variant slider via Glide
+ * Controls variant slider via Swiper
  */
-const variantSlider = function () {
+const variantSwiper = function () {
 	const { product } = window.Feather;
-	const sliders = document.querySelectorAll('[data-variant-slider]');
+	const swipers = document.querySelectorAll('[data-variant-swiper]');
 
-	if (!sliders || (sliders && !sliders.length)) return;
+	if (!swipers || (swipers && !swipers.length)) return;
 
 	let instances = [];
-	sliders.forEach((slider, index) => {
-		const id = slider.getAttribute('data-variant-slider');
-		const instance = new Glide('[data-variant-slider="' + id + '"]', { perView: 1 });
+	swipers.forEach((slider, index) => {
+		const id = slider.getAttribute('data-variant-swiper');
+		const instance = new Swiper('.swiper', {
+			direction: 'horizontal',
+			loop: true,
+			slidesPerView: 1,
+		});
 		instances.push(instance);
 		instance.mount();
 	});
 
-	state.setSliders = { sliders: instances };
+	state.setSwipers = { swipers: instances };
 };
 
 /**
  * Controls recommendations slider via Glide
  */
 const recommendations = async function () {
-	const sliders = document.querySelectorAll('[data-related-product-slider]');
+	const swipers = document.querySelectorAll('[data-related-product-slider]');
 
-	if (sliders && sliders.length) {
+	if (swipers && swipers.length) {
 		const _numSlides = () => {
 			let num = 1;
 			if (window.innerWidth > sm) {
@@ -198,7 +202,7 @@ const recommendations = async function () {
 			return num;
 		};
 
-		sliders.forEach((slider) => {
+		swipers.forEach((slider) => {
 			const id = slider.getAttribute('data-related-product-slider');
 			const instance = new Glide('[data-related-product-slider="' + id + '"]', {
 				perView: _numSlides(),
@@ -254,8 +258,8 @@ export const product = async function () {
 	if (!window.Feather || (window.Feather && !window.Feather.product)) return;
 
 	setState();
-	//variantSlider();
-	recommendations();
+	variantSwiper();
+	//recommendations();
 	setOption();
 	setQuantity();
 	addToCart();

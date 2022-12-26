@@ -4,6 +4,8 @@
 		assign alt = variant.featured_image.alt
 	endif
 %}
-<li data-variant-slide-item="{{ variant.id }}">
-	<img src="{{ variant.featured_image.src | img_url: 'x1200' }}" alt="{{ alt }}">
-</li>
+{% if variant.featured_image.src %}
+	<div class="swiper-slide swiper-slide__variant" data-variant-slide-item="{{ variant.id }}">
+		<img src="{{ variant.featured_image.src | img_url: 'x1200' }}" alt="{{ alt }}">
+	</div>
+{% endif %}

@@ -1,25 +1,19 @@
 <section class="feather-product__variant-slider col-xs-12 col-lg-6">
 	<div class="container">
-		<div data-variant-slider="{{ section.id }}" class="glide">
-			<div data-glide-el="track" class="glide__track">
-				<ul class="glide__slides">
-					<li data-variant-slide-item="{{ product.id }}">
-						<img src="{{ product.featured_image | img_url: 'x1200' }}" alt="{{ product.title }}">
-					</li>
-					{% for variant in product.variants %}
-						{% render 'variant-slider-item', variant: variant %}
-					{% endfor %}
-					{% for media in product.media %}
-						<li>
-							{% render 'media', media: media %}
-						</li>
-					{% endfor %}
-				</ul>
+		<div class="swiper" data-variant-swiper="{{ section.id }}">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide swiper-slide__featured">
+					<img src="{{ product.featured_image | img_url: 'x1200' }}" alt="{{ product.title }}">
+				</div>
+				{% for variant in product.variants %}
+					{% render 'variant-slider-item', variant: variant %}
+				{% endfor %}
+				{% for media in product.media %}
+					<div class="swiper-slide swiper-slide__media" data-variant-slide-item="{{ product.id }}">
+						{% render 'media', media: media %}
+					</div>
+				{% endfor %}
 			</div>
-			<div data-glide-el="controls" class="glide__arrows">
-		    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{% render 'icon-arrow'%}</button>
-		    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{% render 'icon-arrow'%}</button>
-		  </div>
 		</div>
 	</div>
 </section>
