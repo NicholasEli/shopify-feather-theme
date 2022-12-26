@@ -88,48 +88,9 @@
       ],
       "settings": {
       }
-    },
-    "gallery": {
-      "type": "gallery",
-      "blocks": {
-        "205c9528-62fd-4162-ba4f-a450dabd14b4": {
-          "type": "images",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/cozy-livingroom-with-window.jpg"
-          }
-        },
-        "608c00a7-2496-41b3-9b66-871b3a544729": {
-          "type": "images",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/woman-relaxed-work.jpg"
-          }
-        },
-        "674e1e3e-95af-4feb-948d-3218a4260b31": {
-          "type": "images",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/person-sits-on-their-couch-next-to-their-dog.jpg"
-          }
-        },
-        "83ddb5d1-bea3-4584-adea-b0fa082656d8": {
-          "type": "images",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/woman-with-laptop-on-couch.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "205c9528-62fd-4162-ba4f-a450dabd14b4",
-        "608c00a7-2496-41b3-9b66-871b3a544729",
-        "674e1e3e-95af-4feb-948d-3218a4260b31",
-        "83ddb5d1-bea3-4584-adea-b0fa082656d8"
-      ],
-      "settings": {
-        "tagline": "It's the piece that could tie up your room"
-      }
     }
   },
   "order": [
-    "details",
-    "gallery"
+    "details"
   ]
 }
