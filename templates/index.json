@@ -65,7 +65,6 @@
         "75ea6358-c507-42de-9143-19e2f5f781dc": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify:\/\/shop_images\/autumn-walk-hand-in-hand.jpg",
             "image_overlay": true,
             "image_title": "Lorem Ipsum",
             "image_text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -79,7 +78,6 @@
         "75be033c-a79b-4413-983e-7a68d55cf961": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/mothership.mp4",
             "video_controls": false,
             "video_autoplay": true,
             "video_loop": true,
