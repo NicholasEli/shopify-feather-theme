@@ -185,6 +185,41 @@
         "swiper_effect": "none"
       }
     },
+    "10030483-96d9-4405-99e3-dfb3c17f552d": {
+      "type": "gallery",
+      "blocks": {
+        "template--14871277994043__10030483-96d9-4405-99e3-dfb3c17f552d-1672091130459961fa-0": {
+          "type": "images",
+          "settings": {
+          }
+        },
+        "e3beac4b-4c9e-480c-9385-4d0ba7910e6e": {
+          "type": "images",
+          "settings": {
+          }
+        },
+        "aabcc280-ba16-4ddd-82b6-b1db76a619a5": {
+          "type": "images",
+          "settings": {
+          }
+        },
+        "8fa79cd6-b196-4779-a5ed-a0c61a716ece": {
+          "type": "images",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "template--14871277994043__10030483-96d9-4405-99e3-dfb3c17f552d-1672091130459961fa-0",
+        "e3beac4b-4c9e-480c-9385-4d0ba7910e6e",
+        "aabcc280-ba16-4ddd-82b6-b1db76a619a5",
+        "8fa79cd6-b196-4779-a5ed-a0c61a716ece"
+      ],
+      "settings": {
+        "tagline": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "gallery_width": "xl"
+      }
+    },
     "information-grid": {
       "type": "information-grid",
       "blocks": {
@@ -233,6 +268,7 @@
     "collection-banner",
     "generic",
     "swiper",
+    "10030483-96d9-4405-99e3-dfb3c17f552d",
     "information-grid",
     "newsletter"
   ]
