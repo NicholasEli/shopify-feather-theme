@@ -1,10 +1,15 @@
 .feather-generic {
 	img,
 	video,
-	iframe {
+	iframe,
+	svg {
 		width: 100%;
 		max-width: 100%;
 		display: block;
+	}
+
+	svg * {
+		fill: var(--feather-stroke);
 	}
 
 	&__block {

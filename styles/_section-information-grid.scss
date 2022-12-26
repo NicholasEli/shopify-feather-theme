@@ -20,6 +20,10 @@ $grid-image: 50px;
 				width: 100%;
 				display: block;
 			}
+
+			svg * {
+				fill: var(--feather-primary);
+			}
 		}
 
 		&-details {

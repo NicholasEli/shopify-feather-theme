@@ -62,6 +62,10 @@
 				display: block;
 			}
 
+			svg * {
+				fill: var(--feather-stroke);
+			}
+
 			video {
 				height: 100%;
 				object-fit: cover;
