@@ -11,7 +11,7 @@
         "8c4b743d-c805-40ec-b517-a0b6a0aa7f2d": {
           "type": "text",
           "settings": {
-            "text": "She immediately ordered the chaise away: and then took me into her own room, to consider what should be done.",
+            "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
             "text_alignment": "left",
             "text_fontsize": 15,
             "text_mobile_col": "col-xs-12",
@@ -21,7 +21,7 @@
         "16aed105-c3cf-4571-ae71-0904c2c21c13": {
           "type": "textarea",
           "settings": {
-            "textarea": "She would have had me immediately accompany her to the Hot-Wells; but I entreated her to spare me the distress of so abrupt an introduction, and to pave the way for my reception. She consented rather reluctantly, and, attended only by her servant, walked to the Wells.",
+            "textarea": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
             "textarea_alignment": "center",
             "textarea_fontsize": 20,
             "textarea_mobile_col": "col-xs-12",
@@ -38,7 +38,7 @@
         "a0fc99c9-ae06-47e8-a998-0cc958f317dc": {
           "type": "richtext",
           "settings": {
-            "richtext": "<p><em>It was some time ere she could give, or I could hear, the account of her visit;<\/em> and then she related it in a hasty manner; yet, I believe I can recollect every word.<\/p>",
+            "richtext": "<p><strong>Lorem Ipsum <\/strong>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <em>It has survived not only five centuries<\/em>, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<\/p>",
             "richtext_alignment": "right",
             "richtext_fontsize": 15,
             "richtext_mobile_col": "col-xs-12",
@@ -67,8 +67,8 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/autumn-walk-hand-in-hand.jpg",
             "image_overlay": true,
-            "image_title": "Autum Vibes",
-            "image_text": "Some generic text for display.",
+            "image_title": "Lorem Ipsum",
+            "image_text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
             "image_content_x_alignment": "right",
             "image_content_y_alignment": "bottom",
             "image_text_alignment": "center",
@@ -84,8 +84,8 @@
             "video_autoplay": true,
             "video_loop": true,
             "video_overlay": true,
-            "video_title": "Shall I interrupt you?",
-            "video_text": "I was silent, and he seated himself next me.",
+            "video_title": "Lorem Ipsum",
+            "video_text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
             "video_content_x_alignment": "left",
             "video_content_y_alignment": "bottom",
             "video_text_alignment": "left",
@@ -96,7 +96,7 @@
         "e568742a-6e7c-4384-a9c3-b6656fc8d675": {
           "type": "video_url",
           "settings": {
-            "video_url": "https:\/\/youtu.be\/YWY6mf2WV-M",
+            "video_url": "https:\/\/youtu.be\/vj01PAffOac",
             "video_url_mobile_col": "col-xs-12",
             "video_url_desktop_col": "col-lg-6"
           }
